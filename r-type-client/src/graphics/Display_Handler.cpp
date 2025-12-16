@@ -58,41 +58,45 @@ void DisplayHandlerSystem::LoadSpritesPlayerFromFile() {
   }
 
   nlohmann::json data;
-  file >> data;
-  for (const auto &spriteJson : data["sprites"]) {
-    std::string texName = spriteJson["spriteComponent"]["textureName"];
-    std::string texPath = "res/" + spriteJson["texture"].get<std::string>();
-    if (textures.find(texName) == textures.end())
-      LoadTexture(texName, texPath);
+  try {
+    file >> data;
+    for (const auto &spriteJson : data["sprites"]) {
+      std::string texName = spriteJson["spriteComponent"]["textureName"];
+      std::string texPath = "res/" + spriteJson["texture"].get<std::string>();
+      if (textures.find(texName) == textures.end())
+        LoadTexture(texName, texPath);
 
-    SpriteComponent sprite;
-    sprite.textureName = texName;
-    auto pos = spriteJson["spriteComponent"]["position"];
-    sprite.position = {pos[0], pos[1]};
-    auto origin = spriteJson["spriteComponent"]["origin"];
-    sprite.origin = {origin[0], origin[1]};
-    sprite.scale = spriteJson["spriteComponent"]["scale"];
-    sprite.rotation = spriteJson["spriteComponent"]["rotation"];
-    auto tint = spriteJson["spriteComponent"]["tint"];
-    sprite.tint = {tint[0], tint[1], tint[2], tint[3]};
-    sprite.layer = spriteJson["spriteComponent"]["layer"];
-    sprite.visible = spriteJson["spriteComponent"]["visible"];
-    sprite.type = spriteJson["spriteComponent"]["type"];
+      SpriteComponent sprite;
+      sprite.textureName = texName;
+      auto pos = spriteJson["spriteComponent"]["position"];
+      sprite.position = {pos[0], pos[1]};
+      auto origin = spriteJson["spriteComponent"]["origin"];
+      sprite.origin = {origin[0], origin[1]};
+      sprite.scale = spriteJson["spriteComponent"]["scale"];
+      sprite.rotation = spriteJson["spriteComponent"]["rotation"];
+      auto tint = spriteJson["spriteComponent"]["tint"];
+      sprite.tint = {tint[0], tint[1], tint[2], tint[3]};
+      sprite.layer = spriteJson["spriteComponent"]["layer"];
+      sprite.visible = spriteJson["spriteComponent"]["visible"];
+      sprite.type = spriteJson["spriteComponent"]["type"];
 
-    // Assign animation if present
-    if (spriteJson.contains("animationComponent") &&
-        spriteJson["animationComponent"].is_object()) {
-      AnimationComponent anim;
-      for (const auto &frame : spriteJson["animationComponent"]["frames"]) {
-        anim.frames.push_back({frame[0], frame[1], frame[2], frame[3]});
+      // Assign animation if present
+      if (spriteJson.contains("animationComponent") &&
+          spriteJson["animationComponent"].is_object()) {
+        AnimationComponent anim;
+        for (const auto &frame : spriteJson["animationComponent"]["frames"]) {
+          anim.frames.push_back({frame[0], frame[1], frame[2], frame[3]});
+        }
+        anim.frameTime = spriteJson["animationComponent"]["frameTime"];
+        anim.loop = spriteJson["animationComponent"]["loop"];
+        anim.playing = spriteJson["animationComponent"]["playing"];
+        anim.pingpong = spriteJson["animationComponent"]["pingpong"];
+        sprite.animation = anim;
       }
-      anim.frameTime = spriteJson["animationComponent"]["frameTime"];
-      anim.loop = spriteJson["animationComponent"]["loop"];
-      anim.playing = spriteJson["animationComponent"]["playing"];
-      anim.pingpong = spriteJson["animationComponent"]["pingpong"];
-      sprite.animation = anim;
+      AddSprite(sprites_Player, sprite);
     }
-    AddSprite(sprites_Player, sprite);
+  } catch (const std::exception &e) {
+    std::cerr << "Error loading player sprites: " << e.what() << std::endl;
   }
 }
 
@@ -113,42 +117,46 @@ void DisplayHandlerSystem::LoadSpritesEnemyFromFile() {
   }
 
   nlohmann::json data;
-  file >> data;
-  for (const auto &spriteJson : data["sprites"]) {
-    std::string texName = spriteJson["spriteComponent"]["textureName"];
-    std::string texPath = "res/" + spriteJson["texture"].get<std::string>();
-    if (textures.find(texName) == textures.end())
-      LoadTexture(texName, texPath);
+  try {
+    file >> data;
+    for (const auto &spriteJson : data["sprites"]) {
+      std::string texName = spriteJson["spriteComponent"]["textureName"];
+      std::string texPath = "res/" + spriteJson["texture"].get<std::string>();
+      if (textures.find(texName) == textures.end())
+        LoadTexture(texName, texPath);
 
-    SpriteComponent sprite;
-    sprite.textureName = texName;
-    auto pos = spriteJson["spriteComponent"]["position"];
-    sprite.position = {pos[0], pos[1]};
-    auto origin = spriteJson["spriteComponent"]["origin"];
-    sprite.origin = {origin[0], origin[1]};
-    sprite.scale = spriteJson["spriteComponent"]["scale"];
-    sprite.rotation = spriteJson["spriteComponent"]["rotation"];
-    auto tint = spriteJson["spriteComponent"]["tint"];
-    sprite.tint = {tint[0], tint[1], tint[2], tint[3]};
-    sprite.layer = spriteJson["spriteComponent"]["layer"];
-    sprite.visible = spriteJson["spriteComponent"]["visible"];
-    sprite.type = spriteJson["spriteComponent"]["type"];
+      SpriteComponent sprite;
+      sprite.textureName = texName;
+      auto pos = spriteJson["spriteComponent"]["position"];
+      sprite.position = {pos[0], pos[1]};
+      auto origin = spriteJson["spriteComponent"]["origin"];
+      sprite.origin = {origin[0], origin[1]};
+      sprite.scale = spriteJson["spriteComponent"]["scale"];
+      sprite.rotation = spriteJson["spriteComponent"]["rotation"];
+      auto tint = spriteJson["spriteComponent"]["tint"];
+      sprite.tint = {tint[0], tint[1], tint[2], tint[3]};
+      sprite.layer = spriteJson["spriteComponent"]["layer"];
+      sprite.visible = spriteJson["spriteComponent"]["visible"];
+      sprite.type = spriteJson["spriteComponent"]["type"];
 
-    // Assign animation if present
-    if (spriteJson.contains("animationComponent") &&
-        spriteJson["animationComponent"].is_object()) {
-      AnimationComponent anim;
-      for (const auto &frame : spriteJson["animationComponent"]["frames"]) {
-        anim.frames.push_back({frame[0], frame[1], frame[2], frame[3]});
+      // Assign animation if present
+      if (spriteJson.contains("animationComponent") &&
+          spriteJson["animationComponent"].is_object()) {
+        AnimationComponent anim;
+        for (const auto &frame : spriteJson["animationComponent"]["frames"]) {
+          anim.frames.push_back({frame[0], frame[1], frame[2], frame[3]});
+        }
+        anim.frameTime = spriteJson["animationComponent"]["frameTime"];
+        anim.loop = spriteJson["animationComponent"]["loop"];
+        anim.playing = spriteJson["animationComponent"]["playing"];
+        sprite.animation = anim;
       }
-      anim.frameTime = spriteJson["animationComponent"]["frameTime"];
-      anim.loop = spriteJson["animationComponent"]["loop"];
-      anim.playing = spriteJson["animationComponent"]["playing"];
-      sprite.animation = anim;
+      AddSprite(sprites_Enemy, sprite);
+      std::cout << "DEBUG: Loaded enemy sprite '" << sprite.textureName
+                << "' type='" << sprite.type << "'" << std::endl;
     }
-    AddSprite(sprites_Enemy, sprite);
-    std::cout << "DEBUG: Loaded enemy sprite '" << sprite.textureName
-              << "' type='" << sprite.type << "'" << std::endl;
+  } catch (const std::exception &e) {
+    std::cerr << "Error loading enemy sprites: " << e.what() << std::endl;
   }
   std::cout << "DEBUG: Total enemy sprites loaded: " << sprites_Enemy.size()
             << std::endl;
@@ -169,46 +177,50 @@ void DisplayHandlerSystem::LoadSpritesBackgroundFromFile() {
   }
 
   nlohmann::json data;
-  file >> data;
-  for (const auto &spriteJson : data["sprites"]) {
-    std::string texName = spriteJson["spriteComponent"]["textureName"];
-    std::string texPath = "res/" + spriteJson["texture"].get<std::string>();
-    if (textures.find(texName) == textures.end())
-      LoadTexture(texName, texPath);
+  try {
+    file >> data;
+    for (const auto &spriteJson : data["sprites"]) {
+      std::string texName = spriteJson["spriteComponent"]["textureName"];
+      std::string texPath = "res/" + spriteJson["texture"].get<std::string>();
+      if (textures.find(texName) == textures.end())
+        LoadTexture(texName, texPath);
 
-    SpriteComponent sprite;
-    sprite.textureName = texName;
-    auto pos = spriteJson["spriteComponent"]["position"];
-    sprite.position = {pos[0], pos[1]};
-    auto origin = spriteJson["spriteComponent"]["origin"];
-    sprite.origin = {origin[0], origin[1]};
-    sprite.scale = spriteJson["spriteComponent"]["scale"];
-    sprite.rotation = spriteJson["spriteComponent"]["rotation"];
-    auto tint = spriteJson["spriteComponent"]["tint"];
-    sprite.tint = {tint[0], tint[1], tint[2], tint[3]};
-    sprite.layer = spriteJson["spriteComponent"]["layer"];
-    sprite.visible = spriteJson["spriteComponent"]["visible"];
-    sprite.type = spriteJson["spriteComponent"]["type"];
+      SpriteComponent sprite;
+      sprite.textureName = texName;
+      auto pos = spriteJson["spriteComponent"]["position"];
+      sprite.position = {pos[0], pos[1]};
+      auto origin = spriteJson["spriteComponent"]["origin"];
+      sprite.origin = {origin[0], origin[1]};
+      sprite.scale = spriteJson["spriteComponent"]["scale"];
+      sprite.rotation = spriteJson["spriteComponent"]["rotation"];
+      auto tint = spriteJson["spriteComponent"]["tint"];
+      sprite.tint = {tint[0], tint[1], tint[2], tint[3]};
+      sprite.layer = spriteJson["spriteComponent"]["layer"];
+      sprite.visible = spriteJson["spriteComponent"]["visible"];
+      sprite.type = spriteJson["spriteComponent"]["type"];
 
-    // Assign animation if present
-    if (spriteJson.contains("animationComponent") &&
-        spriteJson["animationComponent"].is_object()) {
-      AnimationComponent anim;
-      for (const auto &frame : spriteJson["animationComponent"]["frames"]) {
-        anim.frames.push_back({frame[0], frame[1], frame[2], frame[3]});
+      // Assign animation if present
+      if (spriteJson.contains("animationComponent") &&
+          spriteJson["animationComponent"].is_object()) {
+        AnimationComponent anim;
+        for (const auto &frame : spriteJson["animationComponent"]["frames"]) {
+          anim.frames.push_back({frame[0], frame[1], frame[2], frame[3]});
+        }
+        anim.frameTime = spriteJson["animationComponent"]["frameTime"];
+        anim.loop = spriteJson["animationComponent"]["loop"];
+        anim.playing = spriteJson["animationComponent"]["playing"];
+        sprite.animation = anim;
       }
-      anim.frameTime = spriteJson["animationComponent"]["frameTime"];
-      anim.loop = spriteJson["animationComponent"]["loop"];
-      anim.playing = spriteJson["animationComponent"]["playing"];
-      sprite.animation = anim;
-    }
 
-    // Parse sourceRect if present in JSON
-    if (spriteJson["spriteComponent"].contains("sourceRect")) {
-      auto srcRect = spriteJson["spriteComponent"]["sourceRect"];
-      sprite.sourceRect = {srcRect[0], srcRect[1], srcRect[2], srcRect[3]};
+      // Parse sourceRect if present in JSON
+      if (spriteJson["spriteComponent"].contains("sourceRect")) {
+        auto srcRect = spriteJson["spriteComponent"]["sourceRect"];
+        sprite.sourceRect = {srcRect[0], srcRect[1], srcRect[2], srcRect[3]};
+      }
+      AddSprite(sprites_Background, sprite);
     }
-    AddSprite(sprites_Background, sprite);
+  } catch (const std::exception &e) {
+    std::cerr << "Error loading background sprites: " << e.what() << std::endl;
   }
 }
 
@@ -228,54 +240,58 @@ void DisplayHandlerSystem::LoadSpritesFireFromFile() {
   }
 
   nlohmann::json data;
-  file >> data;
-  for (const auto &spriteJson : data["sprites"]) {
-    std::string texName = spriteJson["spriteComponent"]["textureName"];
-    std::string texPath = "res/" + spriteJson["texture"].get<std::string>();
-    if (textures.find(texName) == textures.end())
-      LoadTexture(texName, texPath);
+  try {
+    file >> data;
+    for (const auto &spriteJson : data["sprites"]) {
+      std::string texName = spriteJson["spriteComponent"]["textureName"];
+      std::string texPath = "res/" + spriteJson["texture"].get<std::string>();
+      if (textures.find(texName) == textures.end())
+        LoadTexture(texName, texPath);
 
-    SpriteComponent sprite;
-    sprite.textureName = texName;
-    auto pos = spriteJson["spriteComponent"]["position"];
-    sprite.position = {pos[0], pos[1]};
-    auto origin = spriteJson["spriteComponent"]["origin"];
-    sprite.origin = {origin[0], origin[1]};
-    sprite.scale = spriteJson["spriteComponent"]["scale"];
-    sprite.rotation = spriteJson["spriteComponent"]["rotation"];
-    auto tint = spriteJson["spriteComponent"]["tint"];
-    sprite.tint = {tint[0], tint[1], tint[2], tint[3]};
-    sprite.layer = spriteJson["spriteComponent"]["layer"];
-    sprite.visible = spriteJson["spriteComponent"]["visible"];
+      SpriteComponent sprite;
+      sprite.textureName = texName;
+      auto pos = spriteJson["spriteComponent"]["position"];
+      sprite.position = {pos[0], pos[1]};
+      auto origin = spriteJson["spriteComponent"]["origin"];
+      sprite.origin = {origin[0], origin[1]};
+      sprite.scale = spriteJson["spriteComponent"]["scale"];
+      sprite.rotation = spriteJson["spriteComponent"]["rotation"];
+      auto tint = spriteJson["spriteComponent"]["tint"];
+      sprite.tint = {tint[0], tint[1], tint[2], tint[3]};
+      sprite.layer = spriteJson["spriteComponent"]["layer"];
+      sprite.visible = spriteJson["spriteComponent"]["visible"];
 
-    // Handle missing type field safely
-    if (spriteJson["spriteComponent"].contains("type")) {
-      sprite.type = spriteJson["spriteComponent"]["type"];
-    } else {
-      sprite.type = "fire"; // default for fire sprites
-    }
-
-    // Assign animation if present
-    if (spriteJson.contains("animationComponent") &&
-        spriteJson["animationComponent"].is_object()) {
-      AnimationComponent anim;
-      for (const auto &frame : spriteJson["animationComponent"]["frames"]) {
-        anim.frames.push_back({frame[0], frame[1], frame[2], frame[3]});
+      // Handle missing type field safely
+      if (spriteJson["spriteComponent"].contains("type")) {
+        sprite.type = spriteJson["spriteComponent"]["type"];
+      } else {
+        sprite.type = "fire"; // default for fire sprites
       }
-      anim.frameTime = spriteJson["animationComponent"]["frameTime"];
-      anim.loop = spriteJson["animationComponent"]["loop"];
-      anim.playing = spriteJson["animationComponent"]["playing"];
-      sprite.animation = anim;
-    }
 
-    // Parse sourceRect if present
-    if (spriteJson["spriteComponent"].contains("sourceRect")) {
-      auto srcRect = spriteJson["spriteComponent"]["sourceRect"];
-      sprite.sourceRect = {srcRect[0], srcRect[1], srcRect[2], srcRect[3]};
+      // Assign animation if present
+      if (spriteJson.contains("animationComponent") &&
+          spriteJson["animationComponent"].is_object()) {
+        AnimationComponent anim;
+        for (const auto &frame : spriteJson["animationComponent"]["frames"]) {
+          anim.frames.push_back({frame[0], frame[1], frame[2], frame[3]});
+        }
+        anim.frameTime = spriteJson["animationComponent"]["frameTime"];
+        anim.loop = spriteJson["animationComponent"]["loop"];
+        anim.playing = spriteJson["animationComponent"]["playing"];
+        sprite.animation = anim;
+      }
+
+      // Parse sourceRect if present
+      if (spriteJson["spriteComponent"].contains("sourceRect")) {
+        auto srcRect = spriteJson["spriteComponent"]["sourceRect"];
+        sprite.sourceRect = {srcRect[0], srcRect[1], srcRect[2], srcRect[3]};
+      }
+      AddSprite(sprites_Fire, sprite);
+      std::cout << "DEBUG: Loaded fire sprite '" << sprite.textureName
+                << "' type='" << sprite.type << "'" << std::endl;
     }
-    AddSprite(sprites_Fire, sprite);
-    std::cout << "DEBUG: Loaded fire sprite '" << sprite.textureName
-              << "' type='" << sprite.type << "'" << std::endl;
+  } catch (const std::exception &e) {
+    std::cerr << "Error loading fire sprites: " << e.what() << std::endl;
   }
   std::cout << "DEBUG: Total fire sprites loaded: " << sprites_Fire.size()
             << std::endl;
