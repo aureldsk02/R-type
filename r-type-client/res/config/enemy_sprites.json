@@ -1,0 +1,61 @@
+{
+    "sprites": [
+        {
+            "texture": "typesheets/enemy_sprite/r-typesheet5.gif",
+            "spriteComponent": {
+                "textureName": "enemy_basic",
+                "position": [
+                    0,
+                    0
+                ],
+                "origin": [
+                    16,
+                    18
+                ],
+                "scale": 2.0,
+                "rotation": 0.0,
+                "tint": [
+                    255,
+                    255,
+                    255,
+                    255
+                ],
+                "layer": 1,
+                "visible": false,
+                "type": "enemy"
+            },
+            "animationComponent": {
+                "frames": [
+                    [
+                        0,
+                        0,
+                        33,
+                        36
+                    ],
+                    [
+                        33,
+                        0,
+                        33,
+                        36
+                    ],
+                    [
+                        66,
+                        0,
+                        33,
+                        36
+                    ],
+                    [
+                        99,
+                        0,
+                        33,
+                        36
+                    ]
+                ],
+                "frameTime": 0.2,
+                "loop": true,
+                "playing": true,
+                "pingpong": false
+            }
+        }
+    ]
+}

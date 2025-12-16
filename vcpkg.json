@@ -1,0 +1,10 @@
+{
+    "name": "r-type",
+    "version": "1.0.0",
+    "description": "R-Type Multiplayer Game",
+    "dependencies": [
+        "raylib",
+        "nlohmann-json",
+        "asio"
+    ]
+}
