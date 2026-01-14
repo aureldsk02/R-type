@@ -1,0 +1,5 @@
+<map id="entity_info_s" name="entity_info_s">
+<area shape="rect" id="Node000001" title="A struct to store infos on an entity to be spawned in the level." alt="" coords="5,96,101,123"/>
+<area shape="rect" id="Node000002" href="$classentity.html" title="The entity class, defined by an id to which components will be associated." alt="" coords="26,5,80,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="56,47,56,95,50,95,50,47"/>
+</map>

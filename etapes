@@ -1,0 +1,28 @@
+/*Installer vcpkg
+
+apt-get install libx11-dev libxrandr-dev libxcursor-dev libxi-dev libudev-dev libgl1-mesa-dev
+export VCPKG_ROOT=/home/vrmelo/vcpkg
+Vérifier : echo $VCPKG_ROOT
+Vérifier que toolchain existe : ls -la $VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake
+///
+VCPKG est-il à jour ?
+cd /home/vrmelo/vcpkg
+git fetch --all
+git pull
+////
+sudo apt-get install autoconf automake libtool
+sudo apt-get update
+sudo apt-get install build-essential autoconf automake libtool pkg-config
+*/
+
+WINDOWS
+git clone https://github.com/microsoft/vcpkg.git C:\vcpkg
+cd C:\vcpkg
+.\bootstrap-vcpkg.bat
+setx PATH "$env:PATH;C:\vcpkg"
+FX
+.\vcpkg integrate install
+////
+set VCPKG_ROOT=C:\vcpkg
+cmake .. -G "Visual Studio 17 2022" -A x64
+

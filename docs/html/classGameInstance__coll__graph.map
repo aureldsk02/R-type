@@ -1,0 +1,5 @@
+<map id="GameInstance" name="GameInstance">
+<area shape="rect" id="Node000001" title="The server class. Handles the server side of the game. At the start of the game, the server loads the..." alt="" coords="5,98,121,126"/>
+<area shape="rect" id="Node000002" href="$classregistry.html" title="The registry class. The registry is a container for all the entities and components of the game...." alt="" coords="27,5,99,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,48,66,98,60,98,60,48"/>
+</map>

@@ -1,0 +1,191 @@
+\doxysection{component\+::controllable\+\_\+s Struct Reference}
+\hypertarget{structcomponent_1_1controllable__s}{}\label{structcomponent_1_1controllable__s}\index{component::controllable\_s@{component::controllable\_s}}
+
+
+The controllable component, defined by a set of booleans. This component allows an entity to be controlled by the user\textquotesingle{}s keyboard input.  
+
+
+
+
+{\ttfamily \#include $<$components.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structcomponent_1_1controllable__s_a56a342d1e9424ad06902ab59f2c39db3}{controllable\+\_\+s}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcomponent_1_1controllable__s_ab26f0c887274bcbcd89d6e57fd865fad}{controllable\+\_\+s}} (sf\+::\+Keyboard\+::\+Key \+\_\+up, sf\+::\+Keyboard\+::\+Key \+\_\+down, sf\+::\+Keyboard\+::\+Key \+\_\+left, sf\+::\+Keyboard\+::\+Key \+\_\+right, sf\+::\+Keyboard\+::\+Key \+\_\+space)
+\item 
+\mbox{\hyperlink{structcomponent_1_1controllable__s_a024cf023e67150d2c099cba6706885b0}{controllable\+\_\+s}} (bool u, bool d, bool l, bool r, bool s)
+\begin{DoxyCompactList}\small\item\em Constructor with preinitialized value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structcomponent_1_1controllable__s_a50d82bffaf22ef937e0c2d18f4e05c22}{get\+Keyboard\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Get the key that has been pressed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Keyboard\+::\+Key \mbox{\hyperlink{structcomponent_1_1controllable__s_a510aad6bec20eaf94809edaeee1abda6}{up\+\_\+key}}
+\item 
+sf\+::\+Keyboard\+::\+Key \mbox{\hyperlink{structcomponent_1_1controllable__s_abc00c8a72f71e3503e154b75799bdcfa}{down\+\_\+key}}
+\item 
+sf\+::\+Keyboard\+::\+Key \mbox{\hyperlink{structcomponent_1_1controllable__s_a1ad771ccd7948925dcc9b093283c3fc8}{left\+\_\+key}}
+\item 
+sf\+::\+Keyboard\+::\+Key \mbox{\hyperlink{structcomponent_1_1controllable__s_a2c6aa519c683c51eb0d88b93dd822281}{right\+\_\+key}}
+\item 
+sf\+::\+Keyboard\+::\+Key \mbox{\hyperlink{structcomponent_1_1controllable__s_a66fec0ceaf483b198c67a0849fa5d654}{space\+\_\+key}}
+\item 
+bool \mbox{\hyperlink{structcomponent_1_1controllable__s_a6a8e40517a5c416126fc3d94ffb24b9e}{up}}
+\begin{DoxyCompactList}\small\item\em Check if up is pressed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structcomponent_1_1controllable__s_a81b8202fa9c13eaeee2bf8e23a4f33ad}{down}}
+\begin{DoxyCompactList}\small\item\em Check if down is pressed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structcomponent_1_1controllable__s_a0c50867c275bc34cb3ef415c4ca2ddd8}{left}}
+\begin{DoxyCompactList}\small\item\em Check if left is pressed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structcomponent_1_1controllable__s_a99dd2125bdf6b8d98dabf6b61181fb7a}{right}}
+\begin{DoxyCompactList}\small\item\em Check if right is pressed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structcomponent_1_1controllable__s_a4b6580c3a20adefd1761ec7a523c97f7}{space}}
+\begin{DoxyCompactList}\small\item\em Check if space is pressed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The controllable component, defined by a set of booleans. This component allows an entity to be controlled by the user\textquotesingle{}s keyboard input. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structcomponent_1_1controllable__s_a56a342d1e9424ad06902ab59f2c39db3}\label{structcomponent_1_1controllable__s_a56a342d1e9424ad06902ab59f2c39db3} 
+\index{component::controllable\_s@{component::controllable\_s}!controllable\_s@{controllable\_s}}
+\index{controllable\_s@{controllable\_s}!component::controllable\_s@{component::controllable\_s}}
+\doxysubsubsection{\texorpdfstring{controllable\_s()}{controllable\_s()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily component\+::controllable\+\_\+s\+::controllable\+\_\+s (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+\Hypertarget{structcomponent_1_1controllable__s_ab26f0c887274bcbcd89d6e57fd865fad}\label{structcomponent_1_1controllable__s_ab26f0c887274bcbcd89d6e57fd865fad} 
+\index{component::controllable\_s@{component::controllable\_s}!controllable\_s@{controllable\_s}}
+\index{controllable\_s@{controllable\_s}!component::controllable\_s@{component::controllable\_s}}
+\doxysubsubsection{\texorpdfstring{controllable\_s()}{controllable\_s()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily component\+::controllable\+\_\+s\+::controllable\+\_\+s (\begin{DoxyParamCaption}\item[{sf\+::\+Keyboard\+::\+Key}]{\+\_\+up,  }\item[{sf\+::\+Keyboard\+::\+Key}]{\+\_\+down,  }\item[{sf\+::\+Keyboard\+::\+Key}]{\+\_\+left,  }\item[{sf\+::\+Keyboard\+::\+Key}]{\+\_\+right,  }\item[{sf\+::\+Keyboard\+::\+Key}]{\+\_\+space }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structcomponent_1_1controllable__s_a024cf023e67150d2c099cba6706885b0}\label{structcomponent_1_1controllable__s_a024cf023e67150d2c099cba6706885b0} 
+\index{component::controllable\_s@{component::controllable\_s}!controllable\_s@{controllable\_s}}
+\index{controllable\_s@{controllable\_s}!component::controllable\_s@{component::controllable\_s}}
+\doxysubsubsection{\texorpdfstring{controllable\_s()}{controllable\_s()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily component\+::controllable\+\_\+s\+::controllable\+\_\+s (\begin{DoxyParamCaption}\item[{bool}]{u,  }\item[{bool}]{d,  }\item[{bool}]{l,  }\item[{bool}]{r,  }\item[{bool}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with preinitialized value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & True if Up is Pressed False if not \\
+\hline
+{\em d} & True if Down is Pressed False if not \\
+\hline
+{\em l} & True if Left is Pressed False if not \\
+\hline
+{\em r} & True if Right is Pressed False if not \\
+\hline
+{\em s} & True if Space is Pressed False if not \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structcomponent_1_1controllable__s_a50d82bffaf22ef937e0c2d18f4e05c22}\label{structcomponent_1_1controllable__s_a50d82bffaf22ef937e0c2d18f4e05c22} 
+\index{component::controllable\_s@{component::controllable\_s}!getKeyboardInput@{getKeyboardInput}}
+\index{getKeyboardInput@{getKeyboardInput}!component::controllable\_s@{component::controllable\_s}}
+\doxysubsubsection{\texorpdfstring{getKeyboardInput()}{getKeyboardInput()}}
+{\footnotesize\ttfamily void component\+::controllable\+\_\+s\+::get\+Keyboard\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the key that has been pressed. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structcomponent_1_1controllable__s_a81b8202fa9c13eaeee2bf8e23a4f33ad}\label{structcomponent_1_1controllable__s_a81b8202fa9c13eaeee2bf8e23a4f33ad} 
+\index{component::controllable\_s@{component::controllable\_s}!down@{down}}
+\index{down@{down}!component::controllable\_s@{component::controllable\_s}}
+\doxysubsubsection{\texorpdfstring{down}{down}}
+{\footnotesize\ttfamily bool component\+::controllable\+\_\+s\+::down}
+
+
+
+Check if down is pressed. 
+
+\Hypertarget{structcomponent_1_1controllable__s_abc00c8a72f71e3503e154b75799bdcfa}\label{structcomponent_1_1controllable__s_abc00c8a72f71e3503e154b75799bdcfa} 
+\index{component::controllable\_s@{component::controllable\_s}!down\_key@{down\_key}}
+\index{down\_key@{down\_key}!component::controllable\_s@{component::controllable\_s}}
+\doxysubsubsection{\texorpdfstring{down\_key}{down\_key}}
+{\footnotesize\ttfamily sf\+::\+Keyboard\+::\+Key component\+::controllable\+\_\+s\+::down\+\_\+key}
+
+\Hypertarget{structcomponent_1_1controllable__s_a0c50867c275bc34cb3ef415c4ca2ddd8}\label{structcomponent_1_1controllable__s_a0c50867c275bc34cb3ef415c4ca2ddd8} 
+\index{component::controllable\_s@{component::controllable\_s}!left@{left}}
+\index{left@{left}!component::controllable\_s@{component::controllable\_s}}
+\doxysubsubsection{\texorpdfstring{left}{left}}
+{\footnotesize\ttfamily bool component\+::controllable\+\_\+s\+::left}
+
+
+
+Check if left is pressed. 
+
+\Hypertarget{structcomponent_1_1controllable__s_a1ad771ccd7948925dcc9b093283c3fc8}\label{structcomponent_1_1controllable__s_a1ad771ccd7948925dcc9b093283c3fc8} 
+\index{component::controllable\_s@{component::controllable\_s}!left\_key@{left\_key}}
+\index{left\_key@{left\_key}!component::controllable\_s@{component::controllable\_s}}
+\doxysubsubsection{\texorpdfstring{left\_key}{left\_key}}
+{\footnotesize\ttfamily sf\+::\+Keyboard\+::\+Key component\+::controllable\+\_\+s\+::left\+\_\+key}
+
+\Hypertarget{structcomponent_1_1controllable__s_a99dd2125bdf6b8d98dabf6b61181fb7a}\label{structcomponent_1_1controllable__s_a99dd2125bdf6b8d98dabf6b61181fb7a} 
+\index{component::controllable\_s@{component::controllable\_s}!right@{right}}
+\index{right@{right}!component::controllable\_s@{component::controllable\_s}}
+\doxysubsubsection{\texorpdfstring{right}{right}}
+{\footnotesize\ttfamily bool component\+::controllable\+\_\+s\+::right}
+
+
+
+Check if right is pressed. 
+
+\Hypertarget{structcomponent_1_1controllable__s_a2c6aa519c683c51eb0d88b93dd822281}\label{structcomponent_1_1controllable__s_a2c6aa519c683c51eb0d88b93dd822281} 
+\index{component::controllable\_s@{component::controllable\_s}!right\_key@{right\_key}}
+\index{right\_key@{right\_key}!component::controllable\_s@{component::controllable\_s}}
+\doxysubsubsection{\texorpdfstring{right\_key}{right\_key}}
+{\footnotesize\ttfamily sf\+::\+Keyboard\+::\+Key component\+::controllable\+\_\+s\+::right\+\_\+key}
+
+\Hypertarget{structcomponent_1_1controllable__s_a4b6580c3a20adefd1761ec7a523c97f7}\label{structcomponent_1_1controllable__s_a4b6580c3a20adefd1761ec7a523c97f7} 
+\index{component::controllable\_s@{component::controllable\_s}!space@{space}}
+\index{space@{space}!component::controllable\_s@{component::controllable\_s}}
+\doxysubsubsection{\texorpdfstring{space}{space}}
+{\footnotesize\ttfamily bool component\+::controllable\+\_\+s\+::space}
+
+
+
+Check if space is pressed. 
+
+\Hypertarget{structcomponent_1_1controllable__s_a66fec0ceaf483b198c67a0849fa5d654}\label{structcomponent_1_1controllable__s_a66fec0ceaf483b198c67a0849fa5d654} 
+\index{component::controllable\_s@{component::controllable\_s}!space\_key@{space\_key}}
+\index{space\_key@{space\_key}!component::controllable\_s@{component::controllable\_s}}
+\doxysubsubsection{\texorpdfstring{space\_key}{space\_key}}
+{\footnotesize\ttfamily sf\+::\+Keyboard\+::\+Key component\+::controllable\+\_\+s\+::space\+\_\+key}
+
+\Hypertarget{structcomponent_1_1controllable__s_a6a8e40517a5c416126fc3d94ffb24b9e}\label{structcomponent_1_1controllable__s_a6a8e40517a5c416126fc3d94ffb24b9e} 
+\index{component::controllable\_s@{component::controllable\_s}!up@{up}}
+\index{up@{up}!component::controllable\_s@{component::controllable\_s}}
+\doxysubsubsection{\texorpdfstring{up}{up}}
+{\footnotesize\ttfamily bool component\+::controllable\+\_\+s\+::up}
+
+
+
+Check if up is pressed. 
+
+\Hypertarget{structcomponent_1_1controllable__s_a510aad6bec20eaf94809edaeee1abda6}\label{structcomponent_1_1controllable__s_a510aad6bec20eaf94809edaeee1abda6} 
+\index{component::controllable\_s@{component::controllable\_s}!up\_key@{up\_key}}
+\index{up\_key@{up\_key}!component::controllable\_s@{component::controllable\_s}}
+\doxysubsubsection{\texorpdfstring{up\_key}{up\_key}}
+{\footnotesize\ttfamily sf\+::\+Keyboard\+::\+Key component\+::controllable\+\_\+s\+::up\+\_\+key}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/engine/include/\mbox{\hyperlink{components_8hpp}{components.\+hpp}}\end{DoxyCompactItemize}

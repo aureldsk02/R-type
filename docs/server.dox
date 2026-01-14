@@ -1,0 +1,135 @@
+/**
+ * \page server_page R-TYPE Server
+ *
+ * This page details how the server works.
+ *
+ * @section global_infos Global explanation
+ * The server is responsible of holding the actual state of the game
+ * and transferring it to the clients.
+ * The game scene, with the players, the ennemies or their projectiles
+ * takes place in the registry inside the server.
+ * 
+ * @section game_logic Game Logic
+ * The server handles all the game logic.
+ * It starts by loading a configuration file containing all infos
+ * about the level : What ennemies will spawn ? Where ? When ?
+ *
+ * @code
+ *
+ *entities = (
+ *   {name = "red_trooper"; spawn_time = 3.4; y = 50.0;},
+ *   {name = "red_trooper"; spawn_time = 3.8; y = 50.0;},
+ *   {name = "red_trooper"; spawn_time = 4.2; y = 50.0;},
+ *   {name = "red_trooper"; spawn_time = 4.6; y = 50.0;},
+ *
+ *   {name = "walker"; spawn_time = 5.0; y = 367.0;},
+ *   {name = "red_trooper"; spawn_time = 7.0; y = 50.0;},
+ *   {name = "boss"; spawn_time = 10.0; y = 150.0;}
+ *);
+ *
+ * @endcode
+ *
+ * During the game, it then spawns the entities at the correct moment.
+ * Thanks to the logic components and the logic system as well as all
+ * the other ones. The entities evolve in the scene.
+ * All the server has to do now is to go through each 
+ * game entity (and skip special ones like the background, the music)
+ * and send its infos (type and position) to each client.
+ * See more in @ref level_handling.cpp.
+ *
+ * Simultaneously, the server listens to inputs from the clients
+ * If an input is received, the server then applies velocity to
+ * the corresponding player entity.
+ *
+ * @section network_details Network Details
+ * When the server starts, it call a `NetworkManager` that listens
+ * for incoming UDP packets from clients:
+ *
+ * ```cpp
+ * Server::Server(int p, registry& regis)
+ *     : server_(p, std::ref(messages), std::ref(mtx)), p_(p), reg(regis)
+ * {
+ *     load_textures();
+ *     initializeGame();
+ *     loadLevel("assets/levels/test.txt");
+ * }
+ * ```
+ *
+ * The constructor of `NetworkManager` creates a UDP socket bind to the
+ * given port and starts an asynchronous loop:
+ *
+ * ```cpp
+ * void NetworkManager::receive_from_clients();
+ * ```
+ *
+ * This allows the server to receive messages (typically player inputs)
+ * from all connected clients.
+ *
+ * A client sends a UDP packet, the server receives it via:
+ *
+ * ```cpp
+ * void NetworkManager::receive_from_clients();
+ * ```
+ *
+ * Inside the callback:
+ * - The sender’s endpoint (`last_sender_`) is stored.
+ * - The received bytes are appended into the shared buffer
+ *   `clients_lastmsg` (a vector of endpoint–message pairs).
+ *
+ * Example:
+ * ```cpp
+ * clients_lastmsg.push_back({
+ *     last_sender_,
+ *     std::vector<int8_t>(buff.begin(), buff.begin() + bytes_receive)
+ * });
+ * ```
+ *
+ * This data is protected by a mutex (`std::lock_guard<std::mutex> lock(mtx)`)
+ * to ensure thread safety while other threads process it.
+ *
+ * After each update cycle, the server recup the current
+ * state of all entities (positions, types, health, etc.) and sends
+ * this information to each connected client using:
+ *
+ * ```cpp
+ * void NetworkManager::send_to_client(
+ *     const std::vector<int8_t>& msg,
+ *     size_t size,
+ *     const asio::ip::udp::endpoint& to_client
+ * );
+ * ```
+ *
+ * The communication is **asynchronous**, ensuring that no blocking occurs
+ * during gameplay. Each message represents a **snapshot of the current
+ * world state**.
+ *
+ * The server uses a **multi-threaded** architecture:
+ * - The main thread runs the **SFML window**, updates the registry,
+ *   runs systems, and advances the level logic.
+ * - A separate **ASIO thread** executes the I/O context (`context.run()`),
+ *   handling all network communications asynchronously.
+ *
+ * Synchronization between threads is done using `std::mutex` objects,
+ * which protect shared message buffers:
+ * - `clients_lastmsg`: stores last messages from all clients,
+ * - `messages`: stores data ready to be broadcast.
+ *
+ * ```cpp
+ * std::thread t([&c]() { c.run(); });
+ * ```
+ *
+ * When the game ends (e.g., boss defeated or all players dead),
+ * the SFML window closes, and the ASIO context is stopped:
+ *
+ * ```cpp
+ * c.getContext().stop();
+ * t.join();
+ * ```
+ *
+ * This ensures all asynchronous operations are safely terminated.
+ *
+ * - Protocol: **UDP**
+ * - Library: **ASIO**
+ * - Asynchronous communication (non-blocking)
+ *
+ */

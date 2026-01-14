@@ -1,0 +1,15 @@
+Ce fichier contient les choix de data structure et autres
+qui feront partie de la tech comparative study:
+- ECS sparse car ca permet de faire rapidement des add/remove operations
+    et c'est cpu cache friendly (autres choix voir https://github.com/SanderMertens/ecs-faq?tab=readme-ov-file#what-is-ecs)
+- Vectors de std optional pour les composants de l'ecs
+    Parce que c'est une maniere simple de stocker des composants
+    car on economise de l'espace en ne retenant pas l'id de l'entite
+    sachant qu'il peut y avoir des espaces vides
+- Unordered map pour le stockage des tables de composants parce que
+c'est plus rapide(autre choix sorted map)
+- Pour les tests, Google Test, on verra plus tard pourquoi
+    c'est une bonne idee et quelles etaient les alternatives
+- sfml pour le rendu parce que tout le monde sait utiliser et c'est simple, rapide, facile a utiliser
+- libconfig pour le parsing, parce que simple lol, doc existe
+ 

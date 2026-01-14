@@ -1,0 +1,21 @@
+entities = (
+    {name = "plane"; spawn_time = 3.4; y = 50.0;},
+    {name = "plane"; spawn_time = 3.8; y = 150.0;},
+    {name = "plane"; spawn_time = 4.2; y = 200.0;},
+
+    {name = "space_enemy"; spawn_time = 5.0; y = 367.0;},
+    {name = "space_enemy"; spawn_time = 6.0; y = 367.0;},
+    {name = "space_enemy"; spawn_time = 8.0; y = 367.0;},
+    {name = "space_enemy"; spawn_time = 9.0; y = 367.0;},
+
+    {name = "plane"; spawn_time = 8.0; y = 150.0;},
+    {name = "plane"; spawn_time = 8.2; y = 200.0;},
+    {name = "plane"; spawn_time = 8.4; y = 250.0;},
+
+    {name = "walker"; spawn_time = 8.4; y = 367.0;},
+    {name = "walker"; spawn_time = 9.0; y = 367.0;},
+    {name = "walker"; spawn_time = 9.6; y = 367.0;},
+
+    {name = "big_shooter"; spawn_time = 12.0; y = 50.0;},
+    {name = "small_shooter"; spawn_time = 12.0; y = 200.0;}
+);

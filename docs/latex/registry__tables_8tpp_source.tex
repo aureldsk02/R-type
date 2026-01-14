@@ -1,0 +1,90 @@
+\doxysection{registry\+\_\+tables.\+tpp}
+\hypertarget{registry__tables_8tpp_source}{}\label{registry__tables_8tpp_source}\index{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/engine/src/registry\_tables.tpp@{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/engine/src/registry\_tables.tpp}}
+\mbox{\hyperlink{registry__tables_8tpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ *}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ EPITECH\ PROJECT\ -\/\ Wed,\ Sep,\ 2025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Title\ \ \ \ \ \ \ \ \ \ \ -\/\ r-\/type\_bs\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Description\ \ \ \ \ -\/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ \ \ \ \ registry\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ *}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ ███████╗██████╗\ ██╗████████╗███████╗\ ██████╗██╗\ \ ██╗\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ ██╔════╝██╔══██╗██║╚══██╔══╝██╔════╝██╔════╝██║\ \ ██║\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ █████╗\ \ ██████╔╝██║\ \ \ ██║\ \ \ █████╗\ \ ██║\ \ \ \ \ ███████║\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ ██╔══╝\ \ ██╔═══╝\ ██║\ \ \ ██║\ \ \ ██╔══╝\ \ ██║\ \ \ \ \ ██╔══██║\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ ███████╗██║\ \ \ \ \ ██║\ \ \ ██║\ \ \ ███████╗╚██████╗██║\ \ ██║\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ ╚══════╝╚═╝\ \ \ \ \ ╚═╝\ \ \ ╚═╝\ \ \ ╚══════╝\ ╚═════╝╚═╝\ \ ╚═╝\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#ifndef\ INCLUDED\_REGISTRY\_TABLES\_TPP}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ INCLUDED\_REGISTRY\_TABLES\_TPP}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{registry_8hpp}{../include/registry.hpp}}"{}}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Component>}
+\DoxyCodeLine{00042\ vector<optional<Component>>\ \&\mbox{\hyperlink{classregistry_afe3919f4a56bbbeda89af4a6e5171f8b}{registry::register\_components}}()}
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ get\ the\ component\ type}}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{type\_index}}\ \mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{new\_type}}\ =\ \textcolor{keyword}{typeid}(\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{Component}});}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ corresponding\ type\ table\ is\ already\ stored\ or\ not}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classregistry_ac9d2e22f135941fc0a42e42a83061a2b}{\_components\_arrays}}.find(\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{new\_type}})\ ==\ \mbox{\hyperlink{classregistry_ac9d2e22f135941fc0a42e42a83061a2b}{\_components\_arrays}}.end())\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ not\ found,\ create\ the\ component\ table}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classregistry_ac9d2e22f135941fc0a42e42a83061a2b}{\_components\_arrays}}.emplace(}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{new\_type}},}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_any<std::vector<std::optional<Component>>>()}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ final\ table}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{auto}\ \&\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{table}}\ =\ std::any\_cast<std::vector<std::optional<Component>>\&>(\mbox{\hyperlink{classregistry_ac9d2e22f135941fc0a42e42a83061a2b}{\_components\_arrays}}[\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{new\_type}}]);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ lambda\ that\ will\ erase\ this\ type\ of\ component}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ for\ a\ given\ entity}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{delete\_func}}\ =\ [\&\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{table}}]\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classentity}{entity}}\ \&\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{e}})\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{e}}.getId()\ <\ \mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{table}}.size())}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{table}}[\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{e}}].\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{reset}}();}
+\DoxyCodeLine{00064\ \ \ \ \ \};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ Add\ the\ lambda\ to\ the\ erasing\ functions\ container}}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{classregistry_afacfe5d75adf2f59ebc41cc3e0fb641e}{\_erase\_functions}}[\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{new\_type}}]\ =\ \mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{delete\_func}};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//\ Return\ the\ reference\ to\ the\ final\ table\ (newly\ created\ or\ not)}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{table}};}
+\DoxyCodeLine{00071\ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Component>}
+\DoxyCodeLine{00080\ vector<optional<Component>>\ \&\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{registry::get\_components}}()}
+\DoxyCodeLine{00081\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ type\ is\ registered}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classregistry_ac9d2e22f135941fc0a42e42a83061a2b}{\_components\_arrays}}.find(\textcolor{keyword}{typeid}(\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{Component}}))\ ==\ \mbox{\hyperlink{classregistry_ac9d2e22f135941fc0a42e42a83061a2b}{\_components\_arrays}}.end())\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classNonExistentComponentType}{NonExistentComponentType}}();}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ corresponding\ table\ as\ an\ any}}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{any}}\ \&\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{table}}\ =\ \mbox{\hyperlink{classregistry_ac9d2e22f135941fc0a42e42a83061a2b}{\_components\_arrays}}[\textcolor{keyword}{typeid}(\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{Component}})];}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//\ Casting\ the\ any\ into\ its\ real\ type}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{any\_cast<vector<optional<Component>}}>\&>(\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{table}});}
+\DoxyCodeLine{00091\ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00100\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Component>}
+\DoxyCodeLine{00101\ vector<optional<Component>>\ \textcolor{keyword}{const}\ \&\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{registry::get\_components}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00102\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ type\ is\ registered}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classregistry_ac9d2e22f135941fc0a42e42a83061a2b}{\_components\_arrays}}.find(\textcolor{keyword}{typeid}(\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{Component}}))\ ==\ \mbox{\hyperlink{classregistry_ac9d2e22f135941fc0a42e42a83061a2b}{\_components\_arrays}}.end())\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classNonExistentComponentType}{NonExistentComponentType}}();}
+\DoxyCodeLine{00106\ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ corresponding\ table\ as\ an\ any}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{any}}\ \&\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{table}}\ =\ \mbox{\hyperlink{classregistry_ac9d2e22f135941fc0a42e42a83061a2b}{\_components\_arrays}}.at(\textcolor{keyword}{typeid}(\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{Component}}));}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ Casting\ the\ any\ into\ its\ real\ type}}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{any\_cast<vector<optional<Component>}}>\&>(\mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{table}});}
+\DoxyCodeLine{00112\ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

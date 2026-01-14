@@ -1,0 +1,127 @@
+\doxysection{/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+game\+Instance/src/level\+\_\+handling.cpp File Reference}
+\hypertarget{level__handling_8cpp}{}\label{level__handling_8cpp}\index{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/rtype\_gameInstance/src/level\_handling.cpp@{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/rtype\_gameInstance/src/level\_handling.cpp}}
+
+
+This file contains the definition of the level handling functions.  
+
+
+{\ttfamily \#include $<$libconfig.\+h++$>$}\newline
+{\ttfamily \#include "{}Factory.\+hpp"{}}\newline
+{\ttfamily \#include "{}logic\+\_\+functions.\+hpp"{}}\newline
+{\ttfamily \#include "{}./../include/game\+Instance.\+hpp"{}}\newline
+Include dependency graph for level\+\_\+handling.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{level__handling_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{level__handling_8cpp_a938bda00f95bd3eb65d6761f44929ed9}{LEVEL1\+\_\+\+EASY}}~"{}assets/levels/easy.\+txt"{}
+\item 
+\#define \mbox{\hyperlink{level__handling_8cpp_a8244c1e002b256cdf102c2ddf3941af9}{LEVEL2\+\_\+\+EASY}}~"{}assets/levels/easy\+\_\+2.\+txt"{}
+\item 
+\#define \mbox{\hyperlink{level__handling_8cpp_a1b999c7c71ca9396689773f6ee73b31f}{LEVEL3\+\_\+\+EASY}}~"{}assets/levels/easy\+\_\+3.\+txt"{}
+\item 
+\#define \mbox{\hyperlink{level__handling_8cpp_a512947595ab5ee10d4bb69fd9b0e4b62}{LEVEL1\+\_\+\+MEDIUM}}~"{}assets/levels/medium.\+txt"{}
+\item 
+\#define \mbox{\hyperlink{level__handling_8cpp_abb28c75337621e93bbf56eb0f2e99988}{LEVEL2\+\_\+\+MEDIUM}}~"{}assets/levels/medium\+\_\+2.\+txt"{}
+\item 
+\#define \mbox{\hyperlink{level__handling_8cpp_ae2223e8b44dd11887d1daed2b88de146}{LEVEL3\+\_\+\+MEDIUM}}~"{}assets/levels/medium\+\_\+3.\+txt"{}
+\item 
+\#define \mbox{\hyperlink{level__handling_8cpp_ab95f1f386a2d76ae99685bd9efc621e5}{LEVEL1\+\_\+\+HARD}}~"{}assets/levels/hard.\+txt"{}
+\item 
+\#define \mbox{\hyperlink{level__handling_8cpp_aa14dac3e775747b8fc84bdfc12ece795}{LEVEL2\+\_\+\+HARD}}~"{}assets/levels/hard\+\_\+2.\+txt"{}
+\item 
+\#define \mbox{\hyperlink{level__handling_8cpp_a2fe1b1dea69680c03be2bef84558adb8}{LEVEL3\+\_\+\+HARD}}~"{}assets/levels/hard\+\_\+3.\+txt"{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{level__handling_8cpp_a700e9b9900292a01fce6263165975234}{all\+\_\+entities\+\_\+spawned}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the definition of the level handling functions. 
+
+\begin{DoxyAuthor}{Author}
+Farouk OKANLA 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/10-\/13
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{level__handling_8cpp_a938bda00f95bd3eb65d6761f44929ed9}\label{level__handling_8cpp_a938bda00f95bd3eb65d6761f44929ed9} 
+\index{level\_handling.cpp@{level\_handling.cpp}!LEVEL1\_EASY@{LEVEL1\_EASY}}
+\index{LEVEL1\_EASY@{LEVEL1\_EASY}!level\_handling.cpp@{level\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{LEVEL1\_EASY}{LEVEL1\_EASY}}
+{\footnotesize\ttfamily \#define LEVEL1\+\_\+\+EASY~"{}assets/levels/easy.\+txt"{}}
+
+\Hypertarget{level__handling_8cpp_ab95f1f386a2d76ae99685bd9efc621e5}\label{level__handling_8cpp_ab95f1f386a2d76ae99685bd9efc621e5} 
+\index{level\_handling.cpp@{level\_handling.cpp}!LEVEL1\_HARD@{LEVEL1\_HARD}}
+\index{LEVEL1\_HARD@{LEVEL1\_HARD}!level\_handling.cpp@{level\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{LEVEL1\_HARD}{LEVEL1\_HARD}}
+{\footnotesize\ttfamily \#define LEVEL1\+\_\+\+HARD~"{}assets/levels/hard.\+txt"{}}
+
+\Hypertarget{level__handling_8cpp_a512947595ab5ee10d4bb69fd9b0e4b62}\label{level__handling_8cpp_a512947595ab5ee10d4bb69fd9b0e4b62} 
+\index{level\_handling.cpp@{level\_handling.cpp}!LEVEL1\_MEDIUM@{LEVEL1\_MEDIUM}}
+\index{LEVEL1\_MEDIUM@{LEVEL1\_MEDIUM}!level\_handling.cpp@{level\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{LEVEL1\_MEDIUM}{LEVEL1\_MEDIUM}}
+{\footnotesize\ttfamily \#define LEVEL1\+\_\+\+MEDIUM~"{}assets/levels/medium.\+txt"{}}
+
+\Hypertarget{level__handling_8cpp_a8244c1e002b256cdf102c2ddf3941af9}\label{level__handling_8cpp_a8244c1e002b256cdf102c2ddf3941af9} 
+\index{level\_handling.cpp@{level\_handling.cpp}!LEVEL2\_EASY@{LEVEL2\_EASY}}
+\index{LEVEL2\_EASY@{LEVEL2\_EASY}!level\_handling.cpp@{level\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{LEVEL2\_EASY}{LEVEL2\_EASY}}
+{\footnotesize\ttfamily \#define LEVEL2\+\_\+\+EASY~"{}assets/levels/easy\+\_\+2.\+txt"{}}
+
+\Hypertarget{level__handling_8cpp_aa14dac3e775747b8fc84bdfc12ece795}\label{level__handling_8cpp_aa14dac3e775747b8fc84bdfc12ece795} 
+\index{level\_handling.cpp@{level\_handling.cpp}!LEVEL2\_HARD@{LEVEL2\_HARD}}
+\index{LEVEL2\_HARD@{LEVEL2\_HARD}!level\_handling.cpp@{level\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{LEVEL2\_HARD}{LEVEL2\_HARD}}
+{\footnotesize\ttfamily \#define LEVEL2\+\_\+\+HARD~"{}assets/levels/hard\+\_\+2.\+txt"{}}
+
+\Hypertarget{level__handling_8cpp_abb28c75337621e93bbf56eb0f2e99988}\label{level__handling_8cpp_abb28c75337621e93bbf56eb0f2e99988} 
+\index{level\_handling.cpp@{level\_handling.cpp}!LEVEL2\_MEDIUM@{LEVEL2\_MEDIUM}}
+\index{LEVEL2\_MEDIUM@{LEVEL2\_MEDIUM}!level\_handling.cpp@{level\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{LEVEL2\_MEDIUM}{LEVEL2\_MEDIUM}}
+{\footnotesize\ttfamily \#define LEVEL2\+\_\+\+MEDIUM~"{}assets/levels/medium\+\_\+2.\+txt"{}}
+
+\Hypertarget{level__handling_8cpp_a1b999c7c71ca9396689773f6ee73b31f}\label{level__handling_8cpp_a1b999c7c71ca9396689773f6ee73b31f} 
+\index{level\_handling.cpp@{level\_handling.cpp}!LEVEL3\_EASY@{LEVEL3\_EASY}}
+\index{LEVEL3\_EASY@{LEVEL3\_EASY}!level\_handling.cpp@{level\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{LEVEL3\_EASY}{LEVEL3\_EASY}}
+{\footnotesize\ttfamily \#define LEVEL3\+\_\+\+EASY~"{}assets/levels/easy\+\_\+3.\+txt"{}}
+
+\Hypertarget{level__handling_8cpp_a2fe1b1dea69680c03be2bef84558adb8}\label{level__handling_8cpp_a2fe1b1dea69680c03be2bef84558adb8} 
+\index{level\_handling.cpp@{level\_handling.cpp}!LEVEL3\_HARD@{LEVEL3\_HARD}}
+\index{LEVEL3\_HARD@{LEVEL3\_HARD}!level\_handling.cpp@{level\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{LEVEL3\_HARD}{LEVEL3\_HARD}}
+{\footnotesize\ttfamily \#define LEVEL3\+\_\+\+HARD~"{}assets/levels/hard\+\_\+3.\+txt"{}}
+
+\Hypertarget{level__handling_8cpp_ae2223e8b44dd11887d1daed2b88de146}\label{level__handling_8cpp_ae2223e8b44dd11887d1daed2b88de146} 
+\index{level\_handling.cpp@{level\_handling.cpp}!LEVEL3\_MEDIUM@{LEVEL3\_MEDIUM}}
+\index{LEVEL3\_MEDIUM@{LEVEL3\_MEDIUM}!level\_handling.cpp@{level\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{LEVEL3\_MEDIUM}{LEVEL3\_MEDIUM}}
+{\footnotesize\ttfamily \#define LEVEL3\+\_\+\+MEDIUM~"{}assets/levels/medium\+\_\+3.\+txt"{}}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{level__handling_8cpp_a700e9b9900292a01fce6263165975234}\label{level__handling_8cpp_a700e9b9900292a01fce6263165975234} 
+\index{level\_handling.cpp@{level\_handling.cpp}!all\_entities\_spawned@{all\_entities\_spawned}}
+\index{all\_entities\_spawned@{all\_entities\_spawned}!level\_handling.cpp@{level\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{all\_entities\_spawned}{all\_entities\_spawned}}
+{\footnotesize\ttfamily bool all\+\_\+entities\+\_\+spawned = false}
+

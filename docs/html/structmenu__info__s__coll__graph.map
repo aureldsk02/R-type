@@ -1,0 +1,5 @@
+<map id="menu_info_s" name="menu_info_s">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,192,101,219"/>
+<area shape="rect" id="Node000002" href="$classentity.html" title="The entity class, defined by an id to which components will be associated." alt="" coords="26,5,80,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="56,47,56,192,50,192,50,47"/>
+</map>

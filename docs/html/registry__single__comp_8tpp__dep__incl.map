@@ -1,0 +1,46 @@
+<map id="/home/jaggie/epitech_projects/neo&#45;r&#45;type/G&#45;CPP&#45;500&#45;COT&#45;5&#45;1&#45;rtype&#45;8/engine/src/registry_single_comp.tpp" name="/home/jaggie/epitech_projects/neo&#45;r&#45;type/G&#45;CPP&#45;500&#45;COT&#45;5&#45;1&#45;rtype&#45;8/engine/src/registry_single_comp.tpp">
+<area shape="rect" id="Node000001" title="This file contains the implementation of the registry functions to handle single components operation..." alt="" coords="1090,5,1295,101"/>
+<area shape="rect" id="Node000002" href="$registry_8hpp.html" title="This file defines the registry class. The registry is a container for all the entities and components..." alt="" coords="1086,149,1299,228"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1186,117,1187,148,1182,148,1181,117"/>
+<area shape="poly" id="edge10_Node000002_Node000001" title=" " alt="" coords="1199,133,1198,102,1204,102,1204,133"/>
+<area shape="rect" id="Node000003" href="$components_8hpp.html" title="This file defines the different types of components available to the engine." alt="" coords="541,284,786,363"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1071,215,939,243,799,278,772,286,770,281,797,273,938,238,1070,210"/>
+<area shape="rect" id="Node000004" href="$systems_8hpp.html" title="This file contains the declaration of the different systems of the registry. Systems are functions th..." alt="" coords="654,428,875,507"/>
+<area shape="poly" id="edge8_Node000002_Node000004" title=" " alt="" coords="1289,235,1308,253,1323,274,1335,301,1341,326,1338,349,1323,373,1307,386,1288,396,1239,409,1180,415,1114,417,984,415,929,416,886,422,859,430,857,425,885,417,929,411,984,410,1114,411,1179,410,1238,404,1286,391,1304,381,1318,370,1333,347,1336,326,1330,303,1318,277,1304,257,1285,239"/>
+<area shape="rect" id="Node000005" href="$registry__systems_8cpp.html" title="This file contains the definition of the registry functions that handle the systems." alt="" coords="2126,572,2374,650"/>
+<area shape="poly" id="edge11_Node000002_Node000005" title=" " alt="" coords="1315,196,1545,221,1680,240,1818,264,1951,293,2068,328,2119,348,2163,369,2199,393,2227,418,2248,454,2258,495,2261,535,2259,571,2253,571,2255,535,2253,495,2243,456,2222,421,2196,397,2160,374,2117,353,2066,333,1949,298,1817,269,1680,245,1544,226,1314,202"/>
+<area shape="rect" id="Node000006" href="$systems_8cpp.html" title="This file contains the definition of the different systems of the registry." alt="" coords="898,428,1090,507"/>
+<area shape="poly" id="edge14_Node000002_Node000006" title=" " alt="" coords="1314,226,1344,247,1367,274,1380,300,1386,325,1382,349,1367,373,1338,400,1308,415,1278,420,1247,419,1180,413,1143,414,1103,422,1080,430,1078,425,1101,417,1142,408,1180,407,1247,414,1278,415,1307,410,1335,396,1362,370,1377,347,1380,325,1375,302,1362,277,1340,251,1311,230"/>
+<area shape="rect" id="Node000008" href="$registry__entities_8cpp.html" title="This file contains the definition of the registry functions that handle the entities." alt="" coords="810,284,1052,363"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="1104,237,1009,286,1006,281,1102,233"/>
+<area shape="rect" id="Node000009" href="$registry__tables_8tpp.html" title="This file contains the implementation of the registry functions to handle components tables." alt="" coords="1077,284,1308,363"/>
+<area shape="poly" id="edge12_Node000002_Node000009" title=" " alt="" coords="1186,243,1187,284,1182,284,1181,243"/>
+<area shape="rect" id="Node000010" href="$gameInstance_8hpp.html" title=" " alt="" coords="1485,276,1708,371"/>
+<area shape="poly" id="edge15_Node000002_Node000010" title=" " alt="" coords="1315,227,1486,283,1484,288,1313,232"/>
+<area shape="rect" id="Node000017" href="$graphicsClient_8hpp.html" title=" " alt="" coords="269,276,466,371"/>
+<area shape="poly" id="edge22_Node000002_Node000017" title=" " alt="" coords="1070,203,820,231,674,252,529,278,467,294,466,288,528,273,673,247,819,225,1070,197"/>
+<area shape="poly" id="edge5_Node000003_Node000001" title=" " alt="" coords="752,274,1098,99,1101,104,754,279"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="702,374,739,426,735,429,697,377"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="770,367,888,417,906,425,904,430,886,422,768,372"/>
+<area shape="rect" id="Node000007" href="$init__graphicsClient_8cpp.html" title=" " alt="" coords="434,419,631,515"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="619,376,578,421,574,417,615,373"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="871,509,886,512,982,530,1070,542,1228,552,1368,549,1499,540,1630,530,1771,526,1929,534,2018,545,2114,560,2148,568,2146,573,2113,566,2017,550,1929,539,1771,531,1631,535,1499,545,1368,555,1228,557,1070,547,981,535,885,518,870,514"/>
+<area shape="poly" id="edge13_Node000009_Node000002" title=" " alt="" coords="1199,269,1198,228,1203,228,1204,269"/>
+<area shape="rect" id="Node000011" href="$rtype__gameInstance_2src_2commands_8cpp.html" title=" " alt="" coords="1770,419,1964,515"/>
+<area shape="poly" id="edge16_Node000010_Node000011" title=" " alt="" coords="1702,377,1778,416,1776,421,1699,381"/>
+<area shape="rect" id="Node000012" href="$rtype__gameInstance_2src_2decodeur_8cpp.html" title=" " alt="" coords="1114,419,1308,515"/>
+<area shape="poly" id="edge17_Node000010_Node000012" title=" " alt="" coords="1471,368,1321,422,1310,426,1308,421,1320,417,1469,363"/>
+<area shape="rect" id="Node000013" href="$init__gameInstance_8cpp.html" title=" " alt="" coords="1333,419,1527,515"/>
+<area shape="poly" id="edge18_Node000010_Node000013" title=" " alt="" coords="1531,384,1487,421,1483,417,1528,380"/>
+<area shape="rect" id="Node000014" href="$level__handling_8cpp.html" title="This file contains the definition of the level handling functions." alt="" coords="1551,419,1746,515"/>
+<area shape="poly" id="edge19_Node000010_Node000014" title=" " alt="" coords="1622,385,1634,418,1629,420,1617,387"/>
+<area shape="rect" id="Node000015" href="$gameManager_8hpp.html" title=" " alt="" coords="1988,419,2213,515"/>
+<area shape="poly" id="edge20_Node000010_Node000015" title=" " alt="" coords="1723,350,1847,380,1977,417,1989,420,1987,425,1976,422,1845,385,1722,355"/>
+<area shape="rect" id="Node000016" href="$gameManager_8cpp.html" title=" " alt="" coords="1905,563,2101,659"/>
+<area shape="poly" id="edge21_Node000015_Node000016" title=" " alt="" coords="2062,529,2038,564,2033,561,2057,526"/>
+<area shape="poly" id="edge25_Node000017_Node000007" title=" " alt="" coords="435,380,479,417,476,421,432,384"/>
+<area shape="rect" id="Node000018" href="$rtype__graphicsClient_2src_2commands_8cpp.html" title=" " alt="" coords="5,419,196,515"/>
+<area shape="poly" id="edge23_Node000017_Node000018" title=" " alt="" coords="266,381,191,421,188,416,263,377"/>
+<area shape="rect" id="Node000019" href="$rtype__graphicsClient_2src_2decodeur_8cpp.html" title=" " alt="" coords="220,419,410,515"/>
+<area shape="poly" id="edge24_Node000017_Node000019" title=" " alt="" coords="347,387,335,420,330,418,342,385"/>
+</map>

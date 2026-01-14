@@ -1,0 +1,130 @@
+\chapter{R-\/\+TYPE Server}
+\hypertarget{server_page}{}\label{server_page}\index{R-\/TYPE Server@{R-\/TYPE Server}}
+This page details how the server works.\hypertarget{server_page_global_infos}{}\doxysection{\texorpdfstring{Global Explanation}{Global Explanation}}\label{server_page_global_infos}
+The server is responsible of holding the actual state of the game and transferring it to the clients. The game scene, with the players, the ennemies or their projectiles takes place in the registry inside the server.\hypertarget{server_page_game_logic}{}\doxysection{\texorpdfstring{Game Logic}{Game Logic}}\label{server_page_game_logic}
+The server handles all the game logic. It starts by loading a configuration file containing all infos about the level \+: What ennemies will spawn ? Where ? When ?
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{*entities\ =\ (}
+\DoxyCodeLine{\ \ \ \ \{\mbox{\hyperlink{namespacecomponent_af42f87bf296e95960edc1d8eb0ea059b}{name}}\ =\ \textcolor{stringliteral}{"{}red\_trooper"{}};\ spawn\_time\ =\ 3.4;\ y\ =\ 50.0;\},}
+\DoxyCodeLine{\ \ \ \ \{\mbox{\hyperlink{namespacecomponent_af42f87bf296e95960edc1d8eb0ea059b}{name}}\ =\ \textcolor{stringliteral}{"{}red\_trooper"{}};\ spawn\_time\ =\ 3.8;\ y\ =\ 50.0;\},}
+\DoxyCodeLine{\ \ \ \ \{\mbox{\hyperlink{namespacecomponent_af42f87bf296e95960edc1d8eb0ea059b}{name}}\ =\ \textcolor{stringliteral}{"{}red\_trooper"{}};\ spawn\_time\ =\ 4.2;\ y\ =\ 50.0;\},}
+\DoxyCodeLine{\ \ \ \ \{\mbox{\hyperlink{namespacecomponent_af42f87bf296e95960edc1d8eb0ea059b}{name}}\ =\ \textcolor{stringliteral}{"{}red\_trooper"{}};\ spawn\_time\ =\ 4.6;\ y\ =\ 50.0;\},}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \ \ \ \{\mbox{\hyperlink{namespacecomponent_af42f87bf296e95960edc1d8eb0ea059b}{name}}\ =\ \textcolor{stringliteral}{"{}walker"{}};\ spawn\_time\ =\ 5.0;\ y\ =\ 367.0;\},}
+\DoxyCodeLine{\ \ \ \ \{\mbox{\hyperlink{namespacecomponent_af42f87bf296e95960edc1d8eb0ea059b}{name}}\ =\ \textcolor{stringliteral}{"{}red\_trooper"{}};\ spawn\_time\ =\ 7.0;\ y\ =\ 50.0;\},}
+\DoxyCodeLine{\ \ \ \ \{\mbox{\hyperlink{namespacecomponent_af42f87bf296e95960edc1d8eb0ea059b}{name}}\ =\ \textcolor{stringliteral}{"{}boss"{}};\ spawn\_time\ =\ 10.0;\ y\ =\ 150.0;\}}
+\DoxyCodeLine{\ );}
+
+\end{DoxyCode}
+
+
+During the game, it then spawns the entities at the correct moment. Thanks to the logic components and the logic system as well as all the other ones. The entities evolve in the scene. All the server has to do now is to go through each game entity (and skip special ones like the background, the music) and send its infos (type and position) to each client. See more in \doxylink{level__handling_8cpp}{level\+\_\+handling.\+cpp}.
+
+Simultaneously, the server listens to inputs from the clients If an input is received, the server then applies velocity to the corresponding player entity.\hypertarget{server_page_network_details}{}\doxysection{\texorpdfstring{Network Details}{Network Details}}\label{server_page_network_details}
+When the server starts, it call a {\ttfamily Network\+Manager} that listens for incoming UDP packets from clients\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Server::Server(\textcolor{keywordtype}{int}\ p,\ \mbox{\hyperlink{classregistry}{registry}}\&\ regis)}
+\DoxyCodeLine{\ \ \ \ :\ server\_(p,\ std::ref(messages),\ std::ref(mtx)),\ p\_(p),\ reg(regis)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{init__gameInstance_8cpp_a0c588e2ccf2ed315e2710776feac9eff}{load\_textures}}();}
+\DoxyCodeLine{\ \ \ \ initializeGame();}
+\DoxyCodeLine{\ \ \ \ loadLevel(\textcolor{stringliteral}{"{}assets/levels/test.txt"{}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The constructor of {\ttfamily Network\+Manager} creates a UDP socket bind to the given port and starts an asynchronous loop\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ NetworkManager::receive\_from\_clients();}
+
+\end{DoxyCode}
+
+
+This allows the server to receive messages (typically player inputs) from all connected clients.
+
+A client sends a UDP packet, the server receives it via\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ NetworkManager::receive\_from\_clients();}
+
+\end{DoxyCode}
+
+
+Inside the callback\+:
+\begin{DoxyItemize}
+\item The sender’s endpoint ({\ttfamily last\+\_\+sender\+\_\+}) is stored.
+\item The received bytes are appended into the shared buffer {\ttfamily clients\+\_\+lastmsg} (a vector of endpoint–message pairs).
+\end{DoxyItemize}
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{clients\_lastmsg.push\_back(\{}
+\DoxyCodeLine{\ \ \ \ last\_sender\_,}
+\DoxyCodeLine{\ \ \ \ std::vector<int8\_t>(buff.begin(),\ buff.begin()\ +\ bytes\_receive)}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+This data is protected by a mutex ({\ttfamily std\+::lock\+\_\+guard\texorpdfstring{$<$}{<}std\+::mutex\texorpdfstring{$>$}{>} lock(mtx)}) to ensure thread safety while other threads process it.
+
+After each update cycle, the server recup the current state of all entities (positions, types, health, etc.) and sends this information to each connected client using\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ NetworkManager::send\_to\_client(}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ std::vector<int8\_t>\&\ msg,}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{size\_t}\ size,}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ asio::ip::udp::endpoint\&\ to\_client}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+
+
+The communication is {\bfseries{asynchronous}}, ensuring that no blocking occurs during gameplay. Each message represents a {\bfseries{snapshot of the current world state}}.
+
+The server uses a {\bfseries{multi-\/threaded}} architecture\+:
+\begin{DoxyItemize}
+\item The main thread runs the {\bfseries{SFML window}}, updates the registry, runs systems, and advances the level logic.
+\item A separate {\bfseries{ASIO thread}} executes the I/O context ({\ttfamily context.\+run()}), handling all network communications asynchronously.
+\end{DoxyItemize}
+
+Synchronization between threads is done using {\ttfamily std\+::mutex} objects, which protect shared message buffers\+:
+\begin{DoxyItemize}
+\item {\ttfamily clients\+\_\+lastmsg}\+: stores last messages from all clients,
+\item {\ttfamily messages}\+: stores data ready to be broadcast.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::thread\ t([\&c]()\ \{\ c.run();\ \});}
+
+\end{DoxyCode}
+
+
+When the game ends (e.\+g., boss defeated or all players dead), the SFML window closes, and the ASIO context is stopped\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{c.getContext().stop();}
+\DoxyCodeLine{t.join();}
+
+\end{DoxyCode}
+
+
+This ensures all asynchronous operations are safely terminated.
+
+
+\begin{DoxyItemize}
+\item Protocol\+: {\bfseries{UDP}}
+\item Library\+: {\bfseries{ASIO}}
+\item Asynchronous communication (non-\/blocking) 
+\end{DoxyItemize}

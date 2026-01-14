@@ -1,0 +1,176 @@
+\doxysection{/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+game\+Instance/include/game\+Instance.hpp File Reference}
+\hypertarget{gameInstance_8hpp}{}\label{gameInstance_8hpp}\index{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/rtype\_gameInstance/include/gameInstance.hpp@{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/rtype\_gameInstance/include/gameInstance.hpp}}
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}Factory.\+hpp"{}}\newline
+{\ttfamily \#include "{}Network.\+hpp"{}}\newline
+{\ttfamily \#include "{}registry.\+hpp"{}}\newline
+{\ttfamily \#include "{}logic\+\_\+functions.\+hpp"{}}\newline
+{\ttfamily \#include "{}Types.\+hpp"{}}\newline
+{\ttfamily \#include "{}./\+Game\+Settings.\+hpp"{}}\newline
+Include dependency graph for game\+Instance.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameInstance_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameInstance_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classGameInstance}{Game\+Instance}}
+\begin{DoxyCompactList}\small\item\em The server class. Handles the server side of the game. At the start of the game, the server loads the level entities from a configuration file The server holds the simulation of the game with all these entities and teh players. It listens from inputs from the clients and sends the game state to the them on each frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gameInstance_8hpp_a498d9f026138406895e9a34b504ac6a6}{WINDOW\+\_\+\+WIDTH}}~738
+\item 
+\#define \mbox{\hyperlink{gameInstance_8hpp_a5473cf64fa979b48335079c99532e243}{WINDOW\+\_\+\+HEIGHT}}~432
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93}{diff\+\_\+mode}} \mbox{\hyperlink{gameInstance_8hpp_a5a2a77296b8aa6c2e6f8903b6e9babee}{diff\+\_\+mode\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em An enum to store the difficulty of the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93}{diff\+\_\+mode}} \{ \newline
+\mbox{\hyperlink{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93a26d394b5caf2853dbcef5884f0f068dd}{EASY}}
+, \mbox{\hyperlink{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93a5340ec7ecef6cc3886684a3bd3450d64}{MEDIUM}}
+, \mbox{\hyperlink{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93a712b8eb9268f114b4afc567f24bc536f}{HARD}}
+, \mbox{\hyperlink{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93addbe5c6516ef695946446c87fd2dd69f}{PVP}}
+, \newline
+\mbox{\hyperlink{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93a945d6010d321d9fe75cbba7b6f37f3b5}{CUSTOM}}
+ \}
+\begin{DoxyCompactList}\small\item\em An enum to store the difficulty of the game. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t}} \{ \mbox{\hyperlink{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248a5f6aff2efe946ec43f8bad546893b0af}{LEVEL1}}
+, \mbox{\hyperlink{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248a00955312c6043316fe7dee6c67bbdc9a}{LEVEL2}}
+, \mbox{\hyperlink{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248a32187f6279619afdb13e71151dd5ed0b}{LEVEL3}}
+, \mbox{\hyperlink{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248a0d375176d658570baabfeb35598c36a1}{CUSTOM\+\_\+\+LEVEL}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{gameInstance_8hpp_ae955d48f44384878e63e44527f872ebe}{player1\+\_\+entity\+\_\+id}} = -\/1
+\begin{DoxyCompactList}\small\item\em A global variable to store the id of the first player in the registry. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gameInstance_8hpp_ae70b2136c6af0a96d5e51407e69d3c8b}{player2\+\_\+entity\+\_\+id}} = -\/1
+\begin{DoxyCompactList}\small\item\em A global variable to store the id of the second player in the registry. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{gameInstance_8hpp_a5473cf64fa979b48335079c99532e243}\label{gameInstance_8hpp_a5473cf64fa979b48335079c99532e243} 
+\index{gameInstance.hpp@{gameInstance.hpp}!WINDOW\_HEIGHT@{WINDOW\_HEIGHT}}
+\index{WINDOW\_HEIGHT@{WINDOW\_HEIGHT}!gameInstance.hpp@{gameInstance.hpp}}
+\doxysubsubsection{\texorpdfstring{WINDOW\_HEIGHT}{WINDOW\_HEIGHT}}
+{\footnotesize\ttfamily \#define WINDOW\+\_\+\+HEIGHT~432}
+
+\Hypertarget{gameInstance_8hpp_a498d9f026138406895e9a34b504ac6a6}\label{gameInstance_8hpp_a498d9f026138406895e9a34b504ac6a6} 
+\index{gameInstance.hpp@{gameInstance.hpp}!WINDOW\_WIDTH@{WINDOW\_WIDTH}}
+\index{WINDOW\_WIDTH@{WINDOW\_WIDTH}!gameInstance.hpp@{gameInstance.hpp}}
+\doxysubsubsection{\texorpdfstring{WINDOW\_WIDTH}{WINDOW\_WIDTH}}
+{\footnotesize\ttfamily \#define WINDOW\+\_\+\+WIDTH~738}
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{gameInstance_8hpp_a5a2a77296b8aa6c2e6f8903b6e9babee}\label{gameInstance_8hpp_a5a2a77296b8aa6c2e6f8903b6e9babee} 
+\index{gameInstance.hpp@{gameInstance.hpp}!diff\_mode\_t@{diff\_mode\_t}}
+\index{diff\_mode\_t@{diff\_mode\_t}!gameInstance.hpp@{gameInstance.hpp}}
+\doxysubsubsection{\texorpdfstring{diff\_mode\_t}{diff\_mode\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93}{diff\+\_\+mode}} \mbox{\hyperlink{gameInstance_8hpp_a5a2a77296b8aa6c2e6f8903b6e9babee}{diff\+\_\+mode\+\_\+t}}}
+
+
+
+An enum to store the difficulty of the game. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93}\label{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93} 
+\index{gameInstance.hpp@{gameInstance.hpp}!diff\_mode@{diff\_mode}}
+\index{diff\_mode@{diff\_mode}!gameInstance.hpp@{gameInstance.hpp}}
+\doxysubsubsection{\texorpdfstring{diff\_mode}{diff\_mode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93}{diff\+\_\+mode}}}
+
+
+
+An enum to store the difficulty of the game. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EASY@{EASY}!gameInstance.hpp@{gameInstance.hpp}}\index{gameInstance.hpp@{gameInstance.hpp}!EASY@{EASY}}}\Hypertarget{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93a26d394b5caf2853dbcef5884f0f068dd}\label{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93a26d394b5caf2853dbcef5884f0f068dd} 
+EASY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MEDIUM@{MEDIUM}!gameInstance.hpp@{gameInstance.hpp}}\index{gameInstance.hpp@{gameInstance.hpp}!MEDIUM@{MEDIUM}}}\Hypertarget{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93a5340ec7ecef6cc3886684a3bd3450d64}\label{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93a5340ec7ecef6cc3886684a3bd3450d64} 
+MEDIUM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HARD@{HARD}!gameInstance.hpp@{gameInstance.hpp}}\index{gameInstance.hpp@{gameInstance.hpp}!HARD@{HARD}}}\Hypertarget{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93a712b8eb9268f114b4afc567f24bc536f}\label{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93a712b8eb9268f114b4afc567f24bc536f} 
+HARD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PVP@{PVP}!gameInstance.hpp@{gameInstance.hpp}}\index{gameInstance.hpp@{gameInstance.hpp}!PVP@{PVP}}}\Hypertarget{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93addbe5c6516ef695946446c87fd2dd69f}\label{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93addbe5c6516ef695946446c87fd2dd69f} 
+PVP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSTOM@{CUSTOM}!gameInstance.hpp@{gameInstance.hpp}}\index{gameInstance.hpp@{gameInstance.hpp}!CUSTOM@{CUSTOM}}}\Hypertarget{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93a945d6010d321d9fe75cbba7b6f37f3b5}\label{gameInstance_8hpp_a27f718e46e2194b1b59f97cab001aa93a945d6010d321d9fe75cbba7b6f37f3b5} 
+CUSTOM&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248}\label{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248} 
+\index{gameInstance.hpp@{gameInstance.hpp}!state\_t@{state\_t}}
+\index{state\_t@{state\_t}!gameInstance.hpp@{gameInstance.hpp}}
+\doxysubsubsection{\texorpdfstring{state\_t}{state\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEVEL1@{LEVEL1}!gameInstance.hpp@{gameInstance.hpp}}\index{gameInstance.hpp@{gameInstance.hpp}!LEVEL1@{LEVEL1}}}\Hypertarget{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248a5f6aff2efe946ec43f8bad546893b0af}\label{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248a5f6aff2efe946ec43f8bad546893b0af} 
+LEVEL1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEVEL2@{LEVEL2}!gameInstance.hpp@{gameInstance.hpp}}\index{gameInstance.hpp@{gameInstance.hpp}!LEVEL2@{LEVEL2}}}\Hypertarget{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248a00955312c6043316fe7dee6c67bbdc9a}\label{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248a00955312c6043316fe7dee6c67bbdc9a} 
+LEVEL2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEVEL3@{LEVEL3}!gameInstance.hpp@{gameInstance.hpp}}\index{gameInstance.hpp@{gameInstance.hpp}!LEVEL3@{LEVEL3}}}\Hypertarget{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248a32187f6279619afdb13e71151dd5ed0b}\label{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248a32187f6279619afdb13e71151dd5ed0b} 
+LEVEL3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSTOM\_LEVEL@{CUSTOM\_LEVEL}!gameInstance.hpp@{gameInstance.hpp}}\index{gameInstance.hpp@{gameInstance.hpp}!CUSTOM\_LEVEL@{CUSTOM\_LEVEL}}}\Hypertarget{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248a0d375176d658570baabfeb35598c36a1}\label{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248a0d375176d658570baabfeb35598c36a1} 
+CUSTOM\+\_\+\+LEVEL&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{gameInstance_8hpp_ae955d48f44384878e63e44527f872ebe}\label{gameInstance_8hpp_ae955d48f44384878e63e44527f872ebe} 
+\index{gameInstance.hpp@{gameInstance.hpp}!player1\_entity\_id@{player1\_entity\_id}}
+\index{player1\_entity\_id@{player1\_entity\_id}!gameInstance.hpp@{gameInstance.hpp}}
+\doxysubsubsection{\texorpdfstring{player1\_entity\_id}{player1\_entity\_id}}
+{\footnotesize\ttfamily int player1\+\_\+entity\+\_\+id = -\/1\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A global variable to store the id of the first player in the registry. 
+
+\Hypertarget{gameInstance_8hpp_ae70b2136c6af0a96d5e51407e69d3c8b}\label{gameInstance_8hpp_ae70b2136c6af0a96d5e51407e69d3c8b} 
+\index{gameInstance.hpp@{gameInstance.hpp}!player2\_entity\_id@{player2\_entity\_id}}
+\index{player2\_entity\_id@{player2\_entity\_id}!gameInstance.hpp@{gameInstance.hpp}}
+\doxysubsubsection{\texorpdfstring{player2\_entity\_id}{player2\_entity\_id}}
+{\footnotesize\ttfamily int player2\+\_\+entity\+\_\+id = -\/1\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A global variable to store the id of the second player in the registry. 
+

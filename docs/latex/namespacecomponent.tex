@@ -1,0 +1,177 @@
+\doxysection{component Namespace Reference}
+\hypertarget{namespacecomponent}{}\label{namespacecomponent}\index{component@{component}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcomponent_1_1animated__drawable__s}{animated\+\_\+drawable\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The animated\+\_\+drawable component. It is a drawable component with an animated sprite. It has a frame\+\_\+rect, a frame\+\_\+duration and a frame\+\_\+timer to allow animation. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1audio__s}{audio\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The audio component defined by a single sf\+::\+Music. This component is not used by the engine systems but can be directly played, stopped, paused by the user. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1controllable__s}{controllable\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The controllable component, defined by a set of booleans. This component allows an entity to be controlled by the user\textquotesingle{}s keyboard input. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1drawable__s}{drawable\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The drawable component, defined by an sf\+::\+Sprite. This component allows an entity to be drawn on the screen. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1hitbox__s}{hitbox\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The hitbox component, defined by a size, damage and a targeted\+\_\+group (2 for the player, 1 for the enemies for example). A hitbox will detect collision with a hurtbox if its targeted group corresponds to the hurtbox group. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1hurtbox__s}{hurtbox\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The hurtbox component, defined by a size, health and a group (1 for the player, 2 for the enemies for example). A hitbox will detect collision with a hurtbox if its targeted group corresponds to the hurtbox group. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1logic__s}{logic\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The logic component, defined by a function pointer. This component allows an entity to have a logic defined by the user. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1name__s}{name\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The name component, defined by a string. It lets you give a name to each entity. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1position__s}{position\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The position component, with an x and y position. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1text__s}{text\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The text component, consisting in a simple sf\+::\+Text. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1velocity__s}{velocity\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The velocity component, with an x and y velocity. This component allows an entity to move. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1position__s}{component\+::position\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a32921f4e807a398b6ffaea1730431bec}{position}}
+\begin{DoxyCompactList}\small\item\em The position component, with an x and y position. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1velocity__s}{component\+::velocity\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a428fac7a425dfc47e9997f3e4633ad6a}{velocity}}
+\begin{DoxyCompactList}\small\item\em The velocity component, with an x and y velocity. This component allows an entity to move. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1drawable__s}{component\+::drawable\+\_\+s}} \mbox{\hyperlink{namespacecomponent_afaa0e7d53a27314c39fd8984cd068895}{drawable}}
+\begin{DoxyCompactList}\small\item\em The drawable component, defined by an sf\+::\+Sprite. This component allows an entity to be drawn on the screen. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1text__s}{component\+::text\+\_\+s}} \mbox{\hyperlink{namespacecomponent_af22b0841d9272d147f626b386da4d9ca}{text}}
+\begin{DoxyCompactList}\small\item\em The text component, consisting in a simple sf\+::\+Text. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1animated__drawable__s}{component\+::animated\+\_\+drawable\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a64d6f963266a98cf80ce10cdf18e579e}{animated\+\_\+drawable}}
+\begin{DoxyCompactList}\small\item\em The animated\+\_\+drawable component. It is a drawable component with an animated sprite. It has a frame\+\_\+rect, a frame\+\_\+duration and a frame\+\_\+timer to allow animation. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1controllable__s}{component\+::controllable\+\_\+s}} \mbox{\hyperlink{namespacecomponent_ac85f4762db6e1c119b13fedc4f9c157c}{controllable}}
+\begin{DoxyCompactList}\small\item\em The controllable component, defined by a set of booleans. This component allows an entity to be controlled by the user\textquotesingle{}s keyboard input. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1hurtbox__s}{component\+::hurtbox\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a00cb098de199eed73e38d77f78adaed1}{hurtbox}}
+\begin{DoxyCompactList}\small\item\em The hurtbox component, defined by a size, health and a group (1 for the player, 2 for the enemies for example). A hitbox will detect collision with a hurtbox if its targeted group corresponds to the hurtbox group. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1hitbox__s}{component\+::hitbox\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a0ae561e88973b1d50eb3048035956866}{hitbox}}
+\begin{DoxyCompactList}\small\item\em The hitbox component, defined by a size, damage and a targeted\+\_\+group (2 for the player, 1 for the enemies for example). A hitbox will detect collision with a hurtbox if its targeted group corresponds to the hurtbox group. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1logic__s}{component\+::logic\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a4389e557b74c9397d726bcf56ba076d0}{logic}}
+\begin{DoxyCompactList}\small\item\em The logic component, defined by a function pointer. This component allows an entity to have a logic defined by the user. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1name__s}{component\+::name\+\_\+s}} \mbox{\hyperlink{namespacecomponent_af42f87bf296e95960edc1d8eb0ea059b}{name}}
+\begin{DoxyCompactList}\small\item\em The name component, defined by a string. It lets you give a name to each entity. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1audio__s}{component\+::audio\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a0551f20926c6f673d130bfca015d8b76}{audio}}
+\begin{DoxyCompactList}\small\item\em The audio component defined by a single sf\+::\+Music. This component is not used by the engine systems but can be directly played, stopped, paused by the user. \end{DoxyCompactList}\item 
+typedef int \mbox{\hyperlink{namespacecomponent_a9d008508800cc3ed05b1794c9569a86e}{unique\+\_\+id}}
+\begin{DoxyCompactList}\small\item\em The unique\+\_\+id component, defined by an int. It lets you give a unique id to each entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{namespacecomponent_a64d6f963266a98cf80ce10cdf18e579e}\label{namespacecomponent_a64d6f963266a98cf80ce10cdf18e579e} 
+\index{component@{component}!animated\_drawable@{animated\_drawable}}
+\index{animated\_drawable@{animated\_drawable}!component@{component}}
+\doxysubsubsection{\texorpdfstring{animated\_drawable}{animated\_drawable}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcomponent_1_1animated__drawable__s}{component\+::animated\+\_\+drawable\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a64d6f963266a98cf80ce10cdf18e579e}{component\+::animated\+\_\+drawable}}}
+
+
+
+The animated\+\_\+drawable component. It is a drawable component with an animated sprite. It has a frame\+\_\+rect, a frame\+\_\+duration and a frame\+\_\+timer to allow animation. 
+
+\Hypertarget{namespacecomponent_a0551f20926c6f673d130bfca015d8b76}\label{namespacecomponent_a0551f20926c6f673d130bfca015d8b76} 
+\index{component@{component}!audio@{audio}}
+\index{audio@{audio}!component@{component}}
+\doxysubsubsection{\texorpdfstring{audio}{audio}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcomponent_1_1audio__s}{component\+::audio\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a0551f20926c6f673d130bfca015d8b76}{component\+::audio}}}
+
+
+
+The audio component defined by a single sf\+::\+Music. This component is not used by the engine systems but can be directly played, stopped, paused by the user. 
+
+\Hypertarget{namespacecomponent_ac85f4762db6e1c119b13fedc4f9c157c}\label{namespacecomponent_ac85f4762db6e1c119b13fedc4f9c157c} 
+\index{component@{component}!controllable@{controllable}}
+\index{controllable@{controllable}!component@{component}}
+\doxysubsubsection{\texorpdfstring{controllable}{controllable}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcomponent_1_1controllable__s}{component\+::controllable\+\_\+s}} \mbox{\hyperlink{namespacecomponent_ac85f4762db6e1c119b13fedc4f9c157c}{component\+::controllable}}}
+
+
+
+The controllable component, defined by a set of booleans. This component allows an entity to be controlled by the user\textquotesingle{}s keyboard input. 
+
+\Hypertarget{namespacecomponent_afaa0e7d53a27314c39fd8984cd068895}\label{namespacecomponent_afaa0e7d53a27314c39fd8984cd068895} 
+\index{component@{component}!drawable@{drawable}}
+\index{drawable@{drawable}!component@{component}}
+\doxysubsubsection{\texorpdfstring{drawable}{drawable}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcomponent_1_1drawable__s}{component\+::drawable\+\_\+s}} \mbox{\hyperlink{namespacecomponent_afaa0e7d53a27314c39fd8984cd068895}{component\+::drawable}}}
+
+
+
+The drawable component, defined by an sf\+::\+Sprite. This component allows an entity to be drawn on the screen. 
+
+\Hypertarget{namespacecomponent_a0ae561e88973b1d50eb3048035956866}\label{namespacecomponent_a0ae561e88973b1d50eb3048035956866} 
+\index{component@{component}!hitbox@{hitbox}}
+\index{hitbox@{hitbox}!component@{component}}
+\doxysubsubsection{\texorpdfstring{hitbox}{hitbox}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcomponent_1_1hitbox__s}{component\+::hitbox\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a0ae561e88973b1d50eb3048035956866}{component\+::hitbox}}}
+
+
+
+The hitbox component, defined by a size, damage and a targeted\+\_\+group (2 for the player, 1 for the enemies for example). A hitbox will detect collision with a hurtbox if its targeted group corresponds to the hurtbox group. 
+
+\Hypertarget{namespacecomponent_a00cb098de199eed73e38d77f78adaed1}\label{namespacecomponent_a00cb098de199eed73e38d77f78adaed1} 
+\index{component@{component}!hurtbox@{hurtbox}}
+\index{hurtbox@{hurtbox}!component@{component}}
+\doxysubsubsection{\texorpdfstring{hurtbox}{hurtbox}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcomponent_1_1hurtbox__s}{component\+::hurtbox\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a00cb098de199eed73e38d77f78adaed1}{component\+::hurtbox}}}
+
+
+
+The hurtbox component, defined by a size, health and a group (1 for the player, 2 for the enemies for example). A hitbox will detect collision with a hurtbox if its targeted group corresponds to the hurtbox group. 
+
+\Hypertarget{namespacecomponent_a4389e557b74c9397d726bcf56ba076d0}\label{namespacecomponent_a4389e557b74c9397d726bcf56ba076d0} 
+\index{component@{component}!logic@{logic}}
+\index{logic@{logic}!component@{component}}
+\doxysubsubsection{\texorpdfstring{logic}{logic}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcomponent_1_1logic__s}{component\+::logic\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a4389e557b74c9397d726bcf56ba076d0}{component\+::logic}}}
+
+
+
+The logic component, defined by a function pointer. This component allows an entity to have a logic defined by the user. 
+
+\Hypertarget{namespacecomponent_af42f87bf296e95960edc1d8eb0ea059b}\label{namespacecomponent_af42f87bf296e95960edc1d8eb0ea059b} 
+\index{component@{component}!name@{name}}
+\index{name@{name}!component@{component}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcomponent_1_1name__s}{component\+::name\+\_\+s}} \mbox{\hyperlink{namespacecomponent_af42f87bf296e95960edc1d8eb0ea059b}{component\+::name}}}
+
+
+
+The name component, defined by a string. It lets you give a name to each entity. 
+
+\Hypertarget{namespacecomponent_a32921f4e807a398b6ffaea1730431bec}\label{namespacecomponent_a32921f4e807a398b6ffaea1730431bec} 
+\index{component@{component}!position@{position}}
+\index{position@{position}!component@{component}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcomponent_1_1position__s}{component\+::position\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a32921f4e807a398b6ffaea1730431bec}{component\+::position}}}
+
+
+
+The position component, with an x and y position. 
+
+\Hypertarget{namespacecomponent_af22b0841d9272d147f626b386da4d9ca}\label{namespacecomponent_af22b0841d9272d147f626b386da4d9ca} 
+\index{component@{component}!text@{text}}
+\index{text@{text}!component@{component}}
+\doxysubsubsection{\texorpdfstring{text}{text}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcomponent_1_1text__s}{component\+::text\+\_\+s}} \mbox{\hyperlink{namespacecomponent_af22b0841d9272d147f626b386da4d9ca}{component\+::text}}}
+
+
+
+The text component, consisting in a simple sf\+::\+Text. 
+
+\Hypertarget{namespacecomponent_a9d008508800cc3ed05b1794c9569a86e}\label{namespacecomponent_a9d008508800cc3ed05b1794c9569a86e} 
+\index{component@{component}!unique\_id@{unique\_id}}
+\index{unique\_id@{unique\_id}!component@{component}}
+\doxysubsubsection{\texorpdfstring{unique\_id}{unique\_id}}
+{\footnotesize\ttfamily typedef int \mbox{\hyperlink{namespacecomponent_a9d008508800cc3ed05b1794c9569a86e}{component\+::unique\+\_\+id}}}
+
+
+
+The unique\+\_\+id component, defined by an int. It lets you give a unique id to each entity. 
+
+\Hypertarget{namespacecomponent_a428fac7a425dfc47e9997f3e4633ad6a}\label{namespacecomponent_a428fac7a425dfc47e9997f3e4633ad6a} 
+\index{component@{component}!velocity@{velocity}}
+\index{velocity@{velocity}!component@{component}}
+\doxysubsubsection{\texorpdfstring{velocity}{velocity}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcomponent_1_1velocity__s}{component\+::velocity\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a428fac7a425dfc47e9997f3e4633ad6a}{component\+::velocity}}}
+
+
+
+The velocity component, with an x and y velocity. This component allows an entity to move. 
+

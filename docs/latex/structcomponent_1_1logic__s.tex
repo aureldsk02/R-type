@@ -1,0 +1,46 @@
+\doxysection{component\+::logic\+\_\+s Struct Reference}
+\hypertarget{structcomponent_1_1logic__s}{}\label{structcomponent_1_1logic__s}\index{component::logic\_s@{component::logic\_s}}
+
+
+The logic component, defined by a function pointer. This component allows an entity to have a logic defined by the user.  
+
+
+
+
+{\ttfamily \#include $<$components.\+hpp$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structcomponent_1_1logic__s_a1362230c1aba4f3a2e565c0747898284}{logic\+\_\+function}} )(double, class \mbox{\hyperlink{classregistry}{registry}} \&, \mbox{\hyperlink{classentity}{entity}})
+\begin{DoxyCompactList}\small\item\em A pointer to a function that takes a delta time, a reference to the registry and an entity as parameters and returns void. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The logic component, defined by a function pointer. This component allows an entity to have a logic defined by the user. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structcomponent_1_1logic__s_a1362230c1aba4f3a2e565c0747898284}\label{structcomponent_1_1logic__s_a1362230c1aba4f3a2e565c0747898284} 
+\index{component::logic\_s@{component::logic\_s}!logic\_function@{logic\_function}}
+\index{logic\_function@{logic\_function}!component::logic\_s@{component::logic\_s}}
+\doxysubsubsection{\texorpdfstring{logic\_function}{logic\_function}}
+{\footnotesize\ttfamily void(\texorpdfstring{$\ast$}{*} component\+::logic\+\_\+s\+::logic\+\_\+function) (double, class \mbox{\hyperlink{classregistry}{registry}} \&, \mbox{\hyperlink{classentity}{entity}})}
+
+
+
+A pointer to a function that takes a delta time, a reference to the registry and an entity as parameters and returns void. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & The time elapsed since the last frame \\
+\hline
+{\em reg} & A reference to the registry \\
+\hline
+{\em entity} & The entity that owns this logic component \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/engine/include/\mbox{\hyperlink{components_8hpp}{components.\+hpp}}\end{DoxyCompactItemize}

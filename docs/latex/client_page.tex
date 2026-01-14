@@ -1,0 +1,80 @@
+\chapter{R-\/\+TYPE Client}
+\hypertarget{client_page}{}\label{client_page}\index{R-\/TYPE Client@{R-\/TYPE Client}}
+This page details how the client works.\hypertarget{server_page_global_infos}{}\doxysection{\texorpdfstring{Global Explanation}{Global Explanation}}\label{server_page_global_infos}
+Since the real computings, simulations, updates happen in the server\textquotesingle{}s registry, the client is then a simple displayer of the informations sent by the client. The client only listens for the game state from the server to display it. It also listens for player inputs and notifies the server about them.\hypertarget{client_page_game_state_sec}{}\doxysection{\texorpdfstring{Game State Handling}{Game State Handling}}\label{client_page_game_state_sec}
+On each frame, the client looks up in its buffer to recuperate all the entities informations sent by the server. This vector of entities informations is considered as the new state. The client the compares the new state with the old one. If an entity is present in the old state as well as in the new one, we just update the position. If an entity is present only in the new state, it then needs to be created. And if an entity is only present in the old state, it needs to be destroyed. At the same time, the client listens for player key inputs. If an input is detected, the player sends the info to the server which will update the game state accordingly. See more details in init\+\_\+client.\+cpp\hypertarget{client_page_network_details_sec}{}\doxysection{\texorpdfstring{Network Details}{Network Details}}\label{client_page_network_details_sec}
+The client uses a {\ttfamily Network\+Manager} instance to communicate with the server. This communication is done over {\bfseries{UDP}} using the {\bfseries{ASIO}} library, which provides asynchronous networking capabilities.
+
+When the client starts, it creates a {\ttfamily Network\+Manager} object by providing\+:
+\begin{DoxyItemize}
+\item the {\bfseries{port}} on which to listen for incoming packets\texorpdfstring{$\ast$}{*},
+\item the {\bfseries{server address}} on with it will connect,
+\item a reference to a shared {\bfseries{message buffer}} ({\ttfamily lastmsg}) and a {\bfseries{mutex}}.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Client::Client(\textcolor{keywordtype}{int}\ port,\ std::string\ address,\ \mbox{\hyperlink{classregistry}{registry}}\&\ reg)}
+\DoxyCodeLine{\ \ \ \ :\ port\_(port),}
+\DoxyCodeLine{\ \ \ \ \ \ client\_(port,\ address,\ std::ref(lastmsg),\ std::ref(mtx)),}
+\DoxyCodeLine{\ \ \ \ \ \ \_reg(reg)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{init__graphicsClient_8cpp_a1957e9ebc2a88bc8e6c87fa64239c299}{load\_client\_textures}}();}
+\DoxyCodeLine{\ \ \ \ initGame();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The constructor of {\ttfamily Network\+Manager} immediately calls {\ttfamily receive\+\_\+from\+\_\+server()}, which starts an asynchronous loop that listens for incoming data from the server.
+
+The client constantly listens for messages from the server through\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ NetworkManager::receive\_from\_server();}
+
+\end{DoxyCode}
+
+
+Each time data is received, it is written into the {\ttfamily lastmsg} buffer inside a mutex-\/locked scope to ensure thread safety. This buffer will later be parsed by the game logic to reconstruct the current state of all entities.
+
+The asynchronous call automatically restarts itself after each reception as long as the client is running ({\ttfamily isrunning == true}).
+
+To send information to the server (for example, when a player presses a key), the client uses\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ NetworkManager::send\_to\_server(\textcolor{keyword}{const}\ std::vector<int8\_t>\&\ msg,\ \textcolor{keywordtype}{size\_t}\ size);}
+
+\end{DoxyCode}
+
+
+This method sends a UDP packet to the server’s endpoint. The data structure is simple — it\textquotesingle{}s a {\ttfamily std\+::vector\texorpdfstring{$<$}{<}int8\+\_\+t\texorpdfstring{$>$}{>}}
+
+The sending is also {\bfseries{asynchronous}}, meaning the game loop never blocks on network operations. The ASIO context runs in a dedicated thread\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::thread\ t([\&c]()\ \{\ c.run();\ \});}
+
+\end{DoxyCode}
+
+
+The client uses a {\bfseries{multi-\/threaded}} model\+:
+\begin{DoxyItemize}
+\item The main thread handles the SFML window, input events, and rendering.
+\item The ASIO thread handles all network I/O operations.
+\end{DoxyItemize}
+
+These two threads communicate through shared buffers ({\ttfamily lastmsg}) protected by a {\ttfamily std\+::mutex} to avoid bad utilisation.
+
+
+\begin{DoxyItemize}
+\item Communication protocol\+: {\bfseries{UDP}}
+\item Network library\+: {\bfseries{ASIO (Boost.\+Asio-\/like)}}
+\item Sending\+: asynchronous, non-\/blocking
+\item Receiving\+: asynchronous loop
+\item Data format\+: {\ttfamily std\+::vector\texorpdfstring{$<$}{<}int8\+\_\+t\texorpdfstring{$>$}{>}}
+\item Synchronization\+: {\ttfamily std\+::mutex} around message buffers 
+\end{DoxyItemize}

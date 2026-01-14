@@ -1,0 +1,42 @@
+\chapter{Server}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server}{}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server}\index{Server@{Server}}
+\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md8}%
+\Hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md8}%
+ \hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md9}{}\doxysection{\texorpdfstring{Description}{Description}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md9}
+{\ttfamily \doxylink{classServer}{Server}} utilise {\ttfamily Network\+Manager} pour recevoir les requêtes des clients et y répondre selon le protocole {\bfseries{R-\/\+Type}}.\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md10}{}\doxysection{\texorpdfstring{Responsabilités}{Responsabilités}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md10}
+
+\begin{DoxyItemize}
+\item Écouter les messages des clients.
+\item Identifier le type de message (via {\ttfamily msg.\+first\mbox{[}0\mbox{]}}).
+\item Déléguer le traitement à une fonction ({\ttfamily recup\+Move}, {\ttfamily recup\+Item}, etc.).
+\item Envoyer la réponse appropriée.
+\end{DoxyItemize}\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md11}{}\doxysection{\texorpdfstring{Principales fonctions}{Principales fonctions}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md11}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md12}{}\doxysubsection{\texorpdfstring{{\ttfamily Move\+Response recup\+Move(...)}}{{\ttfamily Move\+Response recup\+Move(...)}}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md12}
+
+\begin{DoxyItemize}
+\item Décode un {\ttfamily Move\+Request (0x23)}.
+\item Affiche la direction du joueur.
+\item Retourne un {\ttfamily Move\+Response (0x24)}.
+\end{DoxyItemize}\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md13}{}\doxysubsection{\texorpdfstring{{\ttfamily Pickup\+Item\+Response recup\+Item(...)}}{{\ttfamily Pickup\+Item\+Response recup\+Item(...)}}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md13}
+
+\begin{DoxyItemize}
+\item Génère une réponse {\ttfamily Pickup\+Item\+Response (0x27)} lorsqu’un joueur prend un objet.
+\end{DoxyItemize}\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md14}{}\doxysubsection{\texorpdfstring{{\ttfamily Player\+State\+Response player\+\_\+r(...)}}{{\ttfamily Player\+State\+Response player\+\_\+r(...)}}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md14}
+
+\begin{DoxyItemize}
+\item Retourne un état de joueur ({\ttfamily 0x28}) avec vie, score, niveau.
+\end{DoxyItemize}\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md15}{}\doxysubsection{\texorpdfstring{{\ttfamily Player\+State\+Response2 player\+\_\+r2(...)}}{{\ttfamily Player\+State\+Response2 player\+\_\+r2(...)}}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md15}
+
+\begin{DoxyItemize}
+\item Version étendue ({\ttfamily 0x29}) avec état de partie (pause, en jeu).
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md17}{}\doxysection{\texorpdfstring{Exemple d’utilisation}{Exemple d’utilisation}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__server_2include_2Server_autotoc_md17}
+\`{}\`{}\`{}cpp
+
+\doxylink{classServer}{Server} srv(8080);
+
+while (true) \{
+
+\} 

@@ -1,0 +1,111 @@
+\doxysection{/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+graphics\+Client/src/init\+\_\+graphics\+Client.cpp File Reference}
+\hypertarget{init__graphicsClient_8cpp}{}\label{init__graphicsClient_8cpp}\index{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/rtype\_graphicsClient/src/init\_graphicsClient.cpp@{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/rtype\_graphicsClient/src/init\_graphicsClient.cpp}}
+{\ttfamily \#include "{}../include/graphics\+Client.\+hpp"{}}\newline
+{\ttfamily \#include "{}components.\+hpp"{}}\newline
+Include dependency graph for init\+\_\+graphics\+Client.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init__graphicsClient_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{init__graphicsClient_8cpp_a1957e9ebc2a88bc8e6c87fa64239c299}{load\+\_\+client\+\_\+textures}} (void)
+\begin{DoxyCompactList}\small\item\em This function uses the \doxylink{classResourceManager}{Resource\+Manager} to pre-\/load textures and fonts that will be used in the game. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{init__graphicsClient_8cpp_a566bdf948a52a4fe98e76eb50b18ac5b}{get\+Key}} (int value)
+\begin{DoxyCompactList}\small\item\em This function returns the name of an entity type. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{init__graphicsClient_8cpp_aad0535b912db09140627976f8862b896}{is\+Inside}} (std\+::vector$<$ Enemy\+Moved\+Response $>$ vec, size\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em A utility function to check in an entity of a certain id is inside a vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{init__graphicsClient_8cpp_a03dc49fa7ba0d3bfd1d473e437728015}{boss\+\_\+dead}} = false
+\item 
+bool \mbox{\hyperlink{init__graphicsClient_8cpp_acf7ac49be1dce1b81593b08061befca9}{boss1\+\_\+dead}} = false
+\item 
+bool \mbox{\hyperlink{init__graphicsClient_8cpp_acb58cc7d92a55bddb00e68dfb147aa59}{boss2\+\_\+dead}} = false
+\item 
+bool \mbox{\hyperlink{init__graphicsClient_8cpp_a2c8f4d7fb5be9736e367cb5faba82454}{final\+\_\+boss\+\_\+dead}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{init__graphicsClient_8cpp_a566bdf948a52a4fe98e76eb50b18ac5b}\label{init__graphicsClient_8cpp_a566bdf948a52a4fe98e76eb50b18ac5b} 
+\index{init\_graphicsClient.cpp@{init\_graphicsClient.cpp}!getKey@{getKey}}
+\index{getKey@{getKey}!init\_graphicsClient.cpp@{init\_graphicsClient.cpp}}
+\doxysubsubsection{\texorpdfstring{getKey()}{getKey()}}
+{\footnotesize\ttfamily std\+::string get\+Key (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+This function returns the name of an entity type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the entity type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+\Hypertarget{init__graphicsClient_8cpp_aad0535b912db09140627976f8862b896}\label{init__graphicsClient_8cpp_aad0535b912db09140627976f8862b896} 
+\index{init\_graphicsClient.cpp@{init\_graphicsClient.cpp}!isInside@{isInside}}
+\index{isInside@{isInside}!init\_graphicsClient.cpp@{init\_graphicsClient.cpp}}
+\doxysubsubsection{\texorpdfstring{isInside()}{isInside()}}
+{\footnotesize\ttfamily bool is\+Inside (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Enemy\+Moved\+Response $>$}]{vec,  }\item[{size\+\_\+t}]{id }\end{DoxyParamCaption})}
+
+
+
+A utility function to check in an entity of a certain id is inside a vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & A vector of entities informations \\
+\hline
+{\em id} & The id of the entity to search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the entity is in the vector 
+
+false if the entity is not in the vector 
+\end{DoxyReturn}
+\Hypertarget{init__graphicsClient_8cpp_a1957e9ebc2a88bc8e6c87fa64239c299}\label{init__graphicsClient_8cpp_a1957e9ebc2a88bc8e6c87fa64239c299} 
+\index{init\_graphicsClient.cpp@{init\_graphicsClient.cpp}!load\_client\_textures@{load\_client\_textures}}
+\index{load\_client\_textures@{load\_client\_textures}!init\_graphicsClient.cpp@{init\_graphicsClient.cpp}}
+\doxysubsubsection{\texorpdfstring{load\_client\_textures()}{load\_client\_textures()}}
+{\footnotesize\ttfamily void load\+\_\+client\+\_\+textures (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function uses the \doxylink{classResourceManager}{Resource\+Manager} to pre-\/load textures and fonts that will be used in the game. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{init__graphicsClient_8cpp_acf7ac49be1dce1b81593b08061befca9}\label{init__graphicsClient_8cpp_acf7ac49be1dce1b81593b08061befca9} 
+\index{init\_graphicsClient.cpp@{init\_graphicsClient.cpp}!boss1\_dead@{boss1\_dead}}
+\index{boss1\_dead@{boss1\_dead}!init\_graphicsClient.cpp@{init\_graphicsClient.cpp}}
+\doxysubsubsection{\texorpdfstring{boss1\_dead}{boss1\_dead}}
+{\footnotesize\ttfamily bool boss1\+\_\+dead = false}
+
+\Hypertarget{init__graphicsClient_8cpp_acb58cc7d92a55bddb00e68dfb147aa59}\label{init__graphicsClient_8cpp_acb58cc7d92a55bddb00e68dfb147aa59} 
+\index{init\_graphicsClient.cpp@{init\_graphicsClient.cpp}!boss2\_dead@{boss2\_dead}}
+\index{boss2\_dead@{boss2\_dead}!init\_graphicsClient.cpp@{init\_graphicsClient.cpp}}
+\doxysubsubsection{\texorpdfstring{boss2\_dead}{boss2\_dead}}
+{\footnotesize\ttfamily bool boss2\+\_\+dead = false}
+
+\Hypertarget{init__graphicsClient_8cpp_a03dc49fa7ba0d3bfd1d473e437728015}\label{init__graphicsClient_8cpp_a03dc49fa7ba0d3bfd1d473e437728015} 
+\index{init\_graphicsClient.cpp@{init\_graphicsClient.cpp}!boss\_dead@{boss\_dead}}
+\index{boss\_dead@{boss\_dead}!init\_graphicsClient.cpp@{init\_graphicsClient.cpp}}
+\doxysubsubsection{\texorpdfstring{boss\_dead}{boss\_dead}}
+{\footnotesize\ttfamily bool boss\+\_\+dead = false}
+
+\Hypertarget{init__graphicsClient_8cpp_a2c8f4d7fb5be9736e367cb5faba82454}\label{init__graphicsClient_8cpp_a2c8f4d7fb5be9736e367cb5faba82454} 
+\index{init\_graphicsClient.cpp@{init\_graphicsClient.cpp}!final\_boss\_dead@{final\_boss\_dead}}
+\index{final\_boss\_dead@{final\_boss\_dead}!init\_graphicsClient.cpp@{init\_graphicsClient.cpp}}
+\doxysubsubsection{\texorpdfstring{final\_boss\_dead}{final\_boss\_dead}}
+{\footnotesize\ttfamily bool final\+\_\+boss\+\_\+dead = false}
+

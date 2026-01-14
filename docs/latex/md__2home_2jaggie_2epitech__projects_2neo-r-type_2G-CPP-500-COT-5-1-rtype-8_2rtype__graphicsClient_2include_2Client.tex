@@ -1,0 +1,33 @@
+\chapter{Client}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client}{}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client}\index{Client@{Client}}
+\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client_autotoc_md10}%
+\Hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client_autotoc_md10}%
+ \hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client_autotoc_md11}{}\doxysection{\texorpdfstring{Description}{Description}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client_autotoc_md11}
+{\ttfamily Client} envoie les commandes du joueur (clavier) au serveur, et affiche les réponses.\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client_autotoc_md12}{}\doxysection{\texorpdfstring{Responsabilités}{Responsabilités}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client_autotoc_md12}
+
+\begin{DoxyItemize}
+\item Lire les entrées utilisateur ({\ttfamily up}, {\ttfamily down}, {\ttfamily left}, {\ttfamily right}).
+\item Envoyer un {\ttfamily Move\+Request (0x23)} vers le serveur.
+\item Lire les réponses du serveur ({\ttfamily Move\+Response}, etc.).
+\item Afficher les informations reçues.
+\end{DoxyItemize}\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client_autotoc_md13}{}\doxysection{\texorpdfstring{Fonctionnement}{Fonctionnement}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client_autotoc_md13}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client_autotoc_md14}{}\doxysubsection{\texorpdfstring{{\ttfamily Client(int p, std\+::string address)}}{{\ttfamily Client(int p, std\+::string address)}}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client_autotoc_md14}
+
+\begin{DoxyItemize}
+\item Initialise un {\ttfamily Network\+Manager} en mode client.
+\item Lance un thread pour écouter l’input utilisateur.
+\item Boucle principale \+:
+\begin{DoxyItemize}
+\item {\ttfamily poll()} pour traiter les messages.
+\item Décodage des réponses (ex\+: {\ttfamily Move\+Response}).
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client_autotoc_md15}{}\doxysubsection{\texorpdfstring{{\ttfamily Move\+Request get\+Move\+Key()}}{{\ttfamily Move\+Request get\+Move\+Key()}}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client_autotoc_md15}
+Retourne le dernier mouvement enregistré.
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client_autotoc_md17}{}\doxysection{\texorpdfstring{Exemple d’utilisation}{Exemple d’utilisation}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2rtype__graphicsClient_2include_2Client_autotoc_md17}
+\`{}\`{}\`{}cpp Client cli(8080, "{}127.\+0.\+0.\+1"{});
+
+while (true) \{
+
+\} 

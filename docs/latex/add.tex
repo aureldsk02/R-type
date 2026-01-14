@@ -1,0 +1,22 @@
+\chapter{Adding content}
+\hypertarget{add}{}\label{add}\index{Adding content@{Adding content}}
+\hypertarget{add_sec1}{}\doxysection{\texorpdfstring{How can you add custom content to R-\/\+TYPE}{How can you add custom content to R-\/\+TYPE}}\label{add_sec1}
+You can customize your experience by creating your own levels. To do so, create a level configuration file and pass its path as parameter when launching the server. This tutorial will help you do that.\hypertarget{add_sec2}{}\doxysection{\texorpdfstring{The level creation script}{The level creation script}}\label{add_sec2}
+A level is just a configuration file telling the program what entity will spawn, where and at what moment.
+
+At the root of the repository, there is the level\+\_\+creator.\+py script. Launch it using python \+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{python3\ level\_creator.py\ }
+
+\end{DoxyCode}
+ You will then be asked what file name you want to give your level conf file, what entity you want to add,when and where until you decide to stop adding one. Your configuration file will then be saved in the folder assets/levels. You can then run the server and specify it you want to use a custom level.\hypertarget{add_sec2}{}\doxysection{\texorpdfstring{The level creation script}{The level creation script}}\label{add_sec2}
+Now that your conf file is ready, you can run the server with it. You have to use -\/f flag followed by the path to your conf file to run the server with it.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./r\_type\_server\ 8080\ 4040\ -\/f\ assets/levels/conf\_file.txt}
+
+\end{DoxyCode}
+
+
+The server will start with the level and it will end when all the entities will die or if all the players die and get a game over. 

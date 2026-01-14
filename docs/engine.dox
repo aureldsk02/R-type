@@ -1,0 +1,269 @@
+/**
+ * \page engine R-TYPE's Game Engine
+ *
+ * This page details how the game engine of this project works.
+ *
+ * @section details_infos Details
+ * The R-TYPE game engine is a sparse ECS (Entity Component System).
+ * It avoids inheritance, and focuses on composition.
+ * Entities are represented as only ids, to which components will be
+ * attached. This is done by only storing the components in tables, where
+ * the index of a row corresponds to the id of an enntity.
+ * For example, let's consider 2 entities, E1 and E2 of id respectively of id 1 and 2,
+ * and let's say E1 has a position component, but E2 does not.
+ * This means that in the position components' table, at the row 
+ * 1 (index 1), there will be the component position associated with E1.
+ * On the other hand, at the row 2 (index 2), there will be nothing. This
+ * is how our sparce ECS works.
+ * 
+ * Now what is a component ? A component is just a piece of information.
+ * For example the position component can just be a x and y. Or a drawable
+ * component can be a sprite.
+ *
+ * The presence or absence of a component determines how their entities will evolve.
+ * This is where the systems get in the story. The systems are just functions
+ * that will run every frame to update the state of the components.
+ * For example the movement system will go through each entity id (row indexes)
+ * And check if the current index has a position component AND a velocity component
+ * If both exist, it adds the velocity to the position, making the entity move.
+ * Otherwise, it does nothing.
+ * 
+ * You now have an idea of how the engine works. to make a game, all you have to do
+ * is create entities, and attach components to them.
+ * Then you let the systems update them in the simulation.
+ *
+ * @section engine_tutorial A simple tutorial on the engine
+ * The engine is contained in the registry class. It stores the components,
+ * the entities, the systems and provides methods to manage them.
+ *
+ * The project uses various components, from simple position components
+ * to logic components (equivalent to scripts). You can see their details
+ * in @ref components.hpp
+ * 
+ * It also uses pretty straightforward systems to update these components,
+ * as you can see in @ref systems.hpp
+ *
+ * ## @section engine_tutorial Step-by-step Tutorial
+ *
+ * Let's create a simple program that:
+ * - Opens a window
+ * - Spawns a player entity
+ * - Displays its sprite
+ * - Lets us move it using the keyboard
+ *
+ * ### 1. Initialize the Engine
+ * Include the required headers:
+ * ```cpp
+ * #include "registry.hpp"
+ * ```
+ * 
+ * Then create a registry instance and a window (for example using SFML):
+ * The engine is divided into subststems : Physics, Movement, Rendering, Logic, and Control
+ * You need to toggle the systems you need using the toggle functions of the registry.
+ *
+ *
+ * ```cpp
+ * int main()
+ * {
+ *     sf::RenderWindow window(sf::VideoMode(800, 600), "R-TYPE ECS Demo");
+ *     Registry reg(window);
+ *     reg.toggleMovement();
+ *     reg.toggleRendering();
+ *     reg.toggleControl();
+ *     
+ *```
+ * You just created a registry with a window and toggled the necessary subsystems. The engine then knows 
+ * it needs to activate the rendering systems and its affiliate components.
+ * Don't worry, basic components and systems are allready registered by default.
+ * Now, you can start creating an entity:
+ *
+ *
+ *```cpp
+ *     // Create an entity
+ *     entity player = reg.spawn_entity();
+ *```
+ * 
+ * You just created an entity — a simple ID that will hold various components.
+ * Now let's attach these components one by one to make it an actual **player**.
+ *
+ * ---
+ * ### 2. Add the Components
+ *
+ * First, let's add a **position** component, which determines where the player is on screen.
+ *
+ * ```cpp
+ *     reg.add_component<component::position>(player, {100.f, 300.f});
+ * ```
+ * 
+ * This sets the initial position of the player at coordinates `(100, 300)`.
+ * 
+ * ---
+ *
+ * Next, we add a **velocity** component, which defines how fast the entity moves each frame:
+ *
+ * ```cpp
+ *     auto &vel = reg.add_component<component::velocity>(player, {0.f, 0.f});
+ * ```
+ *
+ * At first, its velocity is zero — it will only move once we apply input through the control system.
+ * We keep a reference to this newly created component because we might need
+ * to make changes on it on the future, to handle some events.
+ *
+ *
+ * ---
+ *
+ * Now we add a **controllable** component.  
+ * This is a simple *marker component* that just tells the engine:
+ * > “This entity can be controlled by the player.”
+ * When the engine will detect input, the comtrollable component will be updated.
+ * That’s why we keep a reference to this newly created component. We  will later need
+ * to check its value to make the player move
+ *
+ * ```cpp
+ *     auto &con = reg.add_component<component::controllable>(player, component::controllable());
+ * ```
+ *
+ * ---
+ *
+ * Finally, let's give the entity a **drawable** component, so it can actually be rendered.
+ * The drawable typically holds an `sf::Sprite` and a texture reference:
+ *
+ * ```cpp
+ *     auto &player_sprite = reg.add_component<component::drawable>(player);
+ *     ResourceManager::instance().load("path/to/your/texture.png", "player1", TEXTURE);
+ *     player_sprite.setTextureFromName("player1");
+ * ```
+ *
+ * The `setTextureFromName("player1")` is a custom helper that loads a texture
+ * previously registered in your asset manager. To register a texture in the resource manager,
+ * see @ref ResourceManager.hpp. `ResourceManager::instance().load("path/to/your/texture.png", TEXTURE)` does just that
+ *
+ * ---
+ *
+ * After these steps, you have a complete entity:
+ * ```cpp
+ *     entity player = reg.spawn_entity();
+ *     reg.add_component<component::position>(player, {100.f, 300.f});
+ *     auto &vel = reg.add_component<component::velocity>(player, {0.f, 0.f});
+ *     auto &con = reg.add_component<component::controllable>(player, component::controllable());
+ *     auto &sprite = reg.add_component<component::drawable>(player);
+ *     ResourceManager::instance().load("path/to/your/texture.png", TEXTURE);
+ *     sprite.setTextureFromName("player1");
+ * ```
+ *
+ * ---
+ *
+ * ### 3. Running the Game Loop
+ *
+ * Now we can add the main loop, which updates all the systems every frame.
+ * The registry automatically keeps track of all systems related to the components
+ * you added (movement, control, draw, etc.).
+ *
+ * ```cpp
+ *     // Main loop
+ *     while (window.isOpen()) {
+ *         sf::Event event;
+ *         while (window.pollEvent(event)) {
+ *             if (event.type == sf::Event::Closed)
+ *                 window.close();
+ *         }
+ *
+ *         // Run all active systems (movement, control, render, etc.)
+ *         reg.run_systems();
+ *     }
+ * }
+ * ```
+ *
+ * That’s it! 🚀  
+ * When you run this code, player sprite appears at position `(100, 300)`.
+ * But you can't move your player.
+ *
+ * This is because the controllable component is updated but you did not 
+ * specify how to handle the inputs. There are two ways to do that.
+ *
+ * First, you can write code directly in the game loop to check the controllable
+ * values and act accordingly:
+ *
+ *
+ *```cpp
+ *
+ *     // Main loop
+ *     while (window.isOpen()) {
+ *         sf::Event event;
+ *         while (window.pollEvent(event)) {
+ *             if (event.type == sf::Event::Closed)
+ *                 window.close();
+ *         }
+ *
+ *         // Run all active systems (movement, control, render, etc.)
+ *         reg.run_systems();
+ *
+ *         // Update the velocity based on the pressed inputs
+ *         if (con.left) {
+ *              vel.vx = -100;
+ *         }
+ *         if (con.right) {
+ *              vel.vx = 100;
+ *         }
+ *         if (con.up) {
+ *              vel.vy = -100;
+ *         }
+ *         if (con.down) {
+ *              vel.vy = 100;
+ *         }
+ *     }
+ *```
+ * The code you just added checks the pressed input to update the velocity
+ * of the player accordingly. This is why you will sometimes need to keep a reference
+ * to the components you create.
+ *
+ * Run the game again and your player should be moving smoothly.
+ *
+ * The other way of writing such logic behaviour is to use the logic component.
+ * A logic component is just a function considered as a component, attached to an entity
+ * to tell it what to do, like we just did.
+ * It is run on each frame and acts as an update function.
+ *
+ * More infos on that in @ref components.hpp
+ *
+ * ---
+ * ### 4. Behind the Scenes
+ *
+ * Here’s what happens internally:
+ *
+ * - The **control system** detects pressed keys.
+ * - Your code updates the velocity based on the controllable infos.
+ * - The **movement system** reads the velocity and updates the position accordingly.
+ * - The **render system** reads the drawable and position components to draw the sprite in the correct location.
+ *
+ * Each system only cares about the data it needs — that’s the power of ECS.
+ *
+ * ---
+ * ### 5. Next Steps
+ *
+ * From here, you can extend your engine by adding:
+ * - A **hurtbox** component for collision and health management
+ * - A **projectile** component for shooting
+ * - A **logic** component to attach scripted behaviors
+ * - A **network_id** component for multiplayer synchronization
+ *
+ * Example of adding health and hitbox:
+ * ```cpp
+ *     auto &hurtbox = reg.add_component<component::hurtbox>(player);
+ *     hurtbox.health = 3;
+ *     hurtbox.width = 32;
+ *     hurtbox.height = 16;
+ * ```
+ *
+ * With these, you can start building enemies, bullets, pickups, and much more —
+ * all using the same simple ECS principles.
+ *
+ * ---
+ * 🧩 **Summary**
+ * - Entities are just IDs.
+ * - Components store data.
+ * - Systems apply logic to entities that have certain components.
+ *
+ * Using this engine, you can describe *anything* in your game world by just composing the right set of components.
+ *
+ */

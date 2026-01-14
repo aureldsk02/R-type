@@ -1,0 +1,153 @@
+\doxysection{Resource\+Manager Class Reference}
+\hypertarget{classResourceManager}{}\label{classResourceManager}\index{ResourceManager@{ResourceManager}}
+
+
+The \doxylink{classResourceManager}{Resource\+Manager} singleton class. Manages textures and fonts. It contains a map of textures and a map of fonts that associates unique names to each texture or font. It provides methods to load textures and fonts from files and to get the corresponding sf\+::\+Texture or sf\+::\+Font.  
+
+
+
+
+{\ttfamily \#include $<$Resource\+Manager.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classResourceManager_a671c186e4630599e7e36d000c53eaf80}{\texorpdfstring{$\sim$}{\string~}\+Resource\+Manager}} ()
+\item 
+bool \mbox{\hyperlink{classResourceManager_ad2c4fb1c59333ccc9bcff5306cf7ebf8}{load}} (const std\+::string \&file\+Name, const std\+::string \&id, \mbox{\hyperlink{ResourceManager_8hpp_a509a729cba5db28cddc3c2ec18d0d83a}{resource\+\_\+type}} type)
+\begin{DoxyCompactList}\small\item\em Loads a texture or font from a file. \end{DoxyCompactList}\item 
+sf\+::\+Texture \& \mbox{\hyperlink{classResourceManager_a78632647a9a86d0b477de5055a5a2fcc}{get\+Texture}} (const std\+::string \&id)
+\begin{DoxyCompactList}\small\item\em Get the Texture associated with the id. \end{DoxyCompactList}\item 
+sf\+::\+Font \& \mbox{\hyperlink{classResourceManager_ad7fe4904d2a5ae24bbc60360fc012c56}{get\+Font}} (const std\+::string \&id)
+\begin{DoxyCompactList}\small\item\em Get the Font associated with the id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classResourceManager}{Resource\+Manager}} \& \mbox{\hyperlink{classResourceManager_a48cd1c56c64af260a6ddb5fbd4daae54}{Instance}} ()
+\begin{DoxyCompactList}\small\item\em Returns the singleton instance of the \doxylink{classResourceManager}{Resource\+Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classResourceManager_a3b32babd2e81909bbd90d7f2d566fadb}{Resource\+Manager}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ std\+::string, sf\+::\+Texture $>$ \mbox{\hyperlink{classResourceManager_a296c4061eac5d3c73c0e9fea5d57e376}{m\+\_\+texture\+Map}}
+\item 
+std\+::map$<$ std\+::string, sf\+::\+Font $>$ \mbox{\hyperlink{classResourceManager_ae4b50d5361ff1dcd05f6ad0eecf1f12f}{m\+\_\+font\+Map}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classResourceManager}{Resource\+Manager} singleton class. Manages textures and fonts. It contains a map of textures and a map of fonts that associates unique names to each texture or font. It provides methods to load textures and fonts from files and to get the corresponding sf\+::\+Texture or sf\+::\+Font. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classResourceManager_a3b32babd2e81909bbd90d7f2d566fadb}\label{classResourceManager_a3b32babd2e81909bbd90d7f2d566fadb} 
+\index{ResourceManager@{ResourceManager}!ResourceManager@{ResourceManager}}
+\index{ResourceManager@{ResourceManager}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{ResourceManager()}{ResourceManager()}}
+{\footnotesize\ttfamily Resource\+Manager\+::\+Resource\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{classResourceManager_a671c186e4630599e7e36d000c53eaf80}\label{classResourceManager_a671c186e4630599e7e36d000c53eaf80} 
+\index{ResourceManager@{ResourceManager}!````~ResourceManager@{\texorpdfstring{$\sim$}{\string~}ResourceManager}}
+\index{````~ResourceManager@{\texorpdfstring{$\sim$}{\string~}ResourceManager}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ResourceManager()}{\string~ResourceManager()}}
+{\footnotesize\ttfamily Resource\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Resource\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classResourceManager_ad7fe4904d2a5ae24bbc60360fc012c56}\label{classResourceManager_ad7fe4904d2a5ae24bbc60360fc012c56} 
+\index{ResourceManager@{ResourceManager}!getFont@{getFont}}
+\index{getFont@{getFont}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{getFont()}{getFont()}}
+{\footnotesize\ttfamily sf\+::\+Font \& Resource\+Manager\+::get\+Font (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Font associated with the id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the unique name associated with the font \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sf\+::\+Font\& 
+\end{DoxyReturn}
+\Hypertarget{classResourceManager_a78632647a9a86d0b477de5055a5a2fcc}\label{classResourceManager_a78632647a9a86d0b477de5055a5a2fcc} 
+\index{ResourceManager@{ResourceManager}!getTexture@{getTexture}}
+\index{getTexture@{getTexture}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{getTexture()}{getTexture()}}
+{\footnotesize\ttfamily sf\+::\+Texture \& Resource\+Manager\+::get\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Texture associated with the id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the unique name associated with the texture \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sf\+::\+Texture\& 
+\end{DoxyReturn}
+\Hypertarget{classResourceManager_a48cd1c56c64af260a6ddb5fbd4daae54}\label{classResourceManager_a48cd1c56c64af260a6ddb5fbd4daae54} 
+\index{ResourceManager@{ResourceManager}!Instance@{Instance}}
+\index{Instance@{Instance}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{Instance()}{Instance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classResourceManager}{Resource\+Manager}} \& Resource\+Manager\+::\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns the singleton instance of the \doxylink{classResourceManager}{Resource\+Manager}. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classResourceManager}{Resource\+Manager}\& 
+\end{DoxyReturn}
+\Hypertarget{classResourceManager_ad2c4fb1c59333ccc9bcff5306cf7ebf8}\label{classResourceManager_ad2c4fb1c59333ccc9bcff5306cf7ebf8} 
+\index{ResourceManager@{ResourceManager}!load@{load}}
+\index{load@{load}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily bool Resource\+Manager\+::load (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{const std\+::string \&}]{id,  }\item[{\mbox{\hyperlink{ResourceManager_8hpp_a509a729cba5db28cddc3c2ec18d0d83a}{resource\+\_\+type}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Loads a texture or font from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & the path to the file \\
+\hline
+{\em id} & the unique name to be associated with the resource \\
+\hline
+{\em type} & the type of the resource (TEXTURE or FONT) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the resource was loaded successfully 
+
+false if there was an error 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classResourceManager_ae4b50d5361ff1dcd05f6ad0eecf1f12f}\label{classResourceManager_ae4b50d5361ff1dcd05f6ad0eecf1f12f} 
+\index{ResourceManager@{ResourceManager}!m\_fontMap@{m\_fontMap}}
+\index{m\_fontMap@{m\_fontMap}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{m\_fontMap}{m\_fontMap}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, sf\+::\+Font$>$ Resource\+Manager\+::m\+\_\+font\+Map\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classResourceManager_a296c4061eac5d3c73c0e9fea5d57e376}\label{classResourceManager_a296c4061eac5d3c73c0e9fea5d57e376} 
+\index{ResourceManager@{ResourceManager}!m\_textureMap@{m\_textureMap}}
+\index{m\_textureMap@{m\_textureMap}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{m\_textureMap}{m\_textureMap}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, sf\+::\+Texture$>$ Resource\+Manager\+::m\+\_\+texture\+Map\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/engine/include/\mbox{\hyperlink{ResourceManager_8hpp}{Resource\+Manager.\+hpp}}\end{DoxyCompactItemize}

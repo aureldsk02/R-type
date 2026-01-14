@@ -1,0 +1,85 @@
+\doxysection{component\+::hurtbox\+\_\+s Struct Reference}
+\hypertarget{structcomponent_1_1hurtbox__s}{}\label{structcomponent_1_1hurtbox__s}\index{component::hurtbox\_s@{component::hurtbox\_s}}
+
+
+The hurtbox component, defined by a size, health and a group (1 for the player, 2 for the enemies for example). A hitbox will detect collision with a hurtbox if its targeted group corresponds to the hurtbox group.  
+
+
+
+
+{\ttfamily \#include $<$components.\+hpp$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structcomponent_1_1hurtbox__s_aba96c6a60940bf664b287bdb06901f0d}{health}}
+\begin{DoxyCompactList}\small\item\em The health of the hurtbox. When it reaches 0, the entity is considered dead. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structcomponent_1_1hurtbox__s_a2ae83e5eea64fb8925d67190392dc804}{group}}
+\begin{DoxyCompactList}\small\item\em The group of the hurtbox. For example, if the hurtbox group is 1 for the player and 2 for the enemies, the player\textquotesingle{}s hitbox should have a targeted\+\_\+group of 2 to damage enemies. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structcomponent_1_1hurtbox__s_a7731a2e82df13ecc8e0b444f83eebd07}{width}}
+\begin{DoxyCompactList}\small\item\em The width of the hurtbox. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structcomponent_1_1hurtbox__s_aefdfca717ae4f367dfff11ddb045c895}{height}}
+\begin{DoxyCompactList}\small\item\em The height of the hurtbox. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structcomponent_1_1hurtbox__s_a2c6fe8d0fd1d64fcc76e6af210480fa3}{hurt}}
+\begin{DoxyCompactList}\small\item\em A bool to indicate if the hurtbox is hurt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The hurtbox component, defined by a size, health and a group (1 for the player, 2 for the enemies for example). A hitbox will detect collision with a hurtbox if its targeted group corresponds to the hurtbox group. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structcomponent_1_1hurtbox__s_a2ae83e5eea64fb8925d67190392dc804}\label{structcomponent_1_1hurtbox__s_a2ae83e5eea64fb8925d67190392dc804} 
+\index{component::hurtbox\_s@{component::hurtbox\_s}!group@{group}}
+\index{group@{group}!component::hurtbox\_s@{component::hurtbox\_s}}
+\doxysubsubsection{\texorpdfstring{group}{group}}
+{\footnotesize\ttfamily int component\+::hurtbox\+\_\+s\+::group}
+
+
+
+The group of the hurtbox. For example, if the hurtbox group is 1 for the player and 2 for the enemies, the player\textquotesingle{}s hitbox should have a targeted\+\_\+group of 2 to damage enemies. 
+
+\Hypertarget{structcomponent_1_1hurtbox__s_aba96c6a60940bf664b287bdb06901f0d}\label{structcomponent_1_1hurtbox__s_aba96c6a60940bf664b287bdb06901f0d} 
+\index{component::hurtbox\_s@{component::hurtbox\_s}!health@{health}}
+\index{health@{health}!component::hurtbox\_s@{component::hurtbox\_s}}
+\doxysubsubsection{\texorpdfstring{health}{health}}
+{\footnotesize\ttfamily int component\+::hurtbox\+\_\+s\+::health}
+
+
+
+The health of the hurtbox. When it reaches 0, the entity is considered dead. 
+
+\Hypertarget{structcomponent_1_1hurtbox__s_aefdfca717ae4f367dfff11ddb045c895}\label{structcomponent_1_1hurtbox__s_aefdfca717ae4f367dfff11ddb045c895} 
+\index{component::hurtbox\_s@{component::hurtbox\_s}!height@{height}}
+\index{height@{height}!component::hurtbox\_s@{component::hurtbox\_s}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily int component\+::hurtbox\+\_\+s\+::height}
+
+
+
+The height of the hurtbox. 
+
+\Hypertarget{structcomponent_1_1hurtbox__s_a2c6fe8d0fd1d64fcc76e6af210480fa3}\label{structcomponent_1_1hurtbox__s_a2c6fe8d0fd1d64fcc76e6af210480fa3} 
+\index{component::hurtbox\_s@{component::hurtbox\_s}!hurt@{hurt}}
+\index{hurt@{hurt}!component::hurtbox\_s@{component::hurtbox\_s}}
+\doxysubsubsection{\texorpdfstring{hurt}{hurt}}
+{\footnotesize\ttfamily bool component\+::hurtbox\+\_\+s\+::hurt}
+
+
+
+A bool to indicate if the hurtbox is hurt. 
+
+\Hypertarget{structcomponent_1_1hurtbox__s_a7731a2e82df13ecc8e0b444f83eebd07}\label{structcomponent_1_1hurtbox__s_a7731a2e82df13ecc8e0b444f83eebd07} 
+\index{component::hurtbox\_s@{component::hurtbox\_s}!width@{width}}
+\index{width@{width}!component::hurtbox\_s@{component::hurtbox\_s}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily int component\+::hurtbox\+\_\+s\+::width}
+
+
+
+The width of the hurtbox. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/engine/include/\mbox{\hyperlink{components_8hpp}{components.\+hpp}}\end{DoxyCompactItemize}

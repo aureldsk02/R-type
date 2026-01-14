@@ -1,0 +1,75 @@
+# Configuration clang-format pour C++
+# Basé sur le style LLVM avec personnalisations
+
+BasedOnStyle: LLVM
+
+# Paramètres d'indentation
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+AccessModifierOffset: -2
+
+# Largeur de ligne
+ColumnLimit: 80
+
+# Accolades
+BreakBeforeBraces: Attach
+Cpp11BracedListStyle: true
+
+# Espaces
+SpaceBeforeParens: ControlStatements
+SpaceAfterCStyleCast: false
+SpaceBeforeAssignmentOperators: true
+SpaceInEmptyParentheses: false
+
+# Alignement
+AlignAfterOpenBracket: BlockIndent
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignOperands: true
+AlignTrailingComments: true
+
+# Paramètres de rupture de ligne
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortBlocksOnASingleLine: false
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+
+# Paramètres spécifiques C++
+Standard: c++17
+NamespaceIndentation: All
+FixNamespaceComments: true
+
+# Includes
+SortIncludes: true
+IncludeBlocks: Regroup
+IncludeCategories:
+  # Headers système C++
+  - Regex: '^<[^/>]*>$'
+    Priority: 1
+  # Headers système C
+  - Regex: '^<[^/>]*\.h>$'
+    Priority: 2
+  # Headers de bibliothèques
+  - Regex: '^<.*'
+    Priority: 3
+  # Headers locaux
+  - Regex: '^".*'
+    Priority: 4
+
+# Constructeurs
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+ConstructorInitializerIndentWidth: 4
+
+# Pointeurs et références
+PointerAlignment: Left
+DerivePointerAlignment: false
+
+# Commentaires
+ReflowComments: true
+
+# Macros
+MacroBlockBegin: ''
+MacroBlockEnd: ''

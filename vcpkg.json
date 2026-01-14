@@ -1,10 +1,26 @@
 {
-    "name": "r-type",
-    "version": "1.0.0",
-    "description": "R-Type Multiplayer Game",
-    "dependencies": [
-        "raylib",
-        "nlohmann-json",
-        "asio"
-    ]
+  "name": "rtype",
+  "version": "1.0.0",
+  "description": "R-Type multiplayer game",
+  "homepage": "https://github.com/votre-repo/rtype",
+  "license": "MIT",
+  "dependencies": [
+    "sfml",
+    "asio",
+    "gtest",
+    "libsodium",
+    "sqlite3",
+    "libconfig",
+    "openal-soft",
+    "libogg",
+    "libvorbis",
+    "libflac"
+  ],
+  "builtin-baseline": "50c0cb48a0cf2f6fc5c7b2c0d2bafbe26d0a7ca2",
+  "overrides": [
+    {
+      "name": "sfml",
+      "version": "2.6.1"
+    }
+  ]
 }

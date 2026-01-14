@@ -1,0 +1,132 @@
+\doxysection{component\+::animated\+\_\+drawable\+\_\+s Struct Reference}
+\hypertarget{structcomponent_1_1animated__drawable__s}{}\label{structcomponent_1_1animated__drawable__s}\index{component::animated\_drawable\_s@{component::animated\_drawable\_s}}
+
+
+The animated\+\_\+drawable component. It is a drawable component with an animated sprite. It has a frame\+\_\+rect, a frame\+\_\+duration and a frame\+\_\+timer to allow animation.  
+
+
+
+
+{\ttfamily \#include $<$components.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{structcomponent_1_1animated__drawable__s_a2173193d80d09809b58d877f69f633c0}{set\+Texture\+From\+Name}} (std\+::string texture\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Set the Texture of the sprite to the texture associated with the name parameter in the \doxylink{classResourceManager}{Resource\+Manager}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structcomponent_1_1animated__drawable__s_a3e4ebe0724612533507c3110a2d70ae7}{set\+Frame\+Rect}} (int width, int height)
+\begin{DoxyCompactList}\small\item\em Set the dimensions of the rect representing a frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structcomponent_1_1animated__drawable__s_a2093cb3d9c0fd92ca950e8d51ac86e9c}{animate}} (double delta)
+\begin{DoxyCompactList}\small\item\em This function animates the sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{structcomponent_1_1animated__drawable__s_a1bedfb04031a38d58df2da5fba3a2ef6}{one\+\_\+shot}}
+\item 
+bool \mbox{\hyperlink{structcomponent_1_1animated__drawable__s_a585aba3d5ee3a63eed8d7e466f5a2137}{done\+\_\+once}}
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{structcomponent_1_1animated__drawable__s_aed93697f18dc17d503b94335cd69c97e}{sprite}}
+\item 
+sf\+::\+Int\+Rect \mbox{\hyperlink{structcomponent_1_1animated__drawable__s_af4c3d8a67784f0d561df90e54ee57a9f}{frame\+\_\+rect}}
+\item 
+double \mbox{\hyperlink{structcomponent_1_1animated__drawable__s_a9d413e2ed4cb1c7c6c190f851e6b457e}{frame\+\_\+duration}}
+\item 
+double \mbox{\hyperlink{structcomponent_1_1animated__drawable__s_a1724bb73c3190e4ad4f5456959d0c2c6}{frame\+\_\+timer}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The animated\+\_\+drawable component. It is a drawable component with an animated sprite. It has a frame\+\_\+rect, a frame\+\_\+duration and a frame\+\_\+timer to allow animation. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structcomponent_1_1animated__drawable__s_a2093cb3d9c0fd92ca950e8d51ac86e9c}\label{structcomponent_1_1animated__drawable__s_a2093cb3d9c0fd92ca950e8d51ac86e9c} 
+\index{component::animated\_drawable\_s@{component::animated\_drawable\_s}!animate@{animate}}
+\index{animate@{animate}!component::animated\_drawable\_s@{component::animated\_drawable\_s}}
+\doxysubsubsection{\texorpdfstring{animate()}{animate()}}
+{\footnotesize\ttfamily void component\+::animated\+\_\+drawable\+\_\+s\+::animate (\begin{DoxyParamCaption}\item[{double}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function animates the sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & the time elapsed since the last frame \\
+\hline
+\end{DoxyParams}
+\Hypertarget{structcomponent_1_1animated__drawable__s_a3e4ebe0724612533507c3110a2d70ae7}\label{structcomponent_1_1animated__drawable__s_a3e4ebe0724612533507c3110a2d70ae7} 
+\index{component::animated\_drawable\_s@{component::animated\_drawable\_s}!setFrameRect@{setFrameRect}}
+\index{setFrameRect@{setFrameRect}!component::animated\_drawable\_s@{component::animated\_drawable\_s}}
+\doxysubsubsection{\texorpdfstring{setFrameRect()}{setFrameRect()}}
+{\footnotesize\ttfamily void component\+::animated\+\_\+drawable\+\_\+s\+::set\+Frame\+Rect (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the dimensions of the rect representing a frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & \\
+\hline
+{\em height} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{structcomponent_1_1animated__drawable__s_a2173193d80d09809b58d877f69f633c0}\label{structcomponent_1_1animated__drawable__s_a2173193d80d09809b58d877f69f633c0} 
+\index{component::animated\_drawable\_s@{component::animated\_drawable\_s}!setTextureFromName@{setTextureFromName}}
+\index{setTextureFromName@{setTextureFromName}!component::animated\_drawable\_s@{component::animated\_drawable\_s}}
+\doxysubsubsection{\texorpdfstring{setTextureFromName()}{setTextureFromName()}}
+{\footnotesize\ttfamily void component\+::animated\+\_\+drawable\+\_\+s\+::set\+Texture\+From\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{texture\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Texture of the sprite to the texture associated with the name parameter in the \doxylink{classResourceManager}{Resource\+Manager}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture\+\_\+name} & the name of the texture in the resource manager \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structcomponent_1_1animated__drawable__s_a585aba3d5ee3a63eed8d7e466f5a2137}\label{structcomponent_1_1animated__drawable__s_a585aba3d5ee3a63eed8d7e466f5a2137} 
+\index{component::animated\_drawable\_s@{component::animated\_drawable\_s}!done\_once@{done\_once}}
+\index{done\_once@{done\_once}!component::animated\_drawable\_s@{component::animated\_drawable\_s}}
+\doxysubsubsection{\texorpdfstring{done\_once}{done\_once}}
+{\footnotesize\ttfamily bool component\+::animated\+\_\+drawable\+\_\+s\+::done\+\_\+once}
+
+\Hypertarget{structcomponent_1_1animated__drawable__s_a9d413e2ed4cb1c7c6c190f851e6b457e}\label{structcomponent_1_1animated__drawable__s_a9d413e2ed4cb1c7c6c190f851e6b457e} 
+\index{component::animated\_drawable\_s@{component::animated\_drawable\_s}!frame\_duration@{frame\_duration}}
+\index{frame\_duration@{frame\_duration}!component::animated\_drawable\_s@{component::animated\_drawable\_s}}
+\doxysubsubsection{\texorpdfstring{frame\_duration}{frame\_duration}}
+{\footnotesize\ttfamily double component\+::animated\+\_\+drawable\+\_\+s\+::frame\+\_\+duration}
+
+\Hypertarget{structcomponent_1_1animated__drawable__s_af4c3d8a67784f0d561df90e54ee57a9f}\label{structcomponent_1_1animated__drawable__s_af4c3d8a67784f0d561df90e54ee57a9f} 
+\index{component::animated\_drawable\_s@{component::animated\_drawable\_s}!frame\_rect@{frame\_rect}}
+\index{frame\_rect@{frame\_rect}!component::animated\_drawable\_s@{component::animated\_drawable\_s}}
+\doxysubsubsection{\texorpdfstring{frame\_rect}{frame\_rect}}
+{\footnotesize\ttfamily sf\+::\+Int\+Rect component\+::animated\+\_\+drawable\+\_\+s\+::frame\+\_\+rect}
+
+\Hypertarget{structcomponent_1_1animated__drawable__s_a1724bb73c3190e4ad4f5456959d0c2c6}\label{structcomponent_1_1animated__drawable__s_a1724bb73c3190e4ad4f5456959d0c2c6} 
+\index{component::animated\_drawable\_s@{component::animated\_drawable\_s}!frame\_timer@{frame\_timer}}
+\index{frame\_timer@{frame\_timer}!component::animated\_drawable\_s@{component::animated\_drawable\_s}}
+\doxysubsubsection{\texorpdfstring{frame\_timer}{frame\_timer}}
+{\footnotesize\ttfamily double component\+::animated\+\_\+drawable\+\_\+s\+::frame\+\_\+timer}
+
+\Hypertarget{structcomponent_1_1animated__drawable__s_a1bedfb04031a38d58df2da5fba3a2ef6}\label{structcomponent_1_1animated__drawable__s_a1bedfb04031a38d58df2da5fba3a2ef6} 
+\index{component::animated\_drawable\_s@{component::animated\_drawable\_s}!one\_shot@{one\_shot}}
+\index{one\_shot@{one\_shot}!component::animated\_drawable\_s@{component::animated\_drawable\_s}}
+\doxysubsubsection{\texorpdfstring{one\_shot}{one\_shot}}
+{\footnotesize\ttfamily bool component\+::animated\+\_\+drawable\+\_\+s\+::one\+\_\+shot}
+
+\Hypertarget{structcomponent_1_1animated__drawable__s_aed93697f18dc17d503b94335cd69c97e}\label{structcomponent_1_1animated__drawable__s_aed93697f18dc17d503b94335cd69c97e} 
+\index{component::animated\_drawable\_s@{component::animated\_drawable\_s}!sprite@{sprite}}
+\index{sprite@{sprite}!component::animated\_drawable\_s@{component::animated\_drawable\_s}}
+\doxysubsubsection{\texorpdfstring{sprite}{sprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite component\+::animated\+\_\+drawable\+\_\+s\+::sprite}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/engine/include/\mbox{\hyperlink{components_8hpp}{components.\+hpp}}\end{DoxyCompactItemize}

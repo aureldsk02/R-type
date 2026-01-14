@@ -1,0 +1,424 @@
+\chapter{RFC-\/\+RT001\+: R-\/\+TYPE Protocol v2.1}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol}{}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol}\index{RFC-\/RT001: R-\/TYPE Protocol v2.1@{RFC-\/RT001: R-\/TYPE Protocol v2.1}}
+\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md33}%
+\Hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md33}%
+ {\bfseries{Status}}\+: Standard ~\newline
+ {\bfseries{Date}}\+: 2025-\/09-\/23 ~\newline
+ {\bfseries{Authors}}\+: Akandé Philippe, Aïmane Alassane ~\newline
+ {\bfseries{Category}}\+: Network Protocol\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md34}{}\doxysection{\texorpdfstring{Abstract}{Abstract}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md34}
+This document specifies the network communication protocol for R-\/\+Type, a a horizontally scrolling shooter arcade video game. The protocole use TCP for reliability and UDP for real time data transmission, with a binary serialization system.\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md35}{}\doxysection{\texorpdfstring{Table of contents}{Table of contents}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md35}
+
+\begin{DoxyEnumerate}
+\item Introduction
+\item General architecture ~\newline
+
+\item Message format
+\item Protocol commands
+\item Interaction sequences
+\item Error handling
+\item Security
+\item Versioning
+\end{DoxyEnumerate}\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md36}{}\doxysection{\texorpdfstring{1. Introduction}{1. Introduction}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md36}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md37}{}\doxysubsection{\texorpdfstring{1.\+1. Objectives}{1.\+1. Objectives}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md37}
+R-\/\+Type protocol enables communication between a central server and multiple clients to synchronize the player\textquotesingle{}s state, objects and environments.\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md38}{}\doxysubsection{\texorpdfstring{1.\+2. Convention}{1.\+2. Convention}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md38}
+The keywords "{}\+MUST"{}, "{}\+SHOULD"{}, "{}\+MAY"{} in this document are interpreted according to RFC 2119.
+
+\DoxyHorRuler{0}
+ \hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md40}{}\doxysection{\texorpdfstring{2. General architecture}{2. General architecture}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md40}
+The protocol uses a hybrid approach\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{TCP (Port 7890)}}\+: Critical commands, authentication, game state
+\item {\bfseries{UDP (Port 7891)}}\+: Real-\/time position updates, quantum physics
+\item {\bfseries{Web\+Socket (Port 7892)}}\+: Web client support (optional)
+\end{DoxyItemize}\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md41}{}\doxysubsection{\texorpdfstring{2.\+2 Modèle de communication}{2.\+2 Modèle de communication}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md41}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Client\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Server}
+\DoxyCodeLine{\ \ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}
+\DoxyCodeLine{\ \ |-\/-\/\ TCP\ Connection\ Setup\ -\/-\/-\/-\/-\/-\/>|}
+\DoxyCodeLine{\ \ |<-\/-\/\ Welcome\ +\ Session\ ID\ -\/-\/-\/-\/-\/-\/|\ \ }
+\DoxyCodeLine{\ \ |-\/-\/\ Authentication\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/>|}
+\DoxyCodeLine{\ \ |<-\/-\/\ Auth\ Success/Failure\ -\/-\/-\/-\/-\/|}
+\DoxyCodeLine{\ \ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}
+\DoxyCodeLine{\ \ |-\/-\/\ UDP\ Registration\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/>|}
+\DoxyCodeLine{\ \ |<-\/-\/\ UDP\ Acknowledgment\ -\/-\/-\/-\/-\/-\/-\/-\/|}
+\DoxyCodeLine{\ \ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}
+\DoxyCodeLine{\ \ |<==\ Game\ State\ Updates\ ======>|\ (UDP\ Stream)}
+\DoxyCodeLine{\ \ |-\/-\/\ Game\ on\ Actions\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/>|}
+\DoxyCodeLine{\ \ |<-\/-\/\ Action\ Results\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/|}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md42}{}\doxysubsection{\texorpdfstring{2.\+3 Sessions et états}{2.\+3 Sessions et états}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md42}
+Each client hold a {\bfseries{session}} identified by an UUID 128-\/bits. The possible state are \+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily DISCONNECTED}\+: Not connected
+\item {\ttfamily CONNECTING}\+: TCP connection in progress
+\item {\ttfamily AUTHENTICATING}\+: Authentication in progress
+\item {\ttfamily LOBBY}\+: Connected, waiting for a game
+\item {\ttfamily INGAME}\+: Participating in an active game
+\item {\ttfamily SPECTATING}\+: Observing a game
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md44}{}\doxysection{\texorpdfstring{3. Message Format}{3. Message Format}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md44}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md45}{}\doxysubsection{\texorpdfstring{3.\+1 General Structure (TCP)}{3.\+1 General Structure (TCP)}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md45}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Valeur   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Direction    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Valeur   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Direction    }\\\cline{1-4}
+\endhead
+HELLO   &0x01   &Initialisation connexion   &C → S    \\\cline{1-4}
+WELCOME   &0x02   &Réponse d\textquotesingle{}accueil   &S → C    \\\cline{1-4}
+AUTH   &0x03   &Authentification   &C → S    \\\cline{1-4}
+AUTH\+\_\+\+RESULT   &0x04   &Résultat authentification   &S → C    \\\cline{1-4}
+JOIN\+\_\+\+GAME   &0x05   &Rejoindre une partie   &C → S    \\\cline{1-4}
+GAME\+\_\+\+STATE   &0x06   &État complet du jeu   &S → C    \\\cline{1-4}
+MODE\+\_\+\+SETH   &0x07   &Mode activé   &C → S    \\\cline{1-4}
+PLAYER\+\_\+\+INFO   &0x08   &Informations du joueurs   &S → C    \\\cline{1-4}
+PLAYER\+\_\+\+UPDATE   &0x09   &Position joueur   &Bidirectionnel    \\\cline{1-4}
+DISCONNECT   &0x0A   &Déconnexion propre   &Bidirectionnel    \\\cline{1-4}
+ERROR   &0x0F   &Message d\textquotesingle{}erreur   &S → C   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md46}{}\doxysection{\texorpdfstring{4. Commandes du protocole}{4. Commandes du protocole}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md46}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md47}{}\doxysubsection{\texorpdfstring{4.\+1 HELLO (0x01) -\/ Connexion initiale}{4.\+1 HELLO (0x01) -\/ Connexion initiale}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md47}
+{\bfseries{Direction}} \+: Client → Serveur ~\newline
+ {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }HelloPayload\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ \ version;\ \ \ \ \ \textcolor{comment}{//\ Version\ du\ protocole\ client}}
+\DoxyCodeLine{\ \ \ \ int16\_t\ \ mode;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0=Normal,\ 1=Debug}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ client\_name[32];\ \ \ \ \ \ \textcolor{comment}{//\ Nom\ du\ client\ (null-\/terminated)}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md48}{}\doxysubsection{\texorpdfstring{4.\+2 WELCOME (0x02) -\/ Réponse serveur}{4.\+2 WELCOME (0x02) -\/ Réponse serveur}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md48}
+{\bfseries{Direction}} \+: Serveur → Client ~\newline
+ {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }WelcomePayload\ \{}
+\DoxyCodeLine{\ \ \ \ uint128\_t\ session\_id;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ID\ de\ session\ assigné}}
+\DoxyCodeLine{\ \ \ \ int16\_t\ \ \ server\_version;\ \ \ \ \ \ \textcolor{comment}{//\ Version\ du\ serveur}}
+\DoxyCodeLine{\ \ \ \ int16\_t\ \ max\_sessions;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Nombre\ max\ de\ sessions}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ \ server\_name[64];\ \ \ \ \ \textcolor{comment}{//\ Nom\ du\ serveur}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md49}{}\doxysubsection{\texorpdfstring{4.\+3 AUTH (0x03) -\/ Authentification}{4.\+3 AUTH (0x03) -\/ Authentification}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md49}
+{\bfseries{Direction}} \+: Client → Serveur ~\newline
+ {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }AuthPayload\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ \ auth\_type;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0=Guest,\ 1=Username/Pass,\ 2=Session\ Token}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ username[32];\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Nom\ d'utilisateur\ (null\ terminated\ string)}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ credential[64];\ \ \ \ \ \ \ \textcolor{comment}{//\ Mot\ de\ passe\ hashé\ ou\ token}}
+\DoxyCodeLine{\ \ \ \ uint128\_t\ client\_hash;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Hash\ du\ client\ pour\ anti-\/cheat}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+ Les noms des guests vont être assignés dynamiquement. Player1, Player2, ..., Player234
+
+{\bfseries{Types d\textquotesingle{}authentification}} \+:
+\begin{DoxyItemize}
+\item {\ttfamily 0} (Guest) \+: Connexion anonyme sans credentials
+\item {\ttfamily 1} (User\+Pass) \+: Username + mot de passe SHA256
+\item {\ttfamily 2} (Token) \+: Token JWT ou OAuth2 Dans le cas où le client est déconnecté en pleine partie (crash du serveur/autre), il peut tout simplement fournir son token de session pour qu\textquotesingle{}on lui restaure sa partie si son token est toujours valide
+\end{DoxyItemize}\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md50}{}\doxysubsection{\texorpdfstring{4.\+4 AUTH\+\_\+\+RESULT (0x04) -\/ Authentication Result}{4.\+4 AUTH\+\_\+\+RESULT (0x04) -\/ Authentication Result}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md50}
+{\bfseries{Direction}} \+: Serveur → Client {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }AuthResultPayload\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ \ status\_code;\ \ \ \ \ \ \ \textcolor{comment}{//\ 0\ =\ Success,\ 1\ =\ Invalid\ credentials,\ 2\ =\ Token\ expired,\ 3\ =\ Error}}
+\DoxyCodeLine{\ \ \ \ uint128\_t\ session\_token;\ \ \ \ \textcolor{comment}{//\ Unique\ token\ for\ session\ resumption\ (only\ valid\ if\ status\_code\ ==\ 0)}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ auth\_token[64];\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Authentication\ token\ for\ secured\ requests\ }}
+\DoxyCodeLine{\ \ \ \ uint32\_t\ player\_id;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Unique\ ID\ assigned\ to\ the\ player\ by\ the\ server}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ welcome\_msg[64];\ \ \ \textcolor{comment}{//\ Optional\ message\ ("{}Welcome\ player!"{},\ "{}Auth\ failed"{},\ etc.)}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+ uint128\+\_\+t \+: UUID\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md51}{}\doxysubsection{\texorpdfstring{4.\+5 HELP COMMAND (0x05) -\/ Get commands available}{4.\+5 HELP COMMAND (0x05) -\/ Get commands available}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md51}
+{\bfseries{Direction}} \+: Client → Serveur {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }HelpRequest\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type\ =\ 0x05;\ \ \ \textcolor{comment}{//\ HELP\ command}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md52}{}\doxysubsection{\texorpdfstring{4.\+6 HELP RESPONSE (0x06) -\/ Get commands available}{4.\+6 HELP RESPONSE (0x06) -\/ Get commands available}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md52}
+{\bfseries{Direction}} \+: Serveur → Client {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }HelpResponse\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type\ =\ 0x10;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ available\_commands[512];\ \ }
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+ Available commands\+:
+\begin{DoxyItemize}
+\item NAME \mbox{[}new\+\_\+name\mbox{]}
+\item CREATE\+\_\+\+SESSION
+\item LAUNCH\+\_\+\+SESSION \mbox{[}session\+\_\+id\mbox{]}
+\item JOIN\+\_\+\+SESSION \mbox{[}session\+\_\+token\mbox{]}
+\item REGISTER \mbox{[}username, password\mbox{]}
+\item AUTH \mbox{[}username, password\mbox{]}
+\item DISCONNECT
+\item PROFILE \mbox{[}username\mbox{]}
+\item LIST\+\_\+\+USERS
+\end{DoxyItemize}\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md53}{}\doxysubsection{\texorpdfstring{4.\+7 NAME (0x07) -\/ Change username}{4.\+7 NAME (0x07) -\/ Change username}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md53}
+{\bfseries{Direction}} \+: Client → Serveur {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }NameRequest\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x07}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ auth\_token[64];\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Authentication\ token}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ new\_name[32];\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Desired\ new\ username}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md54}{}\doxysubsection{\texorpdfstring{4.\+7 NAME (0x08) -\/ Name result}{4.\+7 NAME (0x08) -\/ Name result}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md54}
+{\bfseries{Direction}} \+: Serveur → Client {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }NameResponse\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x08}}
+\DoxyCodeLine{\ \ \ \ int16\_t\ status\_code;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0=Success,\ 1=Invalid\ auth\_token,\ 2=Name\ Taken}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md55}{}\doxysubsection{\texorpdfstring{4.\+8 CREATE\+\_\+\+SESSION (0x09) — Create a Game Session}{4.\+8 CREATE\+\_\+\+SESSION (0x09) — Create a Game Session}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md55}
+{\bfseries{Direction}} \+: Client → Serveur {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }CreateSessionRequest\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x09}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ auth\_token[64];\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Auth\ token}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ session\_name[32];\ \ \ \ \ \ \textcolor{comment}{//\ Optional\ session\ name}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md56}{}\doxysubsection{\texorpdfstring{4.\+9 SESSION\+\_\+\+RESPONSE (0x10) — Game Session}{4.\+9 SESSION\+\_\+\+RESPONSE (0x10) — Game Session}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md56}
+{\bfseries{Direction}} \+: Serveur → Client {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }CreateSessionResponse\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x10}}
+\DoxyCodeLine{\ \ \ \ int16\_t\ status\_code;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0=Success,\ 1=Invalid\ auth\_token}}
+\DoxyCodeLine{\ \ \ \ uint32\_t\ session\_id;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Unique\ ID\ assigned\ to\ the\ session\ (for\ creator\ only)}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ join\_code[8];\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Code\ to\ share\ with\ other\ players}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md57}{}\doxysubsection{\texorpdfstring{4.\+10 LAUNCH\+\_\+\+SESSION (0x11) — Launch a Game Session}{4.\+10 LAUNCH\+\_\+\+SESSION (0x11) — Launch a Game Session}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md57}
+{\bfseries{Direction}} \+: Client → Serveur {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }LaunchSessionRequest\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x11}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ auth\_token[64];\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Auth\ token\ of\ session\ creator}}
+\DoxyCodeLine{\ \ \ \ uint32\_t\ session\_id;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ID\ of\ the\ session\ (creator\ only)}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md58}{}\doxysubsection{\texorpdfstring{4.\+11 LAUNCH\+\_\+\+SESSION (0x12) — Server Response}{4.\+11 LAUNCH\+\_\+\+SESSION (0x12) — Server Response}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md58}
+{\bfseries{Direction}} \+: Serveur → Client {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }LaunchSessionResponse\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x12}}
+\DoxyCodeLine{\ \ \ \ int16\_t\ status\_code;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0=Success,\ 1=Invalid\ auth\_token,\ 2=Not\ session\ owner,\ 3=Not\ enough\ players}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md59}{}\doxysubsection{\texorpdfstring{4.\+12 JOIN\+\_\+\+SESSION (0x13) — Join an Existing Session}{4.\+12 JOIN\+\_\+\+SESSION (0x13) — Join an Existing Session}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md59}
+{\bfseries{Direction}} \+: Client → Serveur {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }JoinSessionRequest\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x13}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ auth\_token[64];\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Auth\ token}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ join\_code[8];\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Code\ provided\ by\ session\ creator}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md60}{}\doxysubsection{\texorpdfstring{4.\+13 JOIN\+\_\+\+SESSION (0x14) — Join an Existing Session}{4.\+13 JOIN\+\_\+\+SESSION (0x14) — Join an Existing Session}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md60}
+{\bfseries{Direction}} \+: Serveur → Client {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }JoinSessionResponse\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x14}}
+\DoxyCodeLine{\ \ \ \ int16\_t\ status\_code;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0=Success,\ 1=Invalid\ auth\_token,\ 2=Invalid\ join\_code,\ 3=Session\ Full}}
+\DoxyCodeLine{\ \ \ \ uint32\_t\ session\_id;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Assigned\ session\ ID\ for\ the\ client}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md61}{}\doxysubsection{\texorpdfstring{4.\+14 REGISTER (0x15) — Create Account}{4.\+14 REGISTER (0x15) — Create Account}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md61}
+{\bfseries{Direction}} \+: Client → Serveur {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }RegisterRequest\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x15}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ username[32];}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ password\_hash[64];\ \ \ \ \ \textcolor{comment}{//\ SHA256\ hashed\ password}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md62}{}\doxysubsection{\texorpdfstring{4.\+15 REGISTER (0x16) — Create Account}{4.\+15 REGISTER (0x16) — Create Account}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md62}
+{\bfseries{Direction}} \+: Serveur → Client {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }RegisterResponse\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x16}}
+\DoxyCodeLine{\ \ \ \ int16\_t\ status\_code;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0=Success,\ 1=Username\ Taken,\ 2=Invalid\ Data}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ auth\_token[64];\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Provided\ for\ immediate\ use}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md63}{}\doxysubsection{\texorpdfstring{4.\+16 DISCONNECT (0x17) — Disconnect}{4.\+16 DISCONNECT (0x17) — Disconnect}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md63}
+{\bfseries{Direction}} \+: Client → Serveur {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }DisconnectRequest\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x17}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ auth\_token[64];}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md64}{}\doxysubsection{\texorpdfstring{4.\+17 DISCONNECT (0x18) — Disconnect}{4.\+17 DISCONNECT (0x18) — Disconnect}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md64}
+{\bfseries{Direction}} \+: Serveur → Client {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }DisconnectResponse\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x18}}
+\DoxyCodeLine{\ \ \ \ int16\_t\ status\_code;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0=Success,\ 1=Invalid\ auth\_token}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md65}{}\doxysubsection{\texorpdfstring{4.\+18 PROFILE (0x19) — Check Profile}{4.\+18 PROFILE (0x19) — Check Profile}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md65}
+{\bfseries{Direction}} \+: Client → Serveur {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }ProfileRequest\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x19}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ auth\_token[64];}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md66}{}\doxysubsection{\texorpdfstring{4.\+19 PROFILE (0x20) — Check Profile}{4.\+19 PROFILE (0x20) — Check Profile}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md66}
+{\bfseries{Direction}} \+: Serveur → Client {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }ProfileResponse\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x20}}
+\DoxyCodeLine{\ \ \ \ int16\_t\ status\_code;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0=Success,\ 1=Invalid\ auth\_token}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ username[32];}
+\DoxyCodeLine{\ \ \ \ uint32\_t\ player\_id;}
+\DoxyCodeLine{\ \ \ \ uint32\_t\ games\_played;}
+\DoxyCodeLine{\ \ \ \ uint32\_t\ games\_won;}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md67}{}\doxysubsection{\texorpdfstring{4.\+20 LIST\+\_\+\+USERS (0x21) — List Active Users}{4.\+20 LIST\+\_\+\+USERS (0x21) — List Active Users}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md67}
+{\bfseries{Direction}} \+: Client → Serveur {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }ListUsersRequest\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x21}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ auth\_token[64];}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md68}{}\doxysubsection{\texorpdfstring{4.\+21 LIST\+\_\+\+USERS (0x22) — List Active Users}{4.\+21 LIST\+\_\+\+USERS (0x22) — List Active Users}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md68}
+{\bfseries{Direction}} \+: Serveur → Client {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }ListUsersResponse\ \{}
+\DoxyCodeLine{\ \ \ \ int16\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x22}}
+\DoxyCodeLine{\ \ \ \ uint32\_t\ user\_count;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ usernames[32][32];\ \ \ \ \ \textcolor{comment}{//\ Max\ 32\ users}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md69}{}\doxysubsection{\texorpdfstring{4.\+22 PLAYER\+\_\+\+MOVE (0x24) — Indicate that the player moves -\/-\/\texorpdfstring{$>$}{>} Broadcast to all team members}{4.\+22 PLAYER\+\_\+\+MOVE (0x24) — Indicate that the player moves -\/-\/\texorpdfstring{$>$}{>} Broadcast to all team members}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md69}
+{\bfseries{Direction}} \+: Client → Serveur {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }MoveResponse\ \{}
+\DoxyCodeLine{\ \ \ \ int8\_t\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x24}}
+\DoxyCodeLine{\ \ \ \ int16\_t\ player\_id;}
+\DoxyCodeLine{\ \ \ \ Vector2D\ direction;}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md70}{}\doxysubsection{\texorpdfstring{4.\+23 ENEMY\+\_\+\+MOVED (0x37) — Indicate to all team members that an enemy moved}{4.\+23 ENEMY\+\_\+\+MOVED (0x37) — Indicate to all team members that an enemy moved}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md70}
+{\bfseries{Direction}} \+: Serveur → Client {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }EnemyMovedResponse\ \{}
+\DoxyCodeLine{\ \ \ \ int8\_t\ type;\ \textcolor{comment}{//\ 0x37}}
+\DoxyCodeLine{\ \ \ \ int16\_t\ enemy\_id;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{enum}\ enemy\_type(1|2|3|4);}
+\DoxyCodeLine{\ \ \ \ Vector2D\ \mbox{\hyperlink{namespacecomponent_a32921f4e807a398b6ffaea1730431bec}{position}};}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md71}{}\doxysubsection{\texorpdfstring{4.\+24 NBR\+\_\+\+ENTITY (0x38) — Indicate the numbers of entities}{4.\+24 NBR\+\_\+\+ENTITY (0x38) — Indicate the numbers of entities}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md71}
+{\bfseries{Direction}} \+: Serveur → Client {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }NbrEntity\ \{}
+\DoxyCodeLine{\ \ \ \ int8\_t\ type;\ \textcolor{comment}{//\ 0x38}}
+\DoxyCodeLine{\ \ \ \ int16\_t\ nbr;}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md72}{}\doxysubsection{\texorpdfstring{4.\+25 ACTION\+\_\+\+RESPONSE (0x25) — Indicate if an action like (shoot, ..) is make}{4.\+25 ACTION\+\_\+\+RESPONSE (0x25) — Indicate if an action like (shoot, ..) is make}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2protocol_autotoc_md72}
+{\bfseries{Direction}} \+: Client → Serveur {\bfseries{Payload}} \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }ActionResponse\ \{}
+\DoxyCodeLine{\ \ \ \ int8\_t\ type;\ \textcolor{comment}{//\ 0x25}}
+\DoxyCodeLine{\ \ \ \ int16\_t\ player\_id;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{enum}\ Action\ input;}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+ 

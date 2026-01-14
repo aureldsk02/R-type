@@ -1,0 +1,5 @@
+<map id="GraphicsClient" name="GraphicsClient">
+<area shape="rect" id="Node000001" title="The client class. Handles the client side of the game. All the client does is send messages to the se..." alt="" coords="5,98,122,126"/>
+<area shape="rect" id="Node000002" href="$classregistry.html" title="The registry class. The registry is a container for all the entities and components of the game...." alt="" coords="28,5,99,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,48,66,98,61,98,61,48"/>
+</map>

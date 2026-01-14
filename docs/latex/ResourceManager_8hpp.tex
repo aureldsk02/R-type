@@ -1,0 +1,77 @@
+\doxysection{/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/engine/include/\+Resource\+Manager.hpp File Reference}
+\hypertarget{ResourceManager_8hpp}{}\label{ResourceManager_8hpp}\index{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/engine/include/ResourceManager.hpp@{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/engine/include/ResourceManager.hpp}}
+
+
+The \doxylink{classResourceManager}{Resource\+Manager} file. Contains the declaration of the \doxylink{classResourceManager}{Resource\+Manager} class.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$SFML/\+Audio.\+hpp$>$}\newline
+{\ttfamily \#include $<$SFML/\+Graphics.\+hpp$>$}\newline
+Include dependency graph for Resource\+Manager.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ResourceManager_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ResourceManager_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classResourceManager}{Resource\+Manager}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{classResourceManager}{Resource\+Manager} singleton class. Manages textures and fonts. It contains a map of textures and a map of fonts that associates unique names to each texture or font. It provides methods to load textures and fonts from files and to get the corresponding sf\+::\+Texture or sf\+::\+Font. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{ResourceManager_8hpp_a509a729cba5db28cddc3c2ec18d0d83a}{resource\+\_\+type}} \{ \mbox{\hyperlink{ResourceManager_8hpp_a509a729cba5db28cddc3c2ec18d0d83aa3f07a311da6e3003d3922d665098da2d}{TEXTURE}}
+, \mbox{\hyperlink{ResourceManager_8hpp_a509a729cba5db28cddc3c2ec18d0d83aa984c070727c93b2f2a9c0f6ff0ae737a}{FONT}}
+ \}
+\begin{DoxyCompactList}\small\item\em The resource\+\_\+type enum. Contains the possible types of resources stored by the \doxylink{classResourceManager}{Resource\+Manager}. TEXTURE for textures and FONT for fonts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classResourceManager}{Resource\+Manager} file. Contains the declaration of the \doxylink{classResourceManager}{Resource\+Manager} class. 
+
+\begin{DoxyAuthor}{Author}
+Farouk OKANLA 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/10-\/13
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{ResourceManager_8hpp_a509a729cba5db28cddc3c2ec18d0d83a}\label{ResourceManager_8hpp_a509a729cba5db28cddc3c2ec18d0d83a} 
+\index{ResourceManager.hpp@{ResourceManager.hpp}!resource\_type@{resource\_type}}
+\index{resource\_type@{resource\_type}!ResourceManager.hpp@{ResourceManager.hpp}}
+\doxysubsubsection{\texorpdfstring{resource\_type}{resource\_type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{ResourceManager_8hpp_a509a729cba5db28cddc3c2ec18d0d83a}{resource\+\_\+type}}}
+
+
+
+The resource\+\_\+type enum. Contains the possible types of resources stored by the \doxylink{classResourceManager}{Resource\+Manager}. TEXTURE for textures and FONT for fonts. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEXTURE@{TEXTURE}!ResourceManager.hpp@{ResourceManager.hpp}}\index{ResourceManager.hpp@{ResourceManager.hpp}!TEXTURE@{TEXTURE}}}\Hypertarget{ResourceManager_8hpp_a509a729cba5db28cddc3c2ec18d0d83aa3f07a311da6e3003d3922d665098da2d}\label{ResourceManager_8hpp_a509a729cba5db28cddc3c2ec18d0d83aa3f07a311da6e3003d3922d665098da2d} 
+TEXTURE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FONT@{FONT}!ResourceManager.hpp@{ResourceManager.hpp}}\index{ResourceManager.hpp@{ResourceManager.hpp}!FONT@{FONT}}}\Hypertarget{ResourceManager_8hpp_a509a729cba5db28cddc3c2ec18d0d83aa984c070727c93b2f2a9c0f6ff0ae737a}\label{ResourceManager_8hpp_a509a729cba5db28cddc3c2ec18d0d83aa984c070727c93b2f2a9c0f6ff0ae737a} 
+FONT&\\
+\hline
+
+\end{DoxyEnumFields}

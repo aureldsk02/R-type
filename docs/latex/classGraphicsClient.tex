@@ -1,0 +1,570 @@
+\doxysection{Graphics\+Client Class Reference}
+\hypertarget{classGraphicsClient}{}\label{classGraphicsClient}\index{GraphicsClient@{GraphicsClient}}
+
+
+The client class. Handles the client side of the game. All the client does is send messages to the server if the player tries to move, and also receive the game state from the server in order to update the game.  
+
+
+
+
+{\ttfamily \#include $<$graphics\+Client.\+hpp$>$}
+
+
+
+Collaboration diagram for Graphics\+Client\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=167pt]{classGraphicsClient__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGraphicsClient_aedd175063f3723db734d7deabb6bb2dd}{Graphics\+Client}} (Network\+Manager \&client, std\+::vector$<$ int8\+\_\+t $>$ \&\mbox{\hyperlink{classGraphicsClient_a10877b784c0b4fe1d84fdcc2e01842f8}{lastmsg}}, std\+::mutex \&\mbox{\hyperlink{classGraphicsClient_ac1cf0dd4df0444c80ac907b28b0e1282}{mtx}}, std\+::vector$<$ sf\+::\+Keyboard\+::\+Key $>$ key\+Tab)
+\begin{DoxyCompactList}\small\item\em Construct a new Client object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGraphicsClient_a02f5a67c5ffee21031d4af1bc9205229}{\texorpdfstring{$\sim$}{\string~}\+Graphics\+Client}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Client object. \end{DoxyCompactList}\item 
+Message\+Header \mbox{\hyperlink{classGraphicsClient_ab0bb3db66eb171203f3f245bb68f7520}{decode\+Message\+Header}} (std\+::vector$<$ int8\+\_\+t $>$ \&buffer)
+\begin{DoxyCompactList}\small\item\em Decode a Nbr\+Entity structure from a byte buffer. \end{DoxyCompactList}\item 
+Enemy\+Moved\+Response \mbox{\hyperlink{classGraphicsClient_a09eec60c66eda63934bb6f01c4bd62a0}{decode\+Enemy\+Moved\+Response}} (std\+::vector$<$ int8\+\_\+t $>$ \&buffer)
+\begin{DoxyCompactList}\small\item\em Decode an Enemy\+Moved\+Response structure from a byte buffer. \end{DoxyCompactList}\item 
+std\+::vector$<$ int8\+\_\+t $>$ \mbox{\hyperlink{classGraphicsClient_abc4b7f59af7066aab9900cefc08567f2}{encode\+Move\+Response}} (const Move\+Response \&pos)
+\begin{DoxyCompactList}\small\item\em Encode a Move\+Response structure into a byte buffer. \end{DoxyCompactList}\item 
+std\+::vector$<$ int8\+\_\+t $>$ \mbox{\hyperlink{classGraphicsClient_a69106777850cec2f0066122bd82e5d9c}{encode\+Action\+Response}} (const Action\+Response \&pos)
+\begin{DoxyCompactList}\small\item\em Encode an Action\+Response structure into a byte buffer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGraphicsClient_a3ddd16ac5575d402bb381c380961f748}{is\+Running}} () const
+\begin{DoxyCompactList}\small\item\em Check if the client is running. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraphicsClient_ab7a526fc3b25722f5cc3a23b5b81fd53}{run}} ()
+\begin{DoxyCompactList}\small\item\em Run the client application. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGraphicsClient_ace48641882aa297884b23c0cb97e5f64}{init\+Game}} (std\+::vector$<$ sf\+::\+Keyboard\+::\+Key $>$ key\+Tab)
+\begin{DoxyCompactList}\small\item\em Initialize all game related elements. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraphicsClient_a5ebf7a1fe96adfbddf37677273ee2f86}{run\+Level}} (double delta)
+\begin{DoxyCompactList}\small\item\em Run the game logic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraphicsClient_a58ab8f9d048b9616db94fa8788f9e55a}{receive\+Server\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Receive information from the server. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraphicsClient_a8072e2db9374ce12301dc1236f105d8a}{send\+Player\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Send the player\textquotesingle{}s input to the server. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraphicsClient_a02ea9803ddb921dda405e1af82b13568}{send\+Player\+Action}} ()
+\begin{DoxyCompactList}\small\item\em Send the player\textquotesingle{}s action (e.\+g., shooting) to the server. \end{DoxyCompactList}\item 
+Game\+State \mbox{\hyperlink{classGraphicsClient_a4ce4bead56e9cf00a7859533892fce81}{decode\+Game\+State}} (std\+::vector$<$ int8\+\_\+t $>$ \&buffer)
+\item 
+void \mbox{\hyperlink{classGraphicsClient_acdbf40bdef8b67cf85f55c2128c21b00}{handle\+Sub\+States}} (double delta, sf\+::\+Render\+Window \&\mbox{\hyperlink{classGraphicsClient_a0acdb2720fdaa79c45a04f7d684cf3af}{win}})
+\item 
+void \mbox{\hyperlink{classGraphicsClient_ab36b8c6dfba5d4dece9f0b1fd945a85a}{entity\+Move\+Interpole}} (Enemy\+Moved\+Response past\+Pos, int64\+\_\+t past\+Time, int64\+\_\+t now, Enemy\+Moved\+Response next\+Pos, int64\+\_\+t next\+Time)
+\begin{DoxyCompactList}\small\item\em Calculate the new position of an entity based on the last position, the position to reach, the time elapsed beatween the last position time and now. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraphicsClient_abad75985aa1dd4874e6279ae80541851}{entity\+Mov\+Delete}} (Enemy\+Moved\+Response pastpast\+Pos, int64\+\_\+t pastpast\+Time, int64\+\_\+t now, Enemy\+Moved\+Response past\+Pos, int64\+\_\+t past\+Time)
+\begin{DoxyCompactList}\small\item\em Calculate the new position of an entity based on the last position, the position to reach, the time elapsed beatween the last position time and now. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraphicsClient_af2c6eb4e5f0c26c32cc9966bf46994f0}{entity\+Mov\+Create}} (Enemy\+Moved\+Response next\+Pos, int64\+\_\+t next\+Time, int64\+\_\+t now, Enemy\+Moved\+Response nextnext\+Pos, int64\+\_\+t nextnext\+Time)
+\begin{DoxyCompactList}\small\item\em Calculate the new position of an entity based on the last position, the position to reach, the time elapsed beatween the last position time and now. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::chrono\+::milliseconds \mbox{\hyperlink{classGraphicsClient_ab59a87180333e9082f3cc949bcbf06c3}{tick\+Duration}} = std\+::chrono\+::milliseconds(5)
+\item 
+bool \mbox{\hyperlink{classGraphicsClient_a565985dc5c22147002b809cfc12cdc9e}{is\+Running\+\_\+}}
+\item 
+sf\+::\+Render\+Window \mbox{\hyperlink{classGraphicsClient_a0acdb2720fdaa79c45a04f7d684cf3af}{win}}
+\begin{DoxyCompactList}\small\item\em Window for rendering. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classregistry}{registry}} \mbox{\hyperlink{classGraphicsClient_afe9a52562fa74fa36e616781db0c47e0}{reg}}
+\begin{DoxyCompactList}\small\item\em The registry that holds all entities and components. \end{DoxyCompactList}\item 
+Factory \mbox{\hyperlink{classGraphicsClient_a7d83741bf7356211ad9cdfe077ef99bb}{factory}}
+\begin{DoxyCompactList}\small\item\em The factory that creates entities and components. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGraphicsClient_a47322ff1c3c47979b290d4013527d68e}{port\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The port to connect to the server. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classGraphicsClient_a3cbaa27d922cf8e151bffc855e6389c4}{level\+Timer}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em The timer for the level. \end{DoxyCompactList}\item 
+Network\+Manager \& \mbox{\hyperlink{classGraphicsClient_a338f4688e38946f6a7093997058ff0b8}{client\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The network manager that handles communication with the server. \end{DoxyCompactList}\item 
+std\+::mutex \& \mbox{\hyperlink{classGraphicsClient_ac1cf0dd4df0444c80ac907b28b0e1282}{mtx}}
+\begin{DoxyCompactList}\small\item\em Mutex for thread safety. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, size\+\_\+t $>$ \mbox{\hyperlink{classGraphicsClient_a90bafee3a59a5ccc903a512687161dd1}{ids\+\_\+assoc}}
+\begin{DoxyCompactList}\small\item\em Map that associates server entity IDs to client entity IDs. \end{DoxyCompactList}\item 
+std\+::vector$<$ int8\+\_\+t $>$ \& \mbox{\hyperlink{classGraphicsClient_a10877b784c0b4fe1d84fdcc2e01842f8}{lastmsg}}
+\begin{DoxyCompactList}\small\item\em The last message received from the server. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ int64\+\_\+t, std\+::vector$<$ Enemy\+Moved\+Response $>$ $>$ $>$ \mbox{\hyperlink{classGraphicsClient_ab667d961345c874e680ed6708124e7bd}{entity\+\_\+states}}
+\begin{DoxyCompactList}\small\item\em A vector containing entities states received from the server. \end{DoxyCompactList}\item 
+sf\+::\+Event \mbox{\hyperlink{classGraphicsClient_a8e09b6740aedd962c2e739887d32c2b5}{event}}
+\begin{DoxyCompactList}\small\item\em Event for handling window events. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t}} \mbox{\hyperlink{classGraphicsClient_ab058ae2fbaa4efb016273f30ecf5fb33}{state}}
+\begin{DoxyCompactList}\small\item\em The current state of the game. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{graphicsClient_8hpp_a7200056c886361c0597814f8db61992e}{substate\+\_\+t}} \mbox{\hyperlink{classGraphicsClient_ad0c99dd6e73ab440866c57f5f7d57729}{substate}}
+\begin{DoxyCompactList}\small\item\em The current substate of the game. \end{DoxyCompactList}\item 
+sf\+::\+Clock \mbox{\hyperlink{classGraphicsClient_a2aaece593c05e5b80a29002b3a89ccdf}{frame\+Clock}}
+\begin{DoxyCompactList}\small\item\em Clock for managing frame time. \end{DoxyCompactList}\item 
+chrono\+::time\+\_\+point$<$ chrono\+::steady\+\_\+clock $>$ \mbox{\hyperlink{classGraphicsClient_a4d9c97fbb868410c609bd0d31771b5b3}{client\+Started}}
+\begin{DoxyCompactList}\small\item\em The moment of the last message. \end{DoxyCompactList}\item 
+UIHandler \mbox{\hyperlink{classGraphicsClient_a1206adaf76b615b60bca77f1646b43c3}{ui\+\_\+handler}}
+\begin{DoxyCompactList}\small\item\em The UI handler for managing the user interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The client class. Handles the client side of the game. All the client does is send messages to the server if the player tries to move, and also receive the game state from the server in order to update the game. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGraphicsClient_aedd175063f3723db734d7deabb6bb2dd}\label{classGraphicsClient_aedd175063f3723db734d7deabb6bb2dd} 
+\index{GraphicsClient@{GraphicsClient}!GraphicsClient@{GraphicsClient}}
+\index{GraphicsClient@{GraphicsClient}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{GraphicsClient()}{GraphicsClient()}}
+{\footnotesize\ttfamily Graphics\+Client\+::\+Graphics\+Client (\begin{DoxyParamCaption}\item[{Network\+Manager \&}]{client,  }\item[{std\+::vector$<$ int8\+\_\+t $>$ \&}]{\+\_\+lastmsg,  }\item[{std\+::mutex \&}]{\+\_\+mtx,  }\item[{std\+::vector$<$ sf\+::\+Keyboard\+::\+Key $>$}]{key\+Tab }\end{DoxyParamCaption})}
+
+
+
+Construct a new Client object. 
+
+Construct a new \doxylink{classGraphicsClient}{Graphics\+Client}\+:\+: Client object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The port to connect to the server \\
+\hline
+{\em addr} & The address of the server\\
+\hline
+{\em p} & The port to connect to \\
+\hline
+{\em address} & The server address \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraphicsClient_a02f5a67c5ffee21031d4af1bc9205229}\label{classGraphicsClient_a02f5a67c5ffee21031d4af1bc9205229} 
+\index{GraphicsClient@{GraphicsClient}!````~GraphicsClient@{\texorpdfstring{$\sim$}{\string~}GraphicsClient}}
+\index{````~GraphicsClient@{\texorpdfstring{$\sim$}{\string~}GraphicsClient}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GraphicsClient()}{\string~GraphicsClient()}}
+{\footnotesize\ttfamily Graphics\+Client\+::\texorpdfstring{$\sim$}{\string~}\+Graphics\+Client (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Destroy the Client object. 
+
+Destroy the \doxylink{classGraphicsClient}{Graphics\+Client}\+:\+: Client object. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGraphicsClient_a09eec60c66eda63934bb6f01c4bd62a0}\label{classGraphicsClient_a09eec60c66eda63934bb6f01c4bd62a0} 
+\index{GraphicsClient@{GraphicsClient}!decodeEnemyMovedResponse@{decodeEnemyMovedResponse}}
+\index{decodeEnemyMovedResponse@{decodeEnemyMovedResponse}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{decodeEnemyMovedResponse()}{decodeEnemyMovedResponse()}}
+{\footnotesize\ttfamily Enemy\+Moved\+Response Graphics\+Client\+::decode\+Enemy\+Moved\+Response (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int8\+\_\+t $>$ \&}]{buffer }\end{DoxyParamCaption})}
+
+
+
+Decode an Enemy\+Moved\+Response structure from a byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The byte buffer containing the encoded data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The decoded Enemy\+Moved\+Response structure 
+\end{DoxyReturn}
+\Hypertarget{classGraphicsClient_a4ce4bead56e9cf00a7859533892fce81}\label{classGraphicsClient_a4ce4bead56e9cf00a7859533892fce81} 
+\index{GraphicsClient@{GraphicsClient}!decodeGameState@{decodeGameState}}
+\index{decodeGameState@{decodeGameState}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{decodeGameState()}{decodeGameState()}}
+{\footnotesize\ttfamily Game\+State Graphics\+Client\+::decode\+Game\+State (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int8\+\_\+t $>$ \&}]{buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGraphicsClient_ab0bb3db66eb171203f3f245bb68f7520}\label{classGraphicsClient_ab0bb3db66eb171203f3f245bb68f7520} 
+\index{GraphicsClient@{GraphicsClient}!decodeMessageHeader@{decodeMessageHeader}}
+\index{decodeMessageHeader@{decodeMessageHeader}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{decodeMessageHeader()}{decodeMessageHeader()}}
+{\footnotesize\ttfamily Message\+Header Graphics\+Client\+::decode\+Message\+Header (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int8\+\_\+t $>$ \&}]{buffer }\end{DoxyParamCaption})}
+
+
+
+Decode a Nbr\+Entity structure from a byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The byte buffer containing the encoded data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The decoded Nbr\+Entity structure 
+\end{DoxyReturn}
+\Hypertarget{classGraphicsClient_a69106777850cec2f0066122bd82e5d9c}\label{classGraphicsClient_a69106777850cec2f0066122bd82e5d9c} 
+\index{GraphicsClient@{GraphicsClient}!encodeActionResponse@{encodeActionResponse}}
+\index{encodeActionResponse@{encodeActionResponse}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{encodeActionResponse()}{encodeActionResponse()}}
+{\footnotesize\ttfamily std\+::vector$<$ int8\+\_\+t $>$ Graphics\+Client\+::encode\+Action\+Response (\begin{DoxyParamCaption}\item[{const Action\+Response \&}]{pos }\end{DoxyParamCaption})}
+
+
+
+Encode an Action\+Response structure into a byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The Action\+Response structure to encode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of int8\+\_\+t representing the encoded data 
+\end{DoxyReturn}
+\Hypertarget{classGraphicsClient_abc4b7f59af7066aab9900cefc08567f2}\label{classGraphicsClient_abc4b7f59af7066aab9900cefc08567f2} 
+\index{GraphicsClient@{GraphicsClient}!encodeMoveResponse@{encodeMoveResponse}}
+\index{encodeMoveResponse@{encodeMoveResponse}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{encodeMoveResponse()}{encodeMoveResponse()}}
+{\footnotesize\ttfamily std\+::vector$<$ int8\+\_\+t $>$ Graphics\+Client\+::encode\+Move\+Response (\begin{DoxyParamCaption}\item[{const Move\+Response \&}]{pos }\end{DoxyParamCaption})}
+
+
+
+Encode a Move\+Response structure into a byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The Move\+Response structure to encode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of int8\+\_\+t representing the encoded data 
+\end{DoxyReturn}
+\Hypertarget{classGraphicsClient_af2c6eb4e5f0c26c32cc9966bf46994f0}\label{classGraphicsClient_af2c6eb4e5f0c26c32cc9966bf46994f0} 
+\index{GraphicsClient@{GraphicsClient}!entityMovCreate@{entityMovCreate}}
+\index{entityMovCreate@{entityMovCreate}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{entityMovCreate()}{entityMovCreate()}}
+{\footnotesize\ttfamily void Graphics\+Client\+::entity\+Mov\+Create (\begin{DoxyParamCaption}\item[{Enemy\+Moved\+Response}]{next\+Pos,  }\item[{int64\+\_\+t}]{next\+Time,  }\item[{int64\+\_\+t}]{now,  }\item[{Enemy\+Moved\+Response}]{nextnext\+Pos,  }\item[{int64\+\_\+t}]{nextnext\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Calculate the new position of an entity based on the last position, the position to reach, the time elapsed beatween the last position time and now. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+Pos} & the next position of the entity \\
+\hline
+{\em nextnext\+Pos} & the position after the next position \\
+\hline
+{\em now} & the actual time \\
+\hline
+{\em next\+Time} & the time of the next position \\
+\hline
+{\em nextnext\+Time} & the time of the position next the next position \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraphicsClient_abad75985aa1dd4874e6279ae80541851}\label{classGraphicsClient_abad75985aa1dd4874e6279ae80541851} 
+\index{GraphicsClient@{GraphicsClient}!entityMovDelete@{entityMovDelete}}
+\index{entityMovDelete@{entityMovDelete}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{entityMovDelete()}{entityMovDelete()}}
+{\footnotesize\ttfamily void Graphics\+Client\+::entity\+Mov\+Delete (\begin{DoxyParamCaption}\item[{Enemy\+Moved\+Response}]{pastpast\+Pos,  }\item[{int64\+\_\+t}]{pastpast\+Time,  }\item[{int64\+\_\+t}]{now,  }\item[{Enemy\+Moved\+Response}]{past\+Pos,  }\item[{int64\+\_\+t}]{past\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Calculate the new position of an entity based on the last position, the position to reach, the time elapsed beatween the last position time and now. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em past\+Pos} & the last position of the entity \\
+\hline
+{\em pastpast\+Pos} & the position before the last position \\
+\hline
+{\em now} & the actual time \\
+\hline
+{\em past\+Time} & the time of the last position \\
+\hline
+{\em pastpast\+Time} & the time of the position before the last position \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraphicsClient_ab36b8c6dfba5d4dece9f0b1fd945a85a}\label{classGraphicsClient_ab36b8c6dfba5d4dece9f0b1fd945a85a} 
+\index{GraphicsClient@{GraphicsClient}!entityMoveInterpole@{entityMoveInterpole}}
+\index{entityMoveInterpole@{entityMoveInterpole}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{entityMoveInterpole()}{entityMoveInterpole()}}
+{\footnotesize\ttfamily void Graphics\+Client\+::entity\+Move\+Interpole (\begin{DoxyParamCaption}\item[{Enemy\+Moved\+Response}]{past\+Pos,  }\item[{int64\+\_\+t}]{past\+Time,  }\item[{int64\+\_\+t}]{now,  }\item[{Enemy\+Moved\+Response}]{next\+Pos,  }\item[{int64\+\_\+t}]{next\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Calculate the new position of an entity based on the last position, the position to reach, the time elapsed beatween the last position time and now. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em past\+Pos} & the last position of the entity \\
+\hline
+{\em next\+Pos} & the position to reach \\
+\hline
+{\em now} & the actual time \\
+\hline
+{\em past\+Time} & the time of the last position \\
+\hline
+{\em next\+Time} & the time of the next position \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraphicsClient_acdbf40bdef8b67cf85f55c2128c21b00}\label{classGraphicsClient_acdbf40bdef8b67cf85f55c2128c21b00} 
+\index{GraphicsClient@{GraphicsClient}!handleSubStates@{handleSubStates}}
+\index{handleSubStates@{handleSubStates}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{handleSubStates()}{handleSubStates()}}
+{\footnotesize\ttfamily void Graphics\+Client\+::handle\+Sub\+States (\begin{DoxyParamCaption}\item[{double}]{delta,  }\item[{sf\+::\+Render\+Window \&}]{win }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & jnvflv \\
+\hline
+{\em win} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraphicsClient_ace48641882aa297884b23c0cb97e5f64}\label{classGraphicsClient_ace48641882aa297884b23c0cb97e5f64} 
+\index{GraphicsClient@{GraphicsClient}!initGame@{initGame}}
+\index{initGame@{initGame}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{initGame()}{initGame()}}
+{\footnotesize\ttfamily void Graphics\+Client\+::init\+Game (\begin{DoxyParamCaption}\item[{std\+::vector$<$ sf\+::\+Keyboard\+::\+Key $>$}]{key\+Tab }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Initialize all game related elements. 
+
+This function initializes the game. \Hypertarget{classGraphicsClient_a3ddd16ac5575d402bb381c380961f748}\label{classGraphicsClient_a3ddd16ac5575d402bb381c380961f748} 
+\index{GraphicsClient@{GraphicsClient}!isRunning@{isRunning}}
+\index{isRunning@{isRunning}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{isRunning()}{isRunning()}}
+{\footnotesize\ttfamily bool Graphics\+Client\+::is\+Running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Check if the client is running. 
+
+\begin{DoxyReturn}{Returns}
+true if the client is running, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classGraphicsClient_a58ab8f9d048b9616db94fa8788f9e55a}\label{classGraphicsClient_a58ab8f9d048b9616db94fa8788f9e55a} 
+\index{GraphicsClient@{GraphicsClient}!receiveServerInfo@{receiveServerInfo}}
+\index{receiveServerInfo@{receiveServerInfo}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{receiveServerInfo()}{receiveServerInfo()}}
+{\footnotesize\ttfamily void Graphics\+Client\+::receive\+Server\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Receive information from the server. 
+
+\Hypertarget{classGraphicsClient_ab7a526fc3b25722f5cc3a23b5b81fd53}\label{classGraphicsClient_ab7a526fc3b25722f5cc3a23b5b81fd53} 
+\index{GraphicsClient@{GraphicsClient}!run@{run}}
+\index{run@{run}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Graphics\+Client\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Run the client application. 
+
+\Hypertarget{classGraphicsClient_a5ebf7a1fe96adfbddf37677273ee2f86}\label{classGraphicsClient_a5ebf7a1fe96adfbddf37677273ee2f86} 
+\index{GraphicsClient@{GraphicsClient}!runLevel@{runLevel}}
+\index{runLevel@{runLevel}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{runLevel()}{runLevel()}}
+{\footnotesize\ttfamily void Graphics\+Client\+::run\+Level (\begin{DoxyParamCaption}\item[{double}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Run the game logic. 
+
+This function updates the game state. It gets all the entities sent by the server and checks for changes. If an entity is new, it creates a new entity in the registry. If an entity is updated, it updates the entity in the registry. If an entity is removed, it removes the entity from the registry.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & The time elapsed since the last frame\\
+\hline
+{\em delta} & the time since the last update \\
+\hline
+\end{DoxyParams}
+Supression Interpolation legere puis supression
+
+Creation Création puis extrapolation légère\Hypertarget{classGraphicsClient_a02ea9803ddb921dda405e1af82b13568}\label{classGraphicsClient_a02ea9803ddb921dda405e1af82b13568} 
+\index{GraphicsClient@{GraphicsClient}!sendPlayerAction@{sendPlayerAction}}
+\index{sendPlayerAction@{sendPlayerAction}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{sendPlayerAction()}{sendPlayerAction()}}
+{\footnotesize\ttfamily void Graphics\+Client\+::send\+Player\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Send the player\textquotesingle{}s action (e.\+g., shooting) to the server. 
+
+This function checks if the player is shooting and sends info to the server accordingly. \Hypertarget{classGraphicsClient_a8072e2db9374ce12301dc1236f105d8a}\label{classGraphicsClient_a8072e2db9374ce12301dc1236f105d8a} 
+\index{GraphicsClient@{GraphicsClient}!sendPlayerInput@{sendPlayerInput}}
+\index{sendPlayerInput@{sendPlayerInput}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{sendPlayerInput()}{sendPlayerInput()}}
+{\footnotesize\ttfamily void Graphics\+Client\+::send\+Player\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Send the player\textquotesingle{}s input to the server. 
+
+This function checks if the player is entering inputs and sends info to the server accordingly. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGraphicsClient_a338f4688e38946f6a7093997058ff0b8}\label{classGraphicsClient_a338f4688e38946f6a7093997058ff0b8} 
+\index{GraphicsClient@{GraphicsClient}!client\_@{client\_}}
+\index{client\_@{client\_}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{client\_}{client\_}}
+{\footnotesize\ttfamily Network\+Manager\& Graphics\+Client\+::client\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The network manager that handles communication with the server. 
+
+\Hypertarget{classGraphicsClient_a4d9c97fbb868410c609bd0d31771b5b3}\label{classGraphicsClient_a4d9c97fbb868410c609bd0d31771b5b3} 
+\index{GraphicsClient@{GraphicsClient}!clientStarted@{clientStarted}}
+\index{clientStarted@{clientStarted}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{clientStarted}{clientStarted}}
+{\footnotesize\ttfamily chrono\+::time\+\_\+point$<$chrono\+::steady\+\_\+clock$>$ Graphics\+Client\+::client\+Started\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The moment of the last message. 
+
+\Hypertarget{classGraphicsClient_ab667d961345c874e680ed6708124e7bd}\label{classGraphicsClient_ab667d961345c874e680ed6708124e7bd} 
+\index{GraphicsClient@{GraphicsClient}!entity\_states@{entity\_states}}
+\index{entity\_states@{entity\_states}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{entity\_states}{entity\_states}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ int64\+\_\+t, std\+::vector$<$Enemy\+Moved\+Response$>$ $>$ $>$ Graphics\+Client\+::entity\+\_\+states\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A vector containing entities states received from the server. 
+
+\Hypertarget{classGraphicsClient_a8e09b6740aedd962c2e739887d32c2b5}\label{classGraphicsClient_a8e09b6740aedd962c2e739887d32c2b5} 
+\index{GraphicsClient@{GraphicsClient}!event@{event}}
+\index{event@{event}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{event}{event}}
+{\footnotesize\ttfamily sf\+::\+Event Graphics\+Client\+::event\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Event for handling window events. 
+
+\Hypertarget{classGraphicsClient_a7d83741bf7356211ad9cdfe077ef99bb}\label{classGraphicsClient_a7d83741bf7356211ad9cdfe077ef99bb} 
+\index{GraphicsClient@{GraphicsClient}!factory@{factory}}
+\index{factory@{factory}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{factory}{factory}}
+{\footnotesize\ttfamily Factory Graphics\+Client\+::factory\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The factory that creates entities and components. 
+
+\Hypertarget{classGraphicsClient_a2aaece593c05e5b80a29002b3a89ccdf}\label{classGraphicsClient_a2aaece593c05e5b80a29002b3a89ccdf} 
+\index{GraphicsClient@{GraphicsClient}!frameClock@{frameClock}}
+\index{frameClock@{frameClock}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{frameClock}{frameClock}}
+{\footnotesize\ttfamily sf\+::\+Clock Graphics\+Client\+::frame\+Clock\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Clock for managing frame time. 
+
+\Hypertarget{classGraphicsClient_a90bafee3a59a5ccc903a512687161dd1}\label{classGraphicsClient_a90bafee3a59a5ccc903a512687161dd1} 
+\index{GraphicsClient@{GraphicsClient}!ids\_assoc@{ids\_assoc}}
+\index{ids\_assoc@{ids\_assoc}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{ids\_assoc}{ids\_assoc}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$size\+\_\+t, size\+\_\+t$>$ Graphics\+Client\+::ids\+\_\+assoc\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Map that associates server entity IDs to client entity IDs. 
+
+\Hypertarget{classGraphicsClient_a565985dc5c22147002b809cfc12cdc9e}\label{classGraphicsClient_a565985dc5c22147002b809cfc12cdc9e} 
+\index{GraphicsClient@{GraphicsClient}!isRunning\_@{isRunning\_}}
+\index{isRunning\_@{isRunning\_}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{isRunning\_}{isRunning\_}}
+{\footnotesize\ttfamily bool Graphics\+Client\+::is\+Running\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGraphicsClient_a10877b784c0b4fe1d84fdcc2e01842f8}\label{classGraphicsClient_a10877b784c0b4fe1d84fdcc2e01842f8} 
+\index{GraphicsClient@{GraphicsClient}!lastmsg@{lastmsg}}
+\index{lastmsg@{lastmsg}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{lastmsg}{lastmsg}}
+{\footnotesize\ttfamily std\+::vector$<$int8\+\_\+t$>$\& Graphics\+Client\+::lastmsg\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The last message received from the server. 
+
+\Hypertarget{classGraphicsClient_a3cbaa27d922cf8e151bffc855e6389c4}\label{classGraphicsClient_a3cbaa27d922cf8e151bffc855e6389c4} 
+\index{GraphicsClient@{GraphicsClient}!levelTimer@{levelTimer}}
+\index{levelTimer@{levelTimer}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{levelTimer}{levelTimer}}
+{\footnotesize\ttfamily double Graphics\+Client\+::level\+Timer = 0.\+0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The timer for the level. 
+
+\Hypertarget{classGraphicsClient_ac1cf0dd4df0444c80ac907b28b0e1282}\label{classGraphicsClient_ac1cf0dd4df0444c80ac907b28b0e1282} 
+\index{GraphicsClient@{GraphicsClient}!mtx@{mtx}}
+\index{mtx@{mtx}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{mtx}{mtx}}
+{\footnotesize\ttfamily std\+::mutex\& Graphics\+Client\+::mtx\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mutex for thread safety. 
+
+\Hypertarget{classGraphicsClient_a47322ff1c3c47979b290d4013527d68e}\label{classGraphicsClient_a47322ff1c3c47979b290d4013527d68e} 
+\index{GraphicsClient@{GraphicsClient}!port\_@{port\_}}
+\index{port\_@{port\_}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{port\_}{port\_}}
+{\footnotesize\ttfamily int Graphics\+Client\+::port\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The port to connect to the server. 
+
+\Hypertarget{classGraphicsClient_afe9a52562fa74fa36e616781db0c47e0}\label{classGraphicsClient_afe9a52562fa74fa36e616781db0c47e0} 
+\index{GraphicsClient@{GraphicsClient}!reg@{reg}}
+\index{reg@{reg}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{reg}{reg}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classregistry}{registry}} Graphics\+Client\+::reg\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The registry that holds all entities and components. 
+
+\Hypertarget{classGraphicsClient_ab058ae2fbaa4efb016273f30ecf5fb33}\label{classGraphicsClient_ab058ae2fbaa4efb016273f30ecf5fb33} 
+\index{GraphicsClient@{GraphicsClient}!state@{state}}
+\index{state@{state}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t}} Graphics\+Client\+::state\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current state of the game. 
+
+\Hypertarget{classGraphicsClient_ad0c99dd6e73ab440866c57f5f7d57729}\label{classGraphicsClient_ad0c99dd6e73ab440866c57f5f7d57729} 
+\index{GraphicsClient@{GraphicsClient}!substate@{substate}}
+\index{substate@{substate}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{substate}{substate}}
+{\footnotesize\ttfamily \mbox{\hyperlink{graphicsClient_8hpp_a7200056c886361c0597814f8db61992e}{substate\+\_\+t}} Graphics\+Client\+::substate\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current substate of the game. 
+
+\Hypertarget{classGraphicsClient_ab59a87180333e9082f3cc949bcbf06c3}\label{classGraphicsClient_ab59a87180333e9082f3cc949bcbf06c3} 
+\index{GraphicsClient@{GraphicsClient}!tickDuration@{tickDuration}}
+\index{tickDuration@{tickDuration}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{tickDuration}{tickDuration}}
+{\footnotesize\ttfamily const std\+::chrono\+::milliseconds Graphics\+Client\+::tick\+Duration = std\+::chrono\+::milliseconds(5)\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGraphicsClient_a1206adaf76b615b60bca77f1646b43c3}\label{classGraphicsClient_a1206adaf76b615b60bca77f1646b43c3} 
+\index{GraphicsClient@{GraphicsClient}!ui\_handler@{ui\_handler}}
+\index{ui\_handler@{ui\_handler}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{ui\_handler}{ui\_handler}}
+{\footnotesize\ttfamily UIHandler Graphics\+Client\+::ui\+\_\+handler\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The UI handler for managing the user interface. 
+
+\Hypertarget{classGraphicsClient_a0acdb2720fdaa79c45a04f7d684cf3af}\label{classGraphicsClient_a0acdb2720fdaa79c45a04f7d684cf3af} 
+\index{GraphicsClient@{GraphicsClient}!win@{win}}
+\index{win@{win}!GraphicsClient@{GraphicsClient}}
+\doxysubsubsection{\texorpdfstring{win}{win}}
+{\footnotesize\ttfamily sf\+::\+Render\+Window Graphics\+Client\+::win\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Window for rendering. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+graphics\+Client/include/\mbox{\hyperlink{graphicsClient_8hpp}{graphics\+Client.\+hpp}}\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+graphics\+Client/src/\mbox{\hyperlink{rtype__graphicsClient_2src_2commands_8cpp}{commands.\+cpp}}\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+graphics\+Client/src/\mbox{\hyperlink{rtype__graphicsClient_2src_2decodeur_8cpp}{decodeur.\+cpp}}\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+graphics\+Client/src/\mbox{\hyperlink{init__graphicsClient_8cpp}{init\+\_\+graphics\+Client.\+cpp}}\end{DoxyCompactItemize}

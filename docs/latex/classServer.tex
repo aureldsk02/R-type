@@ -1,0 +1,545 @@
+\doxysection{Server Class Reference}
+\hypertarget{classServer}{}\label{classServer}\index{Server@{Server}}
+
+
+The server class. Handles the server side of the game. At the start of the game, the server loads the level entities from a configuration file The server holds the simulation of the game with all these entities and teh players. It listens from inputs from the clients and sends the game state to the them on each frame.  
+
+
+
+
+{\ttfamily \#include $<$server.\+hpp$>$}
+
+
+
+Collaboration diagram for Server\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=134pt]{classServer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classServer_aa37d52e1d2f14f8ca96a907d34e71b3f}{Server}} (int p)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classServer}{Server} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classServer_a4b3aa2579cb1c8cd1d069582c14d0fa6}{\texorpdfstring{$\sim$}{\string~}\+Server}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classServer}{Server} object. \end{DoxyCompactList}\item 
+std\+::vector$<$ int8\+\_\+t $>$ \mbox{\hyperlink{classServer_abed355fa2d70faaf6e62d8602f368591}{encode\+Message\+Header}} (const Message\+Header \&pos)
+\begin{DoxyCompactList}\small\item\em Encode the number of entities into a byte buffer. \end{DoxyCompactList}\item 
+std\+::vector$<$ int8\+\_\+t $>$ \mbox{\hyperlink{classServer_a0a21ae22cb0560a554fec4e186583eaa}{encode\+Enemy\+Moved\+Response}} (const Enemy\+Moved\+Response \&pos)
+\begin{DoxyCompactList}\small\item\em Encode an Enemy\+Moved\+Response structure into a byte buffer. \end{DoxyCompactList}\item 
+std\+::vector$<$ int8\+\_\+t $>$ \mbox{\hyperlink{classServer_aa860fb492b5c1dcb27efe0a0ce7e8439}{encode\+Game\+State}} (const Game\+State \&pos)
+\begin{DoxyCompactList}\small\item\em Encode an Game\+State structure into a byte buffer. \end{DoxyCompactList}\item 
+Move\+Response \mbox{\hyperlink{classServer_ac5a491fec7ae16a63d195b4b192f9d48}{decode\+Move\+Response}} (std\+::vector$<$ int8\+\_\+t $>$ \&buffer)
+\begin{DoxyCompactList}\small\item\em Decode a Move\+Response structure from a byte buffer. \end{DoxyCompactList}\item 
+Action\+Response \mbox{\hyperlink{classServer_a268043e1a600716d031d621139d9d3a6}{decode\+Action\+Response}} (std\+::vector$<$ int8\+\_\+t $>$ \&buffer)
+\begin{DoxyCompactList}\small\item\em Decode an Action\+Response structure from a byte buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServer_abb27d30b40a94326e3fd629d3b30b7d5}{run}} ()
+\begin{DoxyCompactList}\small\item\em Run the server application. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServer_a091f49dee581a534a900ba710394427c}{handle\+Win\+Or\+Loss}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{server_8hpp_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t}} \mbox{\hyperlink{classServer_a0597c0ae7c86932fd7a90dfea961b8a8}{state}} = \mbox{\hyperlink{server_8hpp_aa0aafed44fec19806d8f9ad834be1248a5f6aff2efe946ec43f8bad546893b0af}{LEVEL1}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classServer_ae05dff9b30e2b1d627e62629bbbd999a}{load\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Load all information about the level from a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServer_a7ecd22493005346268b3feed09218d20}{initialize\+Game}} (void)
+\begin{DoxyCompactList}\small\item\em Initialize all game related elements. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServer_aee9efcc162e25166da798b5478e62167}{log\+Game\+Entities}} (void)
+\begin{DoxyCompactList}\small\item\em Log all game entities and send their states to clients. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServer_af59936648c727d2b909ebed8d2a0efa9}{receive\+Player\+Input}} (double delta)
+\begin{DoxyCompactList}\small\item\em Receive and process player input from clients. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServer_af56fa596fcd58a1ea62b5a059885f467}{run\+Level}} (double delta)
+\begin{DoxyCompactList}\small\item\em Manage the game level, including spawning entities and processing game logic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServer_aac794315f4a5a23ec5199cc0ba42ac8e}{clear\+Game\+Entities}} ()
+\item 
+void \mbox{\hyperlink{classServer_a619edbff0be7523417ea9c5127ea3451}{initialize\+Players}} (void)
+\begin{DoxyCompactList}\small\item\em This function initializes the players. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServer_ae19e437a73f2df14c0639f66ce40bfc1}{initialize\+Players\+PVP}} (void)
+\begin{DoxyCompactList}\small\item\em This function initializes the players for pvp mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const chrono\+::milliseconds \mbox{\hyperlink{classServer_a389ae4d121cac4af7438cdaf3667d221}{tick\+Duration}} = std\+::chrono\+::milliseconds(50)
+\begin{DoxyCompactList}\small\item\em The Duration of one tick. \end{DoxyCompactList}\item 
+sf\+::\+Render\+Window \mbox{\hyperlink{classServer_a7b0d7713838e463e8c2c34f98c803432}{win}}
+\begin{DoxyCompactList}\small\item\em The window for rendering (if needed) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classServer_a9116b196578c1432fe60bcc63e982fa1}{p\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The port to listen on. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classregistry}{registry}} \mbox{\hyperlink{classServer_af11ba95144ad20ffec36a0b16d46d5c7}{reg}}
+\begin{DoxyCompactList}\small\item\em The registry that holds all entities and components. \end{DoxyCompactList}\item 
+Factory \mbox{\hyperlink{classServer_a4180da696d1023cd7892a1ef9d1b4aa0}{factory}}
+\begin{DoxyCompactList}\small\item\em The factory that creates entities and components. \end{DoxyCompactList}\item 
+Network\+Manager \mbox{\hyperlink{classServer_a127eb331a5e31e14e3897b9f8b58fa21}{server\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The network manager that handles communication with clients. \end{DoxyCompactList}\item 
+std\+::thread \mbox{\hyperlink{classServer_aac9551ed57feec8adb13207e450f919b}{network\+Thread}}
+\begin{DoxyCompactList}\small\item\em Thread for running the network manager. \end{DoxyCompactList}\item 
+std\+::vector$<$ entity\+\_\+info\+\_\+t $>$ \mbox{\hyperlink{classServer_ae4dff7b4e4736ca47c67d0a94899d22a}{entities}}
+\begin{DoxyCompactList}\small\item\em List of all entities and their information in the game. \end{DoxyCompactList}\item 
+std\+::vector$<$ int8\+\_\+t $>$ \mbox{\hyperlink{classServer_a379417d6e9d241dc4e8d5792dc927e3d}{result}}
+\begin{DoxyCompactList}\small\item\em Buffer for storing outgoing messages. \end{DoxyCompactList}\item 
+std\+::mutex \mbox{\hyperlink{classServer_af700fd88dd2b8c20422e440dd480db8c}{mtx}}
+\begin{DoxyCompactList}\small\item\em Mutex for thread safety with the network manager. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ asio\+::ip\+::udp\+::endpoint, std\+::vector$<$ int8\+\_\+t $>$ $>$ $>$ \mbox{\hyperlink{classServer_af3a69df452a40496780d77883b62052d}{messages}}
+\begin{DoxyCompactList}\small\item\em List of all last messages received from clients. \end{DoxyCompactList}\item 
+std\+::map$<$ asio\+::ip\+::udp\+::endpoint, int $>$ \mbox{\hyperlink{classServer_a80329116d8742502672c70d0b4b1c9f8}{all\+\_\+clients}}
+\begin{DoxyCompactList}\small\item\em Map of all connected clients and their player IDs. \end{DoxyCompactList}\item 
+sf\+::\+Event \mbox{\hyperlink{classServer_a54885a69b63baf2e3017681804d3b003}{event}}
+\begin{DoxyCompactList}\small\item\em Event for handling window events. \end{DoxyCompactList}\item 
+sf\+::\+Clock \mbox{\hyperlink{classServer_a109c60f995f2a12eb1a2d7bb8a566558}{frame\+Clock}}
+\begin{DoxyCompactList}\small\item\em Clock for managing frame time. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classServer_afe9e4034cef5bf65a8cbff9911ee4a54}{level\+Timer}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em The current level timer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classServer_aebcb92268532727ecf0b754036f86270}{counter}}
+\begin{DoxyCompactList}\small\item\em Counter used to know how many entities have been sent to the clients. \end{DoxyCompactList}\item 
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::steady\+\_\+clock $>$ \mbox{\hyperlink{classServer_a086c6042b7e4b86bff705bef36d32baa}{game\+Started}}
+\begin{DoxyCompactList}\small\item\em The starting moment of the game. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{classServer_a021ed5f7beac20b4b1f2283360d6fbea}{package\+Id}}
+\begin{DoxyCompactList}\small\item\em Counter used to know how many packages have been sent to the clients. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The server class. Handles the server side of the game. At the start of the game, the server loads the level entities from a configuration file The server holds the simulation of the game with all these entities and teh players. It listens from inputs from the clients and sends the game state to the them on each frame. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classServer_aa37d52e1d2f14f8ca96a907d34e71b3f}\label{classServer_aa37d52e1d2f14f8ca96a907d34e71b3f} 
+\index{Server@{Server}!Server@{Server}}
+\index{Server@{Server}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{Server()}{Server()}}
+{\footnotesize\ttfamily Server\+::\+Server (\begin{DoxyParamCaption}\item[{int}]{p }\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classServer}{Server} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The port to listen on \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classServer_a4b3aa2579cb1c8cd1d069582c14d0fa6}\label{classServer_a4b3aa2579cb1c8cd1d069582c14d0fa6} 
+\index{Server@{Server}!````~Server@{\texorpdfstring{$\sim$}{\string~}Server}}
+\index{````~Server@{\texorpdfstring{$\sim$}{\string~}Server}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Server()}{\string~Server()}}
+{\footnotesize\ttfamily Server\+::\texorpdfstring{$\sim$}{\string~}\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroy the \doxylink{classServer}{Server} object. 
+
+Destroy the \doxylink{classServer}{Server}\+:\+: \doxylink{classServer}{Server} object. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classServer_aac794315f4a5a23ec5199cc0ba42ac8e}\label{classServer_aac794315f4a5a23ec5199cc0ba42ac8e} 
+\index{Server@{Server}!clearGameEntities@{clearGameEntities}}
+\index{clearGameEntities@{clearGameEntities}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{clearGameEntities()}{clearGameEntities()}}
+{\footnotesize\ttfamily void Server\+::clear\+Game\+Entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classServer_a268043e1a600716d031d621139d9d3a6}\label{classServer_a268043e1a600716d031d621139d9d3a6} 
+\index{Server@{Server}!decodeActionResponse@{decodeActionResponse}}
+\index{decodeActionResponse@{decodeActionResponse}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{decodeActionResponse()}{decodeActionResponse()}}
+{\footnotesize\ttfamily Action\+Response Server\+::decode\+Action\+Response (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int8\+\_\+t $>$ \&}]{buffer }\end{DoxyParamCaption})}
+
+
+
+Decode an Action\+Response structure from a byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The byte buffer containing the encoded data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The decoded Action\+Response structure 
+\end{DoxyReturn}
+\Hypertarget{classServer_ac5a491fec7ae16a63d195b4b192f9d48}\label{classServer_ac5a491fec7ae16a63d195b4b192f9d48} 
+\index{Server@{Server}!decodeMoveResponse@{decodeMoveResponse}}
+\index{decodeMoveResponse@{decodeMoveResponse}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{decodeMoveResponse()}{decodeMoveResponse()}}
+{\footnotesize\ttfamily Move\+Response Server\+::decode\+Move\+Response (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int8\+\_\+t $>$ \&}]{buffer }\end{DoxyParamCaption})}
+
+
+
+Decode a Move\+Response structure from a byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The byte buffer containing the encoded data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The decoded Move\+Response structure 
+\end{DoxyReturn}
+\Hypertarget{classServer_a0a21ae22cb0560a554fec4e186583eaa}\label{classServer_a0a21ae22cb0560a554fec4e186583eaa} 
+\index{Server@{Server}!encodeEnemyMovedResponse@{encodeEnemyMovedResponse}}
+\index{encodeEnemyMovedResponse@{encodeEnemyMovedResponse}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{encodeEnemyMovedResponse()}{encodeEnemyMovedResponse()}}
+{\footnotesize\ttfamily std\+::vector$<$ int8\+\_\+t $>$ Server\+::encode\+Enemy\+Moved\+Response (\begin{DoxyParamCaption}\item[{const Enemy\+Moved\+Response \&}]{pos }\end{DoxyParamCaption})}
+
+
+
+Encode an Enemy\+Moved\+Response structure into a byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The Enemy\+Moved\+Response structure to encode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of int8\+\_\+t representing the encoded data 
+\end{DoxyReturn}
+\Hypertarget{classServer_aa860fb492b5c1dcb27efe0a0ce7e8439}\label{classServer_aa860fb492b5c1dcb27efe0a0ce7e8439} 
+\index{Server@{Server}!encodeGameState@{encodeGameState}}
+\index{encodeGameState@{encodeGameState}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{encodeGameState()}{encodeGameState()}}
+{\footnotesize\ttfamily std\+::vector$<$ int8\+\_\+t $>$ Server\+::encode\+Game\+State (\begin{DoxyParamCaption}\item[{const Game\+State \&}]{pos }\end{DoxyParamCaption})}
+
+
+
+Encode an Game\+State structure into a byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The Game\+State structure to encode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of int8\+\_\+t representing the encoded data 
+\end{DoxyReturn}
+\Hypertarget{classServer_abed355fa2d70faaf6e62d8602f368591}\label{classServer_abed355fa2d70faaf6e62d8602f368591} 
+\index{Server@{Server}!encodeMessageHeader@{encodeMessageHeader}}
+\index{encodeMessageHeader@{encodeMessageHeader}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{encodeMessageHeader()}{encodeMessageHeader()}}
+{\footnotesize\ttfamily std\+::vector$<$ int8\+\_\+t $>$ Server\+::encode\+Message\+Header (\begin{DoxyParamCaption}\item[{const Message\+Header \&}]{pos }\end{DoxyParamCaption})}
+
+
+
+Encode the number of entities into a byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The Message\+Header structure to encode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of int8\+\_\+t representing the encoded data 
+\end{DoxyReturn}
+\Hypertarget{classServer_a091f49dee581a534a900ba710394427c}\label{classServer_a091f49dee581a534a900ba710394427c} 
+\index{Server@{Server}!handleWinOrLoss@{handleWinOrLoss}}
+\index{handleWinOrLoss@{handleWinOrLoss}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{handleWinOrLoss()}{handleWinOrLoss()}}
+{\footnotesize\ttfamily void Server\+::handle\+Win\+Or\+Loss (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classServer_a7ecd22493005346268b3feed09218d20}\label{classServer_a7ecd22493005346268b3feed09218d20} 
+\index{Server@{Server}!initializeGame@{initializeGame}}
+\index{initializeGame@{initializeGame}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{initializeGame()}{initializeGame()}}
+{\footnotesize\ttfamily void Server\+::initialize\+Game (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Initialize all game related elements. 
+
+\Hypertarget{classServer_a619edbff0be7523417ea9c5127ea3451}\label{classServer_a619edbff0be7523417ea9c5127ea3451} 
+\index{Server@{Server}!initializePlayers@{initializePlayers}}
+\index{initializePlayers@{initializePlayers}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{initializePlayers()}{initializePlayers()}}
+{\footnotesize\ttfamily void Server\+::initialize\+Players (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+This function initializes the players. 
+
+\Hypertarget{classServer_ae19e437a73f2df14c0639f66ce40bfc1}\label{classServer_ae19e437a73f2df14c0639f66ce40bfc1} 
+\index{Server@{Server}!initializePlayersPVP@{initializePlayersPVP}}
+\index{initializePlayersPVP@{initializePlayersPVP}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{initializePlayersPVP()}{initializePlayersPVP()}}
+{\footnotesize\ttfamily void Server\+::initialize\+Players\+PVP (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+This function initializes the players for pvp mode. 
+
+\Hypertarget{classServer_ae05dff9b30e2b1d627e62629bbbd999a}\label{classServer_ae05dff9b30e2b1d627e62629bbbd999a} 
+\index{Server@{Server}!loadLevel@{loadLevel}}
+\index{loadLevel@{loadLevel}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{loadLevel()}{loadLevel()}}
+{\footnotesize\ttfamily void Server\+::load\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Load all information about the level from a file. 
+
+This function loads a level from a configuration file It stores all the entities of the level in a vector with their spawn time and spawn y position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to the level file\\
+\hline
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classServer_aee9efcc162e25166da798b5478e62167}\label{classServer_aee9efcc162e25166da798b5478e62167} 
+\index{Server@{Server}!logGameEntities@{logGameEntities}}
+\index{logGameEntities@{logGameEntities}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{logGameEntities()}{logGameEntities()}}
+{\footnotesize\ttfamily void Server\+::log\+Game\+Entities (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Log all game entities and send their states to clients. 
+
+This functions send to the clients information about each game entity alive. \Hypertarget{classServer_af59936648c727d2b909ebed8d2a0efa9}\label{classServer_af59936648c727d2b909ebed8d2a0efa9} 
+\index{Server@{Server}!receivePlayerInput@{receivePlayerInput}}
+\index{receivePlayerInput@{receivePlayerInput}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{receivePlayerInput()}{receivePlayerInput()}}
+{\footnotesize\ttfamily void Server\+::receive\+Player\+Input (\begin{DoxyParamCaption}\item[{double}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Receive and process player input from clients. 
+
+This function handles the received players\textquotesingle{} inputs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & The time elapsed since the last frame\\
+\hline
+{\em delta} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classServer_abb27d30b40a94326e3fd629d3b30b7d5}\label{classServer_abb27d30b40a94326e3fd629d3b30b7d5} 
+\index{Server@{Server}!run@{run}}
+\index{run@{run}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Server\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Run the server application. 
+
+\Hypertarget{classServer_af56fa596fcd58a1ea62b5a059885f467}\label{classServer_af56fa596fcd58a1ea62b5a059885f467} 
+\index{Server@{Server}!runLevel@{runLevel}}
+\index{runLevel@{runLevel}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{runLevel()}{runLevel()}}
+{\footnotesize\ttfamily void Server\+::run\+Level (\begin{DoxyParamCaption}\item[{double}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Manage the game level, including spawning entities and processing game logic. 
+
+This function runs the current level It makes sure to spawn new entities if their spawn time has come And calls the receive\+Player\+Input function as well as the log\+Game\+Entities function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & The time elapsed since the last frame\\
+\hline
+{\em delta} & The amount of time elapsed since the last frame \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classServer_a80329116d8742502672c70d0b4b1c9f8}\label{classServer_a80329116d8742502672c70d0b4b1c9f8} 
+\index{Server@{Server}!all\_clients@{all\_clients}}
+\index{all\_clients@{all\_clients}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{all\_clients}{all\_clients}}
+{\footnotesize\ttfamily std\+::map$<$asio\+::ip\+::udp\+::endpoint, int$>$ Server\+::all\+\_\+clients\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Map of all connected clients and their player IDs. 
+
+\Hypertarget{classServer_aebcb92268532727ecf0b754036f86270}\label{classServer_aebcb92268532727ecf0b754036f86270} 
+\index{Server@{Server}!counter@{counter}}
+\index{counter@{counter}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{counter}{counter}}
+{\footnotesize\ttfamily int Server\+::counter\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Counter used to know how many entities have been sent to the clients. 
+
+\Hypertarget{classServer_ae4dff7b4e4736ca47c67d0a94899d22a}\label{classServer_ae4dff7b4e4736ca47c67d0a94899d22a} 
+\index{Server@{Server}!entities@{entities}}
+\index{entities@{entities}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{entities}{entities}}
+{\footnotesize\ttfamily std\+::vector$<$entity\+\_\+info\+\_\+t$>$ Server\+::entities\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+List of all entities and their information in the game. 
+
+\Hypertarget{classServer_a54885a69b63baf2e3017681804d3b003}\label{classServer_a54885a69b63baf2e3017681804d3b003} 
+\index{Server@{Server}!event@{event}}
+\index{event@{event}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{event}{event}}
+{\footnotesize\ttfamily sf\+::\+Event Server\+::event\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Event for handling window events. 
+
+\Hypertarget{classServer_a4180da696d1023cd7892a1ef9d1b4aa0}\label{classServer_a4180da696d1023cd7892a1ef9d1b4aa0} 
+\index{Server@{Server}!factory@{factory}}
+\index{factory@{factory}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{factory}{factory}}
+{\footnotesize\ttfamily Factory Server\+::factory\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The factory that creates entities and components. 
+
+\Hypertarget{classServer_a109c60f995f2a12eb1a2d7bb8a566558}\label{classServer_a109c60f995f2a12eb1a2d7bb8a566558} 
+\index{Server@{Server}!frameClock@{frameClock}}
+\index{frameClock@{frameClock}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{frameClock}{frameClock}}
+{\footnotesize\ttfamily sf\+::\+Clock Server\+::frame\+Clock\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Clock for managing frame time. 
+
+\Hypertarget{classServer_a086c6042b7e4b86bff705bef36d32baa}\label{classServer_a086c6042b7e4b86bff705bef36d32baa} 
+\index{Server@{Server}!gameStarted@{gameStarted}}
+\index{gameStarted@{gameStarted}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{gameStarted}{gameStarted}}
+{\footnotesize\ttfamily std\+::chrono\+::time\+\_\+point$<$std\+::chrono\+::steady\+\_\+clock$>$ Server\+::game\+Started\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The starting moment of the game. 
+
+\Hypertarget{classServer_afe9e4034cef5bf65a8cbff9911ee4a54}\label{classServer_afe9e4034cef5bf65a8cbff9911ee4a54} 
+\index{Server@{Server}!levelTimer@{levelTimer}}
+\index{levelTimer@{levelTimer}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{levelTimer}{levelTimer}}
+{\footnotesize\ttfamily double Server\+::level\+Timer = 0.\+0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current level timer. 
+
+\Hypertarget{classServer_af3a69df452a40496780d77883b62052d}\label{classServer_af3a69df452a40496780d77883b62052d} 
+\index{Server@{Server}!messages@{messages}}
+\index{messages@{messages}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{messages}{messages}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::pair$<$asio\+::ip\+::udp\+::endpoint, std\+::vector$<$int8\+\_\+t$>$ $>$ $>$ Server\+::messages\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+List of all last messages received from clients. 
+
+\Hypertarget{classServer_af700fd88dd2b8c20422e440dd480db8c}\label{classServer_af700fd88dd2b8c20422e440dd480db8c} 
+\index{Server@{Server}!mtx@{mtx}}
+\index{mtx@{mtx}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{mtx}{mtx}}
+{\footnotesize\ttfamily std\+::mutex Server\+::mtx\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mutex for thread safety with the network manager. 
+
+\Hypertarget{classServer_aac9551ed57feec8adb13207e450f919b}\label{classServer_aac9551ed57feec8adb13207e450f919b} 
+\index{Server@{Server}!networkThread@{networkThread}}
+\index{networkThread@{networkThread}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{networkThread}{networkThread}}
+{\footnotesize\ttfamily std\+::thread Server\+::network\+Thread\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Thread for running the network manager. 
+
+\Hypertarget{classServer_a9116b196578c1432fe60bcc63e982fa1}\label{classServer_a9116b196578c1432fe60bcc63e982fa1} 
+\index{Server@{Server}!p\_@{p\_}}
+\index{p\_@{p\_}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{p\_}{p\_}}
+{\footnotesize\ttfamily int Server\+::p\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The port to listen on. 
+
+\Hypertarget{classServer_a021ed5f7beac20b4b1f2283360d6fbea}\label{classServer_a021ed5f7beac20b4b1f2283360d6fbea} 
+\index{Server@{Server}!packageId@{packageId}}
+\index{packageId@{packageId}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{packageId}{packageId}}
+{\footnotesize\ttfamily uint32\+\_\+t Server\+::package\+Id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Counter used to know how many packages have been sent to the clients. 
+
+\Hypertarget{classServer_af11ba95144ad20ffec36a0b16d46d5c7}\label{classServer_af11ba95144ad20ffec36a0b16d46d5c7} 
+\index{Server@{Server}!reg@{reg}}
+\index{reg@{reg}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{reg}{reg}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classregistry}{registry}} Server\+::reg\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The registry that holds all entities and components. 
+
+\Hypertarget{classServer_a379417d6e9d241dc4e8d5792dc927e3d}\label{classServer_a379417d6e9d241dc4e8d5792dc927e3d} 
+\index{Server@{Server}!result@{result}}
+\index{result@{result}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{result}{result}}
+{\footnotesize\ttfamily std\+::vector$<$int8\+\_\+t$>$ Server\+::result\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buffer for storing outgoing messages. 
+
+\Hypertarget{classServer_a127eb331a5e31e14e3897b9f8b58fa21}\label{classServer_a127eb331a5e31e14e3897b9f8b58fa21} 
+\index{Server@{Server}!server\_@{server\_}}
+\index{server\_@{server\_}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{server\_}{server\_}}
+{\footnotesize\ttfamily Network\+Manager Server\+::server\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The network manager that handles communication with clients. 
+
+\Hypertarget{classServer_a0597c0ae7c86932fd7a90dfea961b8a8}\label{classServer_a0597c0ae7c86932fd7a90dfea961b8a8} 
+\index{Server@{Server}!state@{state}}
+\index{state@{state}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{server_8hpp_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t}} Server\+::state = \mbox{\hyperlink{server_8hpp_aa0aafed44fec19806d8f9ad834be1248a5f6aff2efe946ec43f8bad546893b0af}{LEVEL1}}}
+
+\Hypertarget{classServer_a389ae4d121cac4af7438cdaf3667d221}\label{classServer_a389ae4d121cac4af7438cdaf3667d221} 
+\index{Server@{Server}!tickDuration@{tickDuration}}
+\index{tickDuration@{tickDuration}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{tickDuration}{tickDuration}}
+{\footnotesize\ttfamily const chrono\+::milliseconds Server\+::tick\+Duration = std\+::chrono\+::milliseconds(50)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Duration of one tick. 
+
+\Hypertarget{classServer_a7b0d7713838e463e8c2c34f98c803432}\label{classServer_a7b0d7713838e463e8c2c34f98c803432} 
+\index{Server@{Server}!win@{win}}
+\index{win@{win}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{win}{win}}
+{\footnotesize\ttfamily sf\+::\+Render\+Window Server\+::win\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The window for rendering (if needed) 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+server/include/\mbox{\hyperlink{server_8hpp}{server.\+hpp}}\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+server/src/\mbox{\hyperlink{rtype__server_2src_2commands_8cpp}{commands.\+cpp}}\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+server/src/\mbox{\hyperlink{rtype__server_2src_2decodeur_8cpp}{decodeur.\+cpp}}\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+server/src/\mbox{\hyperlink{init__server_8cpp}{init\+\_\+server.\+cpp}}\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+server/src/\mbox{\hyperlink{level__handling_8cpp}{level\+\_\+handling.\+cpp}}\end{DoxyCompactItemize}

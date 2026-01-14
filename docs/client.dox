@@ -1,0 +1,98 @@
+/**
+ * \page client_page R-TYPE Client
+ *
+ * This page details how the client works.
+ *
+ * @section global_infos Global Explanation
+ * Since the real computings, simulations, updates happen
+ * in the server's registry, the client is then a simple displayer
+ * of the informations sent by the client.
+ * The client only listens for the game state from the server
+ * to display it. It also listens for player inputs and notifies the server
+ * about them.
+ *
+ * @section game_state_sec Game State Handling
+ * On each frame, the client looks up in its buffer to recuperate all
+ * the entities informations sent by the server.
+ * This vector of entities informations is considered as the new state.
+ * The client the compares the new state with the old one.
+ * If an entity is present in the old state as well as in the new one,
+ * we just update the position.
+ * If an entity is present only in the new state, it then needs to be created.
+ * And if an entity is only present in the old state, it needs to be destroyed.
+ * At the same time, the client listens for player key inputs. If
+ * an input is detected, the player sends the info to the
+ * server which will update the game state accordingly.
+ * See more details in @ref init_client.cpp
+ *
+ * @section network_details_sec Network Details
+ * The client uses a `NetworkManager` instance to communicate with the server.
+ * This communication is done over **UDP** using the **ASIO** library, which
+ * provides asynchronous networking capabilities.
+ *
+ * When the client starts, it creates a `NetworkManager` object by providing:
+ * - the **port** on which to listen for incoming packets*,
+ * - the **server address** on with it will connect,
+ * - a reference to a shared **message buffer** (`lastmsg`) and a **mutex**.
+ *
+ * ```cpp
+ * Client::Client(int port, std::string address, registry& reg)
+ *     : port_(port),
+ *       client_(port, address, std::ref(lastmsg), std::ref(mtx)),
+ *       _reg(reg)
+ * {
+ *     load_client_textures();
+ *     initGame();
+ * }
+ * ```
+ *
+ * The constructor of `NetworkManager` immediately calls
+ * `receive_from_server()`, which starts an asynchronous loop that listens
+ * for incoming data from the server.
+ *
+ * The client constantly listens for messages from the server through:
+ *
+ * ```cpp
+ * void NetworkManager::receive_from_server();
+ * ```
+ *
+ * Each time data is received, it is written into the `lastmsg` buffer
+ * inside a mutex-locked scope to ensure thread safety.
+ * This buffer will later be parsed by the game logic to reconstruct
+ * the current state of all entities.
+ *
+ * The asynchronous call automatically restarts itself after each reception
+ * as long as the client is running (`isrunning == true`).
+ *
+ * To send information to the server (for example, when a player presses a key),
+ * the client uses:
+ *
+ * ```cpp
+ * void NetworkManager::send_to_server(const std::vector<int8_t>& msg, size_t size);
+ * ```
+ *
+ * This method sends a UDP packet to the server’s endpoint.
+ * The data structure is simple — it's a `std::vector<int8_t>`
+ *
+ * The sending is also **asynchronous**, meaning the game loop never blocks
+ * on network operations. The ASIO context runs in a dedicated thread:
+ *
+ * ```cpp
+ * std::thread t([&c]() { c.run(); });
+ * ```
+ *
+ * The client uses a **multi-threaded** model:
+ * - The main thread handles the SFML window, input events, and rendering.
+ * - The ASIO thread handles all network I/O operations.
+ *
+ * These two threads communicate through shared buffers
+ * (`lastmsg`) protected by a `std::mutex` to avoid bad utilisation.
+ *
+ * - Communication protocol: **UDP**
+ * - Network library: **ASIO (Boost.Asio-like)**
+ * - Sending: asynchronous, non-blocking
+ * - Receiving: asynchronous loop
+ * - Data format: `std::vector<int8_t>`
+ * - Synchronization: `std::mutex` around message buffers
+ *
+ */

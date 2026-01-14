@@ -1,0 +1,197 @@
+\doxysection{Game\+Settings Class Reference}
+\hypertarget{classGameSettings}{}\label{classGameSettings}\index{GameSettings@{GameSettings}}
+
+
+{\ttfamily \#include $<$Game\+Settings.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{Game\+Mode}} \{ \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11a1e23852820b9154316c7c06e2b7ba051}{NORMAL}}
+, \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11aac340782e01cb82b5f2442b775992939}{PVP}}
+, \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11a72baef04098f035e8a320b03ad197818}{CUSTOM}}
+ \}
+\item 
+enum class \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}} \{ \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180a6e5affbf5c08fef0e28c094856f94627}{EASY}}
+, \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180ac87f3be66ffc3c0d4249f1c2cc5f3cce}{MEDIUM}}
+, \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180a65516a42c1fe0ff17bdfe1c342f99a92}{DIFFICULT}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameSettings_ad77d3b46a7582a10dccf930dcb936644}{Game\+Settings}} (\mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{Game\+Mode}} mode=\mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11a1e23852820b9154316c7c06e2b7ba051}{Game\+Mode\+::\+NORMAL}}, \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}} difficulty=\mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180a6e5affbf5c08fef0e28c094856f94627}{Difficulty\+::\+EASY}}, const std\+::string \&file\+Path="{}"{})
+\item 
+\mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{Game\+Mode}} \mbox{\hyperlink{classGameSettings_a7ace2608a675e43fc540a9d1aac44ef3}{get\+Mode}} () const
+\item 
+\mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}} \mbox{\hyperlink{classGameSettings_a81c3db39e440cd96ec235d8d1db48695}{get\+Difficulty}} () const
+\item 
+const std\+::string \& \mbox{\hyperlink{classGameSettings_a2122040b29a33e9b1628e5998841f9d3}{get\+File\+Path}} () const
+\item 
+void \mbox{\hyperlink{classGameSettings_a01fae412cb4b4c8793bd33ccbc4aee00}{set\+Mode}} (\mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{Game\+Mode}} mode)
+\item 
+void \mbox{\hyperlink{classGameSettings_a08a79617e4344549147d73eedf2589cb}{set\+Difficulty}} (\mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}} diff)
+\item 
+void \mbox{\hyperlink{classGameSettings_aa54e1ecf0e56e213b8685b666ec52e5b}{set\+File\+Path}} (const std\+::string \&path)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{Game\+Mode}} \mbox{\hyperlink{classGameSettings_a7eb2b3fa246adf26123a501064bbfea2}{mode\+From\+String}} (const std\+::string \&str)
+\item 
+static \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}} \mbox{\hyperlink{classGameSettings_a072a878710516f8041a86997d20967ec}{difficulty\+From\+String}} (const std\+::string \&str)
+\item 
+static std\+::string \mbox{\hyperlink{classGameSettings_aa299fb1150118b34c5a0c9633176a668}{mode\+To\+String}} (\mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{Game\+Mode}} mode)
+\item 
+static std\+::string \mbox{\hyperlink{classGameSettings_a10e8e369b2ec165bdc6dececc41aa5aa}{difficulty\+To\+String}} (\mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}} diff)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{Game\+Mode}} \mbox{\hyperlink{classGameSettings_a16784b16697920d8abfc5ebde4195e6c}{\+\_\+mode}}
+\item 
+\mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}} \mbox{\hyperlink{classGameSettings_ab51f8eded4d7c0b811dc55da2d555a5a}{\+\_\+difficulty}}
+\item 
+std\+::string \mbox{\hyperlink{classGameSettings_a1ce6a937a517047f52e3fa1051b18fde}{\+\_\+file\+Path}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}\label{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180} 
+\index{GameSettings@{GameSettings}!Difficulty@{Difficulty}}
+\index{Difficulty@{Difficulty}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{Difficulty}{Difficulty}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Game\+Settings\+::\+Difficulty}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EASY@{EASY}!GameSettings@{GameSettings}}\index{GameSettings@{GameSettings}!EASY@{EASY}}}\Hypertarget{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180a6e5affbf5c08fef0e28c094856f94627}\label{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180a6e5affbf5c08fef0e28c094856f94627} 
+EASY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MEDIUM@{MEDIUM}!GameSettings@{GameSettings}}\index{GameSettings@{GameSettings}!MEDIUM@{MEDIUM}}}\Hypertarget{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180ac87f3be66ffc3c0d4249f1c2cc5f3cce}\label{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180ac87f3be66ffc3c0d4249f1c2cc5f3cce} 
+MEDIUM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIFFICULT@{DIFFICULT}!GameSettings@{GameSettings}}\index{GameSettings@{GameSettings}!DIFFICULT@{DIFFICULT}}}\Hypertarget{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180a65516a42c1fe0ff17bdfe1c342f99a92}\label{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180a65516a42c1fe0ff17bdfe1c342f99a92} 
+DIFFICULT&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}\label{classGameSettings_abd81557c9320b8dfa70f66a42396cf11} 
+\index{GameSettings@{GameSettings}!GameMode@{GameMode}}
+\index{GameMode@{GameMode}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{GameMode}{GameMode}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{Game\+Settings\+::\+Game\+Mode}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NORMAL@{NORMAL}!GameSettings@{GameSettings}}\index{GameSettings@{GameSettings}!NORMAL@{NORMAL}}}\Hypertarget{classGameSettings_abd81557c9320b8dfa70f66a42396cf11a1e23852820b9154316c7c06e2b7ba051}\label{classGameSettings_abd81557c9320b8dfa70f66a42396cf11a1e23852820b9154316c7c06e2b7ba051} 
+NORMAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PVP@{PVP}!GameSettings@{GameSettings}}\index{GameSettings@{GameSettings}!PVP@{PVP}}}\Hypertarget{classGameSettings_abd81557c9320b8dfa70f66a42396cf11aac340782e01cb82b5f2442b775992939}\label{classGameSettings_abd81557c9320b8dfa70f66a42396cf11aac340782e01cb82b5f2442b775992939} 
+PVP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSTOM@{CUSTOM}!GameSettings@{GameSettings}}\index{GameSettings@{GameSettings}!CUSTOM@{CUSTOM}}}\Hypertarget{classGameSettings_abd81557c9320b8dfa70f66a42396cf11a72baef04098f035e8a320b03ad197818}\label{classGameSettings_abd81557c9320b8dfa70f66a42396cf11a72baef04098f035e8a320b03ad197818} 
+CUSTOM&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGameSettings_ad77d3b46a7582a10dccf930dcb936644}\label{classGameSettings_ad77d3b46a7582a10dccf930dcb936644} 
+\index{GameSettings@{GameSettings}!GameSettings@{GameSettings}}
+\index{GameSettings@{GameSettings}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{GameSettings()}{GameSettings()}}
+{\footnotesize\ttfamily Game\+Settings\+::\+Game\+Settings (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{Game\+Mode}}}]{mode = {\ttfamily \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11a1e23852820b9154316c7c06e2b7ba051}{Game\+Mode\+::\+NORMAL}}},  }\item[{\mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}}}]{difficulty = {\ttfamily \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180a6e5affbf5c08fef0e28c094856f94627}{Difficulty\+::\+EASY}}},  }\item[{const std\+::string \&}]{file\+Path = {\ttfamily "{}"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGameSettings_a072a878710516f8041a86997d20967ec}\label{classGameSettings_a072a878710516f8041a86997d20967ec} 
+\index{GameSettings@{GameSettings}!difficultyFromString@{difficultyFromString}}
+\index{difficultyFromString@{difficultyFromString}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{difficultyFromString()}{difficultyFromString()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}} Game\+Settings\+::difficulty\+From\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classGameSettings_a10e8e369b2ec165bdc6dececc41aa5aa}\label{classGameSettings_a10e8e369b2ec165bdc6dececc41aa5aa} 
+\index{GameSettings@{GameSettings}!difficultyToString@{difficultyToString}}
+\index{difficultyToString@{difficultyToString}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{difficultyToString()}{difficultyToString()}}
+{\footnotesize\ttfamily static std\+::string Game\+Settings\+::difficulty\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}}}]{diff }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classGameSettings_a81c3db39e440cd96ec235d8d1db48695}\label{classGameSettings_a81c3db39e440cd96ec235d8d1db48695} 
+\index{GameSettings@{GameSettings}!getDifficulty@{getDifficulty}}
+\index{getDifficulty@{getDifficulty}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{getDifficulty()}{getDifficulty()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}} Game\+Settings\+::get\+Difficulty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classGameSettings_a2122040b29a33e9b1628e5998841f9d3}\label{classGameSettings_a2122040b29a33e9b1628e5998841f9d3} 
+\index{GameSettings@{GameSettings}!getFilePath@{getFilePath}}
+\index{getFilePath@{getFilePath}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{getFilePath()}{getFilePath()}}
+{\footnotesize\ttfamily const std\+::string \& Game\+Settings\+::get\+File\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classGameSettings_a7ace2608a675e43fc540a9d1aac44ef3}\label{classGameSettings_a7ace2608a675e43fc540a9d1aac44ef3} 
+\index{GameSettings@{GameSettings}!getMode@{getMode}}
+\index{getMode@{getMode}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{getMode()}{getMode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{Game\+Mode}} Game\+Settings\+::get\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classGameSettings_a7eb2b3fa246adf26123a501064bbfea2}\label{classGameSettings_a7eb2b3fa246adf26123a501064bbfea2} 
+\index{GameSettings@{GameSettings}!modeFromString@{modeFromString}}
+\index{modeFromString@{modeFromString}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{modeFromString()}{modeFromString()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{Game\+Mode}} Game\+Settings\+::mode\+From\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classGameSettings_aa299fb1150118b34c5a0c9633176a668}\label{classGameSettings_aa299fb1150118b34c5a0c9633176a668} 
+\index{GameSettings@{GameSettings}!modeToString@{modeToString}}
+\index{modeToString@{modeToString}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{modeToString()}{modeToString()}}
+{\footnotesize\ttfamily static std\+::string Game\+Settings\+::mode\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{Game\+Mode}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classGameSettings_a08a79617e4344549147d73eedf2589cb}\label{classGameSettings_a08a79617e4344549147d73eedf2589cb} 
+\index{GameSettings@{GameSettings}!setDifficulty@{setDifficulty}}
+\index{setDifficulty@{setDifficulty}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{setDifficulty()}{setDifficulty()}}
+{\footnotesize\ttfamily void Game\+Settings\+::set\+Difficulty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}}}]{diff }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classGameSettings_aa54e1ecf0e56e213b8685b666ec52e5b}\label{classGameSettings_aa54e1ecf0e56e213b8685b666ec52e5b} 
+\index{GameSettings@{GameSettings}!setFilePath@{setFilePath}}
+\index{setFilePath@{setFilePath}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{setFilePath()}{setFilePath()}}
+{\footnotesize\ttfamily void Game\+Settings\+::set\+File\+Path (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classGameSettings_a01fae412cb4b4c8793bd33ccbc4aee00}\label{classGameSettings_a01fae412cb4b4c8793bd33ccbc4aee00} 
+\index{GameSettings@{GameSettings}!setMode@{setMode}}
+\index{setMode@{setMode}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{setMode()}{setMode()}}
+{\footnotesize\ttfamily void Game\+Settings\+::set\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{Game\+Mode}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGameSettings_ab51f8eded4d7c0b811dc55da2d555a5a}\label{classGameSettings_ab51f8eded4d7c0b811dc55da2d555a5a} 
+\index{GameSettings@{GameSettings}!\_difficulty@{\_difficulty}}
+\index{\_difficulty@{\_difficulty}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{\_difficulty}{\_difficulty}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}} Game\+Settings\+::\+\_\+difficulty\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameSettings_a1ce6a937a517047f52e3fa1051b18fde}\label{classGameSettings_a1ce6a937a517047f52e3fa1051b18fde} 
+\index{GameSettings@{GameSettings}!\_filePath@{\_filePath}}
+\index{\_filePath@{\_filePath}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{\_filePath}{\_filePath}}
+{\footnotesize\ttfamily std\+::string Game\+Settings\+::\+\_\+file\+Path\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameSettings_a16784b16697920d8abfc5ebde4195e6c}\label{classGameSettings_a16784b16697920d8abfc5ebde4195e6c} 
+\index{GameSettings@{GameSettings}!\_mode@{\_mode}}
+\index{\_mode@{\_mode}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{\_mode}{\_mode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{Game\+Mode}} Game\+Settings\+::\+\_\+mode\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+game\+Instance/include/\mbox{\hyperlink{GameSettings_8hpp}{Game\+Settings.\+hpp}}\end{DoxyCompactItemize}

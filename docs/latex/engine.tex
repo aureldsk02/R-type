@@ -1,0 +1,237 @@
+\chapter{R-\/\+TYPE\textquotesingle{}s Game Engine}
+\hypertarget{engine}{}\label{engine}\index{R-\/TYPE\textquotesingle{}s Game Engine@{R-\/TYPE\textquotesingle{}s Game Engine}}
+This page details how the game engine of this project works.\hypertarget{engine_details_infos}{}\doxysection{\texorpdfstring{Details}{Details}}\label{engine_details_infos}
+The R-\/\+TYPE game engine is a sparse ECS (Entity Component System). It avoids inheritance, and focuses on composition. Entities are represented as only ids, to which components will be attached. This is done by only storing the components in tables, where the index of a row corresponds to the id of an enntity. For example, let\textquotesingle{}s consider 2 entities, E1 and E2 of id respectively of id 1 and 2, and let\textquotesingle{}s say E1 has a position component, but E2 does not. This means that in the position components\textquotesingle{} table, at the row 1 (index 1), there will be the component position associated with E1. On the other hand, at the row 2 (index 2), there will be nothing. This is how our sparce ECS works.
+
+Now what is a component ? A component is just a piece of information. For example the position component can just be a x and y. Or a drawable component can be a sprite.
+
+The presence or absence of a component determines how their entities will evolve. This is where the systems get in the story. The systems are just functions that will run every frame to update the state of the components. For example the movement system will go through each entity id (row indexes) And check if the current index has a position component AND a velocity component If both exist, it adds the velocity to the position, making the entity move. Otherwise, it does nothing.
+
+You now have an idea of how the engine works. to make a game, all you have to do is create entities, and attach components to them. Then you let the systems update them in the simulation.\hypertarget{engine_engine_tutorial}{}\doxysection{\texorpdfstring{A simple tutorial on the engine}{A simple tutorial on the engine}}\label{engine_engine_tutorial}
+The engine is contained in the registry class. It stores the components, the entities, the systems and provides methods to manage them.
+
+The project uses various components, from simple position components to logic components (equivalent to scripts). You can see their details in \doxylink{components_8hpp}{components.\+hpp}
+
+It also uses pretty straightforward systems to update these components, as you can see in \doxylink{systems_8hpp}{systems.\+hpp}\hypertarget{engine_autotoc_md18}{}\doxysubsection{\texorpdfstring{}{}}\label{engine_autotoc_md18}
+Let\textquotesingle{}s create a simple program that\+:
+\begin{DoxyItemize}
+\item Opens a window
+\item Spawns a player entity
+\item Displays its sprite
+\item Lets us move it using the keyboard
+\end{DoxyItemize}\hypertarget{engine_autotoc_md19}{}\doxysubsubsection{\texorpdfstring{1. Initialize the Engine}{1. Initialize the Engine}}\label{engine_autotoc_md19}
+Include the required headers\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{registry_8hpp}{registry.hpp}}"{}}}
+
+\end{DoxyCode}
+
+
+Then create a registry instance and a window (for example using SFML)\+: The engine is divided into subststems \+: Physics, Movement, Rendering, Logic, and Control You need to toggle the systems you need using the toggle functions of the registry.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ sf::RenderWindow\ window(sf::VideoMode(800,\ 600),\ \textcolor{stringliteral}{"{}R-\/TYPE\ ECS\ Demo"{}});}
+\DoxyCodeLine{\ \ \ \ Registry\ reg(window);}
+\DoxyCodeLine{\ \ \ \ reg.toggleMovement();}
+\DoxyCodeLine{\ \ \ \ reg.toggleRendering();}
+\DoxyCodeLine{\ \ \ \ reg.toggleControl();}
+
+\end{DoxyCode}
+ You just created a registry with a window and toggled the necessary subsystems. The engine then knows it needs to activate the rendering systems and its affiliate components. Don\textquotesingle{}t worry, basic components and systems are allready registered by default. Now, you can start creating an entity\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Create\ an\ entity}}
+\DoxyCodeLine{\mbox{\hyperlink{classentity}{entity}}\ player\ =\ reg.spawn\_entity();}
+
+\end{DoxyCode}
+
+
+You just created an entity — a simple ID that will hold various components. Now let\textquotesingle{}s attach these components one by one to make it an actual {\bfseries{player}}.
+
+\DoxyHorRuler{0}
+ \hypertarget{engine_autotoc_md21}{}\doxysubsubsection{\texorpdfstring{2. Add the Components}{2. Add the Components}}\label{engine_autotoc_md21}
+First, let\textquotesingle{}s add a {\bfseries{position}} component, which determines where the player is on screen.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{reg.add\_component<\mbox{\hyperlink{structcomponent_1_1position__s}{component::position}}>(player,\ \{100.f,\ 300.f\});}
+
+\end{DoxyCode}
+
+
+This sets the initial position of the player at coordinates {\ttfamily (100, 300)}.
+
+\DoxyHorRuler{0}
+
+
+Next, we add a {\bfseries{velocity}} component, which defines how fast the entity moves each frame\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ \&vel\ =\ reg.add\_component<\mbox{\hyperlink{structcomponent_1_1velocity__s}{component::velocity}}>(player,\ \{0.f,\ 0.f\});}
+
+\end{DoxyCode}
+
+
+At first, its velocity is zero — it will only move once we apply input through the control system. We keep a reference to this newly created component because we might need to make changes on it on the future, to handle some events.
+
+\DoxyHorRuler{0}
+
+
+Now we add a {\bfseries{controllable}} component. ~\newline
+ This is a simple {\itshape marker component} that just tells the engine\+: \begin{quote}
+“\+This entity can be controlled by the player.\+” When the engine will detect input, the comtrollable component will be updated. That’s why we keep a reference to this newly created component. We will later need to check its value to make the player move \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ \&con\ =\ reg.add\_component<\mbox{\hyperlink{structcomponent_1_1controllable__s}{component::controllable}}>(player,\ \mbox{\hyperlink{namespacecomponent_ac85f4762db6e1c119b13fedc4f9c157c}{component::controllable}}());}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+Finally, let\textquotesingle{}s give the entity a {\bfseries{drawable}} component, so it can actually be rendered. The drawable typically holds an {\ttfamily sf\+::\+Sprite} and a texture reference\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ \&player\_sprite\ =\ reg.add\_component<\mbox{\hyperlink{structcomponent_1_1drawable__s}{component::drawable}}>(player);}
+\DoxyCodeLine{ResourceManager::instance().load(\textcolor{stringliteral}{"{}path/to/your/texture.png"{}},\ \textcolor{stringliteral}{"{}player1"{}},\ \mbox{\hyperlink{ResourceManager_8hpp_a509a729cba5db28cddc3c2ec18d0d83aa3f07a311da6e3003d3922d665098da2d}{TEXTURE}});}
+\DoxyCodeLine{player\_sprite.\mbox{\hyperlink{structcomponent_1_1drawable__s_a7ee88f7aa48fd311461240b86f0db87a}{setTextureFromName}}(\textcolor{stringliteral}{"{}player1"{}});}
+
+\end{DoxyCode}
+
+
+The {\ttfamily set\+Texture\+From\+Name("{}player1"{})} is a custom helper that loads a texture previously registered in your asset manager. To register a texture in the resource manager, see \doxylink{ResourceManager_8hpp}{Resource\+Manager.\+hpp}. {\ttfamily Resource\+Manager\+::instance().load("{}path/to/your/texture.\+png"{}, TEXTURE)} does just that
+
+\DoxyHorRuler{0}
+
+
+After these steps, you have a complete entity\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classentity}{entity}}\ player\ =\ reg.spawn\_entity();}
+\DoxyCodeLine{reg.add\_component<\mbox{\hyperlink{structcomponent_1_1position__s}{component::position}}>(player,\ \{100.f,\ 300.f\});}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ \&vel\ =\ reg.add\_component<\mbox{\hyperlink{structcomponent_1_1velocity__s}{component::velocity}}>(player,\ \{0.f,\ 0.f\});}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ \&con\ =\ reg.add\_component<\mbox{\hyperlink{structcomponent_1_1controllable__s}{component::controllable}}>(player,\ \mbox{\hyperlink{namespacecomponent_ac85f4762db6e1c119b13fedc4f9c157c}{component::controllable}}());}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ \&sprite\ =\ reg.add\_component<\mbox{\hyperlink{structcomponent_1_1drawable__s}{component::drawable}}>(player);}
+\DoxyCodeLine{ResourceManager::instance().load(\textcolor{stringliteral}{"{}path/to/your/texture.png"{}},\ \mbox{\hyperlink{ResourceManager_8hpp_a509a729cba5db28cddc3c2ec18d0d83aa3f07a311da6e3003d3922d665098da2d}{TEXTURE}});}
+\DoxyCodeLine{sprite.setTextureFromName(\textcolor{stringliteral}{"{}player1"{}});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{engine_autotoc_md27}{}\doxysubsubsection{\texorpdfstring{3. Running the Game Loop}{3. Running the Game Loop}}\label{engine_autotoc_md27}
+Now we can add the main loop, which updates all the systems every frame. The registry automatically keeps track of all systems related to the components you added (movement, control, draw, etc.).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Main\ loop}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ (window.isOpen())\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ sf::Event\ event;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (window.pollEvent(event))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (event.type\ ==\ sf::Event::Closed)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ window.close();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Run\ all\ active\ systems\ (movement,\ control,\ render,\ etc.)}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ reg.run\_systems();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+That’s it! 🚀 ~\newline
+ When you run this code, player sprite appears at position {\ttfamily (100, 300)}. But you can\textquotesingle{}t move your player.
+
+This is because the controllable component is updated but you did not specify how to handle the inputs. There are two ways to do that.
+
+First, you can write code directly in the game loop to check the controllable values and act accordingly\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Main\ loop}}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (window.isOpen())\ \{}
+\DoxyCodeLine{\ \ \ \ sf::Event\ event;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ (window.pollEvent(event))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (event.type\ ==\ sf::Event::Closed)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ window.close();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Run\ all\ active\ systems\ (movement,\ control,\ render,\ etc.)}}
+\DoxyCodeLine{\ \ \ \ reg.run\_systems();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Update\ the\ velocity\ based\ on\ the\ pressed\ inputs}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (con.left)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ vel.vx\ =\ -\/100;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (con.right)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ vel.vx\ =\ 100;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (con.up)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ vel.vy\ =\ -\/100;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (con.down)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ vel.vy\ =\ 100;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ The code you just added checks the pressed input to update the velocity of the player accordingly. This is why you will sometimes need to keep a reference to the components you create.
+
+Run the game again and your player should be moving smoothly.
+
+The other way of writing such logic behaviour is to use the logic component. A logic component is just a function considered as a component, attached to an entity to tell it what to do, like we just did. It is run on each frame and acts as an update function.
+
+More infos on that in \doxylink{components_8hpp}{components.\+hpp}
+
+\DoxyHorRuler{0}
+ \hypertarget{engine_autotoc_md29}{}\doxysubsubsection{\texorpdfstring{4. Behind the Scenes}{4. Behind the Scenes}}\label{engine_autotoc_md29}
+Here’s what happens internally\+:
+
+
+\begin{DoxyItemize}
+\item The {\bfseries{control system}} detects pressed keys.
+\item Your code updates the velocity based on the controllable infos.
+\item The {\bfseries{movement system}} reads the velocity and updates the position accordingly.
+\item The {\bfseries{render system}} reads the drawable and position components to draw the sprite in the correct location.
+\end{DoxyItemize}
+
+Each system only cares about the data it needs — that’s the power of ECS.
+
+\DoxyHorRuler{0}
+ \hypertarget{engine_autotoc_md31}{}\doxysubsubsection{\texorpdfstring{5. Next Steps}{5. Next Steps}}\label{engine_autotoc_md31}
+From here, you can extend your engine by adding\+:
+\begin{DoxyItemize}
+\item A {\bfseries{hurtbox}} component for collision and health management
+\item A {\bfseries{projectile}} component for shooting
+\item A {\bfseries{logic}} component to attach scripted behaviors
+\item A {\bfseries{network\+\_\+id}} component for multiplayer synchronization
+\end{DoxyItemize}
+
+Example of adding health and hitbox\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ \&\mbox{\hyperlink{namespacecomponent_a00cb098de199eed73e38d77f78adaed1}{hurtbox}}\ =\ reg.add\_component<\mbox{\hyperlink{structcomponent_1_1hurtbox__s}{component::hurtbox}}>(player);}
+\DoxyCodeLine{\mbox{\hyperlink{namespacecomponent_a00cb098de199eed73e38d77f78adaed1}{hurtbox}}.\mbox{\hyperlink{structcomponent_1_1hurtbox__s_aba96c6a60940bf664b287bdb06901f0d}{health}}\ =\ 3;}
+\DoxyCodeLine{\mbox{\hyperlink{namespacecomponent_a00cb098de199eed73e38d77f78adaed1}{hurtbox}}.\mbox{\hyperlink{structcomponent_1_1hurtbox__s_a7731a2e82df13ecc8e0b444f83eebd07}{width}}\ =\ 32;}
+\DoxyCodeLine{\mbox{\hyperlink{namespacecomponent_a00cb098de199eed73e38d77f78adaed1}{hurtbox}}.\mbox{\hyperlink{structcomponent_1_1hurtbox__s_aefdfca717ae4f367dfff11ddb045c895}{height}}\ =\ 16;}
+
+\end{DoxyCode}
+
+
+With these, you can start building enemies, bullets, pickups, and much more — all using the same simple ECS principles.
+
+\DoxyHorRuler{0}
+ 🧩 {\bfseries{Summary}}
+\begin{DoxyItemize}
+\item Entities are just IDs.
+\item Components store data.
+\item Systems apply logic to entities that have certain components.
+\end{DoxyItemize}
+
+Using this engine, you can describe {\itshape anything} in your game world by just composing the right set of components. 

@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,32,119,60"/>
+<area shape="rect" id="Node000001" href="$classNonExistentComponentType.html" title="Thrown when the type of component you passed in a template is not registered in the registry." alt="" coords="167,5,372,33"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="134,34,166,30,166,35,135,39"/>
+<area shape="rect" id="Node000002" href="$classNonExistentEntityID.html" title="Thrown when the id of entity you&#39;re trying to access is not registered in the registry." alt="" coords="193,57,346,85"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="134,52,193,59,192,64,134,57"/>
+</map>

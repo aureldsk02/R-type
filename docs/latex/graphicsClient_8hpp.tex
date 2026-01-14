@@ -1,0 +1,206 @@
+\doxysection{/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+graphics\+Client/include/graphics\+Client.hpp File Reference}
+\hypertarget{graphicsClient_8hpp}{}\label{graphicsClient_8hpp}\index{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/rtype\_graphicsClient/include/graphicsClient.hpp@{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/rtype\_graphicsClient/include/graphicsClient.hpp}}
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}../../utility\+\_\+classes/include/\+Network.\+hpp"{}}\newline
+{\ttfamily \#include "{}Factory.\+hpp"{}}\newline
+{\ttfamily \#include "{}entity.\+hpp"{}}\newline
+{\ttfamily \#include "{}registry.\+hpp"{}}\newline
+{\ttfamily \#include "{}UIHandler.\+hpp"{}}\newline
+{\ttfamily \#include "{}logic\+\_\+functions.\+hpp"{}}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$ranges$>$}\newline
+{\ttfamily \#include "{}Types.\+hpp"{}}\newline
+Include dependency graph for graphics\+Client.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphicsClient_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphicsClient_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structmenu__info__s}{menu\+\_\+info\+\_\+s}}
+\item 
+class \mbox{\hyperlink{classGraphicsClient}{Graphics\+Client}}
+\begin{DoxyCompactList}\small\item\em The client class. Handles the client side of the game. All the client does is send messages to the server if the player tries to move, and also receive the game state from the server in order to update the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{graphicsClient_8hpp_a498d9f026138406895e9a34b504ac6a6}{WINDOW\+\_\+\+WIDTH}}~738
+\item 
+\#define \mbox{\hyperlink{graphicsClient_8hpp_a5473cf64fa979b48335079c99532e243}{WINDOW\+\_\+\+HEIGHT}}~432
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structmenu__info__s}{menu\+\_\+info\+\_\+s}} \mbox{\hyperlink{graphicsClient_8hpp_a02538eb94f2146a51ffae5bc113fa7ac}{menu\+\_\+info\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t}} \{ \newline
+\mbox{\hyperlink{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248a4c40e60bc71a32b924ce1f08d57f9721}{MENU}}
+, \mbox{\hyperlink{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248a544dafaf104c4d12f4f6590528c12c3c}{TRANSITION}}
+, \mbox{\hyperlink{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248a5f6aff2efe946ec43f8bad546893b0af}{LEVEL1}}
+, \mbox{\hyperlink{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248a00955312c6043316fe7dee6c67bbdc9a}{LEVEL2}}
+, \newline
+\mbox{\hyperlink{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248a32187f6279619afdb13e71151dd5ed0b}{LEVEL3}}
+ \}
+\begin{DoxyCompactList}\small\item\em An enum to define the different states of the game. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{graphicsClient_8hpp_a7200056c886361c0597814f8db61992e}{substate\+\_\+t}} \{ \newline
+\mbox{\hyperlink{graphicsClient_8hpp_a7200056c886361c0597814f8db61992ea871723195985a4ae22d7e10d99bf8a00}{GAME\+\_\+\+OVER}}
+, \mbox{\hyperlink{graphicsClient_8hpp_a7200056c886361c0597814f8db61992ea38088c60165dc5b369946da1d8797d00}{VICTORY}}
+, \mbox{\hyperlink{graphicsClient_8hpp_a7200056c886361c0597814f8db61992eaf59c5052d1c842c15ac9a16cf1f22fbb}{LEVEL1\+\_\+\+START}}
+, \mbox{\hyperlink{graphicsClient_8hpp_a7200056c886361c0597814f8db61992ea78412346820381bd35bb5b133805846a}{LEVEL2\+\_\+\+START}}
+, \newline
+\mbox{\hyperlink{graphicsClient_8hpp_a7200056c886361c0597814f8db61992eaa9df705f57d28ac1c1a05d82766efa88}{LEVEL3\+\_\+\+START}}
+, \mbox{\hyperlink{graphicsClient_8hpp_a7200056c886361c0597814f8db61992ea777cb88c7c961952f33afb572cefa64d}{SUB\+\_\+\+NONE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{graphicsClient_8hpp_a0811fcae8aefa3ec1b940d9456cab0a2}{player1\+\_\+dead}} = false
+\item 
+bool \mbox{\hyperlink{graphicsClient_8hpp_a0ec75a50286f0d93dd3cccd8339f9e5d}{player2\+\_\+dead}} = false
+\item 
+bool \mbox{\hyperlink{graphicsClient_8hpp_af4edf65c1c9cec2e30fb4f95b7a2655e}{player3\+\_\+dead}} = false
+\item 
+bool \mbox{\hyperlink{graphicsClient_8hpp_a6f83d0b382002048a14d2ed0835aeb31}{player4\+\_\+dead}} = false
+\item 
+int \mbox{\hyperlink{graphicsClient_8hpp_aaa200ce05e600d8fa5e0dff0719caf1e}{controllable\+\_\+id}} = -\/1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{graphicsClient_8hpp_a5473cf64fa979b48335079c99532e243}\label{graphicsClient_8hpp_a5473cf64fa979b48335079c99532e243} 
+\index{graphicsClient.hpp@{graphicsClient.hpp}!WINDOW\_HEIGHT@{WINDOW\_HEIGHT}}
+\index{WINDOW\_HEIGHT@{WINDOW\_HEIGHT}!graphicsClient.hpp@{graphicsClient.hpp}}
+\doxysubsubsection{\texorpdfstring{WINDOW\_HEIGHT}{WINDOW\_HEIGHT}}
+{\footnotesize\ttfamily \#define WINDOW\+\_\+\+HEIGHT~432}
+
+\Hypertarget{graphicsClient_8hpp_a498d9f026138406895e9a34b504ac6a6}\label{graphicsClient_8hpp_a498d9f026138406895e9a34b504ac6a6} 
+\index{graphicsClient.hpp@{graphicsClient.hpp}!WINDOW\_WIDTH@{WINDOW\_WIDTH}}
+\index{WINDOW\_WIDTH@{WINDOW\_WIDTH}!graphicsClient.hpp@{graphicsClient.hpp}}
+\doxysubsubsection{\texorpdfstring{WINDOW\_WIDTH}{WINDOW\_WIDTH}}
+{\footnotesize\ttfamily \#define WINDOW\+\_\+\+WIDTH~738}
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{graphicsClient_8hpp_a02538eb94f2146a51ffae5bc113fa7ac}\label{graphicsClient_8hpp_a02538eb94f2146a51ffae5bc113fa7ac} 
+\index{graphicsClient.hpp@{graphicsClient.hpp}!menu\_info\_t@{menu\_info\_t}}
+\index{menu\_info\_t@{menu\_info\_t}!graphicsClient.hpp@{graphicsClient.hpp}}
+\doxysubsubsection{\texorpdfstring{menu\_info\_t}{menu\_info\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structmenu__info__s}{menu\+\_\+info\+\_\+s}} \mbox{\hyperlink{graphicsClient_8hpp_a02538eb94f2146a51ffae5bc113fa7ac}{menu\+\_\+info\+\_\+t}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248}\label{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248} 
+\index{graphicsClient.hpp@{graphicsClient.hpp}!state\_t@{state\_t}}
+\index{state\_t@{state\_t}!graphicsClient.hpp@{graphicsClient.hpp}}
+\doxysubsubsection{\texorpdfstring{state\_t}{state\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t}}}
+
+
+
+An enum to define the different states of the game. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU@{MENU}!graphicsClient.hpp@{graphicsClient.hpp}}\index{graphicsClient.hpp@{graphicsClient.hpp}!MENU@{MENU}}}\Hypertarget{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248a4c40e60bc71a32b924ce1f08d57f9721}\label{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248a4c40e60bc71a32b924ce1f08d57f9721} 
+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TRANSITION@{TRANSITION}!graphicsClient.hpp@{graphicsClient.hpp}}\index{graphicsClient.hpp@{graphicsClient.hpp}!TRANSITION@{TRANSITION}}}\Hypertarget{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248a544dafaf104c4d12f4f6590528c12c3c}\label{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248a544dafaf104c4d12f4f6590528c12c3c} 
+TRANSITION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEVEL1@{LEVEL1}!graphicsClient.hpp@{graphicsClient.hpp}}\index{graphicsClient.hpp@{graphicsClient.hpp}!LEVEL1@{LEVEL1}}}\Hypertarget{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248a5f6aff2efe946ec43f8bad546893b0af}\label{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248a5f6aff2efe946ec43f8bad546893b0af} 
+LEVEL1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEVEL2@{LEVEL2}!graphicsClient.hpp@{graphicsClient.hpp}}\index{graphicsClient.hpp@{graphicsClient.hpp}!LEVEL2@{LEVEL2}}}\Hypertarget{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248a00955312c6043316fe7dee6c67bbdc9a}\label{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248a00955312c6043316fe7dee6c67bbdc9a} 
+LEVEL2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEVEL3@{LEVEL3}!graphicsClient.hpp@{graphicsClient.hpp}}\index{graphicsClient.hpp@{graphicsClient.hpp}!LEVEL3@{LEVEL3}}}\Hypertarget{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248a32187f6279619afdb13e71151dd5ed0b}\label{graphicsClient_8hpp_aa0aafed44fec19806d8f9ad834be1248a32187f6279619afdb13e71151dd5ed0b} 
+LEVEL3&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{graphicsClient_8hpp_a7200056c886361c0597814f8db61992e}\label{graphicsClient_8hpp_a7200056c886361c0597814f8db61992e} 
+\index{graphicsClient.hpp@{graphicsClient.hpp}!substate\_t@{substate\_t}}
+\index{substate\_t@{substate\_t}!graphicsClient.hpp@{graphicsClient.hpp}}
+\doxysubsubsection{\texorpdfstring{substate\_t}{substate\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{graphicsClient_8hpp_a7200056c886361c0597814f8db61992e}{substate\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_OVER@{GAME\_OVER}!graphicsClient.hpp@{graphicsClient.hpp}}\index{graphicsClient.hpp@{graphicsClient.hpp}!GAME\_OVER@{GAME\_OVER}}}\Hypertarget{graphicsClient_8hpp_a7200056c886361c0597814f8db61992ea871723195985a4ae22d7e10d99bf8a00}\label{graphicsClient_8hpp_a7200056c886361c0597814f8db61992ea871723195985a4ae22d7e10d99bf8a00} 
+GAME\+\_\+\+OVER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VICTORY@{VICTORY}!graphicsClient.hpp@{graphicsClient.hpp}}\index{graphicsClient.hpp@{graphicsClient.hpp}!VICTORY@{VICTORY}}}\Hypertarget{graphicsClient_8hpp_a7200056c886361c0597814f8db61992ea38088c60165dc5b369946da1d8797d00}\label{graphicsClient_8hpp_a7200056c886361c0597814f8db61992ea38088c60165dc5b369946da1d8797d00} 
+VICTORY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEVEL1\_START@{LEVEL1\_START}!graphicsClient.hpp@{graphicsClient.hpp}}\index{graphicsClient.hpp@{graphicsClient.hpp}!LEVEL1\_START@{LEVEL1\_START}}}\Hypertarget{graphicsClient_8hpp_a7200056c886361c0597814f8db61992eaf59c5052d1c842c15ac9a16cf1f22fbb}\label{graphicsClient_8hpp_a7200056c886361c0597814f8db61992eaf59c5052d1c842c15ac9a16cf1f22fbb} 
+LEVEL1\+\_\+\+START&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEVEL2\_START@{LEVEL2\_START}!graphicsClient.hpp@{graphicsClient.hpp}}\index{graphicsClient.hpp@{graphicsClient.hpp}!LEVEL2\_START@{LEVEL2\_START}}}\Hypertarget{graphicsClient_8hpp_a7200056c886361c0597814f8db61992ea78412346820381bd35bb5b133805846a}\label{graphicsClient_8hpp_a7200056c886361c0597814f8db61992ea78412346820381bd35bb5b133805846a} 
+LEVEL2\+\_\+\+START&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEVEL3\_START@{LEVEL3\_START}!graphicsClient.hpp@{graphicsClient.hpp}}\index{graphicsClient.hpp@{graphicsClient.hpp}!LEVEL3\_START@{LEVEL3\_START}}}\Hypertarget{graphicsClient_8hpp_a7200056c886361c0597814f8db61992eaa9df705f57d28ac1c1a05d82766efa88}\label{graphicsClient_8hpp_a7200056c886361c0597814f8db61992eaa9df705f57d28ac1c1a05d82766efa88} 
+LEVEL3\+\_\+\+START&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SUB\_NONE@{SUB\_NONE}!graphicsClient.hpp@{graphicsClient.hpp}}\index{graphicsClient.hpp@{graphicsClient.hpp}!SUB\_NONE@{SUB\_NONE}}}\Hypertarget{graphicsClient_8hpp_a7200056c886361c0597814f8db61992ea777cb88c7c961952f33afb572cefa64d}\label{graphicsClient_8hpp_a7200056c886361c0597814f8db61992ea777cb88c7c961952f33afb572cefa64d} 
+SUB\+\_\+\+NONE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{graphicsClient_8hpp_aaa200ce05e600d8fa5e0dff0719caf1e}\label{graphicsClient_8hpp_aaa200ce05e600d8fa5e0dff0719caf1e} 
+\index{graphicsClient.hpp@{graphicsClient.hpp}!controllable\_id@{controllable\_id}}
+\index{controllable\_id@{controllable\_id}!graphicsClient.hpp@{graphicsClient.hpp}}
+\doxysubsubsection{\texorpdfstring{controllable\_id}{controllable\_id}}
+{\footnotesize\ttfamily int controllable\+\_\+id = -\/1\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{graphicsClient_8hpp_a0811fcae8aefa3ec1b940d9456cab0a2}\label{graphicsClient_8hpp_a0811fcae8aefa3ec1b940d9456cab0a2} 
+\index{graphicsClient.hpp@{graphicsClient.hpp}!player1\_dead@{player1\_dead}}
+\index{player1\_dead@{player1\_dead}!graphicsClient.hpp@{graphicsClient.hpp}}
+\doxysubsubsection{\texorpdfstring{player1\_dead}{player1\_dead}}
+{\footnotesize\ttfamily bool player1\+\_\+dead = false\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{graphicsClient_8hpp_a0ec75a50286f0d93dd3cccd8339f9e5d}\label{graphicsClient_8hpp_a0ec75a50286f0d93dd3cccd8339f9e5d} 
+\index{graphicsClient.hpp@{graphicsClient.hpp}!player2\_dead@{player2\_dead}}
+\index{player2\_dead@{player2\_dead}!graphicsClient.hpp@{graphicsClient.hpp}}
+\doxysubsubsection{\texorpdfstring{player2\_dead}{player2\_dead}}
+{\footnotesize\ttfamily bool player2\+\_\+dead = false\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{graphicsClient_8hpp_af4edf65c1c9cec2e30fb4f95b7a2655e}\label{graphicsClient_8hpp_af4edf65c1c9cec2e30fb4f95b7a2655e} 
+\index{graphicsClient.hpp@{graphicsClient.hpp}!player3\_dead@{player3\_dead}}
+\index{player3\_dead@{player3\_dead}!graphicsClient.hpp@{graphicsClient.hpp}}
+\doxysubsubsection{\texorpdfstring{player3\_dead}{player3\_dead}}
+{\footnotesize\ttfamily bool player3\+\_\+dead = false\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{graphicsClient_8hpp_a6f83d0b382002048a14d2ed0835aeb31}\label{graphicsClient_8hpp_a6f83d0b382002048a14d2ed0835aeb31} 
+\index{graphicsClient.hpp@{graphicsClient.hpp}!player4\_dead@{player4\_dead}}
+\index{player4\_dead@{player4\_dead}!graphicsClient.hpp@{graphicsClient.hpp}}
+\doxysubsubsection{\texorpdfstring{player4\_dead}{player4\_dead}}
+{\footnotesize\ttfamily bool player4\+\_\+dead = false\hspace{0.3cm}{\ttfamily [inline]}}
+

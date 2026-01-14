@@ -1,0 +1,85 @@
+\doxysection{component\+::hitbox\+\_\+s Struct Reference}
+\hypertarget{structcomponent_1_1hitbox__s}{}\label{structcomponent_1_1hitbox__s}\index{component::hitbox\_s@{component::hitbox\_s}}
+
+
+The hitbox component, defined by a size, damage and a targeted\+\_\+group (2 for the player, 1 for the enemies for example). A hitbox will detect collision with a hurtbox if its targeted group corresponds to the hurtbox group.  
+
+
+
+
+{\ttfamily \#include $<$components.\+hpp$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structcomponent_1_1hitbox__s_aa328fa75249dba8908792c70b978c6ea}{damage}}
+\begin{DoxyCompactList}\small\item\em The damage that will be inflicted to the hurtbox on collision. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structcomponent_1_1hitbox__s_aaf505d165aeaf898b7fb6305faa3f928}{targeted\+\_\+group}}
+\begin{DoxyCompactList}\small\item\em The group that this hitbox will target. For example, if the hurtbox group is 1 for the player and 2 for the enemies, the player\textquotesingle{}s hitbox should have a targeted\+\_\+group of 2 to damage enemies. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structcomponent_1_1hitbox__s_a677c09c76f3c7d69205df16289a769f7}{width}}
+\begin{DoxyCompactList}\small\item\em The width of the hitbox. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structcomponent_1_1hitbox__s_a3c8ca6e680cd44c45e76dfc561fd54f6}{height}}
+\begin{DoxyCompactList}\small\item\em The height of the hitbox. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structcomponent_1_1hitbox__s_afc34eddd682b1269b749a4d848174b33}{one\+\_\+shot}}
+\begin{DoxyCompactList}\small\item\em If this bool is set to true, the hitbox will be destroyed on collision. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The hitbox component, defined by a size, damage and a targeted\+\_\+group (2 for the player, 1 for the enemies for example). A hitbox will detect collision with a hurtbox if its targeted group corresponds to the hurtbox group. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structcomponent_1_1hitbox__s_aa328fa75249dba8908792c70b978c6ea}\label{structcomponent_1_1hitbox__s_aa328fa75249dba8908792c70b978c6ea} 
+\index{component::hitbox\_s@{component::hitbox\_s}!damage@{damage}}
+\index{damage@{damage}!component::hitbox\_s@{component::hitbox\_s}}
+\doxysubsubsection{\texorpdfstring{damage}{damage}}
+{\footnotesize\ttfamily int component\+::hitbox\+\_\+s\+::damage}
+
+
+
+The damage that will be inflicted to the hurtbox on collision. 
+
+\Hypertarget{structcomponent_1_1hitbox__s_a3c8ca6e680cd44c45e76dfc561fd54f6}\label{structcomponent_1_1hitbox__s_a3c8ca6e680cd44c45e76dfc561fd54f6} 
+\index{component::hitbox\_s@{component::hitbox\_s}!height@{height}}
+\index{height@{height}!component::hitbox\_s@{component::hitbox\_s}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily int component\+::hitbox\+\_\+s\+::height}
+
+
+
+The height of the hitbox. 
+
+\Hypertarget{structcomponent_1_1hitbox__s_afc34eddd682b1269b749a4d848174b33}\label{structcomponent_1_1hitbox__s_afc34eddd682b1269b749a4d848174b33} 
+\index{component::hitbox\_s@{component::hitbox\_s}!one\_shot@{one\_shot}}
+\index{one\_shot@{one\_shot}!component::hitbox\_s@{component::hitbox\_s}}
+\doxysubsubsection{\texorpdfstring{one\_shot}{one\_shot}}
+{\footnotesize\ttfamily bool component\+::hitbox\+\_\+s\+::one\+\_\+shot}
+
+
+
+If this bool is set to true, the hitbox will be destroyed on collision. 
+
+\Hypertarget{structcomponent_1_1hitbox__s_aaf505d165aeaf898b7fb6305faa3f928}\label{structcomponent_1_1hitbox__s_aaf505d165aeaf898b7fb6305faa3f928} 
+\index{component::hitbox\_s@{component::hitbox\_s}!targeted\_group@{targeted\_group}}
+\index{targeted\_group@{targeted\_group}!component::hitbox\_s@{component::hitbox\_s}}
+\doxysubsubsection{\texorpdfstring{targeted\_group}{targeted\_group}}
+{\footnotesize\ttfamily int component\+::hitbox\+\_\+s\+::targeted\+\_\+group}
+
+
+
+The group that this hitbox will target. For example, if the hurtbox group is 1 for the player and 2 for the enemies, the player\textquotesingle{}s hitbox should have a targeted\+\_\+group of 2 to damage enemies. 
+
+\Hypertarget{structcomponent_1_1hitbox__s_a677c09c76f3c7d69205df16289a769f7}\label{structcomponent_1_1hitbox__s_a677c09c76f3c7d69205df16289a769f7} 
+\index{component::hitbox\_s@{component::hitbox\_s}!width@{width}}
+\index{width@{width}!component::hitbox\_s@{component::hitbox\_s}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily int component\+::hitbox\+\_\+s\+::width}
+
+
+
+The width of the hitbox. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/engine/include/\mbox{\hyperlink{components_8hpp}{components.\+hpp}}\end{DoxyCompactItemize}

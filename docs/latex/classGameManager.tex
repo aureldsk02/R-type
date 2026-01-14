@@ -1,0 +1,209 @@
+\doxysection{Game\+Manager Class Reference}
+\hypertarget{classGameManager}{}\label{classGameManager}\index{GameManager@{GameManager}}
+
+
+{\ttfamily \#include $<$game\+Manager.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGameManager_af8ceebd2833bfc53bd637dd37fe8bac2}{add\+Client\+To\+Game}} (const std\+::string \&game\+\_\+id, asio\+::ip\+::udp\+::endpoint \&client, const std\+::string \&session\+\_\+id)
+\item 
+std\+::vector$<$ std\+::pair$<$ asio\+::ip\+::udp\+::endpoint, std\+::vector$<$ int8\+\_\+t $>$ $>$ $>$ \& \mbox{\hyperlink{classGameManager_a7ea5d6c7d011374c1f1ff58bff1e06a4}{get\+Messages}} ()
+\item 
+std\+::mutex \& \mbox{\hyperlink{classGameManager_afa951c72b6294c1cc703746ef6104ce3}{get\+Mutex}} ()
+\item 
+Network\+Manager \& \mbox{\hyperlink{classGameManager_a9d3676793466205f3e59f9e12bc2080c}{get\+Udp\+Server}} ()
+\item 
+\mbox{\hyperlink{classGameManager_aaae63e38e358379c1fe507c5197a8435}{\texorpdfstring{$\sim$}{\string~}\+Game\+Manager}} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGameInstance}{Game\+Instance}} $>$ \mbox{\hyperlink{classGameManager_ab398d4bae8750de387ca0eedecec95a6}{create\+\_\+game}} (const std\+::string \&id, const \mbox{\hyperlink{classGameSettings}{Game\+Settings}} \&settings)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGameInstance}{Game\+Instance}} $>$ \mbox{\hyperlink{classGameManager_aeb0f9c48621b70b8c574347c9b1d9c70}{get\+\_\+game}} (const std\+::string \&id)
+\item 
+void \mbox{\hyperlink{classGameManager_a41a7636953c1cb19f4964b22df698b4b}{start\+\_\+game}} (const std\+::string \&id)
+\item 
+void \mbox{\hyperlink{classGameManager_a0bf827979313f25d89fd26b8e8551ade}{remove\+\_\+game}} (const std\+::string \&id)
+\item 
+void \mbox{\hyperlink{classGameManager_a24ce1d52e378c6d6ba0321c641bac23e}{list\+\_\+games}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classGameManager}{Game\+Manager}} \& \mbox{\hyperlink{classGameManager_a62c0bd2e38276cc3805fb38a85890d42}{get\+Instance}} ()
+\item 
+static void \mbox{\hyperlink{classGameManager_aad560830c75df4f274bf1078d6236c53}{init}} (std\+::vector$<$ std\+::pair$<$ asio\+::ip\+::udp\+::endpoint, std\+::vector$<$ int8\+\_\+t $>$ $>$ $>$ \&messages, std\+::mutex \&mtx, Network\+Manager \&\+\_\+udp\+Server)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGameManager_a9af164d814b86c517a35ac0356743595}{process\+\_\+messages}} ()
+\item 
+\mbox{\hyperlink{classGameManager_aa0e2424dc1a39d380e5b6605b179bf05}{Game\+Manager}} ()
+\item 
+\mbox{\hyperlink{classGameManager_a5af1609aaeb8c7c74356a108c1d16ba8}{Game\+Manager}} (const \mbox{\hyperlink{classGameManager}{Game\+Manager}} \&)=delete
+\item 
+\mbox{\hyperlink{classGameManager}{Game\+Manager}} \& \mbox{\hyperlink{classGameManager_a4f30ff58781438a8814e009a55c6de65}{operator=}} (const \mbox{\hyperlink{classGameManager}{Game\+Manager}} \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::pair$<$ asio\+::ip\+::udp\+::endpoint, std\+::vector$<$ int8\+\_\+t $>$ $>$ $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameManager_a2a07d01f1a54cbed8979760d26072f0d}{messages\+\_\+}} = nullptr
+\item 
+std\+::mutex \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameManager_ac016028eb063da6bcbe2cd05823674cb}{mtx\+\_\+}} = nullptr
+\item 
+Network\+Manager \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameManager_a35591a27a03f2d2f9812033edf4d568a}{udp\+Server\+\_\+}} = nullptr
+\item 
+std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGameInstance}{Game\+Instance}} $>$ $>$ \mbox{\hyperlink{classGameManager_ae367a8da3e5827fc8cbd234553ab896c}{active\+\_\+games\+\_\+}}
+\item 
+std\+::vector$<$ std\+::thread $>$ \mbox{\hyperlink{classGameManager_afdbc36f10a9a1a20b169ef07584e356e}{game\+Threads\+\_\+}}
+\item 
+std\+::atomic$<$ bool $>$ \mbox{\hyperlink{classGameManager_ad19dd5f9d83d58b21276a7e42c035556}{is\+Running}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGameManager_aa0e2424dc1a39d380e5b6605b179bf05}\label{classGameManager_aa0e2424dc1a39d380e5b6605b179bf05} 
+\index{GameManager@{GameManager}!GameManager@{GameManager}}
+\index{GameManager@{GameManager}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{GameManager()}{GameManager()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Game\+Manager\+::\+Game\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameManager_a5af1609aaeb8c7c74356a108c1d16ba8}\label{classGameManager_a5af1609aaeb8c7c74356a108c1d16ba8} 
+\index{GameManager@{GameManager}!GameManager@{GameManager}}
+\index{GameManager@{GameManager}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{GameManager()}{GameManager()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Game\+Manager\+::\+Game\+Manager (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGameManager}{Game\+Manager}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+\Hypertarget{classGameManager_aaae63e38e358379c1fe507c5197a8435}\label{classGameManager_aaae63e38e358379c1fe507c5197a8435} 
+\index{GameManager@{GameManager}!````~GameManager@{\texorpdfstring{$\sim$}{\string~}GameManager}}
+\index{````~GameManager@{\texorpdfstring{$\sim$}{\string~}GameManager}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GameManager()}{\string~GameManager()}}
+{\footnotesize\ttfamily Game\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Game\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGameManager_af8ceebd2833bfc53bd637dd37fe8bac2}\label{classGameManager_af8ceebd2833bfc53bd637dd37fe8bac2} 
+\index{GameManager@{GameManager}!addClientToGame@{addClientToGame}}
+\index{addClientToGame@{addClientToGame}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{addClientToGame()}{addClientToGame()}}
+{\footnotesize\ttfamily void Game\+Manager\+::add\+Client\+To\+Game (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{game\+\_\+id,  }\item[{asio\+::ip\+::udp\+::endpoint \&}]{client,  }\item[{const std\+::string \&}]{session\+\_\+id }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameManager_ab398d4bae8750de387ca0eedecec95a6}\label{classGameManager_ab398d4bae8750de387ca0eedecec95a6} 
+\index{GameManager@{GameManager}!create\_game@{create\_game}}
+\index{create\_game@{create\_game}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{create\_game()}{create\_game()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGameInstance}{Game\+Instance}} $>$ Game\+Manager\+::create\+\_\+game (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{id,  }\item[{const \mbox{\hyperlink{classGameSettings}{Game\+Settings}} \&}]{settings }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameManager_aeb0f9c48621b70b8c574347c9b1d9c70}\label{classGameManager_aeb0f9c48621b70b8c574347c9b1d9c70} 
+\index{GameManager@{GameManager}!get\_game@{get\_game}}
+\index{get\_game@{get\_game}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{get\_game()}{get\_game()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGameInstance}{Game\+Instance}} $>$ Game\+Manager\+::get\+\_\+game (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{id }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameManager_a62c0bd2e38276cc3805fb38a85890d42}\label{classGameManager_a62c0bd2e38276cc3805fb38a85890d42} 
+\index{GameManager@{GameManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGameManager}{Game\+Manager}} \& Game\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classGameManager_a7ea5d6c7d011374c1f1ff58bff1e06a4}\label{classGameManager_a7ea5d6c7d011374c1f1ff58bff1e06a4} 
+\index{GameManager@{GameManager}!getMessages@{getMessages}}
+\index{getMessages@{getMessages}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{getMessages()}{getMessages()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ asio\+::ip\+::udp\+::endpoint, std\+::vector$<$ int8\+\_\+t $>$ $>$ $>$ \& Game\+Manager\+::get\+Messages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameManager_afa951c72b6294c1cc703746ef6104ce3}\label{classGameManager_afa951c72b6294c1cc703746ef6104ce3} 
+\index{GameManager@{GameManager}!getMutex@{getMutex}}
+\index{getMutex@{getMutex}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{getMutex()}{getMutex()}}
+{\footnotesize\ttfamily std\+::mutex \& Game\+Manager\+::get\+Mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameManager_a9d3676793466205f3e59f9e12bc2080c}\label{classGameManager_a9d3676793466205f3e59f9e12bc2080c} 
+\index{GameManager@{GameManager}!getUdpServer@{getUdpServer}}
+\index{getUdpServer@{getUdpServer}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{getUdpServer()}{getUdpServer()}}
+{\footnotesize\ttfamily Network\+Manager \& Game\+Manager\+::get\+Udp\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameManager_aad560830c75df4f274bf1078d6236c53}\label{classGameManager_aad560830c75df4f274bf1078d6236c53} 
+\index{GameManager@{GameManager}!init@{init}}
+\index{init@{init}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Game\+Manager\+::init (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ asio\+::ip\+::udp\+::endpoint, std\+::vector$<$ int8\+\_\+t $>$ $>$ $>$ \&}]{messages,  }\item[{std\+::mutex \&}]{mtx,  }\item[{Network\+Manager \&}]{\+\_\+udp\+Server }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classGameManager_a24ce1d52e378c6d6ba0321c641bac23e}\label{classGameManager_a24ce1d52e378c6d6ba0321c641bac23e} 
+\index{GameManager@{GameManager}!list\_games@{list\_games}}
+\index{list\_games@{list\_games}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{list\_games()}{list\_games()}}
+{\footnotesize\ttfamily void Game\+Manager\+::list\+\_\+games (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameManager_a4f30ff58781438a8814e009a55c6de65}\label{classGameManager_a4f30ff58781438a8814e009a55c6de65} 
+\index{GameManager@{GameManager}!operator=@{operator=}}
+\index{operator=@{operator=}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGameManager}{Game\+Manager}} \& Game\+Manager\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGameManager}{Game\+Manager}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+\Hypertarget{classGameManager_a9af164d814b86c517a35ac0356743595}\label{classGameManager_a9af164d814b86c517a35ac0356743595} 
+\index{GameManager@{GameManager}!process\_messages@{process\_messages}}
+\index{process\_messages@{process\_messages}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{process\_messages()}{process\_messages()}}
+{\footnotesize\ttfamily void Game\+Manager\+::process\+\_\+messages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameManager_a0bf827979313f25d89fd26b8e8551ade}\label{classGameManager_a0bf827979313f25d89fd26b8e8551ade} 
+\index{GameManager@{GameManager}!remove\_game@{remove\_game}}
+\index{remove\_game@{remove\_game}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{remove\_game()}{remove\_game()}}
+{\footnotesize\ttfamily void Game\+Manager\+::remove\+\_\+game (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{id }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameManager_a41a7636953c1cb19f4964b22df698b4b}\label{classGameManager_a41a7636953c1cb19f4964b22df698b4b} 
+\index{GameManager@{GameManager}!start\_game@{start\_game}}
+\index{start\_game@{start\_game}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{start\_game()}{start\_game()}}
+{\footnotesize\ttfamily void Game\+Manager\+::start\+\_\+game (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{id }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGameManager_ae367a8da3e5827fc8cbd234553ab896c}\label{classGameManager_ae367a8da3e5827fc8cbd234553ab896c} 
+\index{GameManager@{GameManager}!active\_games\_@{active\_games\_}}
+\index{active\_games\_@{active\_games\_}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{active\_games\_}{active\_games\_}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classGameInstance}{Game\+Instance}}$>$ $>$ Game\+Manager\+::active\+\_\+games\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameManager_afdbc36f10a9a1a20b169ef07584e356e}\label{classGameManager_afdbc36f10a9a1a20b169ef07584e356e} 
+\index{GameManager@{GameManager}!gameThreads\_@{gameThreads\_}}
+\index{gameThreads\_@{gameThreads\_}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{gameThreads\_}{gameThreads\_}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::thread$>$ Game\+Manager\+::game\+Threads\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameManager_ad19dd5f9d83d58b21276a7e42c035556}\label{classGameManager_ad19dd5f9d83d58b21276a7e42c035556} 
+\index{GameManager@{GameManager}!isRunning@{isRunning}}
+\index{isRunning@{isRunning}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{isRunning}{isRunning}}
+{\footnotesize\ttfamily std\+::atomic$<$bool$>$ Game\+Manager\+::is\+Running\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameManager_a2a07d01f1a54cbed8979760d26072f0d}\label{classGameManager_a2a07d01f1a54cbed8979760d26072f0d} 
+\index{GameManager@{GameManager}!messages\_@{messages\_}}
+\index{messages\_@{messages\_}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{messages\_}{messages\_}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::pair$<$asio\+::ip\+::udp\+::endpoint, std\+::vector$<$int8\+\_\+t$>$ $>$ $>$\texorpdfstring{$\ast$}{*} Game\+Manager\+::messages\+\_\+ = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameManager_ac016028eb063da6bcbe2cd05823674cb}\label{classGameManager_ac016028eb063da6bcbe2cd05823674cb} 
+\index{GameManager@{GameManager}!mtx\_@{mtx\_}}
+\index{mtx\_@{mtx\_}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{mtx\_}{mtx\_}}
+{\footnotesize\ttfamily std\+::mutex\texorpdfstring{$\ast$}{*} Game\+Manager\+::mtx\+\_\+ = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameManager_a35591a27a03f2d2f9812033edf4d568a}\label{classGameManager_a35591a27a03f2d2f9812033edf4d568a} 
+\index{GameManager@{GameManager}!udpServer\_@{udpServer\_}}
+\index{udpServer\_@{udpServer\_}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{udpServer\_}{udpServer\_}}
+{\footnotesize\ttfamily Network\+Manager\texorpdfstring{$\ast$}{*} Game\+Manager\+::udp\+Server\+\_\+ = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+game\+Manager/include/\mbox{\hyperlink{gameManager_8hpp}{game\+Manager.\+hpp}}\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+game\+Manager/src/\mbox{\hyperlink{gameManager_8cpp}{game\+Manager.\+cpp}}\end{DoxyCompactItemize}

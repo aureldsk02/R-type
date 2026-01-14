@@ -1,0 +1,90 @@
+\doxysection{systems.\+hpp}
+\hypertarget{systems_8hpp_source}{}\label{systems_8hpp_source}\index{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/engine/include/systems.hpp@{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/engine/include/systems.hpp}}
+\mbox{\hyperlink{systems_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ *}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ EPITECH\ PROJECT\ -\/\ Mon,\ Sep,\ 2025\ *\ Title\ \ \ \ \ \ \ \ \ \ \ -\/}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ Description\ \ \ \ \ -\/\ *\ systems\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ \ \ \ \ \ \ ▄▀▀█▄▄▄▄\ \ ▄▀▀▄▀▀▀▄\ \ ▄▀▀█▀▄\ \ \ \ ▄▀▀▀█▀▀▄\ \ ▄▀▀█▄▄▄▄\ \ ▄▀▄▄▄▄\ \ \ ▄▀▀▄\ ▄▄\ *\ ▐}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ ▄▀\ \ \ ▐\ █\ \ \ █\ \ \ █\ █\ \ \ █\ \ █\ \ █\ \ \ \ █\ \ ▐\ ▐\ \ ▄▀\ \ \ ▐\ █\ █\ \ \ \ ▌\ █\ \ █\ \ \ ▄▀\ *\ █▄▄▄▄▄\ \ ▐}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ █▀▀▀▀\ \ ▐\ \ \ █\ \ ▐\ \ ▐\ \ \ █\ \ \ \ \ \ \ █▄▄▄▄▄\ \ ▐\ █\ \ \ \ \ \ ▐\ \ █▄▄▄█\ \ \ \ \ \ \ \ \ \ \ \ \ *\ █\ \ \ \ ▌}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ █\ \ \ \ \ \ \ \ \ \ █\ \ \ \ \ \ \ \ █\ \ \ \ \ \ \ \ █\ \ \ \ ▌\ \ \ \ █\ \ \ \ \ \ \ \ \ █\ \ \ █\ \ \ \ \ \ \ \ \ \ \ \ \ *\ ▄▀▄▄▄▄}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ ▄▀\ \ \ \ \ \ \ \ ▄▀▀▀▀▀▄\ \ \ ▄▀\ \ \ \ \ \ \ \ ▄▀▄▄▄▄\ \ \ \ ▄▀▄▄▄▄▀\ \ \ ▄▀\ \ ▄▀\ \ \ \ \ \ \ \ \ \ \ \ \ *\ █\ \ \ \ ▐}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ █\ \ \ \ \ \ \ \ \ █\ \ \ \ \ \ \ █\ █\ \ \ \ \ \ \ \ \ \ █\ \ \ \ ▐\ \ \ █\ \ \ \ \ ▐\ \ \ █\ \ \ █\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ ▐\ ▐}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ ▐\ \ \ \ \ \ \ ▐\ ▐\ \ \ \ \ \ \ \ \ \ ▐\ \ \ \ \ \ \ \ ▐\ \ \ \ \ \ \ \ \ ▐\ \ \ ▐\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#ifndef\ INCLUDED\_SYSTEMS\_HPP}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ INCLUDED\_SYSTEMS\_HPP}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{components_8hpp}{components.hpp}}"{}}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{registry_8hpp}{registry.hpp}}"{}}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{systems_8hpp_a48efdd22550291cb9bacb3330d67ff48}{position\_system}}(}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{double}\ delta,\ \mbox{\hyperlink{classregistry}{registry}}\&\ reg,}
+\DoxyCodeLine{00052\ \ \ \ \ std::vector<optional<component::position>>\&\ positions,}
+\DoxyCodeLine{00053\ \ \ \ \ std::vector<optional<component::velocity>>\&\ velocities}
+\DoxyCodeLine{00054\ );}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{systems_8hpp_a169ac84227fdc8f7393eb5257c3f16b2}{draw\_system}}(}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{double}\ delta,\ \mbox{\hyperlink{classregistry}{registry}}\&\ reg,\ sf::RenderWindow\&\ window,}
+\DoxyCodeLine{00066\ \ \ \ \ std::vector<optional<component::position>>\&\ positions,}
+\DoxyCodeLine{00067\ \ \ \ \ std::vector<optional<component::drawable>>\&\ draws,}
+\DoxyCodeLine{00068\ \ \ \ \ std::vector<optional<component::animated\_drawable>>\&\ anim\_draws,}
+\DoxyCodeLine{00069\ \ \ \ \ std::vector<optional<component::text>>\&\ texts}
+\DoxyCodeLine{00070\ );}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{systems_8hpp_ae1b5e1a8414fa382a36c1816db2685e7}{control\_system}}(}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{double}\ delta,\ \mbox{\hyperlink{classregistry}{registry}}\&\ reg,}
+\DoxyCodeLine{00081\ \ \ \ \ std::vector<optional<component::controllable>>\&\ controls}
+\DoxyCodeLine{00082\ );}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{systems_8hpp_a7b2843e480d89d8d75a7765a1b1d9d33}{collision\_system}}(}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{double}\ delta,\ \mbox{\hyperlink{classregistry}{registry}}\&\ reg,}
+\DoxyCodeLine{00095\ \ \ \ \ std::vector<optional<component::position>>\&\ positions,}
+\DoxyCodeLine{00096\ \ \ \ \ std::vector<optional<component::hurtbox>>\&\ hurtboxes,}
+\DoxyCodeLine{00097\ \ \ \ \ std::vector<optional<component::hitbox>>\&\ hitboxes}
+\DoxyCodeLine{00098\ );}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{systems_8hpp_a22759635a24090e7b56c0368ba19ad42}{logic\_system}}(}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{double}\ delta,\ \mbox{\hyperlink{classregistry}{registry}}\&\ reg,\ std::vector<optional<component::logic>>\&\ logics}
+\DoxyCodeLine{00108\ );}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00112\ \textcolor{comment}{\ *\ *}}
+\DoxyCodeLine{00113\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00114\ \textcolor{comment}{\ *\ MIT\ License\ *\ Copyright\ (c)\ 2025\ Anonymous\ *}}
+\DoxyCodeLine{00115\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00116\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{00117\ \textcolor{comment}{\ *\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to}}
+\DoxyCodeLine{00118\ \textcolor{comment}{\ *\ deal\ \ \ \ \ \ \ \ *\ in\ the\ Software\ without\ restriction,\ including\ without}}
+\DoxyCodeLine{00119\ \textcolor{comment}{\ *\ limitation\ the\ rights\ \ \ \ \ \ \ \ \ *\ to\ use,\ copy,\ modify,\ merge,\ publish,}}
+\DoxyCodeLine{00120\ \textcolor{comment}{\ *\ distribute,\ sublicense,\ and/or\ sell\ \ \ \ \ \ \ \ \ \ \ \ *\ copies\ of\ the\ Software,\ and}}
+\DoxyCodeLine{00121\ \textcolor{comment}{\ *\ to\ permit\ persons\ to\ whom\ the\ Software\ is\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ furnished\ to\ do}}
+\DoxyCodeLine{00122\ \textcolor{comment}{\ *\ so,\ subject\ to\ the\ following\ conditions:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00123\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00124\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in}}
+\DoxyCodeLine{00125\ \textcolor{comment}{\ *\ all\ \ \ \ \ \ \ *\ copies\ or\ substantial\ portions\ of\ the\ Software.\ *}}
+\DoxyCodeLine{00126\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00127\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR\ *}}
+\DoxyCodeLine{00128\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,\ *}}
+\DoxyCodeLine{00129\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE\ *}}
+\DoxyCodeLine{00130\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER\ *}}
+\DoxyCodeLine{00131\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{00132\ \textcolor{comment}{\ *\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN}}
+\DoxyCodeLine{00133\ \textcolor{comment}{\ *\ THE\ \ \ \ \ \ \ \ *\ SOFTWARE.\ *}}
+\DoxyCodeLine{00134\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00135\ \textcolor{comment}{\ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00136\ \textcolor{comment}{\ */}}
+
+\end{DoxyCode}

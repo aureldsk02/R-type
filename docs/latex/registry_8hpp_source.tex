@@ -1,0 +1,157 @@
+\doxysection{registry.\+hpp}
+\hypertarget{registry_8hpp_source}{}\label{registry_8hpp_source}\index{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/engine/include/registry.hpp@{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/engine/include/registry.hpp}}
+\mbox{\hyperlink{registry_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ *}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ EPITECH\ PROJECT\ -\/\ Wed,\ Sep,\ 2025\ *\ Title\ \ \ \ \ \ \ \ \ \ \ -\/\ r-\/type\_bs\ *\ Description}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ -\/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ \ \ \ \ registry\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ ░\ \ \ \ \ \ \ \ ░\ \ \ \ \ \ \ ░░\ \ \ \ \ \ \ \ ░\ \ \ \ \ \ \ \ ░\ \ \ \ \ \ \ \ ░░\ \ \ \ \ \ ░░\ \ ░░░░\ \ ░\ *\ ▒}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ ▒▒▒▒▒▒▒\ \ ▒▒▒▒\ \ ▒▒▒▒\ \ ▒▒▒▒▒▒▒\ \ ▒▒▒▒\ \ ▒▒▒▒▒▒▒\ \ ▒▒▒▒\ \ ▒\ \ ▒▒▒▒\ \ ▒\ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ ▓\ \ \ \ \ \ ▓▓▓\ \ \ \ \ \ \ ▓▓▓▓▓\ \ ▓▓▓▓▓▓▓\ \ ▓▓▓▓\ \ \ \ \ \ ▓▓▓\ \ ▓▓▓▓▓▓▓\ \ \ \ \ \ \ \ ▓\ *\ █}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ ███████\ \ ██████████\ \ ███████\ \ ████\ \ ███████\ \ ████\ \ █\ \ ████\ \ █\ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ █\ \ \ \ \ \ \ \ █\ \ ███████\ \ \ \ \ \ \ \ ████\ \ ████\ \ \ \ \ \ \ \ ██\ \ \ \ \ \ ██\ \ ████\ \ █\ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ INCLUDED\_REGISTRY\_HPP}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ INCLUDED\_REGISTRY\_HPP}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ <any>}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ <typeindex>}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ResourceManager_8hpp}{ResourceManager.hpp}}"{}}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{entity_8hpp}{entity.hpp}}"{}}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{exceptions_8hpp}{exceptions.hpp}}"{}}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classregistry}{registry}}\ \{}
+\DoxyCodeLine{00064\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classregistry_a20c08fcd6e0f4a8f528e429f59b61e1e}{toggleMovement}}()\ \{\mbox{\hyperlink{classregistry_a9db2f8741e8d99bec4cb2e4430e6809a}{movement\_active}}\ =\ !\mbox{\hyperlink{classregistry_a9db2f8741e8d99bec4cb2e4430e6809a}{movement\_active}};\};}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classregistry_a44a211670ca68c02ce193353fc9bf049}{togglePhysics}}()\ \{\mbox{\hyperlink{classregistry_aee17149de7f585a04c59e916b03110f5}{collisions\_active}}\ =\ !\mbox{\hyperlink{classregistry_aee17149de7f585a04c59e916b03110f5}{collisions\_active}};\};}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classregistry_a825a270f286c1744bc7a1610f46ab49c}{toggleRendering}}()\ \{\mbox{\hyperlink{classregistry_a0531fe6d4810e9a50289b9f866ad25cf}{render\_active}}\ =\ !\mbox{\hyperlink{classregistry_a0531fe6d4810e9a50289b9f866ad25cf}{render\_active}};\};}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classregistry_a6270765d95f0e4d902e5ec029f8c10bc}{toggleControl}}()\ \{\mbox{\hyperlink{classregistry_aa007145268e3b27a52137b978cf7f887}{control\_active}}\ =\ !\mbox{\hyperlink{classregistry_aa007145268e3b27a52137b978cf7f887}{control\_active}};\};}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classregistry_a185290a8e00b029c0e3f75a8fda58a94}{toggleLogic}}()\ \{\mbox{\hyperlink{classregistry_a772d03d9734330401886ab2d380d52d1}{logic\_active}}\ =\ !\mbox{\hyperlink{classregistry_a772d03d9734330401886ab2d380d52d1}{logic\_active}};\};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \mbox{\hyperlink{classregistry_a2758920b8b06a6b20bd7d496d108939b}{getMovement}}()\ \{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{classregistry_a9db2f8741e8d99bec4cb2e4430e6809a}{movement\_active}};\};}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \mbox{\hyperlink{classregistry_ac9e09bbcbf1a43e7b50caf76e6b19198}{getPhysics}}()\ \{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{classregistry_aee17149de7f585a04c59e916b03110f5}{collisions\_active}};\};}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \mbox{\hyperlink{classregistry_a6606ef75f6393c1906f891f995f1e469}{getRendering}}()\ \{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{classregistry_a0531fe6d4810e9a50289b9f866ad25cf}{render\_active}};\};}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \mbox{\hyperlink{classregistry_a7458a26fa7b4c694bb7287e6725cff1d}{getControl}}()\ \{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{classregistry_aa007145268e3b27a52137b978cf7f887}{control\_active}};\};}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \mbox{\hyperlink{classregistry_acf29c5dee5ae25cc4f4672e5f799b599}{getLogic}}()\ \{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{classregistry_a772d03d9734330401886ab2d380d52d1}{logic\_active}};\};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00081\ \ \ \ \ vector<entity>\ \mbox{\hyperlink{classregistry_ab2381c1b1b227a150443be6932f7c434}{dead\_entities}};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{classregistry_a757883d504ab1bb5a06e0faa8e28664d}{registry}}(sf::RenderWindow\&\ \mbox{\hyperlink{classregistry_a2156b3e51c6c5c91b3ff8246238a643a}{window}});}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{classregistry_a757883d504ab1bb5a06e0faa8e28664d}{registry}}();}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{/*\ Tables\ management\ */}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Component>}
+\DoxyCodeLine{00088\ \ \ \ \ vector<optional<Component>>\&\ \mbox{\hyperlink{classregistry_afe3919f4a56bbbeda89af4a6e5171f8b}{register\_components}}();}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Component>\ vector<optional<Component>>\&\ \mbox{\hyperlink{classregistry_ad397b1104bc8510105b4e4d6b90f87cc}{get\_components}}();}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Component>}
+\DoxyCodeLine{00093\ \ \ \ \ vector<optional<Component>>\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classregistry_a40b0f07dfe9c916d667732c73ef9272a}{get\_components}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{/*\ Single\ component\ management\ */}}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Component>\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classregistry_a967f47ebfc3b74c85f483aae74bfd927}{remove\_component}}(\mbox{\hyperlink{classentity}{entity}}\ \textcolor{keyword}{const}\&\ from);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Component>}
+\DoxyCodeLine{00099\ \ \ \ \ Component\&\ \mbox{\hyperlink{classregistry_a850c78be83ce8c06a29b74aeec391170}{add\_component}}(\mbox{\hyperlink{classentity}{entity}}\ \textcolor{keyword}{const}\&\ to,\ Component\&\&\ c);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{/*\ Entities\ managament\ */}}
+\DoxyCodeLine{00102\ \ \ \ \ \mbox{\hyperlink{classentity}{entity}}\ \mbox{\hyperlink{classregistry_a582fb369da9636c38840ce731bb8a200}{spawn\_entity}}();}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classregistry_a488b346a5739fcfe1245bbda1536538e}{kill\_entity}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classentity}{entity}}\&\ e);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{/*\ Systems\ managment\ */}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classregistry_aee8db3684f102fc8b2b0a8ff01014b24}{add\_system}}(\textcolor{keyword}{const}\ function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{double})>\&\ system);}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classregistry_a957cd5c282db213979764cbe622ece89}{run\_systems}}(\textcolor{keywordtype}{double}\ delta);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{comment}{/*\ Getters\ */}}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classregistry_a05b69b2f3a790c425e0d1df40e7fb322}{getEntityNum}}(\textcolor{keywordtype}{void})\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classregistry_a736fb7871aa84c956c947d586f24a81b}{entity\_num}};}
+\DoxyCodeLine{00117\ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classregistry_a2203e584cc8b5829c26094e21bab2d21}{getComponentNum}}(\textcolor{keywordtype}{void})\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classregistry_ac9d2e22f135941fc0a42e42a83061a2b}{\_components\_arrays}}.size();}
+\DoxyCodeLine{00126\ \ \ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classregistry_a6492780080f9630f136627d42800880a}{getEraseFunctionNum}}(\textcolor{keywordtype}{void})\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classregistry_afacfe5d75adf2f59ebc41cc3e0fb641e}{\_erase\_functions}}.size();}
+\DoxyCodeLine{00135\ \ \ \ \ \}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00142\ \ \ \ \ sf::RenderWindow\&\ \mbox{\hyperlink{classregistry_a202893edec86ab9275b46be5ea71e78e}{get\_window}}()\ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classregistry_a2156b3e51c6c5c91b3ff8246238a643a}{window}};}
+\DoxyCodeLine{00144\ \ \ \ \ \}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00147\ \ \ \ \ unordered\_map<type\_index,\ any>\ \mbox{\hyperlink{classregistry_ac9d2e22f135941fc0a42e42a83061a2b}{\_components\_arrays}};}
+\DoxyCodeLine{00148\ \ \ \ \ unordered\_map<type\_index,\ function<void(\textcolor{keyword}{const}\ \mbox{\hyperlink{classentity}{entity}}\&)>>\ \mbox{\hyperlink{classregistry_afacfe5d75adf2f59ebc41cc3e0fb641e}{\_erase\_functions}};}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ vector<function<void(\textcolor{keywordtype}{double})>>\ \mbox{\hyperlink{classregistry_ad7db97a86dca87aae412fec6d1768fdd}{\_systems}};}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classregistry_a736fb7871aa84c956c947d586f24a81b}{entity\_num}}\ =\ 0;}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ sf::RenderWindow\&\ \mbox{\hyperlink{classregistry_a2156b3e51c6c5c91b3ff8246238a643a}{window}};}
+\DoxyCodeLine{00155\ \ \ \ \ sf::RenderWindow\ \mbox{\hyperlink{classregistry_aa643bab506bd89dcfb558fb1255756e5}{tmp}};}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ sf::Clock\ \mbox{\hyperlink{classregistry_a5e7155f2ef2a96409dcf2ee3599c54ce}{clock}};}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classregistry_abb95393f9205c5615c365ffb249f49bb}{register\_all\_systems}}();}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classregistry_aee17149de7f585a04c59e916b03110f5}{collisions\_active}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classregistry_a0531fe6d4810e9a50289b9f866ad25cf}{render\_active}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classregistry_a772d03d9734330401886ab2d380d52d1}{logic\_active}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classregistry_aa007145268e3b27a52137b978cf7f887}{control\_active}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classregistry_a9db2f8741e8d99bec4cb2e4430e6809a}{movement\_active}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00186\ \};}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{registry__single__comp_8tpp}{../src/registry\_single\_comp.tpp}}"{}}}
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{registry__tables_8tpp}{../src/registry\_tables.tpp}}"{}}}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00194\ \textcolor{comment}{\ *\ *}}
+\DoxyCodeLine{00195\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00196\ \textcolor{comment}{\ *\ MIT\ License\ *\ Copyright\ (c)\ 2025\ Anonymous\ *}}
+\DoxyCodeLine{00197\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00198\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{00199\ \textcolor{comment}{\ *\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to}}
+\DoxyCodeLine{00200\ \textcolor{comment}{\ *\ deal\ \ \ \ \ \ \ \ *\ in\ the\ Software\ without\ restriction,\ including\ without}}
+\DoxyCodeLine{00201\ \textcolor{comment}{\ *\ limitation\ the\ rights\ \ \ \ \ \ \ \ \ *\ to\ use,\ copy,\ modify,\ merge,\ publish,}}
+\DoxyCodeLine{00202\ \textcolor{comment}{\ *\ distribute,\ sublicense,\ and/or\ sell\ \ \ \ \ \ \ \ \ \ \ \ *\ copies\ of\ the\ Software,\ and}}
+\DoxyCodeLine{00203\ \textcolor{comment}{\ *\ to\ permit\ persons\ to\ whom\ the\ Software\ is\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ furnished\ to\ do}}
+\DoxyCodeLine{00204\ \textcolor{comment}{\ *\ so,\ subject\ to\ the\ following\ conditions:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00205\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00206\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in}}
+\DoxyCodeLine{00207\ \textcolor{comment}{\ *\ all\ \ \ \ \ \ \ *\ copies\ or\ substantial\ portions\ of\ the\ Software.\ *}}
+\DoxyCodeLine{00208\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00209\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR\ *}}
+\DoxyCodeLine{00210\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,\ *}}
+\DoxyCodeLine{00211\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE\ *}}
+\DoxyCodeLine{00212\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER\ *}}
+\DoxyCodeLine{00213\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{00214\ \textcolor{comment}{\ *\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN}}
+\DoxyCodeLine{00215\ \textcolor{comment}{\ *\ THE\ \ \ \ \ \ \ \ *\ SOFTWARE.\ *}}
+\DoxyCodeLine{00216\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00217\ \textcolor{comment}{\ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00218\ \textcolor{comment}{\ */}}
+
+\end{DoxyCode}

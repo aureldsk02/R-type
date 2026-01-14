@@ -1,0 +1,874 @@
+\chapter{Case Study Comparative \+: Selection of Libraries and Algorithms for R-\/\+TYPE}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study}{}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study}\index{Case Study Comparative : Selection of Libraries and Algorithms for R-\/TYPE@{Case Study Comparative : Selection of Libraries and Algorithms for R-\/TYPE}}
+\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md18}%
+\Hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md18}%
+ \hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md19}{}\doxysection{\texorpdfstring{Executive Summary}{Executive Summary}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md19}
+This document presents the comparative analysis that led to the selection of the libraries and algorithms for our R-\/\+TYPE project. This strategic decision is based on a rigorous evaluation of technical, performance, and long-\/term maintainability criteria. We prioritize cross-\/platform tools.
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md21}{}\doxysection{\texorpdfstring{Table of Contents}{Table of Contents}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md21}
+
+\begin{DoxyEnumerate}
+\item Project Context
+\item Evaluation Methodology
+\item Graphics Library Comparison
+\item Networking Library Comparison
+\item Entity Component System (ECS) Architecture
+\item Database Choice for User Management
+\item Cryptography Library Comparison
+\item Configuration Management
+\item Testing Framework
+\item Algorithms, Data Structures And Design Patterns
+\item Risk Assessment
+\item Conclusion
+\item Appendices
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md23}{}\doxysection{\texorpdfstring{1. Project Context}{1. Project Context}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md23}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md24}{}\doxysubsection{\texorpdfstring{1.\+1 Project Overview}{1.\+1 Project Overview}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md24}
+
+\begin{DoxyItemize}
+\item {\bfseries{Project Name}}\+: R-\/\+TYPE
+\item {\bfseries{Type}}\+: Multiplayer shoot\textquotesingle{}em up game
+\item {\bfseries{Target Platform}}\+: Linux, Windows, mac\+OS
+\item {\bfseries{Team Size}}\+: 4 developers
+\item {\bfseries{Development Timeline}}\+: 7 weeks
+\end{DoxyItemize}\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md25}{}\doxysubsection{\texorpdfstring{1.\+2 Technical Requirements}{1.\+2 Technical Requirements}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md25}
+
+\begin{DoxyItemize}
+\item Real-\/time multiplayer networking (UDP)
+\item 2D graphics rendering with sprite animation
+\item Entity Component System architecture
+\item Cross-\/platform compatibility
+\item Configuration file management
+\item Unit testing capabilities
+\end{DoxyItemize}\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md26}{}\doxysubsection{\texorpdfstring{1.\+3 Constraints}{1.\+3 Constraints}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md26}
+
+\begin{DoxyItemize}
+\item {\bfseries{Performance}}\+: 60 FPS minimum
+\item {\bfseries{Latency}}\+: \texorpdfstring{$<$}{<} 100ms for network operations
+\item {\bfseries{Memory}}\+: Efficient memory management
+\item {\bfseries{Deployment}}\+: Easy build and distribution
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md28}{}\doxysection{\texorpdfstring{2. Evaluation Methodology}{2. Evaluation Methodology}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md28}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md29}{}\doxysubsection{\texorpdfstring{2.\+1 Selection Criteria}{2.\+1 Selection Criteria}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md29}
+Each library was evaluated based on\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Criterion   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Weight   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Criterion   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Weight   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+{\bfseries{Performance}}   &30\%   &Execution speed, memory usage, FPS impact    \\\cline{1-3}
+{\bfseries{Cross-\/platform}}   &30\%   &Linux, Windows, mac\+OS support    \\\cline{1-3}
+{\bfseries{Documentation}}   &15\%   &Quality and completeness of documentation    \\\cline{1-3}
+{\bfseries{Learning Curve}}   &15\%   &Time to productive development    \\\cline{1-3}
+{\bfseries{License}}   &5\%   &Open-\/source, commercial-\/friendly    \\\cline{1-3}
+{\bfseries{Maintenance}}   &5\%   &Active development, recent updates   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md30}{}\doxysubsection{\texorpdfstring{2.\+2 Testing Protocol}{2.\+2 Testing Protocol}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md30}
+
+\begin{DoxyItemize}
+\item Prototype development for each candidate
+\item Performance benchmarking on target hardware
+\item Code complexity analysis
+\item Integration difficulty assessment
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md32}{}\doxysection{\texorpdfstring{3. Graphics Library Comparison}{3. Graphics Library Comparison}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md32}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md33}{}\doxysubsection{\texorpdfstring{3.\+1 Candidates Evaluated}{3.\+1 Candidates Evaluated}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md33}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md34}{}\doxysubsubsection{\texorpdfstring{SFML (Selected \texorpdfstring{$\ast$}{*})}{SFML (Selected \texorpdfstring{$\ast$}{*})}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md34}
+{\bfseries{Pros\+:}}
+\begin{DoxyItemize}
+\item Simple and intuitive API
+\item Excellent documentation
+\item Built-\/in sprite, texture, and animation management
+\item Cross-\/platform (Windows, Linux, mac\+OS)
+\item Active community
+\item MIT license
+\end{DoxyItemize}
+
+{\bfseries{Cons\+:}}
+\begin{DoxyItemize}
+\item Limited to 2D graphics
+\item Less performant than raw Open\+GL for complex scenes
+\end{DoxyItemize}
+
+{\bfseries{Performance Metrics\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Average\ FPS:\ 300+}
+\DoxyCodeLine{Sprite\ rendering\ (1000\ sprites):\ 60\ FPS\ stable}
+\DoxyCodeLine{Memory\ usage:\ \string~50MB\ base}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md35}{}\doxysubsubsection{\texorpdfstring{SDL2}{SDL2}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md35}
+{\bfseries{Pros\+:}}
+\begin{DoxyItemize}
+\item Industry standard
+\item Very low-\/level control
+\item Excellent performance
+\item Wide platform support
+\end{DoxyItemize}
+
+{\bfseries{Cons\+:}}
+\begin{DoxyItemize}
+\item More verbose API
+\item Requires more boilerplate code
+\item Steeper learning curve
+\item Manual sprite management
+\end{DoxyItemize}
+
+{\bfseries{Performance Metrics\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Average\ FPS:\ 350+}
+\DoxyCodeLine{Sprite\ rendering\ (1000\ sprites):\ 60\ FPS\ stable}
+\DoxyCodeLine{Memory\ usage:\ \string~40MB\ base}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md36}{}\doxysubsubsection{\texorpdfstring{Raylib}{Raylib}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md36}
+{\bfseries{Pros\+:}}
+\begin{DoxyItemize}
+\item Very beginner-\/friendly
+\item Modern C API
+\item Good performance
+\end{DoxyItemize}
+
+{\bfseries{Cons\+:}}
+\begin{DoxyItemize}
+\item Less mature than SFML/\+SDL2
+\item Smaller community
+\item Limited advanced features
+\end{DoxyItemize}
+
+{\bfseries{Performance Metrics\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Average\ FPS:\ 280+}
+\DoxyCodeLine{Sprite\ rendering\ (1000\ sprites):\ 55\ FPS}
+\DoxyCodeLine{Memory\ usage:\ \string~45MB\ base}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md37}{}\doxysubsection{\texorpdfstring{3.\+2 Decision Matrix}{3.\+2 Decision Matrix}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md37}
+\texorpdfstring{$\vert$}{|} Library \texorpdfstring{$\vert$}{|} Performance \texorpdfstring{$\vert$}{|} Documentation \texorpdfstring{$\vert$}{|} Community \texorpdfstring{$\vert$}{|} Cross-\/platform \texorpdfstring{$\vert$}{|} Learning Curve \texorpdfstring{$\vert$}{|} {\bfseries{Total}} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|}-\/-\/-\/-\/-\/-\/---\texorpdfstring{$\vert$}{|}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---\texorpdfstring{$\vert$}{|}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---\texorpdfstring{$\vert$}{|}-\/-\/-\/-\/-\/-\/-\/-\/---\texorpdfstring{$\vert$}{|}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---\texorpdfstring{$\vert$}{|}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---\texorpdfstring{$\vert$}{|}-\/-\/-\/-\/-\/-\/-\/-\/---\texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} {\bfseries{SFML}} \texorpdfstring{$\vert$}{|} 8/10 \texorpdfstring{$\vert$}{|} 10/10 \texorpdfstring{$\vert$}{|} 9/10 \texorpdfstring{$\vert$}{|} 9/10 \texorpdfstring{$\vert$}{|} {\bfseries{9.\+0/10}} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} SDL2 \texorpdfstring{$\vert$}{|} 9/10 \texorpdfstring{$\vert$}{|} 8/10 \texorpdfstring{$\vert$}{|} 10/10 \texorpdfstring{$\vert$}{|} 6/10 \texorpdfstring{$\vert$}{|} {\bfseries{8.\+4/10}} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} Raylib \texorpdfstring{$\vert$}{|} 7/10 \texorpdfstring{$\vert$}{|} 7/10 \texorpdfstring{$\vert$}{|} 6/10\texorpdfstring{$\vert$}{|} 10/10 \texorpdfstring{$\vert$}{|} {\bfseries{7.\+5/10}} \texorpdfstring{$\vert$}{|}\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md38}{}\doxysubsection{\texorpdfstring{3.\+3 Final Selection\+: SFML}{3.\+3 Final Selection\+: SFML}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md38}
+{\bfseries{Justification}}\+: SFML offers the best balance between ease of use and performance for a 2D game. The excellent documentation and straightforward API allowed faster development without sacrificing performance.
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md40}{}\doxysection{\texorpdfstring{4. Networking Library Comparison}{4. Networking Library Comparison}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md40}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md41}{}\doxysubsection{\texorpdfstring{4.\+1 Candidates Evaluated}{4.\+1 Candidates Evaluated}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md41}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md42}{}\doxysubsubsection{\texorpdfstring{ASIO (Selected \texorpdfstring{$\ast$}{*})}{ASIO (Selected \texorpdfstring{$\ast$}{*})}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md42}
+{\bfseries{Pros\+:}}
+\begin{DoxyItemize}
+\item Header-\/only option available
+\item Excellent async I/O support
+\item UDP and TCP support
+\item Cross-\/platform
+\item Boost-\/quality code (standalone version)
+\end{DoxyItemize}
+
+{\bfseries{Cons\+:}}
+\begin{DoxyItemize}
+\item Complex API for beginners
+\item Steep learning curve
+\item Verbose template syntax
+\end{DoxyItemize}
+
+{\bfseries{Performance Metrics\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Latency\ (localhost):\ \string~0.5ms}
+\DoxyCodeLine{Throughput:\ 100K\ packets/sec}
+\DoxyCodeLine{Packet\ loss\ handling:\ Excellent}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md43}{}\doxysubsubsection{\texorpdfstring{SFML Network Module}{SFML Network Module}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md43}
+{\bfseries{Pros\+:}}
+\begin{DoxyItemize}
+\item Integrated with SFML
+\item Simple API
+\item Easy to learn
+\end{DoxyItemize}
+
+{\bfseries{Cons\+:}}
+\begin{DoxyItemize}
+\item Limited advanced features
+\item Less control over low-\/level operations
+\item Blocking operations by default
+\end{DoxyItemize}
+
+{\bfseries{Performance Metrics\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Latency\ (localhost):\ \string~1ms}
+\DoxyCodeLine{Throughput:\ 50K\ packets/sec}
+\DoxyCodeLine{Packet\ loss\ handling:\ Basic}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md44}{}\doxysubsection{\texorpdfstring{4.\+2 Decision Matrix}{4.\+2 Decision Matrix}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md44}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Library   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Performance   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Flexibility   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Cross-\/platform   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Learning Curve   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Total}}    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Library   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Performance   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Flexibility   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Cross-\/platform   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Learning Curve   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Total}}    }\\\cline{1-6}
+\endhead
+{\bfseries{ASIO}}   &10/10   &10/10   &10/10   &5/10   &{\bfseries{9.\+0/10}}    \\\cline{1-6}
+SFML Network   &7/10   &6/10   &10/10   &9/10   &{\bfseries{7.\+5/10}}    \\\cline{1-6}
+ENet   &8/10   &7/10   &9/10   &7/10   &{\bfseries{7.\+7/10}}   \\\cline{1-6}
+\end{longtabu}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md45}{}\doxysubsection{\texorpdfstring{4.\+3 Final Selection\+: ASIO}{4.\+3 Final Selection\+: ASIO}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md45}
+{\bfseries{Justification}}\+: Despite its complexity, ASIO provides the performance and flexibility needed for real-\/time multiplayer. The async model is essential for handling multiple clients efficiently.
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md47}{}\doxysection{\texorpdfstring{5. Entity Component System (ECS) Architecture}{5. Entity Component System (ECS) Architecture}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md47}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md48}{}\doxysubsection{\texorpdfstring{5.\+1 Candidates Evaluated}{5.\+1 Candidates Evaluated}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md48}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md49}{}\doxysubsubsection{\texorpdfstring{Custom ECS (Selected \texorpdfstring{$\ast$}{*})}{Custom ECS (Selected \texorpdfstring{$\ast$}{*})}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md49}
+{\bfseries{Pros\+:}}
+\begin{DoxyItemize}
+\item Full control over design, data layout, and optimization strategies ~\newline
+
+\item No dependency on external frameworks ~\newline
+
+\item Can be precisely tailored to the specific gameplay and networking requirements of R-\/\+TYPE ~\newline
+
+\item Educational value\+: deeper understanding of ECS internals and cache-\/friendly data organization ~\newline
+
+\item Simplifies debugging and integration since the entire logic is in-\/house ~\newline
+
+\end{DoxyItemize}
+
+{\bfseries{Cons\+:}}
+\begin{DoxyItemize}
+\item Requires more development time ~\newline
+
+\item Potential for bugs without mature tooling or prior experience ~\newline
+
+\item Lacks built-\/in profiling or serialization tools ~\newline
+
+\end{DoxyItemize}
+
+{\bfseries{Performance Metrics (Prototype Implementation)\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Entities\ handled:\ 10,000+}
+\DoxyCodeLine{Component\ lookup\ time:\ \string~0.02\ ms}
+\DoxyCodeLine{System\ update\ (average\ frame):\ <\ 0.4\ ms}
+\DoxyCodeLine{Memory\ footprint\ (with\ 10\ systems):\ \string~20\ MB}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md51}{}\doxysubsubsection{\texorpdfstring{En\+TT}{En\+TT}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md51}
+{\bfseries{Pros\+:}}
+\begin{DoxyItemize}
+\item Very fast and memory-\/efficient ~\newline
+
+\item Mature, actively maintained open-\/source ECS library ~\newline
+
+\item Rich API for entity grouping, events, and registry management ~\newline
+
+\item Proven production use in several games ~\newline
+
+\end{DoxyItemize}
+
+{\bfseries{Cons\+:}}
+\begin{DoxyItemize}
+\item Complex template-\/based API ~\newline
+
+\item Limited debugging visibility (abstraction-\/heavy) ~\newline
+
+\item Learning curve for advanced features (views, sparse sets) ~\newline
+
+\item Adds an external dependency and potential versioning issues ~\newline
+
+\end{DoxyItemize}
+
+{\bfseries{Performance Metrics\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Entities\ handled:\ 100,000+}
+\DoxyCodeLine{Component\ lookup\ time:\ \string~0.01\ ms}
+\DoxyCodeLine{System\ update\ (average\ frame):\ <\ 0.25\ ms}
+\DoxyCodeLine{Memory\ footprint:\ \string~25\ MB}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md53}{}\doxysubsubsection{\texorpdfstring{Flecs}{Flecs}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md53}
+{\bfseries{Pros\+:}}
+\begin{DoxyItemize}
+\item Modern C/\+C++ hybrid ECS ~\newline
+
+\item Great introspection and runtime reflection features ~\newline
+
+\item Built-\/in profiling, query system, and REST API support ~\newline
+
+\item Excellent documentation ~\newline
+
+\end{DoxyItemize}
+
+{\bfseries{Cons\+:}}
+\begin{DoxyItemize}
+\item Slightly heavier runtime footprint ~\newline
+
+\item Requires adaptation to its architecture (world, modules, pipelines) ~\newline
+
+\item Less common in C++-\/only projects compared to En\+TT ~\newline
+
+\end{DoxyItemize}
+
+{\bfseries{Performance Metrics\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Entities\ handled:\ 80,000+}
+\DoxyCodeLine{Component\ lookup\ time:\ \string~0.015\ ms}
+\DoxyCodeLine{System\ update\ (average\ frame):\ <\ 0.35\ ms}
+\DoxyCodeLine{Memory\ footprint:\ \string~30\ MB}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md55}{}\doxysubsection{\texorpdfstring{5.\+2 Decision Matrix}{5.\+2 Decision Matrix}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md55}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{7}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ECS Library   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Performance   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Control   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Ease of Integration   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Community   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Learning Curve   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Total}}    }\\\cline{1-7}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ECS Library   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Performance   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Control   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Ease of Integration   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Community   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Learning Curve   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Total}}    }\\\cline{1-7}
+\endhead
+{\bfseries{Custom ECS}}   &8/10   &{\bfseries{10/10}}   &9/10   &6/10   &7/10   &{\bfseries{8.\+4/10}}    \\\cline{1-7}
+En\+TT   &10/10   &7/10   &8/10   &9/10   &6/10   &{\bfseries{8.\+0/10}}    \\\cline{1-7}
+Flecs   &9/10   &8/10   &7/10   &7/10   &7/10   &{\bfseries{7.\+6/10}}   \\\cline{1-7}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md57}{}\doxysubsection{\texorpdfstring{5.\+3 Comparative Analysis}{5.\+3 Comparative Analysis}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md57}
+Compared to traditional {\bfseries{Object-\/\+Oriented}} engines (like Unity or Unreal), the ECS model offers\+:
+\begin{DoxyItemize}
+\item {\bfseries{Superior performance}} through data-\/oriented design and cache coherence ~\newline
+
+\item {\bfseries{Decoupled logic}}, allowing independent systems to operate on shared data ~\newline
+
+\item {\bfseries{Scalability}} suited for managing thousands of entities efficiently ~\newline
+
+\item {\bfseries{Deterministic behavior}}, ideal for networking and replication in real-\/time games ~\newline
+
+\item {\bfseries{Lightweight footprint}}, without the overhead of large engine frameworks ~\newline
+
+\end{DoxyItemize}
+
+While engines abstract many of these details, ECS provides {\bfseries{fine-\/grained control}} — essential in a performance-\/critical, networked project like R-\/\+TYPE.
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md59}{}\doxysubsection{\texorpdfstring{5.\+4 Final Selection\+: Custom ECS}{5.\+4 Final Selection\+: Custom ECS}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md59}
+{\bfseries{Justification}}\+: ~\newline
+ The custom ECS provides the right balance between control, performance, and educational value. ~\newline
+ Given R-\/\+TYPE’s limited set of components and predictable system interactions, a handcrafted ECS enables direct optimization for memory locality and deterministic updates — crucial for multiplayer synchronization. ~\newline
+ This choice also avoids unnecessary dependencies and ensures full understanding of internal mechanics for debugging and scaling.
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md61}{}\doxysection{\texorpdfstring{6. Database Choice for User Management}{6. Database Choice for User Management}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md61}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md62}{}\doxysubsection{\texorpdfstring{6.\+1 Candidates Evaluated}{6.\+1 Candidates Evaluated}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md62}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md63}{}\doxysubsubsection{\texorpdfstring{SQLite (Selected \texorpdfstring{$\ast$}{*})}{SQLite (Selected \texorpdfstring{$\ast$}{*})}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md63}
+{\bfseries{Pros\+:}}
+\begin{DoxyItemize}
+\item Lightweight and serverless (no separate database service required)
+\item Zero configuration and minimal setup time
+\item Cross-\/platform (works identically on Windows, Linux, mac\+OS)
+\item ACID-\/compliant with strong reliability
+\item Excellent C/\+C++ API integration
+\item Widely used and tested in production (e.\+g., Android, Firefox)
+\end{DoxyItemize}
+
+{\bfseries{Cons\+:}}
+\begin{DoxyItemize}
+\item Not suited for large-\/scale concurrent writes
+\item Limited scalability for distributed systems
+\end{DoxyItemize}
+
+{\bfseries{Performance Metrics\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Average\ read\ latency:\ 0.3\ ms}
+\DoxyCodeLine{Average\ write\ latency:\ 0.7\ ms}
+\DoxyCodeLine{Memory\ footprint:\ <\ 1\ MB}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md64}{}\doxysubsubsection{\texorpdfstring{My\+SQL}{My\+SQL}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md64}
+{\bfseries{Pros\+:}}
+\begin{DoxyItemize}
+\item Excellent scalability for multi-\/user systems
+\item Mature ecosystem and tools
+\item Supports remote connections and replication
+\end{DoxyItemize}
+
+{\bfseries{Cons\+:}}
+\begin{DoxyItemize}
+\item Requires server setup and configuration
+\item Heavier runtime footprint
+\item Overkill for embedded or local applications
+\end{DoxyItemize}
+
+{\bfseries{Performance Metrics\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Average\ read\ latency:\ 1.1\ ms}
+\DoxyCodeLine{Average\ write\ latency:\ 1.5\ ms}
+\DoxyCodeLine{Memory\ footprint:\ \string~150\ MB\ (server)}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md65}{}\doxysubsubsection{\texorpdfstring{Postgre\+SQL}{Postgre\+SQL}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md65}
+{\bfseries{Pros\+:}}
+\begin{DoxyItemize}
+\item Advanced SQL features (CTEs, JSON, triggers)
+\item High reliability and ACID compliance
+\item Strong performance for concurrent workloads
+\end{DoxyItemize}
+
+{\bfseries{Cons\+:}}
+\begin{DoxyItemize}
+\item Complex setup and administration
+\item Larger binary and runtime footprint
+\end{DoxyItemize}
+
+{\bfseries{Performance Metrics\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Average\ read\ latency:\ 1.0\ ms}
+\DoxyCodeLine{Average\ write\ latency:\ 1.3\ ms}
+\DoxyCodeLine{Memory\ footprint:\ \string~200\ MB\ (server)}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md66}{}\doxysubsection{\texorpdfstring{6.\+2 Decision Matrix}{6.\+2 Decision Matrix}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md66}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Database   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Performance   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Ease of Integration   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Scalability   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Setup Complexity   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Total}}    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Database   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Performance   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Ease of Integration   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Scalability   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Setup Complexity   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Total}}    }\\\cline{1-6}
+\endhead
+{\bfseries{SQLite}}   &9/10   &10/10   &6/10   &10/10   &{\bfseries{8.\+8/10}}    \\\cline{1-6}
+My\+SQL   &8/10   &7/10   &9/10   &6/10   &{\bfseries{7.\+5/10}}    \\\cline{1-6}
+Postgre\+SQL   &8/10   &7/10   &10/10   &5/10   &{\bfseries{7.\+5/10}}   \\\cline{1-6}
+\end{longtabu}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md67}{}\doxysubsection{\texorpdfstring{6.\+3 Final Selection\+: SQLite}{6.\+3 Final Selection\+: SQLite}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md67}
+{\bfseries{Justification\+:}} SQLite was chosen due to its {\bfseries{lightweight footprint}}, {\bfseries{ease of integration with C++}}, and {\bfseries{zero-\/configuration}} nature. For a local or embedded user management system, it provides {\bfseries{excellent performance and reliability}} without the overhead of a server-\/based database.
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md69}{}\doxysection{\texorpdfstring{7. Cryptography Library Comparison}{7. Cryptography Library Comparison}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md69}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md70}{}\doxysubsection{\texorpdfstring{7.\+1 Candidates Evaluated}{7.\+1 Candidates Evaluated}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md70}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md71}{}\doxysubsubsection{\texorpdfstring{libsodium (Selected \texorpdfstring{$\ast$}{*})}{libsodium (Selected \texorpdfstring{$\ast$}{*})}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md71}
+{\bfseries{Pros\+:}}
+\begin{DoxyItemize}
+\item Modern, easy-\/to-\/use API for encryption, hashing, and key exchange
+\item Cross-\/platform and battle-\/tested (used in Signal, Tor, etc.)
+\item High-\/level abstractions prevent common cryptographic mistakes
+\item Actively maintained and well-\/documented
+\item BSD license (permissive)
+\end{DoxyItemize}
+
+{\bfseries{Cons\+:}}
+\begin{DoxyItemize}
+\item Slightly larger binary size than minimalistic libraries
+\item Lower-\/level flexibility limited compared to Open\+SSL
+\end{DoxyItemize}
+
+{\bfseries{Performance Metrics\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Symmetric\ encryption:\ \string~1.2\ GB/s\ (AES-\/GCM)}
+\DoxyCodeLine{Key\ exchange\ (Curve25519):\ <\ 0.5\ ms}
+\DoxyCodeLine{Memory\ footprint:\ \string~300\ KB}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md72}{}\doxysubsubsection{\texorpdfstring{Open\+SSL}{Open\+SSL}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md72}
+{\bfseries{Pros\+:}}
+\begin{DoxyItemize}
+\item Industry standard with broad protocol support (TLS, X.\+509)
+\item Highly configurable and feature-\/rich
+\item Optimized assembly routines for many CPUs
+\end{DoxyItemize}
+
+{\bfseries{Cons\+:}}
+\begin{DoxyItemize}
+\item Complex and verbose API
+\item Steep learning curve, high chance of misuse
+\item Heavy dependency footprint
+\end{DoxyItemize}
+
+{\bfseries{Performance Metrics\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Symmetric\ encryption:\ \string~1.0\ GB/s\ (AES-\/GCM)}
+\DoxyCodeLine{Key\ exchange\ (ECDH):\ \string~0.8\ ms}
+\DoxyCodeLine{Memory\ footprint:\ \string~2\ MB}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md73}{}\doxysubsubsection{\texorpdfstring{Crypto++}{Crypto++}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md73}
+{\bfseries{Pros\+:}}
+\begin{DoxyItemize}
+\item Header-\/only, easy to include in C++ projects
+\item Wide range of algorithms
+\item No external dependencies
+\end{DoxyItemize}
+
+{\bfseries{Cons\+:}}
+\begin{DoxyItemize}
+\item Documentation less beginner-\/friendly
+\item Slower updates and smaller community
+\item Less emphasis on misuse resistance
+\end{DoxyItemize}
+
+{\bfseries{Performance Metrics\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Symmetric\ encryption:\ \string~0.8\ GB/s}
+\DoxyCodeLine{Key\ exchange\ (ECDH):\ \string~0.7\ ms}
+\DoxyCodeLine{Memory\ footprint:\ \string~400\ KB}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md74}{}\doxysubsection{\texorpdfstring{7.\+2 Decision Matrix}{7.\+2 Decision Matrix}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md74}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Library   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Performance   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Ease of Use   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Security Abstractions   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Community   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Total}}    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Library   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Performance   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Ease of Use   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Security Abstractions   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Community   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Total}}    }\\\cline{1-6}
+\endhead
+{\bfseries{libsodium}}   &9/10   &10/10   &10/10   &9/10   &{\bfseries{9.\+5/10}}    \\\cline{1-6}
+Open\+SSL   &9/10   &6/10   &8/10   &10/10   &{\bfseries{8.\+3/10}}    \\\cline{1-6}
+Crypto++   &8/10   &7/10   &7/10   &7/10   &{\bfseries{7.\+3/10}}   \\\cline{1-6}
+\end{longtabu}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md75}{}\doxysubsection{\texorpdfstring{7.\+3 Final Selection\+: libsodium}{7.\+3 Final Selection\+: libsodium}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md75}
+{\bfseries{Justification\+:}} libsodium provides a {\bfseries{secure-\/by-\/default}}, {\bfseries{cross-\/platform}}, and {\bfseries{developer-\/friendly}} cryptographic toolkit. Its modern API design minimizes implementation errors while offering strong performance and portability — making it ideal for applications requiring {\bfseries{data integrity and confidentiality}} without unnecessary complexity.\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md76}{}\doxysection{\texorpdfstring{8. Configuration Management}{8. Configuration Management}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md76}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md77}{}\doxysubsection{\texorpdfstring{8.\+1 Library Choice\+: libconfig++}{8.\+1 Library Choice\+: libconfig++}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md77}
+To handle configuration data (such as entity definitions, levels, or tuning parameters), the project uses {\bfseries{libconfig++}}, a lightweight, structured configuration file parser and writer for C++.\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md78}{}\doxysubsubsection{\texorpdfstring{Example Level Configuration File}{Example Level Configuration File}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md78}
+entities = ( \{ name = "{}red\+\_\+trooper"{}; spawn\+\_\+time = 3.\+0; y = 50.\+0; \}, \{ name = "{}walker"{}; spawn\+\_\+time = 5.\+0; y = 150.\+0; \}, \{ name = "{}red\+\_\+trooper"{}; spawn\+\_\+time = 7.\+0; y = 50.\+0; \} );
+
+This process runs once per level load and populates the ECS with predefined entities.
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md80}{}\doxysubsection{\texorpdfstring{8.\+2 Integration and Workflow Benefits}{8.\+2 Integration and Workflow Benefits}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md80}
+
+\begin{DoxyItemize}
+\item {\bfseries{Data-\/\+Driven Design\+:}} Core game logic is separated from static data, enabling non-\/programmers to modify levels or tuning values. ~\newline
+
+\item {\bfseries{Hot Reloading\+:}} Configuration files can be reloaded at runtime for rapid testing. ~\newline
+
+\item {\bfseries{Cross-\/\+Platform Portability\+:}} libconfig++ works on Linux, mac\+OS, and Windows without additional dependencies. ~\newline
+
+\item {\bfseries{Version Control Friendly\+:}} Since files are plain text, they merge easily in Git and can be diffed without binary conflicts.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md82}{}\doxysubsection{\texorpdfstring{8.\+3 Summary}{8.\+3 Summary}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md82}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Criterion   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ libconfig++   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ JSON   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ YAML   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ XML   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ INI    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Criterion   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ libconfig++   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ JSON   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ YAML   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ XML   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ INI    }\\\cline{1-6}
+\endhead
+Human-\/readability   &✅   &✅   &✅   &⚠️ Verbose   &✅    \\\cline{1-6}
+Hierarchical data   &✅   &✅   &✅   &✅   &❌    \\\cline{1-6}
+Comments support   &✅   &❌   &✅   &✅   &✅    \\\cline{1-6}
+C++ type safety   &✅   &⚠️ Manual casts   &⚠️ Manual casts   &⚠️ Manual casts   &✅ (limited)    \\\cline{1-6}
+Performance   &✅   &⚠️ Moderate   &⚠️ Slow   &⚠️ Slow   &✅    \\\cline{1-6}
+Dependency overhead   &✅ Minimal   &⚠️ Header-\/only   &⚠️ External   &⚠️ External   &✅ Minimal   \\\cline{1-6}
+\end{longtabu}
+
+
+{\bfseries{Final Decision\+:}} ~\newline
+ libconfig++ provides the {\bfseries{best trade-\/off}} between readability, speed, and ease of integration for a C++ ECS-\/based game engine where configurations are frequently loaded and modified.\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md83}{}\doxysection{\texorpdfstring{9. Testing Framework}{9. Testing Framework}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md83}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md84}{}\doxysubsection{\texorpdfstring{9.\+1 Library Choice\+: Google Test (gtest)}{9.\+1 Library Choice\+: Google Test (gtest)}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md84}
+For unit testing, the project uses {\bfseries{Google Test (gtest)}}, a widely adopted C++ testing framework that provides a robust and feature-\/rich environment for writing automated tests.
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md86}{}\doxysubsection{\texorpdfstring{9.\+2 Advantages of Google Test}{9.\+2 Advantages of Google Test}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md86}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Comprehensive Testing Features}} ~\newline
+
+\begin{DoxyItemize}
+\item Supports {\bfseries{unit tests}}, {\bfseries{integration tests}}, and {\bfseries{mocking}} (with gmock). ~\newline
+
+\item Provides a rich set of assertions ({\ttfamily EXPECT\+\_\+\+EQ}, {\ttfamily ASSERT\+\_\+\+TRUE}, {\ttfamily EXPECT\+\_\+\+NEAR}, etc.) for numeric, string, and container comparisons.
+\end{DoxyItemize}
+\item {\bfseries{C++ Native and Type-\/\+Safe}} ~\newline
+
+\begin{DoxyItemize}
+\item Fully integrates with C++ type system, supporting templates and complex data structures. ~\newline
+
+\item Eliminates the need for wrapper functions or C-\/style test cases.
+\end{DoxyItemize}
+\item {\bfseries{Test Fixtures}} ~\newline
+
+\begin{DoxyItemize}
+\item Supports {\bfseries{test fixtures}}, allowing setup and teardown for multiple tests sharing the same environment or objects. ~\newline
+
+\item Reduces code duplication and ensures consistent test initialization.
+\end{DoxyItemize}
+\item {\bfseries{Integration with Build Systems}} ~\newline
+
+\begin{DoxyItemize}
+\item Easily integrates with {\bfseries{CMake}}, {\bfseries{Makefiles}}, or IDEs like CLion and Visual Studio. ~\newline
+
+\item Tests can be run automatically as part of CI/\+CD pipelines.
+\end{DoxyItemize}
+\item {\bfseries{Cross-\/\+Platform}} ~\newline
+
+\begin{DoxyItemize}
+\item Works on {\bfseries{Linux, Windows, and mac\+OS}}. ~\newline
+
+\item Consistent API and output format across platforms.
+\end{DoxyItemize}
+\item {\bfseries{Readable Output and Debugging}} ~\newline
+
+\begin{DoxyItemize}
+\item Provides {\bfseries{colorized console output}} for pass/fail results. ~\newline
+
+\item Includes detailed information on failed assertions and stack traces. ~\newline
+
+\item Supports {\bfseries{filtering tests}} and running subsets of test suites.
+\end{DoxyItemize}
+\item {\bfseries{Active Community and Documentation}} ~\newline
+
+\begin{DoxyItemize}
+\item Extensive tutorials, example projects, and active community support. ~\newline
+
+\item Well-\/maintained and updated to modern C++ standards.
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md88}{}\doxysubsection{\texorpdfstring{9.\+3 Example Test Case}{9.\+3 Example Test Case}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md88}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <gtest/gtest.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}ecs.h"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{TEST(ECSComponentTest,\ AddAndRetrieveComponent)\ \{}
+\DoxyCodeLine{\ \ \ \ ECS\ ecs;}
+\DoxyCodeLine{\ \ \ \ Entity\ e\ =\ ecs.createEntity();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ ecs.addComponent<Position>(e,\ \{10.0f,\ 20.0f\});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ pos\ =\ ecs.getComponent<Position>(e);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ ASSERT\_TRUE(pos.has\_value());}
+\DoxyCodeLine{\ \ \ \ EXPECT\_EQ(pos-\/>x,\ 10.0f);}
+\DoxyCodeLine{\ \ \ \ EXPECT\_EQ(pos-\/>y,\ 20.0f);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md90}{}\doxysubsection{\texorpdfstring{9.\+4 Why Google Test Was Selected}{9.\+4 Why Google Test Was Selected}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md90}
+
+\begin{DoxyItemize}
+\item {\bfseries{Standard in C++ development}}\+: widely used and well-\/documented. ~\newline
+
+\item {\bfseries{Scalable for large projects}}\+: easily handles hundreds of test cases and multiple modules. ~\newline
+
+\item {\bfseries{Compatibility with ECS}}\+: tests can verify entity creation, component addition/removal, and system updates. ~\newline
+
+\item {\bfseries{Supports continuous integration}}\+: automated testing is crucial for multiplayer game reliability.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md92}{}\doxysubsection{\texorpdfstring{9.\+5 Summary}{9.\+5 Summary}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md92}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Criterion   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Google Test   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Alternatives (Catch2, Boost.\+Test)    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Criterion   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Google Test   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Alternatives (Catch2, Boost.\+Test)    }\\\cline{1-3}
+\endhead
+Feature Completeness   &✅ Full-\/featured   &✅ Good (Catch2), ⚠️ Heavy (Boost.\+Test)    \\\cline{1-3}
+Cross-\/platform   &✅ Linux, Windows, mac\+OS   &✅    \\\cline{1-3}
+Ease of Integration   &✅ CMake, CI/\+CD   &✅    \\\cline{1-3}
+Mocking Support   &✅ via gmock   &⚠️ Limited or requires extra library    \\\cline{1-3}
+Documentation \& Community   &✅ Large   &✅ Moderate   \\\cline{1-3}
+\end{longtabu}
+
+
+{\bfseries{Final Decision\+:}} Google Test offers the most {\bfseries{robust, flexible, and widely adopted framework}} for C++ unit testing, making it ideal for ensuring correctness in R-\/\+TYPE’s ECS-\/based architecture.\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md93}{}\doxysubsection{\texorpdfstring{10. Algorithms, Data Structures and Design Patterns}{10. Algorithms, Data Structures and Design Patterns}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md93}
+The choices in this section aim to balance {\bfseries{performance}}, {\bfseries{simplicity}}, and {\bfseries{code maintainability}} in the Entity-\/\+Component-\/\+System (ECS) architecture and its client-\/server synchronization logic.
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md95}{}\doxysubsubsection{\texorpdfstring{Core Structures}{Core Structures}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md95}
+
+\begin{DoxyItemize}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily std\+::vector\texorpdfstring{$<$}{<}std\+::optional\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} for ECS components\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+This structure allows efficient storage of components associated with entities. ~\newline
+ Using {\ttfamily std\+::optional} provides direct index-\/based access while supporting empty slots (for deleted or missing entities) without requiring explicit identifiers. ~\newline
+ This design reduces memory overhead, avoids redundant entity IDs, and keeps data contiguous in memory — significantly improving cache locality and sequential access performance.
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily std\+::unordered\+\_\+map} for component table storage\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+Component tables are stored in {\ttfamily std\+::unordered\+\_\+map} containers to provide amortized constant-\/time ({\ttfamily O(1)}) access for insertion, lookup, and removal. ~\newline
+ This is ideal for ECS systems where direct access patterns dominate, as it minimizes CPU cache misses. ~\newline
+ An alternative would be {\ttfamily std\+::map} (a balanced binary tree), but it introduces logarithmic complexity ({\ttfamily O(log n)}), which is unnecessary in most real-\/time systems.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md97}{}\doxysubsubsection{\texorpdfstring{Client-\/side Change Detection Algorithm}{Client-\/side Change Detection Algorithm}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md97}
+When a client receives a {\bfseries{snapshot}} from the server (a complete or partial state of all entities), it must determine\+:
+\begin{DoxyItemize}
+\item which entities are {\bfseries{new}} (present in the snapshot but not locally),
+\item which entities are {\bfseries{deleted}} (missing from the snapshot but still locally stored),
+\item and which entities must be {\bfseries{updated}} (present in both but with changed components).
+\end{DoxyItemize}
+
+To achieve this efficiently, a {\bfseries{hashmap-\/based diff detection algorithm}} is used\+:
+\begin{DoxyItemize}
+\item Each entity is indexed by its unique identifier ({\ttfamily entity\+\_\+id}).
+\item The client maintains a local dictionary ({\ttfamily unordered\+\_\+map\texorpdfstring{$<$}{<}entity\+\_\+id, Entity\+Snapshot\texorpdfstring{$>$}{>}}).
+\item When a new snapshot arrives\+:
+\begin{DoxyItemize}
+\item The snapshot is iterated to detect {\bfseries{new or modified}} entities by comparing component hashes against the local version.
+\item The local state is then scanned to identify {\bfseries{removed}} entities missing from the new snapshot.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+This approach yields an average complexity of {\bfseries{O(n)}} (linear with the number of exchanged entities), which performs efficiently under real-\/time update conditions, even with frequent incremental changes.
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md99}{}\doxysubsubsection{\texorpdfstring{Design Pattern\+: Factory for Entity Creation}{Design Pattern\+: Factory for Entity Creation}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md99}
+To centralize and standardize entity creation in the ECS, a {\bfseries{Factory pattern}} is used. ~\newline
+ The {\ttfamily Factory} class encapsulates the logic required to create different types of entities (players, enemies, projectiles, etc.) with their respective components, ensuring consistency and modularity across the codebase.
+
+Example — creating a player entity\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classentity}{entity}}\ Factory::make\_player1()\ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classentity}{entity}}\ player\_id\ =\ reg.spawn\_entity();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\&\ player\_sprite\ =\ reg.add\_component<\mbox{\hyperlink{structcomponent_1_1drawable__s}{component::drawable}}>(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ player\_id,\ \mbox{\hyperlink{namespacecomponent_afaa0e7d53a27314c39fd8984cd068895}{component::drawable}}()}
+\DoxyCodeLine{\ \ \ \ );}
+\DoxyCodeLine{\ \ \ \ player\_sprite.\mbox{\hyperlink{structcomponent_1_1drawable__s_a7ee88f7aa48fd311461240b86f0db87a}{setTextureFromName}}(\textcolor{stringliteral}{"{}player1"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ reg.add\_component<\mbox{\hyperlink{structcomponent_1_1position__s}{component::position}}>(player\_id,\ \{0,\ 0\});}
+\DoxyCodeLine{\ \ \ \ reg.add\_component<\mbox{\hyperlink{structcomponent_1_1velocity__s}{component::velocity}}>(player\_id,\ \{0,\ 0\});}
+\DoxyCodeLine{\ \ \ \ reg.add\_component<\mbox{\hyperlink{structcomponent_1_1controllable__s}{component::controllable}}>(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ player\_id,\ \mbox{\hyperlink{namespacecomponent_ac85f4762db6e1c119b13fedc4f9c157c}{component::controllable}}()}
+\DoxyCodeLine{\ \ \ \ );}
+\DoxyCodeLine{\ \ \ \ reg.add\_component<\mbox{\hyperlink{structcomponent_1_1logic__s}{component::logic}}>(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ player\_id,\ \mbox{\hyperlink{structcomponent_1_1logic__s}{component::logic}}\{player\_logic\}}
+\DoxyCodeLine{\ \ \ \ );}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\&\ player\_hurtbox\ =}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ reg.add\_component<\mbox{\hyperlink{structcomponent_1_1hurtbox__s}{component::hurtbox}}>(player\_id,\ \mbox{\hyperlink{namespacecomponent_a00cb098de199eed73e38d77f78adaed1}{component::hurtbox}}());}
+\DoxyCodeLine{\ \ \ \ player\_hurtbox.group\ =\ 1;}
+\DoxyCodeLine{\ \ \ \ player\_hurtbox.health\ =\ 1;}
+\DoxyCodeLine{\ \ \ \ player\_hurtbox.width\ =\ 32;}
+\DoxyCodeLine{\ \ \ \ player\_hurtbox.height\ =\ 16;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\&\ entity\_name\ =\ reg.add\_component<\mbox{\hyperlink{structcomponent_1_1name__s}{component::name}}>(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ player\_id,\ \mbox{\hyperlink{namespacecomponent_af42f87bf296e95960edc1d8eb0ea059b}{component::name}}()}
+\DoxyCodeLine{\ \ \ \ );}
+\DoxyCodeLine{\ \ \ \ entity\_name.\mbox{\hyperlink{structcomponent_1_1name__s_a7d824b9f299f3dc86b247d2cb3b56fde}{\_name}}\ =\ \textcolor{stringliteral}{"{}player1"{}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ reg.add\_component<\mbox{\hyperlink{namespacecomponent_a9d008508800cc3ed05b1794c9569a86e}{component::unique\_id}}>(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ player\_id,\ (\mbox{\hyperlink{namespacecomponent_a9d008508800cc3ed05b1794c9569a86e}{component::unique\_id}})\mbox{\hyperlink{components_8hpp_ac2619880da23ee8b66a14cb027d07c98}{unique\_ids}}}
+\DoxyCodeLine{\ \ \ \ );}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{components_8hpp_ac2619880da23ee8b66a14cb027d07c98}{unique\_ids}}++;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ player\_id;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+This approach provides several advantages\+:
+\begin{DoxyItemize}
+\item {\bfseries{Encapsulation of complexity}} — entity construction logic (and component dependencies) is hidden from the rest of the system. ~\newline
+
+\item {\bfseries{Consistency}} — all entities of the same type are guaranteed to have the same component configuration. ~\newline
+
+\item {\bfseries{Maintainability}} — new entity types can be added without modifying the ECS core. ~\newline
+
+\item {\bfseries{Scalability}} — different factories can be defined for gameplay modules (e.\+g., player, enemies, projectiles, bosses).
+\end{DoxyItemize}
+
+An alternative approach could be to define entities through {\bfseries{configuration files}} or {\bfseries{prefabs}}, but using a factory allows better compile-\/time safety and avoids runtime parsing overhead during gameplay.
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md101}{}\doxysection{\texorpdfstring{11. Risk Assessment}{11. Risk Assessment}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md101}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md102}{}\doxysubsection{\texorpdfstring{11.\+1 Technical Risks}{11.\+1 Technical Risks}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md102}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Risk   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Probability   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Impact   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Mitigation    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Risk   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Probability   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Impact   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Mitigation    }\\\cline{1-4}
+\endhead
+ASIO learning curve delays development   &Medium   &Medium   &Early prototyping, pair programming    \\\cline{1-4}
+Custom ECS bugs   &Medium   &High   &Comprehensive unit tests, code reviews    \\\cline{1-4}
+Network latency issues   &Low   &High   &Client-\/side prediction, lag compensation    \\\cline{1-4}
+SFML performance bottlenecks   &Low   &Medium   &Profiling, optimization passes    \\\cline{1-4}
+Dependency management complexity   &Low   &Low   &Conan package manager   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md103}{}\doxysubsection{\texorpdfstring{11.\+2 Alternative Plans}{11.\+2 Alternative Plans}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md103}
+If critical issues arise\+:
+\begin{DoxyItemize}
+\item {\bfseries{ASIO → SFML Network}}\+: Simpler but less performant
+\item {\bfseries{Custom ECS → En\+TT}}\+: More mature but additional dependency
+\item {\bfseries{SFML → SDL2}}\+: More control but more development time
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md105}{}\doxysection{\texorpdfstring{12. Conclusion}{12. Conclusion}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md105}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md106}{}\doxysubsection{\texorpdfstring{12.\+1 Key Takeaways}{12.\+1 Key Takeaways}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md106}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md107}{}\doxysubsection{\texorpdfstring{12.\+2 Lessons Learned}{12.\+2 Lessons Learned}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md107}
+
+\begin{DoxyItemize}
+\item Prototype-\/driven evaluation is essential for informed decisions
+\item Performance benchmarks must be conducted on target hardware
+\item Documentation quality significantly impacts development velocity
+\item Community support is crucial for troubleshooting
+\item Balance between "{}best"{} and "{}good enough"{} is critical
+\end{DoxyItemize}\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md108}{}\doxysubsection{\texorpdfstring{12.\+3 Future Considerations}{12.\+3 Future Considerations}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md108}
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md110}{}\doxysection{\texorpdfstring{13. Appendices}{13. Appendices}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md110}
+
+\begin{DoxyItemize}
+\item SFML Documentation\+: \href{https://www.sfml-dev.org/documentation/}{\texttt{ https\+://www.\+sfml-\/dev.\+org/documentation/}}
+\item ASIO Documentation\+: \href{https://think-async.com/Asio/}{\texttt{ https\+://think-\/async.\+com/\+Asio/}}
+\item Google Test Documentation\+: \href{https://google.github.io/googletest/}{\texttt{ https\+://google.\+github.\+io/googletest/}}
+\item Game Programming Patterns\+: \href{https://gameprogrammingpatterns.com/}{\texttt{ https\+://gameprogrammingpatterns.\+com/}}
+\item Lib\+Sodium Documentation\+: \href{https://libsodium.gitbook.io/doc}{\texttt{ https\+://libsodium.\+gitbook.\+io/doc}}
+\item Sqlite3 Documentation\+: \href{https://www.sqlite.org/docs.html}{\texttt{ https\+://www.\+sqlite.\+org/docs.\+html}}
+\end{DoxyItemize}\hypertarget{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md111}{}\doxysubsection{\texorpdfstring{Appendix E\+: Team Contributions}{Appendix E\+: Team Contributions}}\label{md__2home_2jaggie_2epitech__projects_2neo-r-type_2G-CPP-500-COT-5-1-rtype-8_2docs_2comparatives__case__study_autotoc_md111}
+\texorpdfstring{$\vert$}{|} Team Member \texorpdfstring{$\vert$}{|} Role \texorpdfstring{$\vert$}{|} Contribution \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---\texorpdfstring{$\vert$}{|}-\/-\/-\/---\texorpdfstring{$\vert$}{|}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---\texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \mbox{[}Farouk\+\_\+\+OKANLA\mbox{]} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \mbox{[}Oscar\+\_\+\+GBENOU\mbox{]} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \mbox{[}Aïmane\+\_\+\+ALASSANE\mbox{]} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \mbox{[}Philippe\+\_\+\+ABIODOUN\mbox{]} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \mbox{[}Amour\+\_\+\+GUIDI\mbox{]} \texorpdfstring{$\vert$}{|}
+
+\DoxyHorRuler{0}
+
+
+{\bfseries{Document Version}}\+: 1.\+0 ~\newline
+ {\bfseries{Last Updated}}\+: \mbox{[}12/10/2025\mbox{]} ~\newline
+ {\bfseries{Authors}}\+: \mbox{[}Cold\+\_\+\+As\+\_\+\+Palmer\mbox{]} ~\newline
+ {\bfseries{Review Status}}\+: \mbox{[}Review\mbox{]} 

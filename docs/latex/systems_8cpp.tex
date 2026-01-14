@@ -1,0 +1,164 @@
+\doxysection{/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/engine/src/systems.cpp File Reference}
+\hypertarget{systems_8cpp}{}\label{systems_8cpp}\index{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/engine/src/systems.cpp@{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/engine/src/systems.cpp}}
+
+
+This file contains the definition of the different systems of the registry.  
+
+
+{\ttfamily \#include "{}../include/components.\+hpp"{}}\newline
+{\ttfamily \#include "{}../include/registry.\+hpp"{}}\newline
+Include dependency graph for systems.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{systems_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{systems_8cpp_a48efdd22550291cb9bacb3330d67ff48}{position\+\_\+system}} (double delta, \mbox{\hyperlink{classregistry}{registry}} \&reg, std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a32921f4e807a398b6ffaea1730431bec}{component\+::position}} $>$ $>$ \&positions, std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a428fac7a425dfc47e9997f3e4633ad6a}{component\+::velocity}} $>$ $>$ \&velocities)
+\begin{DoxyCompactList}\small\item\em The position system. This system updates the position of each entity based on its velocity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{systems_8cpp_a169ac84227fdc8f7393eb5257c3f16b2}{draw\+\_\+system}} (double delta, \mbox{\hyperlink{classregistry}{registry}} \&reg, sf\+::\+Render\+Window \&window, std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a32921f4e807a398b6ffaea1730431bec}{component\+::position}} $>$ $>$ \&positions, std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_afaa0e7d53a27314c39fd8984cd068895}{component\+::drawable}} $>$ $>$ \&draws, std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a64d6f963266a98cf80ce10cdf18e579e}{component\+::animated\+\_\+drawable}} $>$ $>$ \&anim\+\_\+draws, std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_af22b0841d9272d147f626b386da4d9ca}{component\+::text}} $>$ $>$ \&texts)
+\begin{DoxyCompactList}\small\item\em The draw system. This system draws to screen all the entities that have a drawable, animated drawable or text component AND a position component. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{systems_8cpp_ae1b5e1a8414fa382a36c1816db2685e7}{control\+\_\+system}} (double delta, \mbox{\hyperlink{classregistry}{registry}} \&reg, std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_ac85f4762db6e1c119b13fedc4f9c157c}{component\+::controllable}} $>$ $>$ \&controls)
+\begin{DoxyCompactList}\small\item\em The control system. This system updates the controllable components by listening for inputs and setting the corresponding booleans in the component to true if the key is pressed and false otherwise. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{systems_8cpp_a7b2843e480d89d8d75a7765a1b1d9d33}{collision\+\_\+system}} (double delta, \mbox{\hyperlink{classregistry}{registry}} \&reg, std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a32921f4e807a398b6ffaea1730431bec}{component\+::position}} $>$ $>$ \&positions, std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a00cb098de199eed73e38d77f78adaed1}{component\+::hurtbox}} $>$ $>$ \&hurtboxes, std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a0ae561e88973b1d50eb3048035956866}{component\+::hitbox}} $>$ $>$ \&hitboxes)
+\begin{DoxyCompactList}\small\item\em The collision system. This system goes through each hurtbox and hitbox component and checks if they are colliding. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{systems_8cpp_a22759635a24090e7b56c0368ba19ad42}{logic\+\_\+system}} (double delta, \mbox{\hyperlink{classregistry}{registry}} \&reg, std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a4389e557b74c9397d726bcf56ba076d0}{component\+::logic}} $>$ $>$ \&logics)
+\begin{DoxyCompactList}\small\item\em The logic system goes through each entity with a logic component and executes its logic function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the definition of the different systems of the registry. 
+
+\begin{DoxyAuthor}{Author}
+Farouk OKANLA 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/09-\/23
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{systems_8cpp_a7b2843e480d89d8d75a7765a1b1d9d33}\label{systems_8cpp_a7b2843e480d89d8d75a7765a1b1d9d33} 
+\index{systems.cpp@{systems.cpp}!collision\_system@{collision\_system}}
+\index{collision\_system@{collision\_system}!systems.cpp@{systems.cpp}}
+\doxysubsubsection{\texorpdfstring{collision\_system()}{collision\_system()}}
+{\footnotesize\ttfamily void collision\+\_\+system (\begin{DoxyParamCaption}\item[{double}]{delta,  }\item[{\mbox{\hyperlink{classregistry}{registry}} \&}]{reg,  }\item[{std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a32921f4e807a398b6ffaea1730431bec}{component\+::position}} $>$ $>$ \&}]{positions,  }\item[{std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a00cb098de199eed73e38d77f78adaed1}{component\+::hurtbox}} $>$ $>$ \&}]{hurtboxes,  }\item[{std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a0ae561e88973b1d50eb3048035956866}{component\+::hitbox}} $>$ $>$ \&}]{hitboxes }\end{DoxyParamCaption})}
+
+
+
+The collision system. This system goes through each hurtbox and hitbox component and checks if they are colliding. 
+
+The collision system goes through each hurtbox and hitbox component and checks if they are colliding.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & The amount of time elapsed since the last frame \\
+\hline
+{\em reg} & A reference to the registry \\
+\hline
+{\em positions} & The table of position components \\
+\hline
+{\em hurtboxes} & The table of hurtbox components \\
+\hline
+{\em hitboxes} & The table of hitbox components \\
+\hline
+\end{DoxyParams}
+\Hypertarget{systems_8cpp_ae1b5e1a8414fa382a36c1816db2685e7}\label{systems_8cpp_ae1b5e1a8414fa382a36c1816db2685e7} 
+\index{systems.cpp@{systems.cpp}!control\_system@{control\_system}}
+\index{control\_system@{control\_system}!systems.cpp@{systems.cpp}}
+\doxysubsubsection{\texorpdfstring{control\_system()}{control\_system()}}
+{\footnotesize\ttfamily void control\+\_\+system (\begin{DoxyParamCaption}\item[{double}]{delta,  }\item[{\mbox{\hyperlink{classregistry}{registry}} \&}]{reg,  }\item[{std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_ac85f4762db6e1c119b13fedc4f9c157c}{component\+::controllable}} $>$ $>$ \&}]{controls }\end{DoxyParamCaption})}
+
+
+
+The control system. This system updates the controllable components by listening for inputs and setting the corresponding booleans in the component to true if the key is pressed and false otherwise. 
+
+The control system goes through each constrollable component and updates its state based on the player input.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & The amount of time elapsed since the last frame \\
+\hline
+{\em reg} & A reference to the registry \\
+\hline
+{\em controls} & The table of controllable components \\
+\hline
+\end{DoxyParams}
+\Hypertarget{systems_8cpp_a169ac84227fdc8f7393eb5257c3f16b2}\label{systems_8cpp_a169ac84227fdc8f7393eb5257c3f16b2} 
+\index{systems.cpp@{systems.cpp}!draw\_system@{draw\_system}}
+\index{draw\_system@{draw\_system}!systems.cpp@{systems.cpp}}
+\doxysubsubsection{\texorpdfstring{draw\_system()}{draw\_system()}}
+{\footnotesize\ttfamily void draw\+\_\+system (\begin{DoxyParamCaption}\item[{double}]{delta,  }\item[{\mbox{\hyperlink{classregistry}{registry}} \&}]{reg,  }\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a32921f4e807a398b6ffaea1730431bec}{component\+::position}} $>$ $>$ \&}]{positions,  }\item[{std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_afaa0e7d53a27314c39fd8984cd068895}{component\+::drawable}} $>$ $>$ \&}]{draws,  }\item[{std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a64d6f963266a98cf80ce10cdf18e579e}{component\+::animated\+\_\+drawable}} $>$ $>$ \&}]{anim\+\_\+draws,  }\item[{std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_af22b0841d9272d147f626b386da4d9ca}{component\+::text}} $>$ $>$ \&}]{texts }\end{DoxyParamCaption})}
+
+
+
+The draw system. This system draws to screen all the entities that have a drawable, animated drawable or text component AND a position component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & The amount of time elapsed since the last frame \\
+\hline
+{\em reg} & A reference to the registry \\
+\hline
+{\em window} & A reference to render window \\
+\hline
+{\em positions} & The table of position components \\
+\hline
+{\em draws} & The table of drawable components \\
+\hline
+{\em anim\+\_\+draws} & The table of animated drawable components \\
+\hline
+{\em texts} & The table of text components \\
+\hline
+\end{DoxyParams}
+\Hypertarget{systems_8cpp_a22759635a24090e7b56c0368ba19ad42}\label{systems_8cpp_a22759635a24090e7b56c0368ba19ad42} 
+\index{systems.cpp@{systems.cpp}!logic\_system@{logic\_system}}
+\index{logic\_system@{logic\_system}!systems.cpp@{systems.cpp}}
+\doxysubsubsection{\texorpdfstring{logic\_system()}{logic\_system()}}
+{\footnotesize\ttfamily void logic\+\_\+system (\begin{DoxyParamCaption}\item[{double}]{delta,  }\item[{\mbox{\hyperlink{classregistry}{registry}} \&}]{reg,  }\item[{std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a4389e557b74c9397d726bcf56ba076d0}{component\+::logic}} $>$ $>$ \&}]{logics }\end{DoxyParamCaption})}
+
+
+
+The logic system goes through each entity with a logic component and executes its logic function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & The amount of time elapsed since the last frame \\
+\hline
+{\em reg} & A reference to the registry \\
+\hline
+{\em logics} & The table of logic components \\
+\hline
+\end{DoxyParams}
+\Hypertarget{systems_8cpp_a48efdd22550291cb9bacb3330d67ff48}\label{systems_8cpp_a48efdd22550291cb9bacb3330d67ff48} 
+\index{systems.cpp@{systems.cpp}!position\_system@{position\_system}}
+\index{position\_system@{position\_system}!systems.cpp@{systems.cpp}}
+\doxysubsubsection{\texorpdfstring{position\_system()}{position\_system()}}
+{\footnotesize\ttfamily void position\+\_\+system (\begin{DoxyParamCaption}\item[{double}]{delta,  }\item[{\mbox{\hyperlink{classregistry}{registry}} \&}]{reg,  }\item[{std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a32921f4e807a398b6ffaea1730431bec}{component\+::position}} $>$ $>$ \&}]{positions,  }\item[{std\+::vector$<$ optional$<$ \mbox{\hyperlink{namespacecomponent_a428fac7a425dfc47e9997f3e4633ad6a}{component\+::velocity}} $>$ $>$ \&}]{velocities }\end{DoxyParamCaption})}
+
+
+
+The position system. This system updates the position of each entity based on its velocity. 
+
+The position system goes through each entity and updates its position based on its velocity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & The amount of time elapsed since the last frame \\
+\hline
+{\em reg} & A reference to the registry \\
+\hline
+{\em positions} & The table of position components \\
+\hline
+{\em velocities} & The table of velocity components \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,68 @@
+\doxysection{Game\+Settings.\+hpp}
+\hypertarget{GameSettings_8hpp_source}{}\label{GameSettings_8hpp_source}\index{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/rtype\_gameInstance/include/GameSettings.hpp@{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/rtype\_gameInstance/include/GameSettings.hpp}}
+\mbox{\hyperlink{GameSettings_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGameSettings}{GameSettings}}\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{GameMode}}\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11a1e23852820b9154316c7c06e2b7ba051}{NORMAL}},}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11aac340782e01cb82b5f2442b775992939}{PVP}},}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11a72baef04098f035e8a320b03ad197818}{CUSTOM}}}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00011\ \ \ \ \ }
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}}\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180a6e5affbf5c08fef0e28c094856f94627}{EASY}},}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180ac87f3be66ffc3c0d4249f1c2cc5f3cce}{MEDIUM}},}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180a65516a42c1fe0ff17bdfe1c342f99a92}{DIFFICULT}}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00017\ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameSettings_ad77d3b46a7582a10dccf930dcb936644}{GameSettings}}(\mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{GameMode}}\ mode\ =\ \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11a1e23852820b9154316c7c06e2b7ba051}{GameMode::NORMAL}},}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}}\ difficulty\ =\ \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180a6e5affbf5c08fef0e28c094856f94627}{Difficulty::EASY}},}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ filePath\ =\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classGameSettings_a16784b16697920d8abfc5ebde4195e6c}{\_mode}}(mode),\ \mbox{\hyperlink{classGameSettings_ab51f8eded4d7c0b811dc55da2d555a5a}{\_difficulty}}(difficulty),\ \mbox{\hyperlink{classGameSettings_a1ce6a937a517047f52e3fa1051b18fde}{\_filePath}}(filePath)\ \{\}}
+\DoxyCodeLine{00022\ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{GameMode}}\ \mbox{\hyperlink{classGameSettings_a7ace2608a675e43fc540a9d1aac44ef3}{getMode}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGameSettings_a16784b16697920d8abfc5ebde4195e6c}{\_mode}};\ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}}\ \mbox{\hyperlink{classGameSettings_a81c3db39e440cd96ec235d8d1db48695}{getDifficulty}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGameSettings_ab51f8eded4d7c0b811dc55da2d555a5a}{\_difficulty}};\ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{classGameSettings_a2122040b29a33e9b1628e5998841f9d3}{getFilePath}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGameSettings_a1ce6a937a517047f52e3fa1051b18fde}{\_filePath}};\ \}}
+\DoxyCodeLine{00026\ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameSettings_a01fae412cb4b4c8793bd33ccbc4aee00}{setMode}}(\mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{GameMode}}\ mode)\ \{\ \mbox{\hyperlink{classGameSettings_a16784b16697920d8abfc5ebde4195e6c}{\_mode}}\ =\ mode;\ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameSettings_a08a79617e4344549147d73eedf2589cb}{setDifficulty}}(\mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}}\ diff)\ \{\ \mbox{\hyperlink{classGameSettings_ab51f8eded4d7c0b811dc55da2d555a5a}{\_difficulty}}\ =\ diff;\ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameSettings_aa54e1ecf0e56e213b8685b666ec52e5b}{setFilePath}}(\textcolor{keyword}{const}\ std::string\&\ path)\ \{\ \mbox{\hyperlink{classGameSettings_a1ce6a937a517047f52e3fa1051b18fde}{\_filePath}}\ =\ path;\ \}}
+\DoxyCodeLine{00030\ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{GameMode}}\ \mbox{\hyperlink{classGameSettings_a7eb2b3fa246adf26123a501064bbfea2}{modeFromString}}(\textcolor{keyword}{const}\ std::string\&\ str)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (str\ ==\ \textcolor{stringliteral}{"{}PVP"{}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11aac340782e01cb82b5f2442b775992939}{GameMode::PVP}};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (str\ ==\ \textcolor{stringliteral}{"{}CUSTOM"{}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11a72baef04098f035e8a320b03ad197818}{GameMode::CUSTOM}};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11a1e23852820b9154316c7c06e2b7ba051}{GameMode::NORMAL}};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}}\ \mbox{\hyperlink{classGameSettings_a072a878710516f8041a86997d20967ec}{difficultyFromString}}(\textcolor{keyword}{const}\ std::string\&\ str)\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (str\ ==\ \textcolor{stringliteral}{"{}MEDIUM"{}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180ac87f3be66ffc3c0d4249f1c2cc5f3cce}{Difficulty::MEDIUM}};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (str\ ==\ \textcolor{stringliteral}{"{}DIFFICULT"{}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180a65516a42c1fe0ff17bdfe1c342f99a92}{Difficulty::DIFFICULT}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180a6e5affbf5c08fef0e28c094856f94627}{Difficulty::EASY}};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classGameSettings_aa299fb1150118b34c5a0c9633176a668}{modeToString}}(\mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{GameMode}}\ mode)\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (mode)\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11aac340782e01cb82b5f2442b775992939}{GameMode::PVP}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}PVP"{}};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11a72baef04098f035e8a320b03ad197818}{GameMode::CUSTOM}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}CUSTOM"{}};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}NORMAL"{}};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classGameSettings_a10e8e369b2ec165bdc6dececc41aa5aa}{difficultyToString}}(\mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}}\ diff)\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (diff)\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180ac87f3be66ffc3c0d4249f1c2cc5f3cce}{Difficulty::MEDIUM}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}MEDIUM"{}};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180a65516a42c1fe0ff17bdfe1c342f99a92}{Difficulty::DIFFICULT}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}DIFFICULT"{}};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}EASY"{}};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameSettings_abd81557c9320b8dfa70f66a42396cf11}{GameMode}}\ \mbox{\hyperlink{classGameSettings_a16784b16697920d8abfc5ebde4195e6c}{\_mode}};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameSettings_a3bedaa9073519fcf43a6b12553bf3180}{Difficulty}}\ \mbox{\hyperlink{classGameSettings_ab51f8eded4d7c0b811dc55da2d555a5a}{\_difficulty}};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classGameSettings_a1ce6a937a517047f52e3fa1051b18fde}{\_filePath}};}
+\DoxyCodeLine{00062\ \};}
+
+\end{DoxyCode}

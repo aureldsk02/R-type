@@ -1,0 +1,643 @@
+\doxysection{Game\+Instance Class Reference}
+\hypertarget{classGameInstance}{}\label{classGameInstance}\index{GameInstance@{GameInstance}}
+
+
+The server class. Handles the server side of the game. At the start of the game, the server loads the level entities from a configuration file The server holds the simulation of the game with all these entities and teh players. It listens from inputs from the clients and sends the game state to the them on each frame.  
+
+
+
+
+{\ttfamily \#include $<$game\+Instance.\+hpp$>$}
+
+
+
+Collaboration diagram for Game\+Instance\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=167pt]{classGameInstance__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameInstance_a8a390155a8ca2674b2d732550ad0e4cc}{Game\+Instance}} (std\+::string \+\_\+id, Network\+Manager \&server, const \mbox{\hyperlink{classGameSettings}{Game\+Settings}} \&settings)
+\begin{DoxyCompactList}\small\item\em Construct a new Server object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGameInstance_a786574b10c67afaf2301949dda05f344}{\texorpdfstring{$\sim$}{\string~}\+Game\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classGameInstance}{Game\+Instance} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameInstance_aa78e16b7310718f7a7cc67902e8141ee}{add\+Client}} (const asio\+::ip\+::udp\+::endpoint \&client)
+\item 
+void \mbox{\hyperlink{classGameInstance_a6bd9e947bbfcd56d0076c50cd27de3c6}{add\+Message}} (const asio\+::ip\+::udp\+::endpoint \&client, const std\+::vector$<$ int8\+\_\+t $>$ \&msg)
+\item 
+bool \mbox{\hyperlink{classGameInstance_a8d2a2e43636d1f7127a809678a886b03}{has\+Client}} (const asio\+::ip\+::udp\+::endpoint \&client)
+\item 
+std\+::vector$<$ int8\+\_\+t $>$ \mbox{\hyperlink{classGameInstance_af2d3cf1368ff1a88b60b833e7bfce66a}{encode\+Message\+Header}} (const Message\+Header \&pos)
+\begin{DoxyCompactList}\small\item\em Encode the number of entities into a byte buffer. \end{DoxyCompactList}\item 
+std\+::vector$<$ int8\+\_\+t $>$ \mbox{\hyperlink{classGameInstance_ab39b531c9442db38efc35f64561da6ae}{encode\+Enemy\+Moved\+Response}} (const Enemy\+Moved\+Response \&pos)
+\begin{DoxyCompactList}\small\item\em Encode an Enemy\+Moved\+Response structure into a byte buffer. \end{DoxyCompactList}\item 
+std\+::vector$<$ int8\+\_\+t $>$ \mbox{\hyperlink{classGameInstance_a27eaac6af3f0c8b60282d40ee51ad92e}{encode\+Game\+State}} (const Game\+State \&pos)
+\begin{DoxyCompactList}\small\item\em Encode an Game\+State structure into a byte buffer. \end{DoxyCompactList}\item 
+Move\+Response \mbox{\hyperlink{classGameInstance_a6051426d156575d9d7b24451d764e7e5}{decode\+Move\+Response}} (std\+::vector$<$ int8\+\_\+t $>$ \&buffer)
+\begin{DoxyCompactList}\small\item\em Decode a Move\+Response structure from a byte buffer. \end{DoxyCompactList}\item 
+Action\+Response \mbox{\hyperlink{classGameInstance_a60de63406549132e0e3c236e48b7222f}{decode\+Action\+Response}} (std\+::vector$<$ int8\+\_\+t $>$ \&buffer)
+\begin{DoxyCompactList}\small\item\em Decode an Action\+Response structure from a byte buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameInstance_a4fd27fc5eb260afe8ce47fbb369ba839}{run}} ()
+\begin{DoxyCompactList}\small\item\em Run the server application. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameInstance_abd7210c7c638654098392373e419e2b2}{add\+Session\+Id}} (const std\+::string \&\mbox{\hyperlink{classGameInstance_a4943887a4ad9d54e95e89a2eeba8fe5a}{id}})
+\item 
+const std\+::vector$<$ std\+::string $>$ \& \mbox{\hyperlink{classGameInstance_a97d55198852cec20d0442cb758418f92}{get\+Session\+Ids}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGameInstance_a2a75f14cfb9e721bcac9bf7e2820017d}{load\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Load all information about the level from a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameInstance_aedb31ad460188f2c64bb119df01cfc87}{initialize\+Game}} (void)
+\begin{DoxyCompactList}\small\item\em Initialize all game related elements. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameInstance_ab3e9397038a90ddfec3a162efe65faa8}{log\+Game\+Entities}} (void)
+\begin{DoxyCompactList}\small\item\em Log all game entities and send their states to clients. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameInstance_a8d0da73c7111dbc28c1522565eeae31f}{receive\+Player\+Input}} (double delta)
+\begin{DoxyCompactList}\small\item\em Receive and process player input from clients. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameInstance_ac3814ced854e3ad49ebed035e6003a97}{run\+Level}} (double delta)
+\begin{DoxyCompactList}\small\item\em Manage the game level, including spawning entities and processing game logic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameInstance_a4a044ab285a6b4857b804fa1deff7f30}{initialize\+Players}} (void)
+\begin{DoxyCompactList}\small\item\em This function initializes the players. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameInstance_adf98be9a4d3df153734073c1b5fc2966}{initialize\+Players\+PVP}} (void)
+\begin{DoxyCompactList}\small\item\em This function initializes the players for pvp mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameInstance_a84e2efd81f1885fd965c1df00dd8ca51}{update\+Player\+Health}} (void)
+\item 
+void \mbox{\hyperlink{classGameInstance_af1b7c79f9caf64f5000fd73b7847e131}{handle\+Win\+Or\+Loss}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classGameInstance_a4943887a4ad9d54e95e89a2eeba8fe5a}{id}}
+\begin{DoxyCompactList}\small\item\em Id of the game instance. \end{DoxyCompactList}\item 
+const chrono\+::milliseconds \mbox{\hyperlink{classGameInstance_a477217c82a0583b2933d43d39f20f28d}{tick\+Duration}} = std\+::chrono\+::milliseconds(50)
+\begin{DoxyCompactList}\small\item\em The Duration of one tick. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t}} \mbox{\hyperlink{classGameInstance_aa123d94f6cfacc7302e464f9627cdf00}{state}}
+\begin{DoxyCompactList}\small\item\em The current state of the game. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classGameInstance_aa68cb60144d5a7fcded287cd49e34809}{custom\+\_\+conf\+\_\+path}}
+\begin{DoxyCompactList}\small\item\em A global variable that holds the path to the custom conf file. \end{DoxyCompactList}\item 
+sf\+::\+Render\+Window \mbox{\hyperlink{classGameInstance_a47d33b4495a6d2878b9e5cf660a507c5}{win}}
+\begin{DoxyCompactList}\small\item\em The window for rendering (if needed) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGameInstance_a6b6ce9e70b4f699069b9d30398237fad}{p\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The port to listen on. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{gameInstance_8hpp_a5a2a77296b8aa6c2e6f8903b6e9babee}{diff\+\_\+mode\+\_\+t}} \mbox{\hyperlink{classGameInstance_a600dcd4243b39ab3f856e1fdb7b92bb1}{diff\+\_\+mode}}
+\begin{DoxyCompactList}\small\item\em A gloal variable to store the difficulty of the game. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classregistry}{registry}} \mbox{\hyperlink{classGameInstance_a5600bc928ab3cc2654128b8bef494c57}{reg}}
+\begin{DoxyCompactList}\small\item\em The registry that holds all entities and components. \end{DoxyCompactList}\item 
+Factory \mbox{\hyperlink{classGameInstance_a7a925ca25933d5c6c4fcc340ad1864ad}{factory}}
+\begin{DoxyCompactList}\small\item\em The factory that creates entities and components. \end{DoxyCompactList}\item 
+Network\+Manager \& \mbox{\hyperlink{classGameInstance_ad6e006329541cb3401fab9d705c04da4}{server\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The network manager that handles communication with clients. \end{DoxyCompactList}\item 
+std\+::vector$<$ entity\+\_\+info\+\_\+t $>$ \mbox{\hyperlink{classGameInstance_a968a2af7cd256a90f5817476ed59a282}{entities}}
+\begin{DoxyCompactList}\small\item\em List of all entities and their information in the game. \end{DoxyCompactList}\item 
+std\+::vector$<$ int8\+\_\+t $>$ \mbox{\hyperlink{classGameInstance_a52eedb7293a5a76418390fec23936297}{result}}
+\begin{DoxyCompactList}\small\item\em Buffer for storing outgoing messages. \end{DoxyCompactList}\item 
+std\+::mutex \mbox{\hyperlink{classGameInstance_a3d932ddd8feaed27b5b1b4997edc787e}{mtx}}
+\begin{DoxyCompactList}\small\item\em A mutex for thread safety. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ asio\+::ip\+::udp\+::endpoint, std\+::vector$<$ int8\+\_\+t $>$ $>$ $>$ \mbox{\hyperlink{classGameInstance_af2128f2d41bb6570b784de164c15dfd5}{messages}}
+\begin{DoxyCompactList}\small\item\em List of all last messages received from clients. \end{DoxyCompactList}\item 
+sf\+::\+Event \mbox{\hyperlink{classGameInstance_ac6d9765733c7f096b34d23721fea8377}{event}}
+\begin{DoxyCompactList}\small\item\em Event for handling window events. \end{DoxyCompactList}\item 
+sf\+::\+Clock \mbox{\hyperlink{classGameInstance_a4331b647fc1cdb0eb66f7fe979af2ccb}{frame\+Clock}}
+\begin{DoxyCompactList}\small\item\em Clock for managing frame time. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classGameInstance_ade2bdddda924e2f59d46354d4c95bff5}{level\+Timer}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em The current level timer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGameInstance_ac9527070fe0a9cc345465a9d8075510d}{counter}}
+\begin{DoxyCompactList}\small\item\em Counter used to know how many entities have been sent to the clients. \end{DoxyCompactList}\item 
+std\+::map$<$ asio\+::ip\+::udp\+::endpoint, int $>$ \mbox{\hyperlink{classGameInstance_a8dd1eb592d1445103023ca49135e515b}{all\+\_\+clients}}
+\begin{DoxyCompactList}\small\item\em Map of all connected clients and their player IDs. \end{DoxyCompactList}\item 
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::steady\+\_\+clock $>$ \mbox{\hyperlink{classGameInstance_a57a0f2fbefad90a0922bafcf4d75fcf7}{game\+Started}}
+\begin{DoxyCompactList}\small\item\em The starting moment of the game. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{classGameInstance_a4c79d445fd3ee9aa938e36c518f8558f}{package\+Id}}
+\begin{DoxyCompactList}\small\item\em Counter used to know how many packages have been sent to the clients. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classGameInstance_af6ebca7096de1c32dd214413c51b8213}{session\+Ids}}
+\item 
+bool \mbox{\hyperlink{classGameInstance_ad279cc8b826104387f952851e472da82}{boss\+\_\+dead}} = false
+\item 
+bool \mbox{\hyperlink{classGameInstance_aec144c24890a34f7751f8895cf3fc78e}{boss1\+\_\+dead}} = false
+\item 
+bool \mbox{\hyperlink{classGameInstance_a22fde4c658df1870e3c1add6dbb5000c}{boss2\+\_\+dead}} = false
+\item 
+bool \mbox{\hyperlink{classGameInstance_ab9c418e0e0bff6f1bfed8331ebe1cea8}{final\+\_\+boss\+\_\+dead}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The server class. Handles the server side of the game. At the start of the game, the server loads the level entities from a configuration file The server holds the simulation of the game with all these entities and teh players. It listens from inputs from the clients and sends the game state to the them on each frame. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGameInstance_a8a390155a8ca2674b2d732550ad0e4cc}\label{classGameInstance_a8a390155a8ca2674b2d732550ad0e4cc} 
+\index{GameInstance@{GameInstance}!GameInstance@{GameInstance}}
+\index{GameInstance@{GameInstance}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{GameInstance()}{GameInstance()}}
+{\footnotesize\ttfamily Game\+Instance\+::\+Game\+Instance (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+id,  }\item[{Network\+Manager \&}]{server,  }\item[{const \mbox{\hyperlink{classGameSettings}{Game\+Settings}} \&}]{settings }\end{DoxyParamCaption})}
+
+
+
+Construct a new Server object. 
+
+\Hypertarget{classGameInstance_a786574b10c67afaf2301949dda05f344}\label{classGameInstance_a786574b10c67afaf2301949dda05f344} 
+\index{GameInstance@{GameInstance}!````~GameInstance@{\texorpdfstring{$\sim$}{\string~}GameInstance}}
+\index{````~GameInstance@{\texorpdfstring{$\sim$}{\string~}GameInstance}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GameInstance()}{\string~GameInstance()}}
+{\footnotesize\ttfamily Game\+Instance\+::\texorpdfstring{$\sim$}{\string~}\+Game\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroy the \doxylink{classGameInstance}{Game\+Instance} object. 
+
+Destroy the \doxylink{classGameInstance}{Game\+Instance}\+:\+: Server object. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGameInstance_aa78e16b7310718f7a7cc67902e8141ee}\label{classGameInstance_aa78e16b7310718f7a7cc67902e8141ee} 
+\index{GameInstance@{GameInstance}!addClient@{addClient}}
+\index{addClient@{addClient}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{addClient()}{addClient()}}
+{\footnotesize\ttfamily void Game\+Instance\+::add\+Client (\begin{DoxyParamCaption}\item[{const asio\+::ip\+::udp\+::endpoint \&}]{client }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameInstance_a6bd9e947bbfcd56d0076c50cd27de3c6}\label{classGameInstance_a6bd9e947bbfcd56d0076c50cd27de3c6} 
+\index{GameInstance@{GameInstance}!addMessage@{addMessage}}
+\index{addMessage@{addMessage}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{addMessage()}{addMessage()}}
+{\footnotesize\ttfamily void Game\+Instance\+::add\+Message (\begin{DoxyParamCaption}\item[{const asio\+::ip\+::udp\+::endpoint \&}]{client,  }\item[{const std\+::vector$<$ int8\+\_\+t $>$ \&}]{msg }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameInstance_abd7210c7c638654098392373e419e2b2}\label{classGameInstance_abd7210c7c638654098392373e419e2b2} 
+\index{GameInstance@{GameInstance}!addSessionId@{addSessionId}}
+\index{addSessionId@{addSessionId}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{addSessionId()}{addSessionId()}}
+{\footnotesize\ttfamily void Game\+Instance\+::add\+Session\+Id (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{id }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameInstance_a60de63406549132e0e3c236e48b7222f}\label{classGameInstance_a60de63406549132e0e3c236e48b7222f} 
+\index{GameInstance@{GameInstance}!decodeActionResponse@{decodeActionResponse}}
+\index{decodeActionResponse@{decodeActionResponse}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{decodeActionResponse()}{decodeActionResponse()}}
+{\footnotesize\ttfamily Action\+Response Game\+Instance\+::decode\+Action\+Response (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int8\+\_\+t $>$ \&}]{buffer }\end{DoxyParamCaption})}
+
+
+
+Decode an Action\+Response structure from a byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The byte buffer containing the encoded data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The decoded Action\+Response structure 
+\end{DoxyReturn}
+\Hypertarget{classGameInstance_a6051426d156575d9d7b24451d764e7e5}\label{classGameInstance_a6051426d156575d9d7b24451d764e7e5} 
+\index{GameInstance@{GameInstance}!decodeMoveResponse@{decodeMoveResponse}}
+\index{decodeMoveResponse@{decodeMoveResponse}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{decodeMoveResponse()}{decodeMoveResponse()}}
+{\footnotesize\ttfamily Move\+Response Game\+Instance\+::decode\+Move\+Response (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int8\+\_\+t $>$ \&}]{buffer }\end{DoxyParamCaption})}
+
+
+
+Decode a Move\+Response structure from a byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The byte buffer containing the encoded data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The decoded Move\+Response structure 
+\end{DoxyReturn}
+\Hypertarget{classGameInstance_ab39b531c9442db38efc35f64561da6ae}\label{classGameInstance_ab39b531c9442db38efc35f64561da6ae} 
+\index{GameInstance@{GameInstance}!encodeEnemyMovedResponse@{encodeEnemyMovedResponse}}
+\index{encodeEnemyMovedResponse@{encodeEnemyMovedResponse}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{encodeEnemyMovedResponse()}{encodeEnemyMovedResponse()}}
+{\footnotesize\ttfamily std\+::vector$<$ int8\+\_\+t $>$ Game\+Instance\+::encode\+Enemy\+Moved\+Response (\begin{DoxyParamCaption}\item[{const Enemy\+Moved\+Response \&}]{pos }\end{DoxyParamCaption})}
+
+
+
+Encode an Enemy\+Moved\+Response structure into a byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The Enemy\+Moved\+Response structure to encode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of int8\+\_\+t representing the encoded data 
+\end{DoxyReturn}
+\Hypertarget{classGameInstance_a27eaac6af3f0c8b60282d40ee51ad92e}\label{classGameInstance_a27eaac6af3f0c8b60282d40ee51ad92e} 
+\index{GameInstance@{GameInstance}!encodeGameState@{encodeGameState}}
+\index{encodeGameState@{encodeGameState}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{encodeGameState()}{encodeGameState()}}
+{\footnotesize\ttfamily std\+::vector$<$ int8\+\_\+t $>$ Game\+Instance\+::encode\+Game\+State (\begin{DoxyParamCaption}\item[{const Game\+State \&}]{pos }\end{DoxyParamCaption})}
+
+
+
+Encode an Game\+State structure into a byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The Game\+State structure to encode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of int8\+\_\+t representing the encoded data 
+\end{DoxyReturn}
+\Hypertarget{classGameInstance_af2d3cf1368ff1a88b60b833e7bfce66a}\label{classGameInstance_af2d3cf1368ff1a88b60b833e7bfce66a} 
+\index{GameInstance@{GameInstance}!encodeMessageHeader@{encodeMessageHeader}}
+\index{encodeMessageHeader@{encodeMessageHeader}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{encodeMessageHeader()}{encodeMessageHeader()}}
+{\footnotesize\ttfamily std\+::vector$<$ int8\+\_\+t $>$ Game\+Instance\+::encode\+Message\+Header (\begin{DoxyParamCaption}\item[{const Message\+Header \&}]{pos }\end{DoxyParamCaption})}
+
+
+
+Encode the number of entities into a byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The Message\+Header structure to encode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of int8\+\_\+t representing the encoded data 
+\end{DoxyReturn}
+\Hypertarget{classGameInstance_a97d55198852cec20d0442cb758418f92}\label{classGameInstance_a97d55198852cec20d0442cb758418f92} 
+\index{GameInstance@{GameInstance}!getSessionIds@{getSessionIds}}
+\index{getSessionIds@{getSessionIds}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{getSessionIds()}{getSessionIds()}}
+{\footnotesize\ttfamily const std\+::vector$<$ std\+::string $>$ \& Game\+Instance\+::get\+Session\+Ids (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classGameInstance_af1b7c79f9caf64f5000fd73b7847e131}\label{classGameInstance_af1b7c79f9caf64f5000fd73b7847e131} 
+\index{GameInstance@{GameInstance}!handleWinOrLoss@{handleWinOrLoss}}
+\index{handleWinOrLoss@{handleWinOrLoss}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{handleWinOrLoss()}{handleWinOrLoss()}}
+{\footnotesize\ttfamily void Game\+Instance\+::handle\+Win\+Or\+Loss (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameInstance_a8d2a2e43636d1f7127a809678a886b03}\label{classGameInstance_a8d2a2e43636d1f7127a809678a886b03} 
+\index{GameInstance@{GameInstance}!hasClient@{hasClient}}
+\index{hasClient@{hasClient}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{hasClient()}{hasClient()}}
+{\footnotesize\ttfamily bool Game\+Instance\+::has\+Client (\begin{DoxyParamCaption}\item[{const asio\+::ip\+::udp\+::endpoint \&}]{client }\end{DoxyParamCaption})}
+
+\Hypertarget{classGameInstance_aedb31ad460188f2c64bb119df01cfc87}\label{classGameInstance_aedb31ad460188f2c64bb119df01cfc87} 
+\index{GameInstance@{GameInstance}!initializeGame@{initializeGame}}
+\index{initializeGame@{initializeGame}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{initializeGame()}{initializeGame()}}
+{\footnotesize\ttfamily void Game\+Instance\+::initialize\+Game (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Initialize all game related elements. 
+
+\Hypertarget{classGameInstance_a4a044ab285a6b4857b804fa1deff7f30}\label{classGameInstance_a4a044ab285a6b4857b804fa1deff7f30} 
+\index{GameInstance@{GameInstance}!initializePlayers@{initializePlayers}}
+\index{initializePlayers@{initializePlayers}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{initializePlayers()}{initializePlayers()}}
+{\footnotesize\ttfamily void Game\+Instance\+::initialize\+Players (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+This function initializes the players. 
+
+\Hypertarget{classGameInstance_adf98be9a4d3df153734073c1b5fc2966}\label{classGameInstance_adf98be9a4d3df153734073c1b5fc2966} 
+\index{GameInstance@{GameInstance}!initializePlayersPVP@{initializePlayersPVP}}
+\index{initializePlayersPVP@{initializePlayersPVP}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{initializePlayersPVP()}{initializePlayersPVP()}}
+{\footnotesize\ttfamily void Game\+Instance\+::initialize\+Players\+PVP (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+This function initializes the players for pvp mode. 
+
+\Hypertarget{classGameInstance_a2a75f14cfb9e721bcac9bf7e2820017d}\label{classGameInstance_a2a75f14cfb9e721bcac9bf7e2820017d} 
+\index{GameInstance@{GameInstance}!loadLevel@{loadLevel}}
+\index{loadLevel@{loadLevel}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{loadLevel()}{loadLevel()}}
+{\footnotesize\ttfamily void Game\+Instance\+::load\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Load all information about the level from a file. 
+
+This function loads a level from a configuration file It stores all the entities of the level in a vector with their spawn time and spawn y position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGameInstance_ab3e9397038a90ddfec3a162efe65faa8}\label{classGameInstance_ab3e9397038a90ddfec3a162efe65faa8} 
+\index{GameInstance@{GameInstance}!logGameEntities@{logGameEntities}}
+\index{logGameEntities@{logGameEntities}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{logGameEntities()}{logGameEntities()}}
+{\footnotesize\ttfamily void Game\+Instance\+::log\+Game\+Entities (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Log all game entities and send their states to clients. 
+
+This functions send to the clients information about each game entity alive. \Hypertarget{classGameInstance_a8d0da73c7111dbc28c1522565eeae31f}\label{classGameInstance_a8d0da73c7111dbc28c1522565eeae31f} 
+\index{GameInstance@{GameInstance}!receivePlayerInput@{receivePlayerInput}}
+\index{receivePlayerInput@{receivePlayerInput}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{receivePlayerInput()}{receivePlayerInput()}}
+{\footnotesize\ttfamily void Game\+Instance\+::receive\+Player\+Input (\begin{DoxyParamCaption}\item[{double}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Receive and process player input from clients. 
+
+This function handles the received players\textquotesingle{} inputs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & The time elapsed since the last frame\\
+\hline
+{\em delta} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGameInstance_a4fd27fc5eb260afe8ce47fbb369ba839}\label{classGameInstance_a4fd27fc5eb260afe8ce47fbb369ba839} 
+\index{GameInstance@{GameInstance}!run@{run}}
+\index{run@{run}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Game\+Instance\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Run the server application. 
+
+\Hypertarget{classGameInstance_ac3814ced854e3ad49ebed035e6003a97}\label{classGameInstance_ac3814ced854e3ad49ebed035e6003a97} 
+\index{GameInstance@{GameInstance}!runLevel@{runLevel}}
+\index{runLevel@{runLevel}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{runLevel()}{runLevel()}}
+{\footnotesize\ttfamily void Game\+Instance\+::run\+Level (\begin{DoxyParamCaption}\item[{double}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Manage the game level, including spawning entities and processing game logic. 
+
+This function runs the current level It makes sure to spawn new entities if their spawn time has come And calls the receive\+Player\+Input function as well as the log\+Game\+Entities function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & The time elapsed since the last frame\\
+\hline
+{\em delta} & The amount of time elapsed since the last frame \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGameInstance_a84e2efd81f1885fd965c1df00dd8ca51}\label{classGameInstance_a84e2efd81f1885fd965c1df00dd8ca51} 
+\index{GameInstance@{GameInstance}!updatePlayerHealth@{updatePlayerHealth}}
+\index{updatePlayerHealth@{updatePlayerHealth}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{updatePlayerHealth()}{updatePlayerHealth()}}
+{\footnotesize\ttfamily void Game\+Instance\+::update\+Player\+Health (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGameInstance_a8dd1eb592d1445103023ca49135e515b}\label{classGameInstance_a8dd1eb592d1445103023ca49135e515b} 
+\index{GameInstance@{GameInstance}!all\_clients@{all\_clients}}
+\index{all\_clients@{all\_clients}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{all\_clients}{all\_clients}}
+{\footnotesize\ttfamily std\+::map$<$asio\+::ip\+::udp\+::endpoint, int$>$ Game\+Instance\+::all\+\_\+clients\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Map of all connected clients and their player IDs. 
+
+\Hypertarget{classGameInstance_aec144c24890a34f7751f8895cf3fc78e}\label{classGameInstance_aec144c24890a34f7751f8895cf3fc78e} 
+\index{GameInstance@{GameInstance}!boss1\_dead@{boss1\_dead}}
+\index{boss1\_dead@{boss1\_dead}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{boss1\_dead}{boss1\_dead}}
+{\footnotesize\ttfamily bool Game\+Instance\+::boss1\+\_\+dead = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameInstance_a22fde4c658df1870e3c1add6dbb5000c}\label{classGameInstance_a22fde4c658df1870e3c1add6dbb5000c} 
+\index{GameInstance@{GameInstance}!boss2\_dead@{boss2\_dead}}
+\index{boss2\_dead@{boss2\_dead}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{boss2\_dead}{boss2\_dead}}
+{\footnotesize\ttfamily bool Game\+Instance\+::boss2\+\_\+dead = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameInstance_ad279cc8b826104387f952851e472da82}\label{classGameInstance_ad279cc8b826104387f952851e472da82} 
+\index{GameInstance@{GameInstance}!boss\_dead@{boss\_dead}}
+\index{boss\_dead@{boss\_dead}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{boss\_dead}{boss\_dead}}
+{\footnotesize\ttfamily bool Game\+Instance\+::boss\+\_\+dead = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameInstance_ac9527070fe0a9cc345465a9d8075510d}\label{classGameInstance_ac9527070fe0a9cc345465a9d8075510d} 
+\index{GameInstance@{GameInstance}!counter@{counter}}
+\index{counter@{counter}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{counter}{counter}}
+{\footnotesize\ttfamily int Game\+Instance\+::counter\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Counter used to know how many entities have been sent to the clients. 
+
+\Hypertarget{classGameInstance_aa68cb60144d5a7fcded287cd49e34809}\label{classGameInstance_aa68cb60144d5a7fcded287cd49e34809} 
+\index{GameInstance@{GameInstance}!custom\_conf\_path@{custom\_conf\_path}}
+\index{custom\_conf\_path@{custom\_conf\_path}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{custom\_conf\_path}{custom\_conf\_path}}
+{\footnotesize\ttfamily std\+::string Game\+Instance\+::custom\+\_\+conf\+\_\+path\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A global variable that holds the path to the custom conf file. 
+
+\Hypertarget{classGameInstance_a600dcd4243b39ab3f856e1fdb7b92bb1}\label{classGameInstance_a600dcd4243b39ab3f856e1fdb7b92bb1} 
+\index{GameInstance@{GameInstance}!diff\_mode@{diff\_mode}}
+\index{diff\_mode@{diff\_mode}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{diff\_mode}{diff\_mode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gameInstance_8hpp_a5a2a77296b8aa6c2e6f8903b6e9babee}{diff\+\_\+mode\+\_\+t}} Game\+Instance\+::diff\+\_\+mode\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A gloal variable to store the difficulty of the game. 
+
+\Hypertarget{classGameInstance_a968a2af7cd256a90f5817476ed59a282}\label{classGameInstance_a968a2af7cd256a90f5817476ed59a282} 
+\index{GameInstance@{GameInstance}!entities@{entities}}
+\index{entities@{entities}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{entities}{entities}}
+{\footnotesize\ttfamily std\+::vector$<$entity\+\_\+info\+\_\+t$>$ Game\+Instance\+::entities\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+List of all entities and their information in the game. 
+
+\Hypertarget{classGameInstance_ac6d9765733c7f096b34d23721fea8377}\label{classGameInstance_ac6d9765733c7f096b34d23721fea8377} 
+\index{GameInstance@{GameInstance}!event@{event}}
+\index{event@{event}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{event}{event}}
+{\footnotesize\ttfamily sf\+::\+Event Game\+Instance\+::event\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Event for handling window events. 
+
+\Hypertarget{classGameInstance_a7a925ca25933d5c6c4fcc340ad1864ad}\label{classGameInstance_a7a925ca25933d5c6c4fcc340ad1864ad} 
+\index{GameInstance@{GameInstance}!factory@{factory}}
+\index{factory@{factory}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{factory}{factory}}
+{\footnotesize\ttfamily Factory Game\+Instance\+::factory\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The factory that creates entities and components. 
+
+\Hypertarget{classGameInstance_ab9c418e0e0bff6f1bfed8331ebe1cea8}\label{classGameInstance_ab9c418e0e0bff6f1bfed8331ebe1cea8} 
+\index{GameInstance@{GameInstance}!final\_boss\_dead@{final\_boss\_dead}}
+\index{final\_boss\_dead@{final\_boss\_dead}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{final\_boss\_dead}{final\_boss\_dead}}
+{\footnotesize\ttfamily bool Game\+Instance\+::final\+\_\+boss\+\_\+dead = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameInstance_a4331b647fc1cdb0eb66f7fe979af2ccb}\label{classGameInstance_a4331b647fc1cdb0eb66f7fe979af2ccb} 
+\index{GameInstance@{GameInstance}!frameClock@{frameClock}}
+\index{frameClock@{frameClock}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{frameClock}{frameClock}}
+{\footnotesize\ttfamily sf\+::\+Clock Game\+Instance\+::frame\+Clock\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Clock for managing frame time. 
+
+\Hypertarget{classGameInstance_a57a0f2fbefad90a0922bafcf4d75fcf7}\label{classGameInstance_a57a0f2fbefad90a0922bafcf4d75fcf7} 
+\index{GameInstance@{GameInstance}!gameStarted@{gameStarted}}
+\index{gameStarted@{gameStarted}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{gameStarted}{gameStarted}}
+{\footnotesize\ttfamily std\+::chrono\+::time\+\_\+point$<$std\+::chrono\+::steady\+\_\+clock$>$ Game\+Instance\+::game\+Started\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The starting moment of the game. 
+
+\Hypertarget{classGameInstance_a4943887a4ad9d54e95e89a2eeba8fe5a}\label{classGameInstance_a4943887a4ad9d54e95e89a2eeba8fe5a} 
+\index{GameInstance@{GameInstance}!id@{id}}
+\index{id@{id}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily std\+::string Game\+Instance\+::id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Id of the game instance. 
+
+\Hypertarget{classGameInstance_ade2bdddda924e2f59d46354d4c95bff5}\label{classGameInstance_ade2bdddda924e2f59d46354d4c95bff5} 
+\index{GameInstance@{GameInstance}!levelTimer@{levelTimer}}
+\index{levelTimer@{levelTimer}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{levelTimer}{levelTimer}}
+{\footnotesize\ttfamily double Game\+Instance\+::level\+Timer = 0.\+0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current level timer. 
+
+\Hypertarget{classGameInstance_af2128f2d41bb6570b784de164c15dfd5}\label{classGameInstance_af2128f2d41bb6570b784de164c15dfd5} 
+\index{GameInstance@{GameInstance}!messages@{messages}}
+\index{messages@{messages}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{messages}{messages}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::pair$<$asio\+::ip\+::udp\+::endpoint, std\+::vector$<$int8\+\_\+t$>$ $>$ $>$ Game\+Instance\+::messages\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+List of all last messages received from clients. 
+
+\Hypertarget{classGameInstance_a3d932ddd8feaed27b5b1b4997edc787e}\label{classGameInstance_a3d932ddd8feaed27b5b1b4997edc787e} 
+\index{GameInstance@{GameInstance}!mtx@{mtx}}
+\index{mtx@{mtx}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{mtx}{mtx}}
+{\footnotesize\ttfamily std\+::mutex Game\+Instance\+::mtx\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A mutex for thread safety. 
+
+\Hypertarget{classGameInstance_a6b6ce9e70b4f699069b9d30398237fad}\label{classGameInstance_a6b6ce9e70b4f699069b9d30398237fad} 
+\index{GameInstance@{GameInstance}!p\_@{p\_}}
+\index{p\_@{p\_}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{p\_}{p\_}}
+{\footnotesize\ttfamily int Game\+Instance\+::p\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The port to listen on. 
+
+\Hypertarget{classGameInstance_a4c79d445fd3ee9aa938e36c518f8558f}\label{classGameInstance_a4c79d445fd3ee9aa938e36c518f8558f} 
+\index{GameInstance@{GameInstance}!packageId@{packageId}}
+\index{packageId@{packageId}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{packageId}{packageId}}
+{\footnotesize\ttfamily uint32\+\_\+t Game\+Instance\+::package\+Id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Counter used to know how many packages have been sent to the clients. 
+
+\Hypertarget{classGameInstance_a5600bc928ab3cc2654128b8bef494c57}\label{classGameInstance_a5600bc928ab3cc2654128b8bef494c57} 
+\index{GameInstance@{GameInstance}!reg@{reg}}
+\index{reg@{reg}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{reg}{reg}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classregistry}{registry}} Game\+Instance\+::reg\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The registry that holds all entities and components. 
+
+\Hypertarget{classGameInstance_a52eedb7293a5a76418390fec23936297}\label{classGameInstance_a52eedb7293a5a76418390fec23936297} 
+\index{GameInstance@{GameInstance}!result@{result}}
+\index{result@{result}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{result}{result}}
+{\footnotesize\ttfamily std\+::vector$<$int8\+\_\+t$>$ Game\+Instance\+::result\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Buffer for storing outgoing messages. 
+
+\Hypertarget{classGameInstance_ad6e006329541cb3401fab9d705c04da4}\label{classGameInstance_ad6e006329541cb3401fab9d705c04da4} 
+\index{GameInstance@{GameInstance}!server\_@{server\_}}
+\index{server\_@{server\_}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{server\_}{server\_}}
+{\footnotesize\ttfamily Network\+Manager\& Game\+Instance\+::server\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The network manager that handles communication with clients. 
+
+\Hypertarget{classGameInstance_af6ebca7096de1c32dd214413c51b8213}\label{classGameInstance_af6ebca7096de1c32dd214413c51b8213} 
+\index{GameInstance@{GameInstance}!sessionIds@{sessionIds}}
+\index{sessionIds@{sessionIds}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{sessionIds}{sessionIds}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Game\+Instance\+::session\+Ids\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameInstance_aa123d94f6cfacc7302e464f9627cdf00}\label{classGameInstance_aa123d94f6cfacc7302e464f9627cdf00} 
+\index{GameInstance@{GameInstance}!state@{state}}
+\index{state@{state}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gameInstance_8hpp_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t}} Game\+Instance\+::state\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current state of the game. 
+
+\Hypertarget{classGameInstance_a477217c82a0583b2933d43d39f20f28d}\label{classGameInstance_a477217c82a0583b2933d43d39f20f28d} 
+\index{GameInstance@{GameInstance}!tickDuration@{tickDuration}}
+\index{tickDuration@{tickDuration}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{tickDuration}{tickDuration}}
+{\footnotesize\ttfamily const chrono\+::milliseconds Game\+Instance\+::tick\+Duration = std\+::chrono\+::milliseconds(50)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Duration of one tick. 
+
+\Hypertarget{classGameInstance_a47d33b4495a6d2878b9e5cf660a507c5}\label{classGameInstance_a47d33b4495a6d2878b9e5cf660a507c5} 
+\index{GameInstance@{GameInstance}!win@{win}}
+\index{win@{win}!GameInstance@{GameInstance}}
+\doxysubsubsection{\texorpdfstring{win}{win}}
+{\footnotesize\ttfamily sf\+::\+Render\+Window Game\+Instance\+::win\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The window for rendering (if needed) 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+game\+Instance/include/\mbox{\hyperlink{gameInstance_8hpp}{game\+Instance.\+hpp}}\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+game\+Instance/src/\mbox{\hyperlink{rtype__gameInstance_2src_2commands_8cpp}{commands.\+cpp}}\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+game\+Instance/src/\mbox{\hyperlink{rtype__gameInstance_2src_2decodeur_8cpp}{decodeur.\+cpp}}\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+game\+Instance/src/\mbox{\hyperlink{init__gameInstance_8cpp}{init\+\_\+game\+Instance.\+cpp}}\item 
+/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/rtype\+\_\+game\+Instance/src/\mbox{\hyperlink{level__handling_8cpp}{level\+\_\+handling.\+cpp}}\end{DoxyCompactItemize}

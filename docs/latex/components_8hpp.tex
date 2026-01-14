@@ -1,0 +1,114 @@
+\doxysection{/home/jaggie/epitech\+\_\+projects/neo-\/r-\/type/\+G-\/\+CPP-\/500-\/\+COT-\/5-\/1-\/rtype-\/8/engine/include/components.hpp File Reference}
+\hypertarget{components_8hpp}{}\label{components_8hpp}\index{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/engine/include/components.hpp@{/home/jaggie/epitech\_projects/neo-\/r-\/type/G-\/CPP-\/500-\/COT-\/5-\/1-\/rtype-\/8/engine/include/components.hpp}}
+
+
+This file defines the different types of components available to the engine.  
+
+
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}Resource\+Manager.\+hpp"{}}\newline
+{\ttfamily \#include "{}entity.\+hpp"{}}\newline
+{\ttfamily \#include "{}registry.\+hpp"{}}\newline
+Include dependency graph for components.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{components_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{components_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcomponent_1_1position__s}{component\+::position\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The position component, with an x and y position. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1velocity__s}{component\+::velocity\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The velocity component, with an x and y velocity. This component allows an entity to move. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1drawable__s}{component\+::drawable\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The drawable component, defined by an sf\+::\+Sprite. This component allows an entity to be drawn on the screen. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1text__s}{component\+::text\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The text component, consisting in a simple sf\+::\+Text. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1animated__drawable__s}{component\+::animated\+\_\+drawable\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The animated\+\_\+drawable component. It is a drawable component with an animated sprite. It has a frame\+\_\+rect, a frame\+\_\+duration and a frame\+\_\+timer to allow animation. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1controllable__s}{component\+::controllable\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The controllable component, defined by a set of booleans. This component allows an entity to be controlled by the user\textquotesingle{}s keyboard input. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1hurtbox__s}{component\+::hurtbox\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The hurtbox component, defined by a size, health and a group (1 for the player, 2 for the enemies for example). A hitbox will detect collision with a hurtbox if its targeted group corresponds to the hurtbox group. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1hitbox__s}{component\+::hitbox\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The hitbox component, defined by a size, damage and a targeted\+\_\+group (2 for the player, 1 for the enemies for example). A hitbox will detect collision with a hurtbox if its targeted group corresponds to the hurtbox group. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1logic__s}{component\+::logic\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The logic component, defined by a function pointer. This component allows an entity to have a logic defined by the user. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1name__s}{component\+::name\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The name component, defined by a string. It lets you give a name to each entity. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomponent_1_1audio__s}{component\+::audio\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em The audio component defined by a single sf\+::\+Music. This component is not used by the engine systems but can be directly played, stopped, paused by the user. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacecomponent}{component}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1position__s}{component\+::position\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a32921f4e807a398b6ffaea1730431bec}{component\+::position}}
+\begin{DoxyCompactList}\small\item\em The position component, with an x and y position. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1velocity__s}{component\+::velocity\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a428fac7a425dfc47e9997f3e4633ad6a}{component\+::velocity}}
+\begin{DoxyCompactList}\small\item\em The velocity component, with an x and y velocity. This component allows an entity to move. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1drawable__s}{component\+::drawable\+\_\+s}} \mbox{\hyperlink{namespacecomponent_afaa0e7d53a27314c39fd8984cd068895}{component\+::drawable}}
+\begin{DoxyCompactList}\small\item\em The drawable component, defined by an sf\+::\+Sprite. This component allows an entity to be drawn on the screen. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1text__s}{component\+::text\+\_\+s}} \mbox{\hyperlink{namespacecomponent_af22b0841d9272d147f626b386da4d9ca}{component\+::text}}
+\begin{DoxyCompactList}\small\item\em The text component, consisting in a simple sf\+::\+Text. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1animated__drawable__s}{component\+::animated\+\_\+drawable\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a64d6f963266a98cf80ce10cdf18e579e}{component\+::animated\+\_\+drawable}}
+\begin{DoxyCompactList}\small\item\em The animated\+\_\+drawable component. It is a drawable component with an animated sprite. It has a frame\+\_\+rect, a frame\+\_\+duration and a frame\+\_\+timer to allow animation. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1controllable__s}{component\+::controllable\+\_\+s}} \mbox{\hyperlink{namespacecomponent_ac85f4762db6e1c119b13fedc4f9c157c}{component\+::controllable}}
+\begin{DoxyCompactList}\small\item\em The controllable component, defined by a set of booleans. This component allows an entity to be controlled by the user\textquotesingle{}s keyboard input. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1hurtbox__s}{component\+::hurtbox\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a00cb098de199eed73e38d77f78adaed1}{component\+::hurtbox}}
+\begin{DoxyCompactList}\small\item\em The hurtbox component, defined by a size, health and a group (1 for the player, 2 for the enemies for example). A hitbox will detect collision with a hurtbox if its targeted group corresponds to the hurtbox group. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1hitbox__s}{component\+::hitbox\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a0ae561e88973b1d50eb3048035956866}{component\+::hitbox}}
+\begin{DoxyCompactList}\small\item\em The hitbox component, defined by a size, damage and a targeted\+\_\+group (2 for the player, 1 for the enemies for example). A hitbox will detect collision with a hurtbox if its targeted group corresponds to the hurtbox group. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1logic__s}{component\+::logic\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a4389e557b74c9397d726bcf56ba076d0}{component\+::logic}}
+\begin{DoxyCompactList}\small\item\em The logic component, defined by a function pointer. This component allows an entity to have a logic defined by the user. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1name__s}{component\+::name\+\_\+s}} \mbox{\hyperlink{namespacecomponent_af42f87bf296e95960edc1d8eb0ea059b}{component\+::name}}
+\begin{DoxyCompactList}\small\item\em The name component, defined by a string. It lets you give a name to each entity. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcomponent_1_1audio__s}{component\+::audio\+\_\+s}} \mbox{\hyperlink{namespacecomponent_a0551f20926c6f673d130bfca015d8b76}{component\+::audio}}
+\begin{DoxyCompactList}\small\item\em The audio component defined by a single sf\+::\+Music. This component is not used by the engine systems but can be directly played, stopped, paused by the user. \end{DoxyCompactList}\item 
+typedef int \mbox{\hyperlink{namespacecomponent_a9d008508800cc3ed05b1794c9569a86e}{component\+::unique\+\_\+id}}
+\begin{DoxyCompactList}\small\item\em The unique\+\_\+id component, defined by an int. It lets you give a unique id to each entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{components_8hpp_ac2619880da23ee8b66a14cb027d07c98}{unique\+\_\+ids}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file defines the different types of components available to the engine. 
+
+\begin{DoxyAuthor}{Author}
+Farouk OKANLA 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/09-\/23
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{components_8hpp_ac2619880da23ee8b66a14cb027d07c98}\label{components_8hpp_ac2619880da23ee8b66a14cb027d07c98} 
+\index{components.hpp@{components.hpp}!unique\_ids@{unique\_ids}}
+\index{unique\_ids@{unique\_ids}!components.hpp@{components.hpp}}
+\doxysubsubsection{\texorpdfstring{unique\_ids}{unique\_ids}}
+{\footnotesize\ttfamily int unique\+\_\+ids\hspace{0.3cm}{\ttfamily [extern]}}
+

@@ -1,0 +1,15 @@
+entities = (
+    {name = "red_trooper"; spawn_time = 3.4; y = 50.0;},
+    {name = "red_trooper"; spawn_time = 3.8; y = 50.0;},
+
+    {name = "walker"; spawn_time = 5.0; y = 367.0;},
+    {name = "walker"; spawn_time = 6.0; y = 367.0;},
+
+    {name = "red_trooper"; spawn_time = 8.0; y = 150.0;},
+    {name = "red_trooper"; spawn_time = 8.2; y = 150.0;},
+
+    {name = "walker"; spawn_time = 8.4; y = 367.0;},
+    {name = "walker"; spawn_time = 9.0; y = 367.0;},
+
+    {name = "boss"; spawn_time = 11.0; y = 150.0;}
+);
